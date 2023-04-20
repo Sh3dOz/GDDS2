@@ -10,6 +10,10 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public Vector2 movement;
     public Rigidbody2D rb;
+    public GameObject bulletPrefab;
+    public Transform shootPos;
+    public float fireRate;
+    float nextFire;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,11 +31,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(runSpeed, rb.velocity.y);
-            if (Input.GetKeyDown(KeyCode.Space))
+            movement.y = Input.GetAxisRaw("Vertical");
+            rb.velocity = new Vector2(runSpeed, movement.y * jumpHeight);
+            if (Time.time > nextFire)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpHeight);
+                nextFire = Time.time + fireRate;
+                Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
             }
+            
         }
     }
 
