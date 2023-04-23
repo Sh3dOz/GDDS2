@@ -39,9 +39,19 @@ public class Parallex : MonoBehaviour
 
     void CheckReset()
     {
-        if((Mathf.Abs(transform.position.x) - (singleTextureWidth * index)) > 0)
+        if (Mathf.Abs(transform.position.x) > singleTextureWidth)
         {
-            transform.position = new Vector3(nextPos.x, transform.position.y, transform.position.z);
+            if ((Mathf.Abs(transform.position.x) - (singleTextureWidth + (Mathf.Abs(transform.position.x) - singleTextureWidth)) > 0))
+            {
+                transform.position = new Vector3(nextPos.x, transform.position.y, transform.position.z);
+            }
+        }
+        else
+        {
+            if ((Mathf.Abs(transform.position.x) - (singleTextureWidth)) > 0)
+            {
+                transform.position = new Vector3(nextPos.x, transform.position.y, transform.position.z);
+            }
         }
     }
 }

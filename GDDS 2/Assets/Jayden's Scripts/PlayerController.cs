@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public Vector2 movement;
     public Rigidbody2D rb;
+    public float gravScale;
     public GameObject bulletPrefab;
     public Transform shootPos;
     public float fireRate;
@@ -25,13 +26,19 @@ public class PlayerController : MonoBehaviour
     {
         if (isInSpace)
         {
+            rb.gravityScale = 0;
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             Movement();
         }
         else
         {
-            movement.y = Input.GetAxisRaw("Vertical");
+            rb.gravityScale = gravScale;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.Log("Space Pressed");
+                gravScale = -gravScale;
+            }
             rb.velocity = new Vector2(runSpeed, movement.y * jumpHeight);
             if (Time.time > nextFire)
             {
