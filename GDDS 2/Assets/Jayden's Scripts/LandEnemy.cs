@@ -8,23 +8,39 @@ public class LandEnemy : ShootingEnemy
     // Start is called before the first frame update
     void Start()
     {
-        
+        bulletCount = maxBullet;
     }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right);
-        if (hit.collider.gameObject.tag == "Level")
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position + offset, new Vector2(size, size), 0, -transform.right);
+        if (hit.collider.gameObject.GetComponent<PlayerController>())
         {
-            if (transform.position.y <= -2.45)
+            if (bulletCount > 0)
             {
-                transform.position -= new Vector3(0f, moveSpeed, 0f);
+                if (Time.time > nextFire)
+                {
+                    nextFire = Time.time + fireRate;
+                    GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
+                    bullet.GetComponent<Bullet>().speed = -bullet.GetComponent<Bullet>().speed;
+                    bulletCount--;
+                }
             }
-            else if (transform.position.y >= 3.95)
+            else
             {
-                transform.position -= new Vector3(0f, -moveSpeed, 0f);
+                if (isReloading) return;
+                StartCoroutine(waitReload());
             }
         }
+    }
+
+    IEnumerator waitReload()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(3f);
+        bulletCount = maxBullet;
+        isReloading = false;
+        Debug.Log("Reloaded");
     }
 }
