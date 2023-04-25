@@ -13,6 +13,8 @@ public class ShootingEnemy : MonoBehaviour
     public Transform shootPos;
     public float fireRate;
     float nextFire;
+    public int damage;
+    public int health = 10;
 
     public void Shoot()
     {
@@ -23,6 +25,7 @@ public class ShootingEnemy : MonoBehaviour
                 nextFire = Time.time + fireRate;
                 GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
                 bullet.GetComponent<Bullet>().speed = -bullet.GetComponent<Bullet>().speed;
+                bullet.GetComponent<Bullet>().damage = damage;
                 bulletCount--;
             }
         }
@@ -38,6 +41,14 @@ public class ShootingEnemy : MonoBehaviour
         yield return new WaitForSeconds(3f);
         bulletCount = maxBullet;
         isReloading = false;
-        Debug.Log("Reloaded");
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
