@@ -12,7 +12,32 @@ public class ShootingEnemy : MonoBehaviour
     public bool isReloading;
     public Transform shootPos;
     public float fireRate;
-    public float nextFire;
-    // Start is called before the first frame update
-   
+    float nextFire;
+
+    public void Shoot()
+    {
+        if (bulletCount > 0)
+        {
+            if (Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
+                bullet.GetComponent<Bullet>().speed = -bullet.GetComponent<Bullet>().speed;
+                bulletCount--;
+            }
+        }
+        else
+        {
+            if (isReloading) return;
+            StartCoroutine(waitReload());
+        }
+    }
+    IEnumerator waitReload()
+    {
+        isReloading = true;
+        yield return new WaitForSeconds(3f);
+        bulletCount = maxBullet;
+        isReloading = false;
+        Debug.Log("Reloaded");
+    }
 }
