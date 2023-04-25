@@ -480,10 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54006ea9926442641add52a40be0ea6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScoreDeduction: 1
   scoreText: {fileID: 205567377}
-  timer: 0
   maxScore: 100000
+  scoreDeducted: 126
+  newScoreDeducted: 42
 --- !u!4 &2084895483
 Transform:
   m_ObjectHideFlags: 0
