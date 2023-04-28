@@ -6,6 +6,9 @@ public class LandEnemy : ShootingEnemy
 {
     public float moveSpeed;
     Rigidbody2D rb;
+    public Transform topPos;
+    public Transform botPos;
+    public GameObject target;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +25,9 @@ public class LandEnemy : ShootingEnemy
     public void Movement()
     {
         rb.velocity = new Vector2(moveSpeed, 0f);
+        if (target != null)
+        {
+            transform.position = new Vector2(transform.position.x, Mathf.Lerp(transform.position.y, target.transform.position.y, 1f * Time.deltaTime));
+        }
     }
 }

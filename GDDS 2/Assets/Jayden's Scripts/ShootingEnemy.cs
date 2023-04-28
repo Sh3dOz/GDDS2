@@ -10,6 +10,7 @@ public class ShootingEnemy : MonoBehaviour
     public int bulletCount;
     public int maxBullet;
     public bool isReloading;
+    public float bulletSpeed;
     public Transform shootPos;
     public float fireRate;
     float nextFire;
@@ -24,7 +25,7 @@ public class ShootingEnemy : MonoBehaviour
             {
                 nextFire = Time.time + fireRate;
                 GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
-                bullet.GetComponent<Bullet>().speed = -bullet.GetComponent<Bullet>().speed;
+                bullet.GetComponent<Bullet>().speed = bulletSpeed;
                 bullet.GetComponent<Bullet>().damage = damage;
                 bulletCount--;
             }
