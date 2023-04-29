@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     public bool isInSpace;
     public float moveSpeed;
     public float runSpeed;
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 movement;
     public Rigidbody2D rb;
     public float gravScale;
+
+    [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform shootPos;
     public float fireRate;
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public int health = 3;
     public bool isDamaged;
     public Collider2D col;
+    LevelManager manager;
 
     [Header("GroundCheck")]
     public bool isGrounded;
@@ -30,6 +34,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        manager = GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -77,6 +82,7 @@ public class PlayerController : MonoBehaviour
         if (isDamaged != true) health -= damage;
         if(health <= 0)
         {
+            manager.isAlive = true;
             Destroy(gameObject);
         }
         isDamaged = true;

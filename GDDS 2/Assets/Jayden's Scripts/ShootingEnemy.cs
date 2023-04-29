@@ -16,6 +16,8 @@ public class ShootingEnemy : MonoBehaviour
     float nextFire;
     public int damage;
     public int health = 10;
+    public int cost;
+    public GameObject enemyPrefab;
 
     public void Shoot()
     {
