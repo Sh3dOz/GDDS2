@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LandEnemy : ShootingEnemy
+public class SpaceEnemy : ShootingEnemy
 {
     public float moveSpeed;
     Rigidbody2D rb;
@@ -17,7 +17,6 @@ public class LandEnemy : ShootingEnemy
         bulletCount = maxBullet;
         rb = GetComponent<Rigidbody2D>();
         target = FindObjectOfType<PlayerController>().gameObject;
-        targetPos = FindObjectOfType<PlayArea>().gameObject.transform;
     }
 
     // Update is called once per frame
@@ -28,6 +27,8 @@ public class LandEnemy : ShootingEnemy
 
     public void Movement()
     {
+        if(!inCombat) transform.position = new Vector2(Mathf.Lerp(transform.position.x, targetPos.position.x, 1f * Time.deltaTime), transform.position.y);
+        if (transform.position.x == targetPos.position.x) inCombat = true;
         if (inCombat)
         {
             rb.velocity = new Vector2(moveSpeed, 0f);

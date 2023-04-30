@@ -15,6 +15,11 @@ public class EnemySpawn : MonoBehaviour
     float waveTimer;
     float spawnInterval;
     float spawnTimer;
+
+    public int index;
+    public Transform topPos;
+    public Transform midPos;
+    public Transform botPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +35,19 @@ public class EnemySpawn : MonoBehaviour
             {
                 GameObject enemies = Instantiate(enemiesToSpawn[0], spawnLoaction.position, Quaternion.identity);
                 enemiesSpawned.Add(enemies);
+                if(index == 0)
+                {
+                    enemies.GetComponent<SpaceEnemy>().targetPos = topPos;
+                }
+                else if(index == 1)
+                {
+                    enemies.GetComponent<SpaceEnemy>().targetPos = midPos;
+                }
+                else if(index == 2)
+                {
+                    enemies.GetComponent<SpaceEnemy>().targetPos = botPos;
+                }
+                index++;
                 enemiesToSpawn.RemoveAt(0);
                 spawnTimer = spawnInterval;
             }
@@ -48,11 +66,12 @@ public class EnemySpawn : MonoBehaviour
 
     void GenerateWaves()
     {
-        waveValue = currWave * 10;
+        waveValue = 3;
         GenerateEnemies();
 
         spawnInterval = waveDuration / enemiesToSpawn.Count;
         waveTimer = waveDuration;
+        index = 0;
     }
     void GenerateEnemies()
     {

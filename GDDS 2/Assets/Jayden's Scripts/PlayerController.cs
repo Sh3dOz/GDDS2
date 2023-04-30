@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        manager = GetComponent<LevelManager>();
+        manager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -46,6 +46,12 @@ public class PlayerController : MonoBehaviour
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             Movement();
+            if (Time.time > nextFire)
+            {
+                nextFire = Time.time + fireRate;
+                GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
+                bullet.GetComponent<Bullet>().damage = damage;
+            }
         }
         else
         {
@@ -61,14 +67,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 rb.velocity = new Vector2(runSpeed, gravScale);
-            }
-            if (Time.time > nextFire)
-            {
-                nextFire = Time.time + fireRate;
-                GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
-                bullet.GetComponent<Bullet>().damage = damage;
-            }
-            
+            }            
         }
     }
 
