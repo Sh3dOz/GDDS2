@@ -64,6 +64,7 @@ public class ShootingEnemy : MonoBehaviour
             if (i == this.gameObject)
             {
                 manager.enemiesSpawned.Remove(i);
+                Destroy(gameObject);
                 break;
             }
         }

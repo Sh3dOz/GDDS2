@@ -6,8 +6,6 @@ public class SpaceEnemy : ShootingEnemy
 {
     public float moveSpeed;
     Rigidbody2D rb;
-    public Transform topPos;
-    public Transform botPos;
     public GameObject target;
     public Transform targetPos;
     public bool inCombat;
@@ -27,7 +25,7 @@ public class SpaceEnemy : ShootingEnemy
 
     public void Movement()
     {
-        if(!inCombat) transform.position = new Vector2(Mathf.Lerp(transform.position.x, targetPos.position.x, 1f * Time.deltaTime), transform.position.y);
+        if(!inCombat) transform.position = new Vector2(Mathf.Lerp(transform.position.x, targetPos.position.x, 1f * Time.deltaTime), Mathf.Lerp(transform.position.y, targetPos.position.y, 1f * Time.deltaTime));
         if (transform.position.x == targetPos.position.x) inCombat = true;
         if (inCombat)
         {
