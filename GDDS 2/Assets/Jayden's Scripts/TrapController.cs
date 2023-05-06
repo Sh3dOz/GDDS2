@@ -10,6 +10,8 @@ public class TrapController : MonoBehaviour
     string trapName;
     Traps currentTrap;
     float moveSpeed;
+    bool isDashing;
+    public GameObject target;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,9 +39,16 @@ public class TrapController : MonoBehaviour
         switch (trapName)
         {
             case ("Buzzsaw"):
+                Debug.Log("Trap is buzzsaw");
+                break;
             case ("Dash"):
+                Debug.Log("Trap is Dash");
                 moveSpeed = currentTrap.moveSpeed;
-                transform.position = new Vector3(transform.position.x + moveSpeed, transform.position.y, transform.position.z);
+                if(isDashing == false)
+                {
+                    transform.position = new Vector3(transform.position.x, target.transform.position.y, transform.position.z);
+                }
+                transform.position = new Vector3(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
                 break;
             default: break;
 
@@ -52,4 +61,5 @@ public class TrapController : MonoBehaviour
             collision.GetComponent<PlayerController>().TakeDamage(damage);
         }
     }
+
 }
