@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8897de2e7908a6641a48fbb0ae14d794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInSpace: 1
+  isInSpace: 0
   moveSpeed: 10
   runSpeed: 5
   jumpHeight: 10
@@ -779,9 +779,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleTraps:
-  - {fileID: 11400000, guid: f05123984a7c555418c67608d5007b64, type: 2}
   - {fileID: 11400000, guid: 9600c14ca9e83c945a032bea6430b3fd, type: 2}
   sr: {fileID: 0}
+  dashPos: {fileID: 1383610460}
   target: {fileID: 138557396}
 --- !u!212 &1183820183
 SpriteRenderer:
