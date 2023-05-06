@@ -4,54 +4,23 @@ using UnityEngine;
 
 public class Parallex : MonoBehaviour
 {
-    [SerializeField] float moveSpeed;
-    [SerializeField] bool scrollLeft;
-    public int index;
-    Vector3 nextPos;
-    float singleTextureWidth;
-    // Start is called before the first frame update
-    void Start()
+    float length, startPos;
+    public GameObject cam;
+    public float parallexEffect;
+
+    private void Start()
     {
-        nextPos.x = transform.position.x + transform.localScale.x;
-        nextPos.y = transform.position.y; nextPos.z = transform.position.z;
-        SetupTexture();
-        if (scrollLeft) moveSpeed = -moveSpeed;
+        startPos = transform.position.x;
+        length = GetComponent<SpriteRenderer>().bounds.size.x;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        Scroll();
-        CheckReset();
-    }
+        float temp = (cam.transform.position.x * (1 - parallexEffect));
+        float dist = (cam.transform.position.x * parallexEffect);
+        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
 
-    public void SetupTexture()
-    {
-        Sprite sprite = GetComponent<SpriteRenderer>().sprite;
-        singleTextureWidth = sprite.texture.width*transform.localScale.x / sprite.pixelsPerUnit;
-    }
-
-    void Scroll()
-    {
-        float delta = moveSpeed * Time.deltaTime;
-        transform.position += new Vector3(delta, 0f, 0f);
-    }
-
-    void CheckReset()
-    {
-        if (Mathf.Abs(transform.position.x) > singleTextureWidth)
-        {
-            if ((Mathf.Abs(transform.position.x) - (singleTextureWidth + (Mathf.Abs(transform.position.x) - singleTextureWidth)) > 0))
-            {
-                transform.position = new Vector3(nextPos.x, transform.position.y, transform.position.z);
-            }
-        }
-        else
-        {
-            if ((Mathf.Abs(transform.position.x) - (singleTextureWidth)) > 0)
-            {
-                transform.position = new Vector3(nextPos.x, transform.position.y, transform.position.z);
-            }
-        }
+        if (temp > startPos + length) startPos += length;
+        else if (temp < startPos - length) startPos -= length;
     }
 }
