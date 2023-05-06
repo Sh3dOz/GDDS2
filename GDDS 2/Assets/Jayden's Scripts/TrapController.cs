@@ -10,7 +10,9 @@ public class TrapController : MonoBehaviour
     string trapName;
     Traps currentTrap;
     float moveSpeed;
-    bool isDashing;
+    bool isDashing = false;
+    public Transform dashPos;
+    bool dashWait;
     public GameObject target;
     // Start is called before the first frame update
     void Start()
@@ -44,11 +46,15 @@ public class TrapController : MonoBehaviour
             case ("Dash"):
                 Debug.Log("Trap is Dash");
                 moveSpeed = currentTrap.moveSpeed;
+                StartCoroutine(DashWait());
                 if(isDashing == false)
                 {
-                    transform.position = new Vector3(transform.position.x, target.transform.position.y, transform.position.z);
+                    transform.position = new Vector3(dashPos.position.x, target.transform.position.y, transform.position.z);
                 }
-                transform.position = new Vector3(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+                else if (isDashing == true)
+                {
+                    transform.position = new Vector3(transform.position.x + moveSpeed * Time.deltaTime, transform.position.y , transform.position.z);
+                }
                 break;
             default: break;
 
@@ -62,4 +68,13 @@ public class TrapController : MonoBehaviour
         }
     }
 
+    IEnumerator DashWait()
+    {
+        if (dashWait == true) yield break;
+        Debug.Log("wait");
+        dashWait = true;
+        yield return new WaitForSeconds(3f);
+        Debug.Log("done waiting");
+        isDashing = true;
+    }
 }
