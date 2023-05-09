@@ -14,9 +14,12 @@ public class TrapController : MonoBehaviour
     public Transform dashPos;
     bool dashWait;
     public GameObject target;
+
+    public Vector3 startPos;
     // Start is called before the first frame update
     void Start()
     {
+        startPos = transform.position;
         sr = GetComponent<SpriteRenderer>();
         GenerateTrap();
     }
@@ -41,10 +44,8 @@ public class TrapController : MonoBehaviour
         switch (trapName)
         {
             case ("Buzzsaw"):
-                Debug.Log("Trap is buzzsaw");
                 break;
             case ("Dash"):
-                Debug.Log("Trap is Dash");
                 moveSpeed = currentTrap.moveSpeed;
                 StartCoroutine(DashWait());
                 if(isDashing == false)
@@ -71,10 +72,13 @@ public class TrapController : MonoBehaviour
     IEnumerator DashWait()
     {
         if (dashWait == true) yield break;
-        Debug.Log("wait");
         dashWait = true;
         yield return new WaitForSeconds(3f);
-        Debug.Log("done waiting");
         isDashing = true;
+    }
+
+    public void ResetTrap()
+    {
+        transform.position = startPos;
     }
 }
