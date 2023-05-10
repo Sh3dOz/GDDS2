@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
             while (gravScale != tempGrav)
             {
                 Debug.Log("accelerate");
-                gravScale = -3f;
+                gravScale = -5f;
                 gravScale -= gravRate;
                 gravRate += gravRate;
                 if (Mathf.Abs(gravScale) > Mathf.Abs(tempGrav))
