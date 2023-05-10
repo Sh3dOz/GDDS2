@@ -17,11 +17,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeSpawned += Time.deltaTime;
-        if(timeSpawned > 5f)
-        {
-            Destroy(gameObject);
-        }
+        DestroyBullet();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,6 +31,15 @@ public class Bullet : MonoBehaviour
         if (collision.GetComponent<ShootingEnemy>())
         {
             collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+    }
+
+    public void DestroyBullet()
+    {
+        timeSpawned += Time.deltaTime;
+        if (timeSpawned > 5f)
+        {
             Destroy(gameObject);
         }
     }
