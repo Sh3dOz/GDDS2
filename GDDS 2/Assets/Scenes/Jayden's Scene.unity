@@ -161,7 +161,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 138557398}
   m_Lens:
-    FieldOfView: 70
+    FieldOfView: 64
     OrthographicSize: 7
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -502,7 +502,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
+  m_FocalLength: 19.204014
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -511,8 +511,8 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 70
-  orthographic: 0
+  field of view: 64
+  orthographic: 1
   orthographic size: 7
   m_Depth: -1
   m_CullingMask:
@@ -548,7 +548,6 @@ Transform:
   - {fileID: 2127607238}
   - {fileID: 1273826652}
   - {fileID: 881172542}
-  - {fileID: 1183820184}
   - {fileID: 1995387151}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -916,7 +915,7 @@ MonoBehaviour:
   sr: {fileID: 0}
   dashPos: {fileID: 1383610460}
   target: {fileID: 138557396}
-  startPos: {x: 0, y: 0, z: 0}
+  startPos: {fileID: 1383610460}
 --- !u!212 &1183820183
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -958,7 +957,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.990566, g: 0.024919821, b: 0.024919821, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -976,11 +975,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1183820180}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.62, y: -6.01, z: 10}
+  m_LocalPosition: {x: -6.2, y: -10.774227, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 519420032}
-  m_RootOrder: 8
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1183820185
 CircleCollider2D:
@@ -1445,8 +1444,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1995387151}
-  - component: {fileID: 1995387153}
   - component: {fileID: 1995387152}
+  - component: {fileID: 1995387154}
+  - component: {fileID: 1995387153}
   m_Layer: 0
   m_Name: Camera Confider (1)
   m_TagString: Untagged
@@ -1466,7 +1466,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1995387152
 Rigidbody2D:
@@ -1489,8 +1489,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!68 &1995387153
-EdgeCollider2D:
+--- !u!61 &1995387153
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1503,17 +1503,30 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 25, y: 15}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -12.5, y: -6}
-  - {x: 12.5, y: -6}
-  - {x: 12.5, y: 6}
-  - {x: -12.5, y: 6}
-  - {x: -12.5, y: -6}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+--- !u!114 &1995387154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995387150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d6a2aa8a2d32c418ba2bbe443ef5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2127607237
 GameObject:
   m_ObjectHideFlags: 0
