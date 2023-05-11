@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public abstract class Bullet : MonoBehaviour
 {
     public float speed = 20f;
     public Rigidbody2D rb;
@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb.velocity = transform.right * speed;
+        
     }
 
     // Update is called once per frame
@@ -35,12 +35,10 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void DestroyBullet()
+    public abstract void DestroyBullet();
+
+    protected virtual void Movement()
     {
-        timeSpawned += Time.deltaTime;
-        if (timeSpawned > 5f)
-        {
-            Destroy(gameObject);
-        }
+        rb.velocity = transform.right * speed;
     }
 }

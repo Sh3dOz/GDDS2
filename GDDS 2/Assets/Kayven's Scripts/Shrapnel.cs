@@ -13,11 +13,7 @@ public class Shrapnel : Bullet {
 
     // Update is called once per frame
     void Update() {
-        timeSpawned += Time.deltaTime;
-        if (timeSpawned > 2f) {
-            Split();
-            Destroy(gameObject);
-        }
+        DestroyBullet();
     }
 
     void Split() {
@@ -27,5 +23,15 @@ public class Shrapnel : Bullet {
         sharpnel2.GetComponent<Bullet>().damage = damage / 3;
         GameObject sharpnel3 = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 22));
         sharpnel3.GetComponent<Bullet>().damage = damage / 3;
+    }
+
+    public override void DestroyBullet()
+    {
+        timeSpawned += Time.deltaTime;
+        if (timeSpawned > 2f)
+        {
+            Split();
+            Destroy(gameObject);
+        }
     }
 }
