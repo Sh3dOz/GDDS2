@@ -28,12 +28,17 @@ public class HomingBullet : Bullet
             Quaternion desiredRotation = Quaternion.LookRotation(desiredFacing);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, turnSpeed * Time.deltaTime);
         }
-
         rb.velocity = transform.forward * speed;
     }
 
     public override void DestroyBullet()
     {
         
+    }
+
+    public void TargetCheck()
+    {
+        currentEnemies = new List<SpaceEnemy>(FindObjectsOfType<SpaceEnemy>());
+
     }
 }
