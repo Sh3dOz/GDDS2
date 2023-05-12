@@ -37,7 +37,7 @@ public abstract class Bullet : MonoBehaviour
 
     public abstract void DestroyBullet();
 
-    protected virtual void Movement()
+    public void Movement()
     {
         rb.velocity = transform.right * speed;
     }

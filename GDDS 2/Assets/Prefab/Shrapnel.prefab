@@ -116,7 +116,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8188fcbb2062bef47aa2454726a9f2e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7017532385788158762, guid: 0e0fd8fc3e9960a4e875673044507ece, type: 3}
   speed: 20
   rb: {fileID: 7110421169762493002}
   timeSpawned: 0
   damage: 0
+  bullet: {fileID: 7017532385788158762, guid: 0e0fd8fc3e9960a4e875673044507ece, type: 3}

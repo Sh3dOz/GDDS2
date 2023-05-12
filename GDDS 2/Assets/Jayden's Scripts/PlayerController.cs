@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 movement;
     public Rigidbody2D rb;
     public List<Weapon> weapons;
-    public int currentWeapon;
+    public int currentWeapon = 0;
 
     [Header("Gravity")]
     public float gravScale;
@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
         tempGrav = gravScale;
         tempGravRate = gravRate;
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
-        currentWeapon = 0;
     }
 
     // Update is called once per frame

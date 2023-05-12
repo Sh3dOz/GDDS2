@@ -174,9 +174,9 @@ MonoBehaviour:
   cost: 1
   enemyPrefab: {fileID: 2057689394824813410}
   moveSpeed: 5
-  topPos: {fileID: 2057689394306191099}
-  botPos: {fileID: 2057689393811158517}
   target: {fileID: 0}
+  targetPos: {fileID: 0}
+  inCombat: 0
 --- !u!50 &2057689394824813409
 Rigidbody2D:
   serializedVersion: 4

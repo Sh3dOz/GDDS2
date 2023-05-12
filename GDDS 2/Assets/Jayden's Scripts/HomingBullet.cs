@@ -6,16 +6,15 @@ public class HomingBullet : Bullet
 {
     public List<SpaceEnemy> currentEnemies;
 
-    public float turnSpeed = 40f;
+    public float turnSpeed = 180f;
+    float dist = 100f;
     public Transform target;
-    public float lifespan = 2;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, lifespan);
     }
 
     // Update is called once per frame
@@ -24,21 +23,37 @@ public class HomingBullet : Bullet
         // If there is a target, we home in on the target.
         if (target)
         {
-            Vector3 desiredFacing = target.position - transform.position;
+            Vector2 desiredFacing = target.position - transform.position;
             Quaternion desiredRotation = Quaternion.LookRotation(desiredFacing);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, turnSpeed * Time.deltaTime);
         }
-        rb.velocity = transform.forward * speed;
+        else
+        {
+            TargetCheck();
+        }
+        Movement();
     }
 
     public override void DestroyBullet()
     {
-        
+        timeSpawned += Time.deltaTime;
+        if (timeSpawned > 1.5f)
+        { 
+            Destroy(gameObject);
+        }
     }
 
     public void TargetCheck()
     {
         currentEnemies = new List<SpaceEnemy>(FindObjectsOfType<SpaceEnemy>());
-
+        foreach( SpaceEnemy i  in currentEnemies)
+        {
+            Debug.Log(i.gameObject.transform.position);
+            float tempDist = Vector3.Distance(i.gameObject.transform.position, transform.position);
+            dist = tempDist;
+            Debug.Log(tempDist);
+            if (tempDist <= dist) dist = tempDist; target = i.gameObject.transform;
+            Debug.Log(dist);
+        }
     }
 }
