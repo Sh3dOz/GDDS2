@@ -23,8 +23,9 @@ public class HomingBullet : Bullet
         // If there is a target, we home in on the target.
         if (target)
         {
-            Vector2 desiredFacing = target.position - transform.position;
-            Quaternion desiredRotation = Quaternion.LookRotation(desiredFacing);
+            Vector3 dir = target.position - transform.position;
+            Vector3 desiredFacing =  Quaternion.Euler(0, 0, 90) * dir;
+            Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward,desiredFacing);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, turnSpeed * Time.deltaTime);
         }
         else
@@ -32,6 +33,7 @@ public class HomingBullet : Bullet
             TargetCheck();
         }
         Movement();
+        DestroyBullet();
     }
 
     public override void DestroyBullet()
