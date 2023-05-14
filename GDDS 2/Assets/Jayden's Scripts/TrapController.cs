@@ -15,11 +15,11 @@ public class TrapController : MonoBehaviour
     bool dashWait;
     public GameObject target;
 
-    public Vector3 startPos;
+    public Transform startPos;
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
+        transform.position = new Vector2(startPos.position.x,startPos.position.y);
         sr = GetComponent<SpriteRenderer>();
         GenerateTrap();
     }
@@ -79,6 +79,10 @@ public class TrapController : MonoBehaviour
 
     public void ResetTrap()
     {
-        transform.position = startPos;
+        transform.position = new Vector2(startPos.position.x, startPos.position.y);
+        isDashing = false;
+        dashWait = false;
+        trapName = null;
+        GenerateTrap();
     }
 }

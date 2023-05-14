@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public Vector2 movement;
     public Rigidbody2D rb;
+    public List<Weapon> weapons;
+    public int currentWeapon = 0;
 
     [Header("Gravity")]
     public float gravScale;
@@ -20,12 +22,7 @@ public class PlayerController : MonoBehaviour
     float tempGravRate;
     bool flipped;
 
-    [Header("Shooting")]
-    public GameObject bulletPrefab;
-    public Transform shootPos;
-    public float fireRate;
-    float nextFire;
-    public int damage;
+    [Header("Health")]
     public int health = 3;
     public bool isDamaged;
     public Collider2D col;
@@ -44,6 +41,7 @@ public class PlayerController : MonoBehaviour
         manager = FindObjectOfType<LevelManager>();
         tempGrav = gravScale;
         tempGravRate = gravRate;
+        weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
     }
 
     // Update is called once per frame
@@ -55,12 +53,7 @@ public class PlayerController : MonoBehaviour
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             Movement();
-            if (Time.time > nextFire)
-            {
-                nextFire = Time.time + fireRate;
-                GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
-                bullet.GetComponent<Bullet>().damage = damage;
-            }
+            Fire();
         }
         else
         {
@@ -68,16 +61,16 @@ public class PlayerController : MonoBehaviour
             {
                 if (flipped)
                 {
-                    accelerate = true;StartCoroutine(GravWait());
+                    accelerate = true; StartCoroutine(GravWait());
                 }
-                else 
-                { 
-                    gravScale = -gravScale; 
+                else
+                {
+                    gravScale = -gravScale;
                 }
                 transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
                 flipped = !flipped;
             }
-            
+
             if (isGrounded)
             {
                 rb.velocity = new Vector2(runSpeed, 0f);
@@ -97,7 +90,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isDamaged != true) health -= damage;
-        if(health <= 0)
+        if (health <= 0)
         {
             manager.isAlive = true;
             Destroy(gameObject);
@@ -120,7 +113,7 @@ public class PlayerController : MonoBehaviour
             while (gravScale != tempGrav)
             {
                 Debug.Log("accelerate");
-                gravScale = -3f;
+                gravScale = -5f;
                 gravScale -= gravRate;
                 gravRate += gravRate;
                 if (Mathf.Abs(gravScale) > Mathf.Abs(tempGrav))
@@ -132,6 +125,11 @@ public class PlayerController : MonoBehaviour
             accelerate = false;
             gravRate = tempGravRate;
         }
-        
+    }
+
+    void Fire()
+    {
+        weapons[currentWeapon].Fire();
     }
 }
+
