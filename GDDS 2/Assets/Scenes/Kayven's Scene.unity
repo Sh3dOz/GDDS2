@@ -679,7 +679,7 @@ MonoBehaviour:
   isJumping: 1
   jumpTime: 0.5
   jumpHigher: 10
-  jumpSpeed: 50
+  jumpForce: 100
 --- !u!212 &1574324534
 SpriteRenderer:
   m_ObjectHideFlags: 0

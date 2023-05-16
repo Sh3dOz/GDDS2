@@ -39,7 +39,7 @@ public class TemporaryLilStomp : MonoBehaviour {
     private float jumpTimeCounter;
     public float jumpTime;
     public float jumpHigher;
-    public float jumpSpeed = 50f;
+    public float jumpForce = 50f;
 
     // Start is called before the first frame update
     void Start() {
@@ -75,16 +75,19 @@ public class TemporaryLilStomp : MonoBehaviour {
             if (isGrounded && Input.GetKeyDown(KeyCode.Space)) {
                 isJumping = true;
                 jumpTimeCounter = jumpTime;
-                rb.velocity = Vector2.up * jumpSpeed;
+                rb.velocity = Vector2.up * jumpForce;
                 Debug.Log("jump");
             }
-            if(Input.GetKey(KeyCode.Space) && isJumping == true) {
+            if(Input.GetKey(KeyCode.Space) && isJumping == true && !isGrounded) {
                 if(jumpTimeCounter > 0) {
                     rb.velocity = Vector2.up * jumpHigher;
                     jumpTimeCounter -= Time.deltaTime;
                 } else {
                     isJumping = false;
                 }
+            }
+            if(Input.GetKeyUp(KeyCode.Space)) {
+                isJumping = false;
             }
         }
 

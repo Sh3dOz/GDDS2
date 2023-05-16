@@ -36,12 +36,12 @@ public class Score : MonoBehaviour {
         if (timer > nextScoreDeduction && timer2 < deductionIsSlower) { // Score is reduced every x seconds.
             timer = 0;
             maxScore -= scoreDeducted;
-            Debug.Log("NormalDeductionSpeed");
+            //Debug.Log("NormalDeductionSpeed");
         }
         if(timer > nextScoreDeduction && timer2 > deductionIsSlower) { // After a certain time passes, score reduced every x seconds will be lesser.
             timer = 0;
             maxScore -= newScoreDeducted;
-            Debug.Log("SlowerDeductionSpeed");
+            //Debug.Log("SlowerDeductionSpeed");
         }
     }
 }
