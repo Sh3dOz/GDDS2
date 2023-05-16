@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 363755637}
   - component: {fileID: 363755636}
   m_Layer: 5
-  m_Name: New Game
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -493,7 +493,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'New Game
+  m_Text: 'Start
+
 
 '
 --- !u!222 &845262848
