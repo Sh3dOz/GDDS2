@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Terresquall;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
     public bool isInSpace;
+    public bool onLand;
     public float moveSpeed;
     public float runSpeed;
     public float jumpHeight;
@@ -48,6 +50,81 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, cirlceRadius, groundLayer);
+        if (Input.touchCount > 0)
+        {
+
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch t = Input.GetTouch(i);
+
+                if (onLand)
+                {
+                    switch (t.phase)
+                    {
+                        case TouchPhase.Began:
+                            print("Began Touch " + i);
+                            if (flipped)
+                            {
+                                accelerate = true; StartCoroutine(GravWait());
+                            }
+                            else
+                            {
+                                gravScale = -gravScale;
+                            }
+                            transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+                            flipped = !flipped;
+
+                            if (isGrounded)
+                            {
+                                rb.velocity = new Vector2(runSpeed, 0f);
+                            }
+                            else
+                            {
+                                rb.velocity = new Vector2(runSpeed, gravScale);
+                            }
+                            break;
+                        case TouchPhase.Stationary:
+                            print("Stationary Touch " + i);
+                            break;
+                        case TouchPhase.Moved:
+                            print("Moving Touch " + i);
+                            break;
+                        case TouchPhase.Ended:
+                            print("Ended Touch " + i);
+                            break;
+                        case TouchPhase.Canceled:
+                            print("Cancelled Touch " + i);
+                            break;
+                    }
+                }
+                else if(isInSpace)
+                {
+                    switch (t.phase)
+                    {
+                        case TouchPhase.Began:
+                            print("Began Touch " + i);
+                            break;
+                        case TouchPhase.Stationary:
+                            print("Stationary Touch " + i);
+                            break;
+                        case TouchPhase.Moved:
+                            print("Moving Touch " + i);
+                            movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+                            movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+                            Movement();
+                            Fire();
+                            break;
+                        case TouchPhase.Ended:
+                            print("Ended Touch " + i);
+                            break;
+                        case TouchPhase.Canceled:
+                            print("Cancelled Touch " + i);
+                            break;
+                    }
+                }
+            }
+        }
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, cirlceRadius, groundLayer);
         if (isInSpace)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
@@ -55,7 +132,7 @@ public class PlayerController : MonoBehaviour
             Movement();
             Fire();
         }
-        else
+        else if(onLand)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
