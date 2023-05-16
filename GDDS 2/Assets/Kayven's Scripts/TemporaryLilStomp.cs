@@ -34,12 +34,12 @@ public class TemporaryLilStomp : MonoBehaviour {
     public Transform groundCheck;
 
     [Header("LilBoy")]
-    public bool isBoy = true;
-    public bool isJumping = true;
-    private float jumpTimeCounter;
-    public float jumpTime;
+    public bool isRobot;
+    public bool isJumping;    
     public float jumpHigher;
-    public float jumpSpeed = 50f;
+    public float jumpForce;
+    public float jumpTime;
+    private float jumpTimeCounter;
 
     // Start is called before the first frame update
     void Start() {
@@ -55,6 +55,7 @@ public class TemporaryLilStomp : MonoBehaviour {
 
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, cirlceRadius, groundLayer);
+
         if (isInSpace) {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
@@ -64,42 +65,64 @@ public class TemporaryLilStomp : MonoBehaviour {
         else {
 
             if (isGrounded) {
+                gravScale = -12;
                 rb.velocity = new Vector2(runSpeed, 0f);
             }
             else {
                 rb.velocity = new Vector2(runSpeed, gravScale);
             }
-        }
 
-        if (isBoy) {
-            if (isGrounded && Input.GetKeyDown(KeyCode.Space)) {
-                isJumping = true;
-                jumpTimeCounter = jumpTime;
-                rb.velocity = Vector2.up * jumpSpeed;
-                Debug.Log("jump");
-            }
-            if(Input.GetKey(KeyCode.Space) && isJumping == true) {
-                if(jumpTimeCounter > 0) {
-                    rb.velocity = Vector2.up * jumpHigher;
-                    jumpTimeCounter -= Time.deltaTime;
-                } else {
-                    isJumping = false;
+
+            if (isRobot) {
+                if (isGrounded && Input.GetKeyDown(KeyCode.Space)) {
+                    isJumping = true;
+                    rb.velocity = new Vector2(runSpeed, jumpForce);
+                    jumpTimeCounter = jumpTime;
+                    Debug.Log("jump");
                 }
-            }
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isBoy) {
-                if (flipped) {
-                    accelerate = true; StartCoroutine(GravWait());
+                if (Input.GetKey(KeyCode.Space) && isJumping) {
+                    if (jumpTimeCounter > 0) {
+                        rb.velocity = new Vector2(runSpeed, jumpHigher);
+                        jumpTimeCounter -= Time.deltaTime;
+                        Debug.Log("Hold");
+                    }
+                    else {
+                        isJumping = false;
+                        gravScale = -8f;
+                    }
+                }
+
+                if (Input.GetKeyUp(KeyCode.Space)) {
+                    isJumping = false;
+                    gravScale = -8f;
+                    Debug.Log("Bye");
+                }
+
+            }
+            else {
+
+                if (Input.GetKeyDown(KeyCode.Space) && isRobot == false) {
+                    if (flipped) {
+                        accelerate = true; StartCoroutine(GravWait());
+                    }
+                    else {
+                        gravScale = -gravScale;
+                    }
+                    transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+                    flipped = !flipped;
+                }
+
+                if (isGrounded) {
+                    rb.velocity = new Vector2(runSpeed, 0f);
                 }
                 else {
-                    gravScale = -gravScale;
+                    rb.velocity = new Vector2(runSpeed, gravScale);
                 }
-                transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
-                flipped = !flipped;
             }
+        }
+    
     }
-
     public void Movement() {
         rb.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
     }
@@ -111,10 +134,10 @@ public class TemporaryLilStomp : MonoBehaviour {
             Destroy(gameObject);
         }
         isDamaged = true;
-        StartCoroutine(waitDamage());
+        StartCoroutine(WaitDamage());
     }
 
-    IEnumerator waitDamage() {
+    IEnumerator WaitDamage() {
         Debug.Log("damaged");
         yield return new WaitForSeconds(1f);
         isDamaged = false;
