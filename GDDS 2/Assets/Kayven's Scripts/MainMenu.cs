@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
     // Start is called before the first frame update
+
+    public string loadLevel;
     void Start() {
     }
     // Load game.
     public void NewGame() {
-        SceneManager.LoadScene("Jayden's Scene");
+        SceneManager.LoadScene(loadLevel);
     }
     public void Credits() {
         SceneManager.LoadScene("Credits");
