@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public List<Weapon> weapons;
     public int currentWeapon = 0;
+    public GameObject joystick;
 
     [Header("Gravity")]
     public float gravScale;
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour
                     {
                         case TouchPhase.Began:
                             print("Began Touch " + i);
+                            joystick.transform.position = t.position;
                             break;
                         case TouchPhase.Stationary:
                             print("Stationary Touch " + i);
@@ -166,7 +168,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (isDamaged != true) health -= damage;
+        if (isDamaged != true) health -= damage; manager.healthSlider.value = health;
         if (health <= 0)
         {
             manager.isAlive = true;
