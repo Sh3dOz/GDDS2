@@ -160,6 +160,12 @@ public class TemporaryLilStomp : MonoBehaviour {
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.tag == "TransformPower") {
+            isRobot = true;
+        }
+    }
+
     void Fire() {
         weapons[currentWeapon].Fire();
     }
