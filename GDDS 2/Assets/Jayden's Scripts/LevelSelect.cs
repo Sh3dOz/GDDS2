@@ -22,4 +22,9 @@ public class LevelSelect : MonoBehaviour
     {
         SceneManager.LoadScene(levelSelected + " " + difficultySelected);
     }
+
+    public void Back()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }
