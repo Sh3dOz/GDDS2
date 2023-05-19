@@ -139,11 +139,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4544099863743982569, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
   m_PrefabInstance: {fileID: 4544099863379956629}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1096355839 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2933973776071251318, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-  m_PrefabInstance: {fileID: 4544099863379956629}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1183820180
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,9 +294,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 413845714}
     - target: {fileID: 4544099865167612982, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: joystick
-      value: 
-      objectReference: {fileID: 1096355839}
+      propertyPath: onLand
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5921343393373942120, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

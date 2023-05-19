@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public string levelSelected;
+    string difficultySelected;
+
+    public void StageSelect(string level)
     {
-        
+        levelSelected = level;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DifficultySelect(string difficulty)
     {
-        
+        difficultySelected = difficulty;
+    }
+
+    public void StartLevel()
+    {
+        SceneManager.LoadScene(levelSelected + " " + difficultySelected);
     }
 }

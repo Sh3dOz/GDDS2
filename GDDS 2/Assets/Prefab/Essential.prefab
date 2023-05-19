@@ -1297,7 +1297,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   weapons: []
   currentWeapon: 2
-  joystick: {fileID: 0}
+  joystick: {fileID: 2933973776071251318}
   gravScale: -12
   health: 3
   isDamaged: 0
@@ -1694,6 +1694,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2933973776071251318 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1439583475445472994, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
+  m_PrefabInstance: {fileID: 4273348773829856148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4544099864611351837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2031,14 +2036,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 1844696205972450541, guid: f735b75a09bb16c40853a4c47a79ab46, type: 3}
---- !u!4 &3669844691513083962 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8222998364951485145, guid: f735b75a09bb16c40853a4c47a79ab46, type: 3}
-  m_PrefabInstance: {fileID: 4544099864611351837}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1108683304919294077 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3489506133890141536, guid: f735b75a09bb16c40853a4c47a79ab46, type: 3}
+  m_PrefabInstance: {fileID: 4544099864611351837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3669844691513083962 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8222998364951485145, guid: f735b75a09bb16c40853a4c47a79ab46, type: 3}
   m_PrefabInstance: {fileID: 4544099864611351837}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &4544099864611351838
