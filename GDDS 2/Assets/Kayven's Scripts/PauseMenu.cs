@@ -7,6 +7,9 @@ public class PauseMenu : MonoBehaviour {
 
     [SerializeField] GameObject pauseMenu;
 
+    public AudioSource audioSource;
+    public AudioClip pressingSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +34,17 @@ public class PauseMenu : MonoBehaviour {
 
     public void BackToMainMenu() {
         Time.timeScale = 1.0f;
+        StartCoroutine("LoadMainMenu");
+    }
+
+    public IEnumerator LoadMainMenu() {
+        audioSource.PlayOneShot(pressingSound);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Main Menu");
     }
 
-    public void Retry() {
+
+public void Retry() {
 
         Scene currentScene = SceneManager.GetActiveScene();
         Time.timeScale = 1.0f;
