@@ -40,6 +40,10 @@ public class TemporaryLilStomp : MonoBehaviour {
     public float jumpForce;
     public float jumpTime;
     private float jumpTimeCounter;
+    public Sprite robotSprite; // Assign the robot sprite in the Inspector
+    private SpriteRenderer sr; // Reference to the SpriteRenderer component
+    public Sprite corgiSprite;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -48,6 +52,8 @@ public class TemporaryLilStomp : MonoBehaviour {
         tempGrav = gravScale;
         tempGravRate = gravRate;
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
+        // Get the SpriteRenderer component
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -74,6 +80,9 @@ public class TemporaryLilStomp : MonoBehaviour {
 
 
             if (isRobot) {
+
+                sr.sprite = robotSprite;
+
                 if (isGrounded && Input.GetKeyDown(KeyCode.Space)) {
                     isJumping = true;
                     rb.velocity = new Vector2(runSpeed, jumpForce);
@@ -164,7 +173,18 @@ public class TemporaryLilStomp : MonoBehaviour {
         if(collision.tag == "TransformPower") {
             isRobot = true;
         }
+        if (collision.GetComponent<ShootingEnemy>()) {
+            if(isRobot) {
+                Debug.Log("collided");
+                sr.sprite = corgiSprite;
+                isRobot = false;
+            }
+            else {
+                // Take damage
+            }
+        }
     }
+
 
     void Fire() {
         weapons[currentWeapon].Fire();
