@@ -6,6 +6,7 @@ public class Shield : MonoBehaviour {
 
     [Header("Shield heath")]
     public float shieldHealth = 3;
+    public TemporaryLilStomp player;
 
 
     // Start is called before the first frame update
@@ -15,6 +16,9 @@ public class Shield : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(player.isShielded == false) {
+            Destroy(gameObject);
+        }
         if(shieldHealth <= 0){
             Destroy(gameObject);
         }

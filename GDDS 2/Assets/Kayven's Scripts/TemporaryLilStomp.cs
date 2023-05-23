@@ -43,6 +43,13 @@ public class TemporaryLilStomp : MonoBehaviour {
     public Sprite robotSprite; // Assign the robot sprite in the Inspector
     private SpriteRenderer sr; // Reference to the SpriteRenderer component
     public Sprite corgiSprite;
+    
+
+    [Header("Shield")]
+    public bool isShielded;
+    public float shieldCooldown = 30f;
+    public float currentShieldCooldown;
+    public float shieldDuration = 5f;
 
 
     // Start is called before the first frame update
@@ -137,10 +144,12 @@ public class TemporaryLilStomp : MonoBehaviour {
     }
 
     public void TakeDamage(int damage) {
-        if (isDamaged != true) health -= damage;
-        if (health <= 0) {
-            manager.isAlive = true;
-            Destroy(gameObject);
+        if (!isRobot && !isShielded) {
+            if (isDamaged != true) health -= damage;
+            if (health <= 0) {
+                manager.isAlive = true;
+                Destroy(gameObject);
+            }
         }
         isDamaged = true;
         StartCoroutine(WaitDamage());
@@ -189,4 +198,20 @@ public class TemporaryLilStomp : MonoBehaviour {
     void Fire() {
         weapons[currentWeapon].Fire();
     }
+
+    public void ShieldActive() {
+        StartCoroutine("ShieldEffect");
+    }
+
+    public IEnumerator ShieldEffect() {
+        if (currentShieldCooldown > 0) yield break;
+
+        currentShieldCooldown = shieldCooldown;
+        isShielded = true;
+        yield return new WaitForSeconds(shieldDuration);
+        isShielded = false;
+
+        yield return new WaitForSeconds(shieldCooldown);//Cooldown
+    }
+
 }
