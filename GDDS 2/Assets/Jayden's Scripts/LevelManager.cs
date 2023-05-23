@@ -23,13 +23,19 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthCheck();
         progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
     }
 
     void healthCheck()
     {
-        healthSlider.value = player.health;
         if (isAlive) Time.timeScale = 0;
+    }
+
+    void progressCheck()
+    {
+        if(progressSlider.value == progressSlider.maxValue)
+        {
+            Time.timeScale = 0f;
+        }
     }
 }

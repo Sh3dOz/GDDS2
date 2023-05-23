@@ -88,7 +88,8 @@ public class TemporaryLilStomp : MonoBehaviour {
             }
 
 
-            if (isRobot) {
+            if (isRobot) 
+            {
 
                 sr.sprite = robotSprite;
 
