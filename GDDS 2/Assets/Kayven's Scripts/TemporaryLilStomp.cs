@@ -180,14 +180,18 @@ public class TemporaryLilStomp : MonoBehaviour {
         }
     }
 
+
+    void Fire() {
+        weapons[currentWeapon].Fire();
+    }
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "TransformPower") {
             isRobot = true;
         }
-        if (collision.GetComponent<ShootingEnemy>()) {
+        if (collision.GetComponent<ShootingEnemy>()) { // If hit an enemy,
             if(isRobot) {
                 Debug.Log("collided");
-                sr.sprite = corgiSprite;
+                sr.sprite = corgiSprite; // Return to corgi
                 isRobot = false;
             }
             else {
@@ -195,12 +199,6 @@ public class TemporaryLilStomp : MonoBehaviour {
             }
         }
     }
-
-
-    void Fire() {
-        weapons[currentWeapon].Fire();
-    }
-
     public void ShieldActive() {
         StartCoroutine("ShieldEffect");
     }
