@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
         progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
         progressSlider.value = 0;
         player = FindObjectOfType<PlayerController>();
+        healthSlider.value = player.health;
     }
 
     // Update is called once per frame
@@ -28,6 +29,7 @@ public class LevelManager : MonoBehaviour
 
     void healthCheck()
     {
+        healthSlider.value = player.health;
         if (isAlive) Time.timeScale = 0;
     }
 }
