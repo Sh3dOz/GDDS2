@@ -11,6 +11,7 @@ public class Shield : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        player = FindObjectOfType<TemporaryLilStomp>();
         shieldHealth = 3;
     }
 
@@ -26,6 +27,9 @@ public class Shield : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.GetComponent<Bullet>()) {
+            shieldHealth -= 1;
+        }
+        if(collision.GetComponent<ShootingEnemy>()) {
             shieldHealth -= 1;
         }
     }

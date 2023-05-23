@@ -43,12 +43,14 @@ public class TemporaryLilStomp : MonoBehaviour {
     public Sprite robotSprite; // Assign the robot sprite in the Inspector
     private SpriteRenderer sr; // Reference to the SpriteRenderer component
     public Sprite corgiSprite;
-    
+
 
     [Header("Shield")]
+    private GameObject shieldInstance;
+    public GameObject shield;
     public bool isShielded;
     public float shieldCooldown = 30f;
-    public float currentShieldCooldown;
+    private float currentShieldCooldown;
     public float shieldDuration = 5f;
 
 
@@ -178,14 +180,18 @@ public class TemporaryLilStomp : MonoBehaviour {
         }
     }
 
+
+    void Fire() {
+        weapons[currentWeapon].Fire();
+    }
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.tag == "TransformPower") {
             isRobot = true;
         }
-        if (collision.GetComponent<ShootingEnemy>()) {
+        if (collision.GetComponent<ShootingEnemy>()) { // If hit an enemy,
             if(isRobot) {
                 Debug.Log("collided");
-                sr.sprite = corgiSprite;
+                sr.sprite = corgiSprite; // Return to corgi
                 isRobot = false;
             }
             else {
@@ -193,12 +199,6 @@ public class TemporaryLilStomp : MonoBehaviour {
             }
         }
     }
-
-
-    void Fire() {
-        weapons[currentWeapon].Fire();
-    }
-
     public void ShieldActive() {
         StartCoroutine("ShieldEffect");
     }
@@ -206,12 +206,16 @@ public class TemporaryLilStomp : MonoBehaviour {
     public IEnumerator ShieldEffect() {
         if (currentShieldCooldown > 0) yield break;
 
+        shieldInstance = Instantiate(shield, transform.position, Quaternion.identity);
+        shieldInstance.transform.parent = transform; // Make the shield a child of the player
+
+        Instantiate(shield, transform.position, Quaternion.identity);
         currentShieldCooldown = shieldCooldown;
         isShielded = true;
         yield return new WaitForSeconds(shieldDuration);
         isShielded = false;
 
-        yield return new WaitForSeconds(shieldCooldown);//Cooldown
+        yield return new WaitForSeconds(shieldCooldown); //Cooldown
     }
 
 }

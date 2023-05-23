@@ -47,4 +47,14 @@ public class SettingsMenu : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Main Menu");
     }
+
+    public void ReturnToMainMenu() {
+        StartCoroutine("BackMainMenu");
+    }
+
+    public IEnumerator BackMainMenu() {
+        audioSource.PlayOneShot(pressingSound);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Main Menu");
+    }
 }
