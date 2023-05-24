@@ -465,7 +465,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 68be199eba312004997771b4c47d3e9a, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 151abc1195d420b4b8dab471835e0bfc, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7d5ea39fc4f21254491ffe81a77c1c65, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadLevel: Kayven's Scene
   audioSource: {fileID: 1358155597}
-  pressingSound: {fileID: 8300000, guid: 5f93a2e0dbb06a94787cfd86be16ad38, type: 3}
+  pressingSound: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
 --- !u!1 &1330352887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,7 +1468,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: feaae2c2e03a4214896a69a165f1c576, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5f93a2e0dbb06a94787cfd86be16ad38, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

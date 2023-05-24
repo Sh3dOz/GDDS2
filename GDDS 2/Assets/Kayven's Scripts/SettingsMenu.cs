@@ -38,23 +38,13 @@ public class SettingsMenu : MonoBehaviour {
         PlayerPrefs.SetFloat("VolumeUI", volume);
     }
 
-    public void BackToMainMenu() {
-        StartCoroutine("LoadMainMenu");
-    }
-
-    public IEnumerator LoadMainMenu() {
-        audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("Main Menu");
-    }
-
     public void ReturnToMainMenu() {
         StartCoroutine("BackMainMenu");
     }
 
     public IEnumerator BackMainMenu() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.2f);
         SceneManager.LoadScene("Main Menu");
     }
 }
