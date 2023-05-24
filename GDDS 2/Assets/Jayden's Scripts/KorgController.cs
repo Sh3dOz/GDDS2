@@ -89,11 +89,22 @@ public class KorgController : PlayerController
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                LandBehaviour();
+                ToggleMode();
             }
-            GroundBehaviour();
+            if (onLand)
+            {
+                GroundBehaviour();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    LandBehaviour();
+                }
+            }
+            else if (isInSpace)
+            {
+                SpaceBehaviour();
+            }
         }
     }
 

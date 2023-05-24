@@ -16,7 +16,9 @@ public abstract class PlayerController : MonoBehaviour
     public List<Weapon> weapons;
     public int currentWeapon = 0;
     public GameObject joystick;
-
+    public Sprite spaceShip;
+    public SpriteRenderer sr;
+    public GameObject playerSprite;
 
     [Header("Health")]
     public int health = 3;
@@ -38,7 +40,7 @@ public abstract class PlayerController : MonoBehaviour
     public float jumpTime;
     private float jumpTimeCounter;
     public Sprite robotSprite; // Assign the robot sprite in the Inspector
-    public SpriteRenderer sr; // Reference to the SpriteRenderer component
+     // Reference to the SpriteRenderer component
     public Sprite corgiSprite;
 
     [Header("Shield")]
@@ -106,18 +108,23 @@ public abstract class PlayerController : MonoBehaviour
 
     public void ToggleMode()
     {
-        onLand = !onLand;
-        isInSpace = !isInSpace;
         if (onLand)
-        {
-            shieldButton.SetActive(true);
-            joystick.SetActive(false);
-        }
-        if (isInSpace)
         {
             shieldButton.SetActive(false);
             joystick.SetActive(true);
+            sr.sprite = spaceShip;
+            playerSprite.SetActive(false);
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
+        if (isInSpace)
+        {
+            shieldButton.SetActive(true);
+            joystick.SetActive(false);
+            sr.sprite = null;
+            playerSprite.SetActive(true);
+        }
+        onLand = !onLand;
+        isInSpace = !isInSpace;
     }
 
     public void GroundCheck()
@@ -127,5 +134,12 @@ public abstract class PlayerController : MonoBehaviour
     }
 
     public abstract void LandBehaviour();
+
+    public void SpaceBehaviour()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        Movement();
+    }
 }
 
