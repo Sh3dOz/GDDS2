@@ -4,53 +4,82 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ResultScreen : MonoBehaviour {
-    public Text scoreText;
-    public int targetScore = 9000;
-    public int scoreWithCoins;
-    public int scoreWithHealth;
 
-    public int coinScore = 400;
-    public int healthScore = 1500;
+    public Text score;
+    public TemporaryLilStomp player;
 
-    public int coinsCollected = 4;
-    public int healthLeft = 5;
-    public float incrementSpeed = 100f;
-    public float incrementSpeedForCoins = 900f;
-    public float incrementSpeedForHealth = 1500f;
+    public Score scoreCounter;
+
+    public float targetScore = 9000;
+    public float scoreWithCoins;
+    public float scoreWithHealth;
+
+    public float coinScore = 400;
+    public float healthScore = 1500;
+
+    public float coinsCollected;
+    public float healthLeft;
+    public float incrementSpeed;
+    public float incrementSpeedForCoins;
+    public float incrementSpeedForHealth;
     public bool firstCalculation = false;
     public bool secondCalculation = false;
 
-    private int currentScore = 0;
+    private float currentScoreLoad = 0;
+
+    public GameObject resultsScreen;
 
 
-    public void Start() {
-        StartCoroutine("AddScore");
+    void Start() {
+
+        player = FindObjectOfType<TemporaryLilStomp>();
+
+        scoreCounter = FindObjectOfType<Score>();
+        
         scoreWithCoins = targetScore + (coinsCollected * coinScore);
         scoreWithHealth = targetScore + (coinsCollected * coinScore) + (healthLeft * healthScore);
     }
 
-    private void Update() {
+    void Update() {
 
-        if (currentScore >= targetScore) { 
-            firstCalculation = true;
-            StartCoroutine("AddScoreForCoins");
+        if(player.isWin) {
+
+            targetScore = scoreCounter.currentScore;
+            scoreWithCoins = targetScore + (coinsCollected * coinScore);
+            scoreWithHealth = targetScore + (coinsCollected * coinScore) + (healthLeft * healthScore);
+
+            StartCoroutine("AddScore");
+
+            StartCoroutine("OpenResults");
+            if (currentScoreLoad >= targetScore) {
+                firstCalculation = true;
+                StartCoroutine("AddScoreForCoins");
+            }
+
+            if (currentScoreLoad >= scoreWithCoins) {
+                secondCalculation = true;
+                StartCoroutine("AddScoreForHealth");
+            }
+
         }
+    }
 
-        if (currentScore >= scoreWithCoins) { 
-            secondCalculation = true;
-            StartCoroutine("AddScoreForHealth");
-        }
+       
 
+    public IEnumerator OpenResults() {
+        yield return new WaitForSeconds(0.2f);
+        Debug.Log("Opening Results Screen");
+        resultsScreen.SetActive(true);
     }
 
     private IEnumerator AddScore() {
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the score increment
 
-        while (currentScore < targetScore) {
-            currentScore += (int)(incrementSpeed * Time.deltaTime);
-            currentScore = Mathf.Min(currentScore, targetScore); // Clamp the score to the target value
+        while (currentScoreLoad < targetScore) {
+            currentScoreLoad += (incrementSpeed * Time.deltaTime);
+            currentScoreLoad = Mathf.Min(currentScoreLoad, targetScore); // Clamp the score to the target value
 
-            scoreText.text = currentScore.ToString();
+            score.text = currentScoreLoad.ToString();
 
             yield return null; // Wait for the next frame
         }
@@ -60,11 +89,11 @@ public class ResultScreen : MonoBehaviour {
     private IEnumerator AddScoreForCoins() {
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the score increment
 
-        while (currentScore < scoreWithCoins){
-            currentScore += (int)(incrementSpeedForCoins * Time.deltaTime);
-            currentScore = Mathf.Min(currentScore, scoreWithCoins);   // Clamp the score to the target value.
+        while (currentScoreLoad < scoreWithCoins){
+            currentScoreLoad += (int)(incrementSpeedForCoins * Time.deltaTime);
+            currentScoreLoad = Mathf.Min(currentScoreLoad, scoreWithCoins);   // Clamp the score to the target value.
 
-            scoreText.text = currentScore.ToString();
+            score.text = currentScoreLoad.ToString();
 
             yield return null; // Wait for the next frame
         }
@@ -74,11 +103,11 @@ public class ResultScreen : MonoBehaviour {
     private IEnumerator AddScoreForHealth() {
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the score increment
 
-        while (currentScore < scoreWithHealth){
-            currentScore += (int)(incrementSpeedForHealth * Time.deltaTime);
-            currentScore = Mathf.Min(currentScore, scoreWithHealth);// Clamp the score to the target value
+        while (currentScoreLoad < scoreWithHealth){
+            currentScoreLoad += (int)(incrementSpeedForHealth * Time.deltaTime);
+            currentScoreLoad = Mathf.Min(currentScoreLoad, scoreWithHealth);// Clamp the score to the target value
 
-            scoreText.text = currentScore.ToString();
+            score.text = currentScoreLoad.ToString();
 
             yield return null; // Wait for the next frame
         }

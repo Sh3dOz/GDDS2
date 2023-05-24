@@ -53,6 +53,8 @@ public class TemporaryLilStomp : MonoBehaviour {
     private float currentShieldCooldown;
     public float shieldDuration = 5f;
 
+    public bool isWin = false;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -189,6 +191,10 @@ public class TemporaryLilStomp : MonoBehaviour {
         if(collision.tag == "TransformPower") {
             isRobot = true;
         }
+        if(collision.tag == "Finish") {
+            Debug.Log("Win");
+            isWin = true;
+        } 
         if (collision.GetComponent<ShootingEnemy>()) { // If hit an enemy,
             if(isRobot) {
                 Debug.Log("collided");
