@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 290325470}
   - component: {fileID: 290325472}
   - component: {fileID: 290325471}
+  - component: {fileID: 290325473}
   m_Layer: 5
   m_Name: CoinsCollected
   m_TagString: Untagged
@@ -970,6 +971,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290325469}
   m_CullTransparentMesh: 1
+--- !u!95 &290325473
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290325469}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &345964837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1421,10 +1441,12 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: -3054726588970673676, guid: 43fc25a30e7fc5b4b80341636a0175ff, type: 2}
-    value: {fileID: 0}
   - key: {fileID: -5445136133204010643, guid: 43fc25a30e7fc5b4b80341636a0175ff, type: 2}
     value: {fileID: 1052574392}
+  - key: {fileID: 3639533316526278424, guid: 43fc25a30e7fc5b4b80341636a0175ff, type: 2}
+    value: {fileID: 1814777861}
+  - key: {fileID: -8558192447025827994, guid: 43fc25a30e7fc5b4b80341636a0175ff, type: 2}
+    value: {fileID: 290325473}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &679682195
@@ -3422,6 +3444,7 @@ GameObject:
   - component: {fileID: 1814777858}
   - component: {fileID: 1814777860}
   - component: {fileID: 1814777859}
+  - component: {fileID: 1814777861}
   m_Layer: 5
   m_Name: HealthLeft
   m_TagString: Untagged
@@ -3490,6 +3513,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814777857}
   m_CullTransparentMesh: 1
+--- !u!95 &1814777861
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814777857}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1843364448
 GameObject:
   m_ObjectHideFlags: 0
