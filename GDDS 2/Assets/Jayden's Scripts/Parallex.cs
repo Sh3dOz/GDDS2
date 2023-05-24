@@ -8,6 +8,9 @@ public class Parallex : MonoBehaviour
     public GameObject cam;
     public float parallexEffect;
     public bool autoScroll = false;
+    public float temp;
+    public float dist;
+    public float desiredXPos;
 
     private void Start()
     {
@@ -17,9 +20,9 @@ public class Parallex : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float temp = (cam.transform.position.x * (1 - parallexEffect));
-        float dist = (cam.transform.position.x * parallexEffect);
-        float desiredXPos = startPos + dist;
+        temp = (cam.transform.position.x * (1 - parallexEffect));
+        dist = (cam.transform.position.x * parallexEffect);
+        desiredXPos = startPos + dist;
 
         if (autoScroll)
         {
@@ -27,7 +30,14 @@ public class Parallex : MonoBehaviour
         }
         transform.position = new Vector2(desiredXPos, transform.position.y);
 
-        if (temp > startPos + length) startPos += length;
-        else if (temp < startPos - length) startPos -= length;
+        if (temp > startPos + length)
+        {
+            startPos += length;
+            transform.position = new Vector3(startPos, transform.position.y, transform.position.z);
+        }
+        else if (temp < startPos - length)
+        {
+            startPos -= length; transform.position = new Vector3(startPos, transform.position.y, transform.position.z);
+        }
     }
 }
