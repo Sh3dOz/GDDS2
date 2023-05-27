@@ -29,6 +29,7 @@ public class ResultScreen : MonoBehaviour {
     public bool secondCalculation = false;
 
     private float currentScoreLoad = 0;
+    public float timeToCalculate = 100f;
 
     public GameObject resultsScreen;
     public GameObject quitButton;
@@ -63,9 +64,9 @@ public class ResultScreen : MonoBehaviour {
         // Update target score and related values if needed
         if (player.isWin) {
 
-            incrementSpeed = targetScore / 50f;
-            incrementSpeedForCoins = scoreWithCoins / 50f;
-            incrementSpeedForHealth = scoreWithHealth / 50f;
+            incrementSpeed = targetScore / timeToCalculate;
+            incrementSpeedForCoins = scoreWithCoins / timeToCalculate;
+            incrementSpeedForHealth = scoreWithHealth / timeToCalculate;
 
             coinsCollected = theLevelManager.coinCount;
 

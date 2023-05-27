@@ -1770,6 +1770,7 @@ MonoBehaviour:
   incrementSpeedForHealth: 109
   firstCalculation: 0
   secondCalculation: 0
+  timeToCalculate: 200
   resultsScreen: {fileID: 1230005670}
   quitButton: {fileID: 1936624327}
   quitTime: 0.3
