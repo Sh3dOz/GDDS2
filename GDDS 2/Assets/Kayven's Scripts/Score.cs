@@ -9,11 +9,11 @@ public class Score : MonoBehaviour {
 
     [Header("Time for score to decrease")]
     private float nextScoreDeduction = 0.1f;
-    private float deductionIsSlower = 60f;
+    private float deductionIsSlower = 10f;
 
     [Header("Score")]
     public Text scoreText;  
-    public float maxScore = 0f;
+    public float maxScore = 100000f;
     public float currentScore;
 
     [Header("Timer")]
@@ -22,7 +22,7 @@ public class Score : MonoBehaviour {
 
     [Header("Score Deducted")]
     public float scoreDeducted = 126f;
-    public float newScoreDeducted = 223f;
+    public float newScoreDeducted = 42f;
 
     // Start is called before the first frame update
     void Start() {
@@ -43,13 +43,13 @@ public class Score : MonoBehaviour {
         if (player.isWin == false) {
             if (timer > nextScoreDeduction && timer2 < deductionIsSlower) { // Score is reduced every x seconds.
                 timer = 0;
-                maxScore += scoreDeducted;
+                maxScore -= scoreDeducted;
                 currentScore = (int)maxScore; // Update current score
                                               //Debug.Log("NormalDeductionSpeed");
             }
             if (timer > nextScoreDeduction && timer2 > deductionIsSlower) { // After a certain time passes, score reduced every x seconds will be lesser.
                 timer = 0;
-                maxScore += newScoreDeducted;
+                maxScore -= newScoreDeducted;
                 currentScore = (int)maxScore; // Update current score
                                               //Debug.Log("SlowerDeductionSpeed");
             }
