@@ -4541,7 +4541,7 @@ MonoBehaviour:
   endPos: {fileID: 0}
   coinCount: 0
   coinText: {fileID: 524972663}
-  coinSound: {fileID: 0}
+  coinSound: {fileID: 926504234}
 --- !u!82 &2084895485
 AudioSource:
   m_ObjectHideFlags: 0

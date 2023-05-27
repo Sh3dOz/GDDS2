@@ -24,7 +24,6 @@ public class Coin : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Player") {
             theLevelManager.AddCoins(coinValue);
-            audioSource.PlayOneShot(coinSound);
             Debug.Log("Ouch");
             Destroy(gameObject);
         }
