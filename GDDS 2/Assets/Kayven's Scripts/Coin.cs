@@ -7,13 +7,13 @@ public class Coin : MonoBehaviour {
     public Vector3 rotationRate;
 
     public LevelManager theLevelManager;
-    public TemporaryLilStomp player;
     public int coinValue;
+    public AudioSource audioSource;
+    public AudioClip coinSound;
 
     // Start is called before the first frame update
     void Start() {
         theLevelManager = FindObjectOfType<LevelManager>();
-        player = FindObjectOfType<TemporaryLilStomp>();
     }
 
     // Update is called once per frame
@@ -21,12 +21,12 @@ public class Coin : MonoBehaviour {
         transform.Rotate(rotationRate * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Player") {
-            if (!player.isWin) {
-                theLevelManager.AddCoins(coinValue);
-                Destroy(gameObject);
-            }
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == "Player") {
+            theLevelManager.AddCoins(coinValue);
+            audioSource.PlayOneShot(coinSound);
+            Debug.Log("Ouch");
+            Destroy(gameObject);
         }
 
     }

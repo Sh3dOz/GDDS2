@@ -19,7 +19,9 @@ public class ResultScreen : MonoBehaviour {
     public float healthScore = 1500;
 
     public float coinsCollected;
+    public Text coinsCollectedText;
     public float healthLeft;
+    public Text healthLeftText;
     public float incrementSpeed;
     public float incrementSpeedForCoins;
     public float incrementSpeedForHealth;
@@ -29,6 +31,8 @@ public class ResultScreen : MonoBehaviour {
     private float currentScoreLoad = 0;
 
     public GameObject resultsScreen;
+    public GameObject quitButton;
+    public float quitTime = 0.3f;
 
     public float duration = 1f;
     public Text coinTexts;
@@ -69,6 +73,10 @@ public class ResultScreen : MonoBehaviour {
             scoreWithCoins = targetScore + (coinsCollected * coinScore);
             scoreWithHealth = targetScore + (coinsCollected * coinScore) + (healthLeft * healthScore);
 
+            coinsCollectedText.text = "Coins Collected: " + theLevelManager.coinCount;
+            healthLeftText.text = "Health Left: " + player.health;
+
+
             StartCoroutine("AddScore");
 
             StartCoroutine("OpenResults");
@@ -80,6 +88,10 @@ public class ResultScreen : MonoBehaviour {
             if (currentScoreLoad >= scoreWithCoins) {
                 secondCalculation = true;
                 StartCoroutine("AddScoreForHealth");
+            }
+
+            if (currentScoreLoad >= scoreWithHealth) {
+                StartCoroutine("CanExit");
             }
 
         }
@@ -139,6 +151,11 @@ public class ResultScreen : MonoBehaviour {
 
             yield return null; // Wait for the next frame
         }
+    }
+
+    private IEnumerator CanExit() {
+        yield return new WaitForSeconds(quitTime);
+            quitButton.SetActive(true);       
     }
 
 }
