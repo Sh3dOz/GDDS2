@@ -50,6 +50,8 @@ public abstract class PlayerController : MonoBehaviour
     public float shieldDuration = 5f;
     public GameObject shieldButton;
 
+    public bool isWin = false;
+
     public void Movement()
     {
         rb.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);

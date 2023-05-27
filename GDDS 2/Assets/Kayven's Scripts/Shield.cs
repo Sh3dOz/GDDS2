@@ -6,17 +6,19 @@ public class Shield : MonoBehaviour {
 
     [Header("Shield heath")]
     public float shieldHealth = 3;
-    public TemporaryLilStomp player;
+    public KorgController player;
 
 
     // Start is called before the first frame update
     void Start() {
-        player = FindObjectOfType<TemporaryLilStomp>();
+        player = FindObjectOfType<KorgController>();
         shieldHealth = 3;
     }
 
     // Update is called once per frame
     void Update() {
+
+
         if(player.isShielded == false) {
             Destroy(gameObject);
         }

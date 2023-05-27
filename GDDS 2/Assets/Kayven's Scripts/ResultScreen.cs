@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ResultScreen : MonoBehaviour {
 
     public Text score;
-    public TemporaryLilStomp player;
+    public KorgController player;
     public LevelManager theLevelManager;
 
     public Score scoreCounter;
@@ -45,7 +45,7 @@ public class ResultScreen : MonoBehaviour {
 
         theLevelManager = FindObjectOfType<LevelManager>();
 
-        player = FindObjectOfType<TemporaryLilStomp>();
+        player = FindObjectOfType<KorgController>();
 
         scoreCounter = FindObjectOfType<Score>();
 
@@ -63,9 +63,9 @@ public class ResultScreen : MonoBehaviour {
         // Update target score and related values if needed
         if (player.isWin) {
 
-            incrementSpeed = targetScore / 1000f;
-            incrementSpeedForCoins = scoreWithCoins / 1000f;
-            incrementSpeedForHealth = scoreWithHealth / 1000f;
+            incrementSpeed = targetScore / 50f;
+            incrementSpeedForCoins = scoreWithCoins / 50f;
+            incrementSpeedForHealth = scoreWithHealth / 50f;
 
             coinsCollected = theLevelManager.coinCount;
 
@@ -76,10 +76,9 @@ public class ResultScreen : MonoBehaviour {
             coinsCollectedText.text = "Coins Collected: " + theLevelManager.coinCount;
             healthLeftText.text = "Health Left: " + player.health;
 
-
-            StartCoroutine("AddScore");
-
             StartCoroutine("OpenResults");
+
+
             if (currentScoreLoad >= targetScore) {
                 firstCalculation = true;
                 StartCoroutine("AddScoreForCoins");
@@ -100,9 +99,9 @@ public class ResultScreen : MonoBehaviour {
        
 
     public IEnumerator OpenResults() {
-        yield return new WaitForSeconds(0.2f);
-        Debug.Log("Opening Results Screen");
+        yield return new WaitForSeconds(0.3f);
         resultsScreen.SetActive(true);
+        StartCoroutine("AddScore");
     }
 
     private IEnumerator AddScore() {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
     public bool isAlive;
-    public PlayerController player;
+    public KorgController player;
     public Slider progressSlider;
     public Slider healthSlider;
     public Transform startPos;
@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour {
     void Start() {
         progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
         progressSlider.value = 0;
-        player = FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<KorgController>();
         healthSlider.value = player.health;
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-    public TemporaryLilStomp player;
+    public KorgController player;
 
     [Header("Time for score to decrease")]
     private float nextScoreDeduction = 0.1f;
@@ -26,7 +26,7 @@ public class Score : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        player = FindObjectOfType<TemporaryLilStomp>();
+        player = FindObjectOfType<KorgController>();
         currentScore = maxScore; // Have current score start with max score
     }
 
