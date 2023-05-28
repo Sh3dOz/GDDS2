@@ -52,6 +52,16 @@ public class MainMenu : MonoBehaviour {
         yield return new WaitForSeconds(1.2f);
         SceneManager.LoadScene("Instructions");
     }
+
+    public void BackToMainMenu() {
+        StartCoroutine("LoadMainMenu");
+    }
+
+    public IEnumerator LoadMainMenu() {
+        audioSource.PlayOneShot(pressingSound);
+        yield return new WaitForSeconds(1.2f);
+        SceneManager.LoadScene("Main Menu");
+    }
     // Quit game.
     public void QuitGame() {
         Application.Quit();

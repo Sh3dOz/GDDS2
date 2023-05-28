@@ -40,7 +40,7 @@ public class Score : MonoBehaviour {
         timer += Time.deltaTime;
         timer2 += Time.deltaTime;
 
-        if (player.isWin == false) {
+        if (player.isWin == false && player.health > 0) {
             if (timer > nextScoreDeduction && timer2 < deductionIsSlower) { // Score is reduced every x seconds.
                 timer = 0;
                 maxScore += scoreDeducted;

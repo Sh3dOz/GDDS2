@@ -51,6 +51,9 @@ public abstract class PlayerController : MonoBehaviour
     public GameObject shieldButton;
 
     public bool isWin = false;
+    public GameObject damagedEffect;
+    public AudioSource UI;
+    public AudioClip damageSound;
 
     public void Movement()
     {
@@ -61,6 +64,8 @@ public abstract class PlayerController : MonoBehaviour
     {
 
         if (isDamaged != true) health -= damage; manager.healthSlider.value = health;
+        Instantiate(damagedEffect, transform.position, Quaternion.identity);
+        UI.PlayOneShot(damageSound);
         if (health <= 0)
         {
             manager.isAlive = true;

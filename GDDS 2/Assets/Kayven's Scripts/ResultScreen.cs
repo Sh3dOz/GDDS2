@@ -39,6 +39,11 @@ public class ResultScreen : MonoBehaviour {
     public Text coinTexts;
     public Text healthTexts;
 
+    public AudioSource levelMusic;
+    public AudioClip winMusic;
+    public bool deadedCoStarted = false;
+    public AudioSource UI;
+
 
     void Start() {
 
@@ -77,6 +82,8 @@ public class ResultScreen : MonoBehaviour {
             coinsCollectedText.text = "Coins Collected: " + theLevelManager.coinCount;
             healthLeftText.text = "Health Left: " + player.health;
 
+            StartCoroutine("WinMusic");
+
             StartCoroutine("OpenResults");
 
 
@@ -98,6 +105,14 @@ public class ResultScreen : MonoBehaviour {
     }
 
        
+    public IEnumerator WinMusic() {
+        levelMusic.Stop();
+        if (deadedCoStarted) {
+            yield break;
+        }
+        deadedCoStarted = true;
+        UI.PlayOneShot(winMusic);
+    }
 
     public IEnumerator OpenResults() {
         yield return new WaitForSeconds(0.3f);
