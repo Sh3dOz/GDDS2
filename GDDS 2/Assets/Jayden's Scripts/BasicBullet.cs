@@ -13,6 +13,7 @@ public class BasicBullet : Bullet
     // Update is called once per frame
     void Update()
     {
+        DestroyBullet();
         Movement();
     }
 
