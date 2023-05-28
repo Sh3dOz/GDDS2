@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974923042620828022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.8703337, y: -1.0312582, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.992, y: -1.032, z: 0}
+  m_LocalScale: {x: 1.727957, y: 1.727957, z: 1.727957}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -134,5 +134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationRate: {x: 0, y: 0, z: 0}
   theLevelManager: {fileID: 0}
-  player: {fileID: 0}
   coinValue: 1
+  audioSource: {fileID: 0}
+  coinSound: {fileID: 0}
