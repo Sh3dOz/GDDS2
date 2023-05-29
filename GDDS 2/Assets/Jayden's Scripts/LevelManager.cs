@@ -38,7 +38,7 @@ public class LevelManager : MonoBehaviour {
 
     public void AddCoins(int coinsToAdd) {
         coinCount += coinsToAdd;
-        coinText.text = "=" + coinCount;
+        coinText.text = "= " + coinCount;
         coinSound.Play();
         //PlayerPrefs.SetInt("CoinCount", coinCount);
 
