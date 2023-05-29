@@ -120,6 +120,7 @@ public class ResultScreen : MonoBehaviour {
     }
 
     public IEnumerator OpenResults() {
+        uiElements.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         resultsScreen.SetActive(true);
         StartCoroutine("AddScore");

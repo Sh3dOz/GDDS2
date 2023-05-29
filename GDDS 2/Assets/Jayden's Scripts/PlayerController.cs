@@ -50,6 +50,7 @@ public abstract class PlayerController : MonoBehaviour
     public float currentShieldCooldown;
     public float shieldDuration = 5f;
     public GameObject shieldButton;
+    public GameObject shieldPrefab;
 
     public bool isWin = false;
     public GameObject damagedEffect;
@@ -64,15 +65,22 @@ public abstract class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
 
-        if (isDamaged != true) health -= damage; manager.healthSlider.value = health;
-        Instantiate(damagedEffect, transform.position, Quaternion.identity);
-        UI.PlayOneShot(damageSound);
+        if (isDamaged != true || isShielded == true)
+        {
+            health -= damage;
+            manager.healthSlider.value = health;
+            Instantiate(damagedEffect, transform.position, Quaternion.identity);
+            UI.PlayOneShot(damageSound);
+        }
         if (health <= 0)
         {
             manager.isAlive = false;
             Destroy(gameObject);
-        } 
-        isDamaged = true;
+        }
+        if (isShielded == false || isDamaged == false)
+        {
+            isDamaged = true;
+        }
         StartCoroutine(waitDamage());
     }
 
@@ -100,6 +108,7 @@ public abstract class PlayerController : MonoBehaviour
 
         currentShieldCooldown = shieldCooldown;
         isShielded = true;
+        Instantiate(shieldPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
         yield return new WaitForSeconds(shieldDuration);
         isShielded = false;
 

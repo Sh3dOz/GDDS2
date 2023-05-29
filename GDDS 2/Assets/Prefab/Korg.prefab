@@ -120,6 +120,7 @@ MonoBehaviour:
   currentShieldCooldown: 0
   shieldDuration: 5
   shieldButton: {fileID: 0}
+  shieldPrefab: {fileID: 9108538028449765855, guid: 688804245b5dfde4f9ef203458734fe0, type: 3}
   isWin: 0
   damagedEffect: {fileID: 3467726240160300806, guid: 3531e1b66a1b14a41b2cda66566754f4, type: 3}
   UI: {fileID: 0}
