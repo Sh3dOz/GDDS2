@@ -43,6 +43,7 @@ public class ResultScreen : MonoBehaviour {
     public AudioClip winMusic;
     public bool deadedCoStarted = false;
     public AudioSource UI;
+    public GameObject uiElements;
 
 
     void Start() {

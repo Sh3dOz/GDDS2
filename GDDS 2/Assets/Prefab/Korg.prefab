@@ -98,7 +98,7 @@ MonoBehaviour:
   sr: {fileID: 0}
   playerSprite: {fileID: 256263301553827461}
   canMove: 1
-  health: 3
+  health: 4
   isDamaged: 0
   col: {fileID: 3135198193372691588}
   manager: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   isWin: 0
   damagedEffect: {fileID: 3467726240160300806, guid: 3531e1b66a1b14a41b2cda66566754f4, type: 3}
   UI: {fileID: 0}
-  damageSound: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: 0a130a18a7634894eb815c21a6485ae7, type: 3}
   gravScale: -12
 --- !u!212 &1754833649443718015
 SpriteRenderer:

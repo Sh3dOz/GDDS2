@@ -122,6 +122,7 @@ public class KorgController : PlayerController
         else
         {
             StopCoroutine("GravWait");
+            accelerate = false;
             gravScale = -gravScale;
         }
         transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);

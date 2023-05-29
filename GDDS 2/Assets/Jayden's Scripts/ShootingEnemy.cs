@@ -16,7 +16,7 @@ public class ShootingEnemy : MonoBehaviour
     public int health = 10;
     public int cost;
     public GameObject enemyPrefab;
-    EnemySpawn manager;
+    EnemySpawn spawnManager;
 
     public void Shoot()
     {
@@ -56,12 +56,12 @@ public class ShootingEnemy : MonoBehaviour
 
     public void Die()
     {
-        manager = FindObjectOfType<EnemySpawn>();
-        foreach(GameObject i in manager.enemiesSpawned)
+        spawnManager = FindObjectOfType<EnemySpawn>();
+        foreach(GameObject i in spawnManager.enemiesSpawned)
         {
             if (i == this.gameObject)
             {
-                manager.enemiesSpawned.Remove(i);
+                spawnManager.enemiesSpawned.Remove(i);
                 Destroy(gameObject);
                 break;
             }

@@ -2642,10 +2642,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2933973776071251318}
     - target: {fileID: 8165408541574906696, guid: d8271a09a6b90454bb4e4b06909523df, type: 3}
-      propertyPath: damageSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 936ddeb21d4057c4a844b996a24166f1, type: 3}
-    - target: {fileID: 8165408541574906696, guid: d8271a09a6b90454bb4e4b06909523df, type: 3}
       propertyPath: shieldButton
       value: 
       objectReference: {fileID: 6247784156540535173}
@@ -2817,6 +2813,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
+--- !u!114 &5921343394772205203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7593397040541496583, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
+  m_PrefabInstance: {fileID: 4273348773829856148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2933973776071251318 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439583475445472994, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
@@ -2825,6 +2832,11 @@ GameObject:
 --- !u!1 &6247784156540535173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7924482147431434769, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
+  m_PrefabInstance: {fileID: 4273348773829856148}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5921343393852458195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7593397039582695239, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
   m_PrefabInstance: {fileID: 4273348773829856148}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &5921343393852458199 stripped
@@ -2843,17 +2855,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5921343394772205203 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7593397040541496583, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
-  m_PrefabInstance: {fileID: 4273348773829856148}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &9220663859921494973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2861,6 +2862,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6067272344314297625}
     m_Modifications:
+    - target: {fileID: 4828958718350234788, guid: a57547d9ab1812140ae75b4a215e87b8, type: 3}
+      propertyPath: uiElements
+      value: 
+      objectReference: {fileID: 5921343393852458195}
     - target: {fileID: 4828958720151524482, guid: a57547d9ab1812140ae75b4a215e87b8, type: 3}
       propertyPath: m_Name
       value: Pasue & Result
