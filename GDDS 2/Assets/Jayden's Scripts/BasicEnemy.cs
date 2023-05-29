@@ -18,7 +18,7 @@ public class BasicEnemy : ShootingEnemy
     // Update is called once per frame
     void Update()
     {
-        if (manager.isWin == false) isActivated = false;
+        if (manager.isWin == true) isActivated = false;
         if (isActivated)
         {
             Shoot();
