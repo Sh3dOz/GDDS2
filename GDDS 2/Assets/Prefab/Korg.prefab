@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3135198193372691588}
   - component: {fileID: 8165408541574906696}
   - component: {fileID: 1754833649443718015}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Korg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +120,9 @@ MonoBehaviour:
   shieldDuration: 5
   shieldButton: {fileID: 0}
   isWin: 0
+  damagedEffect: {fileID: 0}
+  UI: {fileID: 0}
+  damageSound: {fileID: 0}
   gravScale: -12
 --- !u!212 &1754833649443718015
 SpriteRenderer:

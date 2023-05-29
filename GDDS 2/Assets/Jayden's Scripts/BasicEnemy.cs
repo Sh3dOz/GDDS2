@@ -22,6 +22,7 @@ public class BasicEnemy : ShootingEnemy
     void CastRay()
     {
         RaycastHit2D hit = Physics2D.BoxCast(origin.position, boxSize, 0f, Vector2.left, whoToShoot);
+        Debug.Log(hit);
         if(hit.collider != null)
         {
             Shoot();
