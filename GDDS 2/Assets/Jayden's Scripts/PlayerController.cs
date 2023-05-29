@@ -19,6 +19,7 @@ public abstract class PlayerController : MonoBehaviour
     public Sprite spaceShip;
     public SpriteRenderer sr;
     public GameObject playerSprite;
+    public bool canMove;
 
     [Header("Health")]
     public int health = 3;
@@ -68,7 +69,7 @@ public abstract class PlayerController : MonoBehaviour
         UI.PlayOneShot(damageSound);
         if (health <= 0)
         {
-            manager.isAlive = true;
+            manager.isAlive = false;
             Destroy(gameObject);
         } 
         isDamaged = true;

@@ -16,11 +16,22 @@ public class CameraCollider : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<BasicEnemy>())
+        {
+            collision.GetComponent<BasicEnemy>().isActivated = true;
+        }
+    }
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.GetComponent<RandomTrapController>())
         {
             collision.GetComponent<RandomTrapController>().ResetTrap();
+        }
+        if (collision.GetComponent<BasicEnemy>())
+        {
+            collision.GetComponent<BasicEnemy>().isActivated = false;
         }
     }
 }

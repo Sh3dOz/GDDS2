@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour {
     public bool isAlive;
-    public KorgController player;
+    public bool isWin;
+    public PlayerController player;
     public Slider progressSlider;
     public Slider healthSlider;
     public Transform startPos;
@@ -19,22 +20,19 @@ public class LevelManager : MonoBehaviour {
     void Start() {
         progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
         progressSlider.value = 0;
-        player = FindObjectOfType<KorgController>();
+        player = FindObjectOfType<PlayerController>();
         healthSlider.value = player.health;
     }
 
     // Update is called once per frame
     void Update() {
-        progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
-    }
-
-    void healthCheck() {
-        if (isAlive) Time.timeScale = 0;
+        progressCheck();
     }
 
     void progressCheck() {
+        progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
         if (progressSlider.value == progressSlider.maxValue) {
-            Time.timeScale = 0f;
+            isWin = true;
         }
     }
 

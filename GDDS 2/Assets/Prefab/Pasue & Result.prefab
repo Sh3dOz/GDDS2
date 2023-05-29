@@ -355,7 +355,7 @@ MonoBehaviour:
   levelMusic: {fileID: 0}
   winMusic: {fileID: 0}
   deadedCoStarted: 0
-  UI: {fileID: 0}
+  UI: {fileID: 20306856829520598}
 --- !u!1 &4828958718585771537
 GameObject:
   m_ObjectHideFlags: 0

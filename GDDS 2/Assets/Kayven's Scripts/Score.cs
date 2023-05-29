@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-    public KorgController player;
+    public LevelManager manager;
 
     [Header("Time for score to decrease")]
     private float nextScoreDeduction = 0.1f;
@@ -26,7 +26,7 @@ public class Score : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        player = FindObjectOfType<KorgController>();
+        manager = FindObjectOfType<LevelManager>();
         currentScore = maxScore; // Have current score start with max score
     }
 
@@ -40,7 +40,7 @@ public class Score : MonoBehaviour {
         timer += Time.deltaTime;
         timer2 += Time.deltaTime;
 
-        if (player.isWin == false && player.health > 0) {
+        if (manager.isWin == false && manager.isAlive == true) {
             if (timer > nextScoreDeduction && timer2 < deductionIsSlower) { // Score is reduced every x seconds.
                 timer = 0;
                 maxScore += scoreDeducted;

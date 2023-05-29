@@ -29,81 +29,85 @@ public class KorgController : PlayerController
     {
         GroundCheck();
         ShieldCooldown();
-        if (Input.touchCount > 0)
+        if (manager.isWin) canMove = false;
+        if (canMove)
         {
-
-            for (int i = 0; i < Input.touchCount; i++)
+            if (Input.touchCount > 0)
             {
-                Touch t = Input.GetTouch(i);
 
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+                    Touch t = Input.GetTouch(i);
+
+                    if (onLand)
+                    {
+                        switch (t.phase)
+                        {
+                            case TouchPhase.Began:
+                                print("Began Touch " + i);
+                                LandBehaviour();
+                                break;
+                            case TouchPhase.Stationary:
+                                print("Stationary Touch " + i);
+                                break;
+                            case TouchPhase.Moved:
+                                print("Moving Touch " + i);
+                                break;
+                            case TouchPhase.Ended:
+                                print("Ended Touch " + i);
+                                break;
+                            case TouchPhase.Canceled:
+                                print("Cancelled Touch " + i);
+                                break;
+                        }
+
+                    }
+                    else if (isInSpace)
+                    {
+                        switch (t.phase)
+                        {
+                            case TouchPhase.Began:
+                                print("Began Touch " + i);
+                                joystick.transform.position = t.position;
+                                break;
+                            case TouchPhase.Stationary:
+                                print("Stationary Touch " + i);
+                                break;
+                            case TouchPhase.Moved:
+                                print("Moving Touch " + i);
+                                movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+                                movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+                                Movement();
+                                Fire();
+                                break;
+                            case TouchPhase.Ended:
+                                print("Ended Touch " + i);
+                                break;
+                            case TouchPhase.Canceled:
+                                print("Cancelled Touch " + i);
+                                break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    ToggleMode();
+                }
                 if (onLand)
                 {
-                    switch (t.phase)
+                    GroundBehaviour();
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        case TouchPhase.Began:
-                            print("Began Touch " + i);
-                            LandBehaviour();
-                            break;
-                        case TouchPhase.Stationary:
-                            print("Stationary Touch " + i);
-                            break;
-                        case TouchPhase.Moved:
-                            print("Moving Touch " + i);
-                            break;
-                        case TouchPhase.Ended:
-                            print("Ended Touch " + i);
-                            break;
-                        case TouchPhase.Canceled:
-                            print("Cancelled Touch " + i);
-                            break;
+                        LandBehaviour();
                     }
-
                 }
                 else if (isInSpace)
                 {
-                    switch (t.phase)
-                    {
-                        case TouchPhase.Began:
-                            print("Began Touch " + i);
-                            joystick.transform.position = t.position;
-                            break;
-                        case TouchPhase.Stationary:
-                            print("Stationary Touch " + i);
-                            break;
-                        case TouchPhase.Moved:
-                            print("Moving Touch " + i);
-                            movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-                            movement.y = VirtualJoystick.GetAxis("Vertical", 0);
-                            Movement();
-                            Fire();
-                            break;
-                        case TouchPhase.Ended:
-                            print("Ended Touch " + i);
-                            break;
-                        case TouchPhase.Canceled:
-                            print("Cancelled Touch " + i);
-                            break;
-                    }
+                    SpaceBehaviour();
                 }
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                ToggleMode();
-            }
-            if (onLand)
-            {
-                GroundBehaviour();
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    LandBehaviour();
-                }
-            }
-            else if (isInSpace)
-            {
-                SpaceBehaviour();
             }
         }
     }
@@ -113,10 +117,11 @@ public class KorgController : PlayerController
         if (flipped)
         {
             accelerate = true; 
-            StartCoroutine(GravWait());
+            StartCoroutine("GravWait");
         }
         else
         {
+            StopCoroutine("GravWait");
             gravScale = -gravScale;
         }
         transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ResultScreen : MonoBehaviour {
 
     public Text score;
-    public KorgController player;
+    public PlayerController player;
     public LevelManager theLevelManager;
 
     public Score scoreCounter;
@@ -51,7 +51,7 @@ public class ResultScreen : MonoBehaviour {
 
         theLevelManager = FindObjectOfType<LevelManager>();
 
-        player = FindObjectOfType<KorgController>();
+        player = FindObjectOfType<PlayerController>();
 
         scoreCounter = FindObjectOfType<Score>();
 
@@ -67,7 +67,7 @@ public class ResultScreen : MonoBehaviour {
 
     void Update() {
         // Update target score and related values if needed
-        if (player.isWin) {
+        if (theLevelManager.isWin) {
 
             incrementSpeed = targetScore / timeToCalculate;
             incrementSpeedForCoins = scoreWithCoins / timeToCalculate;
