@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LosingScreen : MonoBehaviour {
     public KorgController player;
@@ -9,15 +10,17 @@ public class LosingScreen : MonoBehaviour {
     public AudioClip crash;
     public AudioSource levelMusic;
     public bool deadedCoStarted = false;
+    public LevelManager manager;
 
     // Start is called before the first frame update
     void Start() {
-        player = FindObjectOfType<KorgController>();   
+        player = FindObjectOfType<KorgController>();
+        manager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
     void Update() {
-        if(player.health <= 0) {
+        if(!manager.isAlive) {
             StartCoroutine("Crash");
             StartCoroutine("LosingScreene");
 
@@ -39,4 +42,5 @@ public class LosingScreen : MonoBehaviour {
         deadedCoStarted = true;
         UI.PlayOneShot(crash);
     }
+
 }

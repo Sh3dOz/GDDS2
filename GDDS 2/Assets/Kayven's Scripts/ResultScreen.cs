@@ -69,7 +69,12 @@ public class ResultScreen : MonoBehaviour {
         // Update target score and related values if needed
         if (theLevelManager.isWin) {
 
+            healthLeft = player.health;
+
+            coinsCollectedText.text = "Coins Collected: " + theLevelManager.coinCount;
+            healthLeftText.text = "Health Left: " + player.health;
             incrementSpeed = targetScore / timeToCalculate;
+
             incrementSpeedForCoins = scoreWithCoins / timeToCalculate;
             incrementSpeedForHealth = scoreWithHealth / timeToCalculate;
 
@@ -79,8 +84,7 @@ public class ResultScreen : MonoBehaviour {
             scoreWithCoins = targetScore + (coinsCollected * coinScore);
             scoreWithHealth = targetScore + (coinsCollected * coinScore) + (healthLeft * healthScore);
 
-            coinsCollectedText.text = "Coins Collected: " + theLevelManager.coinCount;
-            healthLeftText.text = "Health Left: " + player.health;
+
 
             StartCoroutine("WinMusic");
 
