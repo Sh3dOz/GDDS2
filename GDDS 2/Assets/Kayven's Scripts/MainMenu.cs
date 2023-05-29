@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour {
 
     public IEnumerator StartGame() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene(loadLevel);
     }
     public void Credits() {
@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour {
     }
     public IEnumerator Credit() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene("Credits");
     }
 
@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour {
 
     public IEnumerator Setting() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene("Settings");
     }
 
@@ -49,7 +49,7 @@ public class MainMenu : MonoBehaviour {
 
     public IEnumerator Instruction() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene("Instructions");
     }
 
@@ -59,7 +59,7 @@ public class MainMenu : MonoBehaviour {
 
     public IEnumerator LoadMainMenu() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene("Main Menu");
     }
     // Quit game.
