@@ -5724,6 +5724,18 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1769634431348735806, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: maxScore
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769634431348735806, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: scoreDeducted
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769634431348735806, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: newScoreDeducted
+      value: 69
+      objectReference: {fileID: 0}
     - target: {fileID: 1943193694333317589, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
       value: 8
