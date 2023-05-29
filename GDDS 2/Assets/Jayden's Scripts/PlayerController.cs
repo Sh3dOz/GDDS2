@@ -70,7 +70,7 @@ public abstract class PlayerController : MonoBehaviour
         {
             manager.isAlive = true;
             Destroy(gameObject);
-        }
+        } 
         isDamaged = true;
         StartCoroutine(waitDamage());
     }

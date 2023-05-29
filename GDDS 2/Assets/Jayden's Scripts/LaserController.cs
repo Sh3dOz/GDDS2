@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraCollider : MonoBehaviour
+public class LaserController : MonoBehaviour
 {
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +17,11 @@ public class CameraCollider : MonoBehaviour
         
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<RandomTrapController>())
+        if (collision.GetComponent<PlayerController>())
         {
-            collision.GetComponent<RandomTrapController>().ResetTrap();
+            collision.GetComponent<PlayerController>().TakeDamage(damage);
         }
     }
 }

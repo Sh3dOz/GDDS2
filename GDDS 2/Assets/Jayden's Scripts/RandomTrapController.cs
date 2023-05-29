@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrapController : MonoBehaviour
+public class RandomTrapController : MonoBehaviour
 {
     public List<Traps> possibleTraps;
     public SpriteRenderer sr;
