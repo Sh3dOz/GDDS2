@@ -97,6 +97,7 @@ MonoBehaviour:
   spaceShip: {fileID: 21300000, guid: 25a3ac823bad9a146ad5b09a54491e80, type: 3}
   sr: {fileID: 0}
   playerSprite: {fileID: 256263301553827461}
+  canMove: 1
   health: 3
   isDamaged: 0
   col: {fileID: 3135198193372691588}
