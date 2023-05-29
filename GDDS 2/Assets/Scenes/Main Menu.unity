@@ -1441,7 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2337adddcd7cf40bedb69ced72de09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadLevel: Kayven's Scene
+  loadLevel: Main
   audioSource: {fileID: 1358155597}
   pressingSound: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
 --- !u!1 &1330352887
