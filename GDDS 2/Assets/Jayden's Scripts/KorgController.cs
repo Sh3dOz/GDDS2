@@ -110,6 +110,10 @@ public class KorgController : PlayerController
                 }
             }
         }
+        else
+        {
+            rb.velocity = new Vector3(0f, 0f, 0f);
+        }
     }
 
     public override void LandBehaviour()

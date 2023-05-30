@@ -356,6 +356,7 @@ MonoBehaviour:
   winMusic: {fileID: 0}
   deadedCoStarted: 0
   UI: {fileID: 20306856829520598}
+  uiElements: {fileID: 0}
 --- !u!1 &4828958718585771537
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,7 +2296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4828958719842712171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2408,7 +2409,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!1 &4828958719864849039
 GameObject:
   m_ObjectHideFlags: 0
