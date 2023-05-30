@@ -33,6 +33,7 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void BackToMainMenu() {
+        Debug.Log("pressed");
         Time.timeScale = 1.0f;
         StartCoroutine("LoadMainMenu");
     }
