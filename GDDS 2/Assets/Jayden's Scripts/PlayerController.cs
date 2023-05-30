@@ -65,7 +65,7 @@ public abstract class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
 
-        if (isDamaged != true || isShielded == false)
+        if (isDamaged != true && isShielded == false)
         {
             health -= damage;
             manager.healthSlider.value = health;
