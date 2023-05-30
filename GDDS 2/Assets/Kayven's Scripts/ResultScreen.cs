@@ -145,8 +145,6 @@ public class ResultScreen : MonoBehaviour {
     private IEnumerator AddScoreForCoins() {
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the score increment
 
-        coinTexts.CrossFadeAlpha(0, duration, true);
-        Destroy(coinTexts, duration);
 
         while (currentScoreLoad < scoreWithCoins){
             currentScoreLoad += (int)incrementSpeedForCoins * Time.deltaTime;
@@ -161,9 +159,6 @@ public class ResultScreen : MonoBehaviour {
 
     private IEnumerator AddScoreForHealth() {
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the score increment
-
-        healthTexts.CrossFadeAlpha(0, duration, true);
-        Destroy(healthTexts, duration);
 
         while (currentScoreLoad < scoreWithHealth){
             currentScoreLoad += (int)incrementSpeedForHealth * Time.deltaTime;
