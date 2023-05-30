@@ -45,7 +45,10 @@ public class KorgController : PlayerController
                         {
                             case TouchPhase.Began:
                                 print("Began Touch " + i);
-                                LandBehaviour();
+                                if (t.position.x < Screen.width / 2)
+                                {
+                                    LandBehaviour();
+                                }
                                 break;
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);
