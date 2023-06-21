@@ -15,6 +15,7 @@ public class KorgController : PlayerController
     // Start is called before the first frame update
     void Start()
     {
+        currentShieldCooldown = shieldCooldown;
         tempGrav = gravScale;
         tempGravRate = gravRate;
         rb = GetComponent<Rigidbody2D>();

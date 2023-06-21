@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Terresquall;
+using UnityEngine.UI;
+using TMPro;
 
 public abstract class PlayerController : MonoBehaviour
 {
@@ -51,6 +53,9 @@ public abstract class PlayerController : MonoBehaviour
     public float shieldDuration = 5f;
     public GameObject shieldButton;
     public GameObject shieldPrefab;
+    [SerializeField] bool isCooldown;
+    [SerializeField] Image shieldImageCooldown;
+    [SerializeField] TMP_Text textCooldown;
 
     public bool isWin = false;
     public GameObject damagedEffect;
@@ -104,9 +109,11 @@ public abstract class PlayerController : MonoBehaviour
 
     public IEnumerator ShieldEffect()
     {
-        if (currentShieldCooldown > 0) yield break;
+        if (isCooldown) yield break;
 
-        currentShieldCooldown = shieldCooldown;
+        isCooldown = true;
+        currentShieldCooldown = 0;
+        shieldImageCooldown.fillAmount = 0.0f;
         isShielded = true;
         Instantiate(shieldPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
         yield return new WaitForSeconds(shieldDuration);
@@ -117,9 +124,17 @@ public abstract class PlayerController : MonoBehaviour
 
     public void ShieldCooldown()
     {
-        if(currentShieldCooldown > 0)
+        if(currentShieldCooldown > shieldCooldown)
         {
-            currentShieldCooldown -= Time.deltaTime;
+            textCooldown.text = "";
+            shieldImageCooldown.fillAmount = 1f;
+            isCooldown = false;
+        }
+        else
+        {
+            currentShieldCooldown += Time.deltaTime;
+            textCooldown.text = Mathf.RoundToInt(shieldCooldown - currentShieldCooldown).ToString();
+            shieldImageCooldown.fillAmount = currentShieldCooldown / shieldCooldown;
         }
     }
 
