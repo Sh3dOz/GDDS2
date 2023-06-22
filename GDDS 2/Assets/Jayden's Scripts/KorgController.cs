@@ -68,6 +68,7 @@ public class KorgController : PlayerController
                     }
                     else if (isInSpace)
                     {
+                        Fire(weaponDamage);
                         switch (t.phase)
                         {
                             case TouchPhase.Began:
@@ -79,10 +80,7 @@ public class KorgController : PlayerController
                                 break;
                             case TouchPhase.Moved:
                                 print("Moving Touch " + i);
-                                movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-                                movement.y = VirtualJoystick.GetAxis("Vertical", 0);
-                                Movement();
-                                Fire();
+                                SpaceBehaviour();
                                 break;
                             case TouchPhase.Ended:
                                 print("Ended Touch " + i);

@@ -17,6 +17,7 @@ public abstract class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public List<Weapon> weapons;
     public int currentWeapon = 0;
+    public int weaponDamage;
     public GameObject joystick;
     public Sprite spaceShip;
     public SpriteRenderer sr;
@@ -97,8 +98,9 @@ public abstract class PlayerController : MonoBehaviour
     }
 
 
-    public void Fire()
+    public void Fire(int damage)
     {
+        weapons[currentWeapon].damage = damage;
         weapons[currentWeapon].Fire();
     }
 
@@ -171,6 +173,8 @@ public abstract class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+        movement.y = VirtualJoystick.GetAxis("Vertical", 0);
         Movement();
     }
 }
