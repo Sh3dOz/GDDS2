@@ -5985,9 +5985,29 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8122165654495999963, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122165654495999963, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_FillOrigin
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8170905898002020381, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8610555850017256641, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8353024
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740862303746966295, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8740862303746966295, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -330
       objectReference: {fileID: 0}
     - target: {fileID: 8909646867539282760, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
