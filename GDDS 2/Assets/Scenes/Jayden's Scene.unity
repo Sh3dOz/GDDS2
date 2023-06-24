@@ -647,6 +647,10 @@ PrefabInstance:
       propertyPath: parallexEffect
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 339656482963831982, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 343341349773649984, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.3
@@ -734,6 +738,10 @@ PrefabInstance:
     - target: {fileID: 4544099863743982357, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.y
       value: -21.549543
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544099863743982357, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.246988
       objectReference: {fileID: 0}
     - target: {fileID: 4544099864109937576, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
