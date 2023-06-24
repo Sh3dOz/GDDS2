@@ -18,9 +18,11 @@ public class LevelManager : MonoBehaviour
     public AudioSource coinSound;
 
     [Header("Instrcutions")]
+    public GameObject instructionsCanvas;
+    public GameObject healthPanel;
     public GameObject movementPanel;
     public GameObject shieldPanel;
-    public GameObject uiPanel;
+    public GameObject scorePanel;
     public GameObject progressPanel;
     public GameObject pausePanel;
 
@@ -35,6 +37,10 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("PlayGame", 1);
             StartCoroutine(Instructions());
+        }
+        else
+        {
+            Destroy(instructionsCanvas);
         }
     }
 
@@ -66,9 +72,12 @@ public class LevelManager : MonoBehaviour
     {
         //First time launching
         Time.timeScale = 0f;
-        uiPanel.SetActive(true);
+        healthPanel.SetActive(true);
         yield return new WaitUntil(() => Input.touchCount > 0);
-        uiPanel.SetActive(false);
+        healthPanel.SetActive(false);
+        scorePanel.SetActive(true);
+        yield return new WaitUntil(() => Input.touchCount > 0);
+        scorePanel.SetActive(false);
         progressPanel.SetActive(true);
         yield return new WaitUntil(() => Input.touchCount > 0);
         progressPanel.SetActive(false);

@@ -11,6 +11,8 @@ public class KorgController : PlayerController
     float gravRate = 0.2f;
     float tempGrav;
     float tempGravRate;
+    float hoverGrav;
+    bool hovering;
     bool flipped;
     // Start is called before the first frame update
     void Start()
@@ -53,6 +55,10 @@ public class KorgController : PlayerController
                                 break;
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);
+                                StopCoroutine("GravWait");
+                                hovering = true;
+                                hoverGrav = gravScale;
+                                gravScale = 0f;
                                 break;
                             case TouchPhase.Moved:
                                 print("Moving Touch " + i);
@@ -62,6 +68,7 @@ public class KorgController : PlayerController
                                 break;
                             case TouchPhase.Canceled:
                                 print("Cancelled Touch " + i);
+                                LandBehaviour();
                                 break;
                         }
 
@@ -125,6 +132,11 @@ public class KorgController : PlayerController
             accelerate = true; 
             StartCoroutine("GravWait");
         }
+        else if (hovering)
+        {
+            StartCoroutine("GravWait");
+            return;
+        }
         else
         {
             StopCoroutine("GravWait");
@@ -153,7 +165,6 @@ public class KorgController : PlayerController
         {
             while (gravScale != tempGrav)
             {
-                Debug.Log("accelerate");
                 gravScale = -5f;
                 gravScale -= gravRate;
                 gravRate += gravRate;
@@ -164,6 +175,23 @@ public class KorgController : PlayerController
                 yield return new WaitForSeconds(.1f);
             }
             accelerate = false;
+            gravRate = tempGravRate;
+        }
+        else if (hovering)
+        {
+            gravScale = hoverGrav;
+            while (gravScale != tempGrav)
+            {
+                gravScale = -5f;
+                gravScale -= gravRate;
+                gravRate += gravRate;
+                if (Mathf.Abs(gravScale) > Mathf.Abs(tempGrav))
+                {
+                    gravScale = tempGrav;
+                }
+                yield return new WaitForSeconds(.1f);
+            }
+            hovering = false;
             gravRate = tempGravRate;
         }
     }
