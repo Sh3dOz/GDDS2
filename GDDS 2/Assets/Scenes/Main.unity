@@ -259,6 +259,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
   m_PrefabInstance: {fileID: 17981508}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &24111243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1943193694333317589, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1516880946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &30836583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -938,7 +943,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
   m_PrefabInstance: {fileID: 1516880946}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 24111243}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ffa5d877ddee5840908cd9c4cbd20ee, type: 3}
@@ -4477,6 +4482,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a94506d10b20514ca6c308c1cb93bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 0}
+  shockSound: {fileID: 0}
+  shockEffect: {fileID: 0}
+  player: {fileID: 0}
   damage: 1
 --- !u!60 &1215275149
 PolygonCollider2D:
@@ -6535,6 +6544,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a94506d10b20514ca6c308c1cb93bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 0}
+  shockSound: {fileID: 0}
+  shockEffect: {fileID: 0}
+  player: {fileID: 0}
   damage: 1
 --- !u!4 &1607347134
 Transform:
@@ -8171,6 +8184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a94506d10b20514ca6c308c1cb93bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 0}
+  shockSound: {fileID: 0}
+  shockEffect: {fileID: 0}
+  player: {fileID: 0}
   damage: 1
 --- !u!4 &2004360051
 Transform:
@@ -8405,6 +8422,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 34.247
       objectReference: {fileID: 0}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1029007857}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 24111243}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 5502153877363971329, guid: 203a9a551337f0740b9267c132908999, type: 3}
     - target: {fileID: 7940027539404658059, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
       propertyPath: m_Name
       value: Laser trap 1x5
