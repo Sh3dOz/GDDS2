@@ -11,9 +11,12 @@ public class Coin : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip coinSound;
 
+    public CoinSoundIncrement coinManager;
+
     // Start is called before the first frame update
     void Start() {
         theLevelManager = FindObjectOfType<LevelManager>();
+        coinManager = FindObjectOfType<CoinSoundIncrement>();
     }
 
     // Update is called once per frame
@@ -24,8 +27,7 @@ public class Coin : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Player") {
             theLevelManager.AddCoins(coinValue);
-            audioSource.PlayOneShot(coinSound);
-            Debug.Log("Ouch");
+            coinManager.IncrementCoinsCount();
             Destroy(gameObject);
         }
 
