@@ -8,8 +8,6 @@ public class Coin : MonoBehaviour {
 
     public LevelManager theLevelManager;
     public int coinValue;
-    public AudioSource audioSource;
-    public AudioClip coinSound;
 
     public CoinSoundIncrement coinManager;
 

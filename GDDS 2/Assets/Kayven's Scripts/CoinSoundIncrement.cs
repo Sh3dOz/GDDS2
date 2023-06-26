@@ -49,5 +49,7 @@ public class CoinSoundIncrement : MonoBehaviour {
         audioS.pitch = newPitch;
         audioS.PlayOneShot(coinSound);
         timeSinceLastCoinCollected = 0f;
+        yield return new WaitForSeconds(0.1f);
+        incrementStarted = false;
     }
 }
