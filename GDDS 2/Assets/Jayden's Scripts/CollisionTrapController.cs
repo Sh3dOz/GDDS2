@@ -7,14 +7,14 @@ public class CollisionTrapController : MonoBehaviour
     public AudioSource audioS;
     public AudioClip shockSound;
     public GameObject shockEffect;
-    public GameObject player;
+    public PlayerController player;
 
 
     public int damage;
     // Start is called before the first frame update
     void Start()
     {
-
+        player = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
