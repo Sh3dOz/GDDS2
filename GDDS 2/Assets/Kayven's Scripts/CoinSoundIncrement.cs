@@ -5,7 +5,7 @@ using UnityEngine;
 public class CoinSoundIncrement : MonoBehaviour {
 
     public AudioClip coinSound;
-    public float pitchIncrement = 0.05f;
+    public float pitchIncrement;
     public float timeToResetPitch = 2f;
 
     private int collectedCoins;
@@ -15,7 +15,7 @@ public class CoinSoundIncrement : MonoBehaviour {
     public bool incrementStarted;
 
     void Start() {
-
+        pitchIncrement = Mathf.Pow(2f, 1.0f / 12f);
     }
 
     void Update() {
@@ -45,7 +45,7 @@ public class CoinSoundIncrement : MonoBehaviour {
         }
         incrementStarted = true;
         yield return new WaitForSeconds(0.1f);
-        float newPitch = Mathf.Min(audioS.pitch + (Mathf.Pow(pitchIncrement, collectedCoins) - 1), 2f);
+        float newPitch = Mathf.Min(audioS.pitch + (Mathf.Pow(pitchIncrement, collectedCoins) - 1), 3f);
         audioS.pitch = newPitch;
         audioS.PlayOneShot(coinSound);
         timeSinceLastCoinCollected = 0f;
