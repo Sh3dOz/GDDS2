@@ -26,6 +26,9 @@ public class LevelManager : MonoBehaviour
     public GameObject progressPanel;
     public GameObject pausePanel;
 
+
+    public bool deadedCoStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,8 +58,17 @@ public class LevelManager : MonoBehaviour
         progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
         if (progressSlider.value == progressSlider.maxValue)
         {
-            isWin = true;
+            StartCoroutine("GameWin");
         }
+    }
+
+    public IEnumerator GameWin() {
+        if (deadedCoStarted) {
+            yield break;
+        }
+        deadedCoStarted = true;
+        yield return new WaitForSeconds(0.1f);
+        isWin = true;
     }
 
     public void AddCoins(int coinsToAdd)

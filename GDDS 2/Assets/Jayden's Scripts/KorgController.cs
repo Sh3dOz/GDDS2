@@ -33,6 +33,7 @@ public class KorgController : PlayerController
         GroundCheck();
         ShieldCooldown();
         if (manager.isWin) canMove = false;
+        if (!manager.isWin) canMove = true;
         if (canMove)
         {
             if (Input.touchCount > 0)
