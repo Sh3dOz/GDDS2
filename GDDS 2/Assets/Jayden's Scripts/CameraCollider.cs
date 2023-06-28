@@ -33,5 +33,9 @@ public class CameraCollider : MonoBehaviour
         {
             collision.GetComponent<BasicEnemy>().isActivated = false;
         }
+        if (collision.GetComponent<DashTrap>() && collision.GetComponent<DashTrap>().isActivated == true)
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
