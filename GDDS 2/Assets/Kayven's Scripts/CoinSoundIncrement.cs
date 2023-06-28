@@ -45,7 +45,7 @@ public class CoinSoundIncrement : MonoBehaviour {
         }
         incrementStarted = true;
         yield return new WaitForSeconds(0.1f);
-        float newPitch = Mathf.Min(audioS.pitch + (Mathf.Pow(pitchIncrement, collectedCoins) - 1), 3f);
+        float newPitch = Mathf.Min(1 + (Mathf.Pow(pitchIncrement, collectedCoins) - 1), 3f);
         audioS.pitch = newPitch;
         audioS.PlayOneShot(coinSound);
         timeSinceLastCoinCollected = 0f;

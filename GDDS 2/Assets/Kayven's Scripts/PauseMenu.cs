@@ -9,8 +9,6 @@ public class PauseMenu : MonoBehaviour {
 
     public AudioSource audioSource;
     public AudioClip pressingSound;
-    LevelManager theLevelManager;
-    public GameObject resultScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -45,11 +43,6 @@ public class PauseMenu : MonoBehaviour {
         Debug.Log("LoadMain");
         SceneManager.LoadScene("Main Menu");
     }
-
-    public void Continue() {
-        theLevelManager.isWin = false;
-    }
-
 
     public void Retry() {
 
