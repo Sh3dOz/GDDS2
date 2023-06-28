@@ -57,9 +57,9 @@ public class KorgController : PlayerController
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);
                                 StopCoroutine("GravWait");
-                                hovering = true;
-                                hoverGrav = gravScale;
-                                gravScale = 0f;
+                                //hovering = true;
+                                //hoverGrav = gravScale;
+                                //gravScale = 0f;
                                 break;
                             case TouchPhase.Moved:
                                 print("Moving Touch " + i);
