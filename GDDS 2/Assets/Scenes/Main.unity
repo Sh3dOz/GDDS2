@@ -1506,7 +1506,7 @@ GameObject:
   - component: {fileID: 272513765}
   - component: {fileID: 272513764}
   m_Layer: 0
-  m_Name: Spaceship1
+  m_Name: SpaceshipTransitions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1526,7 +1526,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceship: {fileID: 582147899}
   player: {fileID: 24111243}
-  spaceshipDup: {fileID: 0}
+  spaceshipDup: {fileID: 272513763}
+  transitioned: 0
 --- !u!61 &272513765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2755,11 +2756,11 @@ GameObject:
   - component: {fileID: 582147904}
   m_Layer: 0
   m_Name: Spaceship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &582147900
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6535,6 +6536,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86da3b315c4af2489a9c9566e0c6269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1424155212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4544099863512324829, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1516880946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1424155214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4544099863512324828, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1516880946}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424155212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1424155215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424155212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726d001da760149449250968de8c64e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newTarget: {fileID: 582147903}
+  virtualCamera: {fileID: 1424155214}
+  spaceship: {fileID: 0}
 --- !u!1001 &1454674504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7224,6 +7256,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 4544099863743982570, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: orthographic size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4544099864109937576, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7298,7 +7334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5879452685738029377, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 290
+      value: 319.6
       objectReference: {fileID: 0}
     - target: {fileID: 5879452685738029377, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.y
