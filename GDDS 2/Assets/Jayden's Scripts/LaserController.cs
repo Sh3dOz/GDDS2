@@ -30,10 +30,9 @@ public class LaserController : MonoBehaviour
                 Vector2 pos = new Vector2(transform.position.x, transform.position.z),
                     targ = new Vector2(targetPosition.position.x, targetPosition.position.z),
                     dist = pos - targ;
-
-                if (dist.sqrMagnitude < .001f)
+                if (dist.sqrMagnitude < .1f)
                 {
-                    transform.parent = FindObjectOfType<Camera>().gameObject.transform;
+                    
                     //Charge Laser while moving backwards
                     laserBeam.SetActive(true);
                 }
@@ -46,9 +45,8 @@ public class LaserController : MonoBehaviour
                     targ = new Vector2(spawnPosition.position.x, spawnPosition.position.z),
                     dist = pos - targ;
 
-                if (dist.sqrMagnitude < .001f)
+                if (dist.sqrMagnitude < .1f)
                 {
-                    Debug.Log("haro?");
                     //Destory
                     Destroy(this.gameObject);
                 }
@@ -76,10 +74,14 @@ public class LaserController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<CameraCollider>() && myMode == currentMode.NotActive)
+        if (isEnemy)
         {
-            myMode = currentMode.Active;
-            transform.position = spawnPosition.position;
+            if (collision.GetComponent<CameraCollider>() && myMode == currentMode.NotActive)
+            {
+                myMode = currentMode.Active;
+                transform.position = spawnPosition.position;
+                transform.parent = FindObjectOfType<Camera>().gameObject.transform;
+            }
         }
     }
 
