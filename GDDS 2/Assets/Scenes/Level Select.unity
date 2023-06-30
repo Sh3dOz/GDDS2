@@ -242,10 +242,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelSelected: 
   difficultySelected: 
-  UIAnim: {fileID: 0}
-  uiElement: {fileID: 0}
-  nextButton: {fileID: 0}
-  startButton: {fileID: 0}
+  UIAnim: {fileID: 213550672}
+  uiElement: {fileID: 213550670}
+  nextButton: {fileID: 2080012568}
+  startButton: {fileID: 1344292290}
 --- !u!1 &79831588
 GameObject:
   m_ObjectHideFlags: 0
