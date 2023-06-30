@@ -77,6 +77,7 @@ public class MainMenu : MonoBehaviour {
     public void ResetPlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
+        resetPanel.SetActive(false);
     }
 
     public void DisableReset()

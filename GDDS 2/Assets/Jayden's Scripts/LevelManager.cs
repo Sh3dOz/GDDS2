@@ -79,21 +79,21 @@ public class LevelManager : MonoBehaviour
         //First time launching
         Time.timeScale = 0f;
         healthPanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         healthPanel.SetActive(false);
         scorePanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         scorePanel.SetActive(false);
         progressPanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         progressPanel.SetActive(false);
         pausePanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         pausePanel.SetActive(false);
         movementPanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         movementPanel.SetActive(false);
-
+        Time.timeScale = 1f;
     }
 
 }
