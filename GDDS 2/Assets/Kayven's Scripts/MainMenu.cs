@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour {
     public string loadLevel;
     public AudioSource audioSource;
     public AudioClip pressingSound;
+    public GameObject resetPanel;
 
     void Start() {
 
@@ -66,5 +67,20 @@ public class MainMenu : MonoBehaviour {
     public void QuitGame() {
         Application.Quit();
 
+    }
+
+    public void EnableReset()
+    {
+        resetPanel.SetActive(true);
+    }
+
+    public void ResetPlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void DisableReset()
+    {
+        resetPanel.SetActive(false);
     }
 }
