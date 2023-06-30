@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         spaceship = FindObjectOfType<TransitionToSpaceship>();
         progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
         progressSlider.value = 0;
@@ -52,7 +54,6 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = FindObjectOfType<PlayerController>();
         progressCheck();
     }
 
@@ -62,6 +63,7 @@ public class LevelManager : MonoBehaviour
         if (progressSlider.value == progressSlider.maxValue)
         {
             isWin = true;
+            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
         }
     }
 
@@ -82,15 +84,20 @@ public class LevelManager : MonoBehaviour
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         healthPanel.SetActive(false);
         scorePanel.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Haro?");
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         scorePanel.SetActive(false);
         progressPanel.SetActive(true);
+        yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         progressPanel.SetActive(false);
         pausePanel.SetActive(true);
+        yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         pausePanel.SetActive(false);
         movementPanel.SetActive(true);
+        yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         movementPanel.SetActive(false);
         Time.timeScale = 1f;

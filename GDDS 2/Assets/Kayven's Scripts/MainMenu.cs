@@ -20,10 +20,18 @@ public class MainMenu : MonoBehaviour {
         StartCoroutine("StartGame");
     }
 
-    public IEnumerator StartGame() {
+    public IEnumerator StartGame()
+    {
         audioSource.PlayOneShot(pressingSound);
         yield return new WaitForSeconds(0.2f);
-        SceneManager.LoadScene(loadLevel);
+        if (PlayerPrefs.GetInt("Main") == 1)
+        {
+            SceneManager.LoadScene("Level Select");
+        }
+        else
+        {
+            SceneManager.LoadScene(loadLevel);
+        }
     }
     public void Credits() {
         StartCoroutine("Credit");
