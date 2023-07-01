@@ -19,14 +19,18 @@ public class LevelManager : MonoBehaviour
     public AudioSource coinSound;
 
     [Header("Instrcutions")]
-    public GameObject instructionsCanvas;
-    public GameObject healthPanel;
-    public GameObject movementPanel;
-    public GameObject shieldPanel;
-    public GameObject scorePanel;
-    public GameObject progressPanel;
-    public GameObject pausePanel;
+    [SerializeField] GameObject instructionsCanvas;
+    [SerializeField] GameObject healthPanel;
+    [SerializeField] GameObject movementPanel;
+    [SerializeField] GameObject shieldPanel;
+    [SerializeField] GameObject scorePanel;
+    [SerializeField] GameObject progressPanel;
+    [SerializeField] GameObject pausePanel;
 
+    [Header("Characters")]
+    [SerializeField] GameObject korg;
+    [SerializeField] GameObject axel;
+    [SerializeField] GameObject x;
 
     public bool deadedCoStarted = false;
     public TransitionToSpaceship spaceship;
@@ -43,10 +47,28 @@ public class LevelManager : MonoBehaviour
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
             PlayerPrefs.SetInt("PlayGame", 1);
+            //Disable other characters
+            //axel.SetActive(false);
+            //x.SetActive(false);
             StartCoroutine(Instructions());
         }
         else
         {
+            switch (PlayerPrefs.GetString("Character"))
+            {
+                case "Korg":
+                    korg.SetActive(true);
+                    break;
+                case "Axel":
+                    axel.SetActive(true);
+                    break;
+                case "X":
+                    x.SetActive(true);
+                    break;
+                default:
+                    korg.SetActive(true);
+                    break;
+            }
             Destroy(instructionsCanvas);
         }
     }

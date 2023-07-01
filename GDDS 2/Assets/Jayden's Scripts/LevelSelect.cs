@@ -30,4 +30,9 @@ public class LevelSelect : MonoBehaviour
     {
         SceneManager.LoadScene("Main Menu");
     }
+
+    public void CharacterSelect(string name)
+    {
+        PlayerPrefs.SetString("Character", name);
+    }
 }
