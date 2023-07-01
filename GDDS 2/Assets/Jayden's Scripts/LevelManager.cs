@@ -76,6 +76,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = FindObjectOfType<PlayerController>(); // So that it updates after the switch
         progressCheck();
     }
 

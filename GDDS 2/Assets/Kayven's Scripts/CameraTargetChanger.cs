@@ -14,6 +14,8 @@ public class CameraTargetChanger : MonoBehaviour {
 
     public PlayableDirector cameraDirector;
 
+    public AudioSource audioS;
+    public AudioClip warpSound;
     public GameObject warpParticle;
     public float smoothing = 2f;
     public ParticleSystem warp;
@@ -40,14 +42,18 @@ public class CameraTargetChanger : MonoBehaviour {
     }
 
     public IEnumerator CameraToSpace() {
+        yield return new WaitForSeconds(1f);
+        audioS.PlayOneShot(warpSound);
+
         warpParticle.SetActive(true);
         warpModule = warp.main;
         yield return new WaitForSeconds(1f);
 
-        warpModule.startSpeed = 14;
+        warpModule.startSpeed = 20;
         yield return new WaitForSeconds(1f);
-        warpModule.startSpeed = 28;
+        warpModule.startSpeed = 40;
 
+        yield return new WaitForSeconds(1f);
 
         cameraDirector.Play();
         yield return new WaitForSeconds(0.5f);
