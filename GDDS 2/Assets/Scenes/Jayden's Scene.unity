@@ -323,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Basic Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4325737721963884246, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
 --- !u!114 &1090221320 stripped
@@ -693,6 +697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser Enemy_0
       objectReference: {fileID: 0}
+    - target: {fileID: 511267184226971101, guid: 736e4e90892be59498ff4c54360d9b0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 511267184226971102, guid: 736e4e90892be59498ff4c54360d9b0b, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -859,14 +867,6 @@ PrefabInstance:
       value: 2.2352285
       objectReference: {fileID: 0}
     - target: {fileID: 1492609446230461831, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 3251815835186883796, guid: ca8f85bdc60fa804b8fe634d321d7312, type: 3}
-    - target: {fileID: 1492609446230461831, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: m_DrawMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1492609446230461831, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
@@ -878,10 +878,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 2028504975974227211, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 8a9b55dd9309e99409e16b845723dfb4, type: 2}
     - target: {fileID: 2095047493327157378, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.26
@@ -1360,10 +1356,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6067272344314297625, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6235247310377989035, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: m_AutoTiling
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6235247310377989035, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}

@@ -22,7 +22,7 @@ public abstract class PlayerController : MonoBehaviour
     public Sprite spaceShip;
     public SpriteRenderer sr;
     public GameObject playerSprite;
-    public bool canMove;
+    public bool canMove = true;
 
     [Header("Health")]
     public int health = 3;
