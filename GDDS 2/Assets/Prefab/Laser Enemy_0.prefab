@@ -119,10 +119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPosition: {fileID: 0}
   targetPosition: {fileID: 0}
-  isActivated: 0
-  laserBeam: {fileID: 0}
-  smallLaser: {fileID: 0}
-  bigLaser: {fileID: 0}
+  laserBeam: {fileID: 6757282259938431464}
+  isEnemy: 1
+  myMode: 0
+  smallLaser: {fileID: 3561988714971945928}
+  bigLaser: {fileID: 3561988714971945928}
 --- !u!60 &5028187398534775901
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -358,8 +359,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccd42f6d3cb43b446a7b22394ffa5e13, type: 3}
+--- !u!1 &6757282259938431464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7945349743027483808, guid: ccd42f6d3cb43b446a7b22394ffa5e13, type: 3}
+  m_PrefabInstance: {fileID: 3712440638303184200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6757282259938431467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7945349743027483811, guid: ccd42f6d3cb43b446a7b22394ffa5e13, type: 3}
+  m_PrefabInstance: {fileID: 3712440638303184200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &3561988714971945928 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 210407812433673856, guid: ccd42f6d3cb43b446a7b22394ffa5e13, type: 3}
   m_PrefabInstance: {fileID: 3712440638303184200}
   m_PrefabAsset: {fileID: 0}

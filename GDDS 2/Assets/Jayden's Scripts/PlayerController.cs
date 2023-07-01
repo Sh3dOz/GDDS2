@@ -177,5 +177,40 @@ public abstract class PlayerController : MonoBehaviour
         movement.y = VirtualJoystick.GetAxis("Vertical", 0);
         Movement();
     }
+
+    void TryUpdateShapeToAttachedSprite(PolygonCollider2D collider)
+    {
+        UpdateShapeToSprite(collider,this.gameObject.GetComponent<SpriteRenderer>().sprite);
+    }
+
+    void UpdateShapeToSprite(PolygonCollider2D collider, Sprite sprite)
+    {
+        // ensure both valid
+        if (collider != null && sprite != null)
+        {
+            // update count
+            collider.pathCount = sprite.GetPhysicsShapeCount();
+
+            // new paths variable
+            List<Vector2> path = new List<Vector2>();
+
+            // loop path count
+            for (int i = 0; i < collider.pathCount; i++)
+            {
+                // clear
+                path.Clear();
+                // get shape
+                sprite.GetPhysicsShape(i, path);
+                // set path
+                collider.SetPath(i, path.ToArray());
+            }
+        }
+    }
+
+    public void UpdateSprite() 
+    {
+        TryUpdateShapeToAttachedSprite(gameObject.GetComponent<PolygonCollider2D>());
+    }
 }
+
 
