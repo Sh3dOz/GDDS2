@@ -34,6 +34,7 @@ public class TransitionToSpaceship : MonoBehaviour {
     public void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Player") {           
             StartCoroutine("Transition");
+            Debug.Log("Transg");
         }
     }
 
