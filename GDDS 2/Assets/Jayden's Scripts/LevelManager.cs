@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -18,20 +19,27 @@ public class LevelManager : MonoBehaviour
     public AudioSource coinSound;
 
     [Header("Instrcutions")]
-    public GameObject instructionsCanvas;
-    public GameObject healthPanel;
-    public GameObject movementPanel;
-    public GameObject shieldPanel;
-    public GameObject scorePanel;
-    public GameObject progressPanel;
-    public GameObject pausePanel;
+    [SerializeField] GameObject instructionsCanvas;
+    [SerializeField] GameObject healthPanel;
+    [SerializeField] GameObject movementPanel;
+    [SerializeField] GameObject shieldPanel;
+    [SerializeField] GameObject scorePanel;
+    [SerializeField] GameObject progressPanel;
+    [SerializeField] GameObject pausePanel;
 
+    [Header("Characters")]
+    [SerializeField] GameObject korg;
+    [SerializeField] GameObject axel;
+    [SerializeField] GameObject x;
 
     public bool deadedCoStarted = false;
+    public TransitionToSpaceship spaceship;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = FindObjectOfType<PlayerController>();
+        spaceship = FindObjectOfType<TransitionToSpaceship>();
         progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
         progressSlider.value = 0;
         player = FindObjectOfType<PlayerController>();
@@ -39,10 +47,28 @@ public class LevelManager : MonoBehaviour
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
             PlayerPrefs.SetInt("PlayGame", 1);
+            //Disable other characters
+            //axel.SetActive(false);
+            //x.SetActive(false);
             StartCoroutine(Instructions());
         }
         else
         {
+            switch (PlayerPrefs.GetString("Character"))
+            {
+                case "Korg":
+                    korg.SetActive(true);
+                    break;
+                case "Axel":
+                    axel.SetActive(true);
+                    break;
+                case "X":
+                    x.SetActive(true);
+                    break;
+                default:
+                    korg.SetActive(true);
+                    break;
+            }
             Destroy(instructionsCanvas);
         }
     }
@@ -58,17 +84,9 @@ public class LevelManager : MonoBehaviour
         progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
         if (progressSlider.value == progressSlider.maxValue)
         {
-            StartCoroutine("GameWin");
+            isWin = true;
+            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
         }
-    }
-
-    public IEnumerator GameWin() {
-        if (deadedCoStarted) {
-            yield break;
-        }
-        deadedCoStarted = true;
-        yield return new WaitForSeconds(0.1f);
-        isWin = true;
     }
 
     public void AddCoins(int coinsToAdd)
@@ -85,21 +103,26 @@ public class LevelManager : MonoBehaviour
         //First time launching
         Time.timeScale = 0f;
         healthPanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         healthPanel.SetActive(false);
         scorePanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Haro?");
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         scorePanel.SetActive(false);
         progressPanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitForSeconds(1f);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         progressPanel.SetActive(false);
         pausePanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitForSeconds(1f);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         pausePanel.SetActive(false);
         movementPanel.SetActive(true);
-        yield return new WaitUntil(() => Input.touchCount > 0);
+        yield return new WaitForSeconds(1f);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         movementPanel.SetActive(false);
-
+        Time.timeScale = 1f;
     }
 
 }

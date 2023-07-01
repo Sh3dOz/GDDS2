@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class LevelSelect : MonoBehaviour
 {
     public string levelSelected;
-    string difficultySelected;
+    [SerializeField] string difficultySelected;
+    [SerializeField] Animator UIAnim;
+    [SerializeField] GameObject uiElement;
+    [SerializeField] GameObject nextButton, startButton;
 
     public void StageSelect(string level)
     {
@@ -26,5 +29,10 @@ public class LevelSelect : MonoBehaviour
     public void Back()
     {
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void CharacterSelect(string name)
+    {
+        PlayerPrefs.SetString("Character", name);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations;
 using Terresquall;
 
 public class KorgController : PlayerController
@@ -14,9 +15,13 @@ public class KorgController : PlayerController
     float hoverGrav;
     bool hovering;
     bool flipped;
+    bool unflip;
+    bool flip;
+    Animator myAnim;
     // Start is called before the first frame update
     void Start()
     {
+        myAnim = GetComponent<Animator>();
         currentShieldCooldown = shieldCooldown;
         tempGrav = gravScale;
         tempGravRate = gravRate;
@@ -30,6 +35,8 @@ public class KorgController : PlayerController
     // Update is called once per frame
     void Update()
     {
+        myAnim.SetBool("Flip", flip);
+        myAnim.SetBool("Unflip", unflip);
         GroundCheck();
         ShieldCooldown();
         if (manager.isWin) canMove = false;
@@ -57,9 +64,9 @@ public class KorgController : PlayerController
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);
                                 StopCoroutine("GravWait");
-                                //hovering = true;
-                                //hoverGrav = gravScale;
-                                //gravScale = 0f;
+                                hovering = true;
+                                hoverGrav = gravScale;
+                                gravScale = 0f;
                                 break;
                             case TouchPhase.Moved:
                                 print("Moving Touch " + i);
@@ -130,7 +137,8 @@ public class KorgController : PlayerController
     {
         if (flipped)
         {
-            accelerate = true; 
+            accelerate = true;
+            unflip = true;
             StartCoroutine("GravWait");
         }
         else if (hovering)
@@ -143,8 +151,8 @@ public class KorgController : PlayerController
             StopCoroutine("GravWait");
             accelerate = false;
             gravScale = -gravScale;
+            flip = true;
         }
-        transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
         flipped = !flipped;
     }
 
@@ -195,6 +203,17 @@ public class KorgController : PlayerController
             hovering = false;
             gravRate = tempGravRate;
         }
+    }
+
+    public void Unflip()
+    {
+        unflip = false;
+        transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+    }
+    public void Flip()
+    {
+        flip = false;
+        transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
     }
 }
 

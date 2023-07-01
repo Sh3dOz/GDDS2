@@ -12,7 +12,8 @@ public class DashTrap : MonoBehaviour
     public GameObject target;
     public int damage;
     Animator myAnim;
-    bool isActivated;
+    public bool isActivated;
+    public bool isTracking;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,17 @@ public class DashTrap : MonoBehaviour
     {
         if (isActivated)
         {
+            if (isTracking)
+            {
+                if(isDashing == false)
+                {
+                    transform.position = new Vector3(dashPos.position.x, dashPos.position.y, transform.position.z);
+                }
+                else if(isDashing == true)
+                {
+                    transform.position = new Vector3(transform.position.x + (dashSpeed * Time.deltaTime), transform.position.y, transform.position.z);
+                }
+            }
             if (isDashing == false)
             {
                 transform.position = new Vector3(dashPos.position.x, target.transform.position.y, transform.position.z);
@@ -37,7 +49,6 @@ public class DashTrap : MonoBehaviour
             {
                 transform.position = new Vector3(transform.position.x + (dashSpeed * Time.deltaTime), transform.position.y, transform.position.z);
             }
-            Debug.Log("yes?");
         }
     }
 
@@ -45,11 +56,17 @@ public class DashTrap : MonoBehaviour
     {
         isActivated = true;
         dashWait = true;
-        yield return new WaitForSeconds(3f);
+        if (isTracking)
+        {
+            yield return new WaitForSeconds(1f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(3f);
+        }
         dashWait = false;
         GetComponent<PolygonCollider2D>().isTrigger = true;
         isDashing = true;
-        Debug.Log("done?");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -65,4 +82,5 @@ public class DashTrap : MonoBehaviour
             StartCoroutine("DashWait");
         }
     }
+
 }

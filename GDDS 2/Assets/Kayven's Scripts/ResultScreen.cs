@@ -45,7 +45,8 @@ public class ResultScreen : MonoBehaviour {
     public bool deadedCoStarted = false;
     public AudioSource UI;
     public GameObject uiElements;
-    public bool  firstOpened = false;
+
+    public string nextLevel;
 
     void Start() {
 
@@ -69,23 +70,22 @@ public class ResultScreen : MonoBehaviour {
 
     void Update() {
 
-        healthLeft = player.health;
-        coinsCollectedText.text = "Coins Collected: " + theLevelManager.coinCount;
-        healthLeftText.text = "Health Left: " + player.health;
-        incrementSpeed = targetScore / timeToCalculate;
-
-        incrementSpeedForCoins = scoreWithCoins / timeToCalculate;
-        incrementSpeedForHealth = scoreWithHealth / timeToCalculate;
-
-        coinsCollected = theLevelManager.coinCount;
-
-        targetScore = scoreCounter.currentScore;
-        scoreWithCoins = targetScore + (coinsCollected * coinScore);
-        scoreWithHealth = targetScore + (coinsCollected * coinScore) + (healthLeft * healthScore);
-
         // Update target score and related values if needed
-        if (theLevelManager.isWin && firstOpened == false) {
+        if (theLevelManager.isWin) {
 
+            healthLeft = player.health;
+            coinsCollectedText.text = "Coins Collected: " + theLevelManager.coinCount;
+            healthLeftText.text = "Health Left: " + player.health;
+            incrementSpeed = targetScore / timeToCalculate;
+
+            incrementSpeedForCoins = scoreWithCoins / timeToCalculate;
+            incrementSpeedForHealth = scoreWithHealth / timeToCalculate;
+
+            coinsCollected = theLevelManager.coinCount;
+
+            targetScore = scoreCounter.currentScore;
+            scoreWithCoins = targetScore + (coinsCollected * coinScore);
+            scoreWithHealth = targetScore + (coinsCollected * coinScore) + (healthLeft * healthScore);
 
 
             StartCoroutine("WinMusic");
@@ -111,23 +111,21 @@ public class ResultScreen : MonoBehaviour {
 
     }
 
-    public void screenClose() {
-        StartCoroutine("CloseScreen");
+    public void Continue() {
+        StartCoroutine("NextLevel");
     }
 
-
-    public IEnumerator CloseScreen() {
-            theLevelManager.isWin = false;
-            yield return new WaitForSeconds(0.1f);
-            resultsScreen.SetActive(false);
+    public IEnumerator NextLevel() {
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("LoadMain");
+        SceneManager.LoadScene(nextLevel);
     }
 
-    public IEnumerator WinMusic() {
+        public IEnumerator WinMusic() {
         levelMusic.Stop();
         if (deadedCoStarted) {
             yield break;
         }
-        firstOpened = true;
         deadedCoStarted = true;
         UI.PlayOneShot(winMusic);
     }

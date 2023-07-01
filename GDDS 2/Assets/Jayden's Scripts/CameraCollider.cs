@@ -22,11 +22,6 @@ public class CameraCollider : MonoBehaviour
         {
             collision.GetComponent<BasicEnemy>().isActivated = true;
         }
-        if (collision.GetComponent<LaserController>().isEnemy && collision.GetComponent<LaserController>().isActivated == false)
-        {
-            collision.GetComponent<LaserController>().isActivated = true;
-            collision.transform.position = collision.GetComponent<LaserController>().spawnPosition.position;
-        }
     }
     void OnTriggerExit2D(Collider2D collision)
     {
@@ -37,6 +32,10 @@ public class CameraCollider : MonoBehaviour
         if (collision.GetComponent<BasicEnemy>())
         {
             collision.GetComponent<BasicEnemy>().isActivated = false;
+        }
+        if (collision.GetComponent<DashTrap>() && collision.GetComponent<DashTrap>().isActivated == true)
+        {
+            Destroy(collision.gameObject);
         }
     }
 }

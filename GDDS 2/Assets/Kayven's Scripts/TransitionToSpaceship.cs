@@ -8,6 +8,9 @@ public class TransitionToSpaceship : MonoBehaviour {
     public GameObject player;
     public GameObject spaceshipDup;
     public bool transitioned = false;
+    public GameObject joyStick;
+
+
     // Start is called before the first frame update
     void Start() {
 
@@ -26,9 +29,11 @@ public class TransitionToSpaceship : MonoBehaviour {
 
     public IEnumerator Transition() {
         transitioned = true;
+        joyStick.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         player.SetActive(false);
         spaceship.SetActive(true);
         spaceshipDup.SetActive(false);
+        
     }
 }
