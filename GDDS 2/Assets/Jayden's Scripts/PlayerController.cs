@@ -21,7 +21,7 @@ public abstract class PlayerController : MonoBehaviour
     public GameObject joystick;
     public Sprite spaceShip;
     public SpriteRenderer sr;
-    public GameObject playerSprite;
+    public Sprite playerSprite;
     public bool canMove = true;
 
     [Header("Health")]
@@ -47,13 +47,14 @@ public abstract class PlayerController : MonoBehaviour
      // Reference to the SpriteRenderer component
     public Sprite corgiSprite;
 
-    [Header("Shield")]
+    [Header("Ability")]
     public bool isShielded;
     public float shieldCooldown = 30f;
     public float currentShieldCooldown;
     public float shieldDuration = 5f;
     public GameObject shieldButton;
     public GameObject shieldPrefab;
+    public GameObject abilityButton;
     [SerializeField] bool isCooldown;
     [SerializeField] Image shieldImageCooldown;
     [SerializeField] TMP_Text textCooldown;
@@ -145,17 +146,19 @@ public abstract class PlayerController : MonoBehaviour
         if (onLand)
         {
             shieldButton.SetActive(false);
+            abilityButton.SetActive(true);
             joystick.SetActive(true);
             sr.sprite = spaceShip;
-            playerSprite.SetActive(false);
+            //playerSprite.SetActive(false);
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
         if (isInSpace)
         {
+            abilityButton.SetActive(true);
             shieldButton.SetActive(true);
             joystick.SetActive(false);
-            sr.sprite = null;
-            playerSprite.SetActive(true);
+            sr.sprite = playerSprite;
+            //playerSprite.SetActive(true);
         }
         onLand = !onLand;
         isInSpace = !isInSpace;

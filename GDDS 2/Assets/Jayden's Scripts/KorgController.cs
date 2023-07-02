@@ -37,11 +37,17 @@ public class KorgController : PlayerController
     {
         myAnim.SetBool("Flip", flip);
         myAnim.SetBool("Unflip", unflip);
+        myAnim.SetBool("OnLand", onLand);
+        myAnim.SetBool("InSpace", isInSpace);
         if (onLand)
         {
             GroundCheck();
             ShieldCooldown();
             GroundBehaviour();
+        }
+        else if (isInSpace)
+        {
+            Fire(weaponDamage);
         }
         if (manager.isWin) canMove = false;
         if (canMove)
@@ -85,7 +91,6 @@ public class KorgController : PlayerController
                     }
                     else if (isInSpace)
                     {
-                        Fire(weaponDamage);
                         switch (t.phase)
                         {
                             case TouchPhase.Began:
