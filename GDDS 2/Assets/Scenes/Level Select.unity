@@ -243,6 +243,9 @@ MonoBehaviour:
   uiElement: {fileID: 213550670}
   nextButton: {fileID: 2080012568}
   startButton: {fileID: 1344292290}
+  korg: {fileID: 1892634323}
+  axel: {fileID: 1725459572}
+  x: {fileID: 1697483103}
 --- !u!1 &79831588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3277,7 +3280,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1697483103}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40567600}
+        m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
+        m_MethodName: CharacterSelect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: X
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1697483103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3298,8 +3313,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 633438231866856032, guid: 53bb75b5d08199245a7f3627bf79fa81, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3397,7 +3412,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1725459572}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40567600}
+        m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
+        m_MethodName: CharacterSelect
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Axel
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1725459572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3418,8 +3445,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 5260344628392293257, guid: cdcb398939d531d4588acbf0d4a30521, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3889,7 +3916,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 0.99433964, b: 0.99433964, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3910,14 +3937,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 40567600}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
-        m_MethodName: StageSelect
+        m_MethodName: CharacterSelect
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level 1
+          m_StringArgument: Korg
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1892634323
@@ -3940,7 +3967,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 26c8c846c1e20064891e0ee30f4c5a59, type: 3}
+  m_Sprite: {fileID: 3251815835186883796, guid: ca8f85bdc60fa804b8fe634d321d7312, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
