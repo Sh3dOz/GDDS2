@@ -9,7 +9,6 @@ public class AxelController : PlayerController
     void Start()
     {
         myAnim = GetComponent<Animator>();
-        currentShieldCooldown = shieldCooldown;
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<LevelManager>();
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));

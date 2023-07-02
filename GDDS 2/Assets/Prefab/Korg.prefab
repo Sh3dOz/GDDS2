@@ -151,6 +151,7 @@ MonoBehaviour:
   isDamaged: 0
   col: {fileID: 0}
   manager: {fileID: 0}
+  canBeDamaged: 1
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
@@ -164,15 +165,8 @@ MonoBehaviour:
   jumpTime: 0
   robotSprite: {fileID: 0}
   corgiSprite: {fileID: 0}
-  isShielded: 0
-  shieldCooldown: 30
-  currentShieldCooldown: 0
-  shieldDuration: 5
-  shieldButton: {fileID: 0}
-  shieldPrefab: {fileID: 9108538028449765855, guid: 688804245b5dfde4f9ef203458734fe0, type: 3}
-  isCooldown: 0
-  shieldImageCooldown: {fileID: 0}
-  textCooldown: {fileID: 0}
+  landButton: {fileID: 0}
+  spaceButton: {fileID: 0}
   isWin: 0
   damagedEffect: {fileID: 3467726240160300806, guid: 3531e1b66a1b14a41b2cda66566754f4, type: 3}
   UI: {fileID: 0}
@@ -180,6 +174,16 @@ MonoBehaviour:
   gravScale: -12
   hoverGrav: 0
   hovering: 0
+  shieldCooldown: 30
+  currentShieldCooldown: 0
+  shieldDuration: 5
+  shieldPrefab: {fileID: 9108538028449765855, guid: 688804245b5dfde4f9ef203458734fe0, type: 3}
+  isCooldown: 0
+  shieldImageCooldown: {fileID: 0}
+  textCooldown: {fileID: 0}
+  missileCooldown: 30
+  shootPos: {fileID: 2210315896841959488}
+  missilePrefab: {fileID: 6749069539742230770, guid: 52a023c857a96ac49afc9563c9903f9b, type: 3}
 --- !u!212 &1754833649443718015
 SpriteRenderer:
   m_ObjectHideFlags: 0

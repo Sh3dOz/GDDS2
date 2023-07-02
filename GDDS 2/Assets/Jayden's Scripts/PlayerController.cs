@@ -29,6 +29,7 @@ public abstract class PlayerController : MonoBehaviour
     public bool isDamaged;
     public Collider2D col;
     public LevelManager manager;
+    public bool canBeDamaged = true;
 
     [Header("GroundCheck")]
     public bool isGrounded;
@@ -47,17 +48,10 @@ public abstract class PlayerController : MonoBehaviour
      // Reference to the SpriteRenderer component
     public Sprite corgiSprite;
 
-    [Header("Ability")]
-    public bool isShielded;
-    public float shieldCooldown = 30f;
-    public float currentShieldCooldown;
-    public float shieldDuration = 5f;
-    public GameObject shieldButton;
-    public GameObject shieldPrefab;
-    public GameObject abilityButton;
-    [SerializeField] bool isCooldown;
-    [SerializeField] Image shieldImageCooldown;
-    [SerializeField] TMP_Text textCooldown;
+    [Header("Transition")]
+    public GameObject landButton;
+    public GameObject spaceButton;
+    
 
     public bool isWin = false;
     public GameObject damagedEffect;
@@ -72,7 +66,7 @@ public abstract class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
 
-        if (isDamaged != true && isShielded == false)
+        if (isDamaged != true && canBeDamaged == true)
         {
             health -= damage;
             manager.healthSlider.value = health;
@@ -84,7 +78,7 @@ public abstract class PlayerController : MonoBehaviour
             manager.isAlive = false;
             Destroy(gameObject);
         }
-        if (isShielded == false || isDamaged == false)
+        if (canBeDamaged == false || isDamaged == false)
         {
             isDamaged = true;
         }
@@ -105,59 +99,27 @@ public abstract class PlayerController : MonoBehaviour
         weapons[currentWeapon].Fire();
     }
 
-    public void ShieldActive()
-    {
-        StartCoroutine("ShieldEffect");
-    }
 
-    public IEnumerator ShieldEffect()
-    {
-        if (isCooldown) yield break;
-
-        isCooldown = true;
-        currentShieldCooldown = 0;
-        shieldImageCooldown.fillAmount = 0.0f;
-        isShielded = true;
-        Instantiate(shieldPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
-        yield return new WaitForSeconds(shieldDuration);
-        isShielded = false;
-
-        yield return new WaitForSeconds(shieldCooldown);//Cooldown
-    }
-
-    public void ShieldCooldown()
-    {
-        if(currentShieldCooldown > shieldCooldown)
-        {
-            textCooldown.text = "";
-            shieldImageCooldown.fillAmount = 1f;
-            isCooldown = false;
-        }
-        else
-        {
-            currentShieldCooldown += Time.deltaTime;
-            textCooldown.text = Mathf.RoundToInt(shieldCooldown - currentShieldCooldown).ToString();
-            shieldImageCooldown.fillAmount = currentShieldCooldown / shieldCooldown;
-        }
-    }
 
     public void ToggleMode()
     {
         if (onLand)
         {
-            shieldButton.SetActive(false);
-            abilityButton.SetActive(true);
+            landButton.SetActive(false);
+            spaceButton.SetActive(true);
             joystick.SetActive(true);
             sr.sprite = spaceShip;
+            UpdateSprite();
             //playerSprite.SetActive(false);
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
         if (isInSpace)
         {
-            abilityButton.SetActive(true);
-            shieldButton.SetActive(true);
+            landButton.SetActive(true);
+            spaceButton.SetActive(true);
             joystick.SetActive(false);
             sr.sprite = playerSprite;
+            UpdateSprite();
             //playerSprite.SetActive(true);
         }
         onLand = !onLand;
@@ -176,8 +138,8 @@ public abstract class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-        movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+        //movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+        //movement.y = VirtualJoystick.GetAxis("Vertical", 0);
         Movement();
     }
 

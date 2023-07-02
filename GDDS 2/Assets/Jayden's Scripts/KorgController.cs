@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.EventSystems;
 using Terresquall;
 
@@ -18,6 +20,21 @@ public class KorgController : PlayerController
     bool unflip;
     bool flip;
     Animator myAnim;
+
+    [Header("Land Shield")]
+    public float shieldCooldown = 30f;
+    public float currentShieldCooldown;
+    public float shieldDuration = 5f;
+    public GameObject shieldPrefab;
+    [SerializeField] bool isCooldown;
+    [SerializeField] Image shieldImageCooldown;
+    [SerializeField] TMP_Text textCooldown;
+
+    [Header("Space Missile")]
+    [SerializeField] float missileCooldown = 30f;
+    float currentMissileCooldown;
+    [SerializeField] Transform shootPos;
+    [SerializeField] GameObject missilePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +65,7 @@ public class KorgController : PlayerController
         else if (isInSpace)
         {
             Fire(weaponDamage);
+            MissileCooldown();
         }
         if (manager.isWin) canMove = false;
         if (canMove)
@@ -246,6 +264,61 @@ public class KorgController : PlayerController
     public void FlipSprite()
     {
         transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+    }
+
+    public void ShieldCooldown()
+    {
+        if (currentShieldCooldown > shieldCooldown)
+        {
+            textCooldown.text = "";
+            shieldImageCooldown.fillAmount = 1f;
+            isCooldown = false;
+        }
+        else
+        {
+            currentShieldCooldown += Time.deltaTime;
+            textCooldown.text = Mathf.RoundToInt(shieldCooldown - currentShieldCooldown).ToString();
+            shieldImageCooldown.fillAmount = currentShieldCooldown / shieldCooldown;
+        }
+    }
+
+    public void ShieldActive()
+    {
+        StartCoroutine("ShieldEffect");
+    }
+
+    public IEnumerator ShieldEffect()
+    {
+        if (isCooldown) yield break;
+
+        isCooldown = true;
+        currentShieldCooldown = 0;
+        shieldImageCooldown.fillAmount = 0.0f;
+        canBeDamaged = false;
+        Instantiate(shieldPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
+        yield return new WaitForSeconds(shieldDuration);
+        canBeDamaged = true;
+
+        yield return new WaitForSeconds(shieldCooldown);//Cooldown
+    }
+
+    public void MissileCooldown()
+    {
+        if (currentMissileCooldown > missileCooldown)
+        {
+            textCooldown.text = "";
+            shieldImageCooldown.fillAmount = 1f;
+        }
+        else
+        {
+            currentShieldCooldown += Time.deltaTime;
+            textCooldown.text = Mathf.RoundToInt(missileCooldown - currentMissileCooldown).ToString();
+            shieldImageCooldown.fillAmount = currentMissileCooldown / missileCooldown;
+        }
+    }
+    public void ShootMissile()
+    {
+        Instantiate(missilePrefab, shootPos.position, Quaternion.identity);
     }
 }
 

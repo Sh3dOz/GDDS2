@@ -476,12 +476,12 @@ GameObject:
   - component: {fileID: 927033837}
   - component: {fileID: 927033836}
   m_Layer: 5
-  m_Name: Ability
+  m_Name: SpaceAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &927033835
 RectTransform:
   m_ObjectHideFlags: 0
@@ -548,8 +548,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1090221320}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: ShieldActive
+        m_TargetAssemblyTypeName: KorgController, Assembly-CSharp
+        m_MethodName: ShootMissile
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1159,6 +1159,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 736e4e90892be59498ff4c54360d9b0b, type: 3}
+--- !u!1 &1946125677 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6247784156540535173, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 4544099863379956629}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4544099863379956629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1326,6 +1331,10 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 413845714}
+    - target: {fileID: 4544099864220997471, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4544099864378900208, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.7
@@ -1731,8 +1740,12 @@ PrefabInstance:
       value: 2.2352285
       objectReference: {fileID: 0}
     - target: {fileID: 6247784156540535173, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_Name
+      value: LandAbility
+      objectReference: {fileID: 0}
+    - target: {fileID: 6247784156540535173, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6424920670020296982, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
@@ -1810,6 +1823,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: landButton
+      value: 
+      objectReference: {fileID: 1946125677}
+    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: spaceButton
+      value: 
+      objectReference: {fileID: 927033834}
     m_RemovedComponents:
     - {fileID: 4544099865167612982, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
     - {fileID: 4544099865167612976, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}

@@ -19,7 +19,7 @@ public class Shield : MonoBehaviour {
     void Update() {
 
 
-        if(player.isShielded == false) {
+        if(player.canBeDamaged == true) {
             Destroy(gameObject);
         }
         if(shieldHealth <= 0){
