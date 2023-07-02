@@ -52,90 +52,91 @@ public class KorgController : PlayerController
                 for (int i = 0; i < Input.touchCount; i++)
                 {
                     Touch t = Input.GetTouch(i);
-                        if (onLand)
-                        {
-                            switch (t.phase)
-                            {
-                                case TouchPhase.Began:
-                                    print("Began Touch " + i);
-                                    if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-                                    {
-                                        LandBehaviour();
-                                    }
-                                    break;
-                                case TouchPhase.Stationary:
-                                    print("Stationary Touch " + i);
-                                    //StopCoroutine("GravWait");
-                                    //hovering = true;
-                                    break;
-                                case TouchPhase.Moved:
-                                    print("Moving Touch " + i);
-                                    break;
-                                case TouchPhase.Ended:
-                                    print("Ended Touch " + i);
-                                    break;
-                                case TouchPhase.Canceled:
-                                    print("Cancelled Touch " + i);
-                                    if (hovering)
-                                    {
-                                        LandBehaviour();
-                                    }
-                                    break;
-                            }
-                        }
-                        else if (isInSpace)
-                        {
-                            Fire(weaponDamage);
-                            switch (t.phase)
-                            {
-                                case TouchPhase.Began:
-                                    print("Began Touch " + i);
-                                    joystick.transform.position = t.position;
-                                    break;
-                                case TouchPhase.Stationary:
-                                    print("Stationary Touch " + i);
-                                    break;
-                                case TouchPhase.Moved:
-                                    print("Moving Touch " + i);
-                                    SpaceBehaviour();
-                                    break;
-                                case TouchPhase.Ended:
-                                    print("Ended Touch " + i);
-                                    break;
-                                case TouchPhase.Canceled:
-                                    print("Cancelled Touch " + i);
-                                    break;
-                            }
-                        }
-                    else
+                    if (onLand)
                     {
-                        if (Input.GetKeyDown(KeyCode.Tab))
+                        switch (t.phase)
                         {
-                            ToggleMode();
+                            case TouchPhase.Began:
+                                print("Began Touch " + i);
+                                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+                                {
+                                    LandBehaviour();
+                                }
+                                break;
+                            case TouchPhase.Stationary:
+                                print("Stationary Touch " + i);
+                                //StopCoroutine("GravWait");
+                                //hovering = true;
+                                break;
+                            case TouchPhase.Moved:
+                                print("Moving Touch " + i);
+                                break;
+                            case TouchPhase.Ended:
+                                print("Ended Touch " + i);
+                                break;
+                            case TouchPhase.Canceled:
+                                print("Cancelled Touch " + i);
+                                if (hovering)
+                                {
+                                    LandBehaviour();
+                                }
+                                break;
                         }
-                        if (onLand)
+                    }
+                    else if (isInSpace)
+                    {
+                        Fire(weaponDamage);
+                        switch (t.phase)
                         {
-                            GroundBehaviour();
-                            if (Input.GetKeyDown(KeyCode.Space))
-                            {
-                                LandBehaviour();
-                            }
-                        }
-                        else if (isInSpace)
-                        {
-                            SpaceBehaviour();
-
-                        }
-
-                        else
-                        {
-                            rb.velocity = new Vector3(0f, 0f, 0f);
+                            case TouchPhase.Began:
+                                print("Began Touch " + i);
+                                joystick.transform.position = t.position;
+                                break;
+                            case TouchPhase.Stationary:
+                                print("Stationary Touch " + i);
+                                break;
+                            case TouchPhase.Moved:
+                                print("Moving Touch " + i);
+                                SpaceBehaviour();
+                                break;
+                            case TouchPhase.Ended:
+                                print("Ended Touch " + i);
+                                break;
+                            case TouchPhase.Canceled:
+                                print("Cancelled Touch " + i);
+                                break;
                         }
                     }
                 }
             }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    ToggleMode();
+                }
+                if (onLand)
+                {
+                    GroundBehaviour();
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        LandBehaviour();
+                    }
+                }
+                else if (isInSpace)
+                {
+                    SpaceBehaviour();
+
+                }
+
+                else
+                {
+                    rb.velocity = new Vector3(0f, 0f, 0f);
+                }
+            }
         }
     }
+
     
 
     public override void LandBehaviour()
@@ -192,6 +193,8 @@ public class KorgController : PlayerController
             }
             accelerate = false;
             gravRate = tempGravRate;
+            Unflip();
+            Flip();
         }
         else if (hovering)
         {
@@ -214,12 +217,29 @@ public class KorgController : PlayerController
 
     public void Unflip()
     {
-        unflip = false;
-        transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+        if (unflip)
+        {
+            unflip = false;
+        }
+        if(transform.localScale.y > 0)
+        {
+            transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+        }
     }
     public void Flip()
     {
-        flip = false;
+        if (flip)
+        {
+            flip = false;
+        }
+        if (transform.localScale.y < 0)
+        {
+            transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+        }
+    }
+
+    public void FlipSprite()
+    {
         transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
     }
 }
