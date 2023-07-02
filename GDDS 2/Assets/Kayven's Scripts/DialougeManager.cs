@@ -30,6 +30,7 @@ public class DialougeManager : MonoBehaviour {
         isActive = true;
         theDialougeBox.SetActive(true);
         Debug.Log("Started Convo" + messages.Length);
+        Time.timeScale = 0f;
         DisplayMessage();
 
     }
@@ -48,6 +49,7 @@ public class DialougeManager : MonoBehaviour {
             DisplayMessage();
         }
         else {
+            Time.timeScale = 1f;
             Debug.Log("Convo Ended");
             isActive = false;
             theDialougeBox.SetActive(false);
