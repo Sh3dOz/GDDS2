@@ -20,6 +20,9 @@ public class KorgController : PlayerController
     bool unflip;
     bool flip;
     Animator myAnim;
+    public GameObject arrowEffect;
+    public GameObject arrowEffectFlip;
+    public GameObject arrowPos;
 
     [Header("Land Shield")]
     public float shieldCooldown = 30f;
@@ -166,6 +169,7 @@ public class KorgController : PlayerController
     {
         if (flipped)
         {
+            Instantiate(arrowEffectFlip, arrowPos.transform.position, Quaternion.identity);
             accelerate = true;
             unflip = true;
             StartCoroutine("GravWait");
@@ -177,6 +181,7 @@ public class KorgController : PlayerController
         }
         else
         {
+            Instantiate(arrowEffect, arrowPos.transform.position, Quaternion.identity);
             StopCoroutine("GravWait");
             accelerate = false;
             gravScale = -gravScale;
