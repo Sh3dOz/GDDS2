@@ -6,7 +6,7 @@ public class HomingMissile : MonoBehaviour
 {
     public Transform target;
     public Rigidbody2D rb;
-    public float angleChangingSpeed = 2f;
+    public float angleChangingSpeed = 200f;
     public float movementSpeed = 10f;
     int damage = 10;
     float timeSpawned;
@@ -18,7 +18,7 @@ public class HomingMissile : MonoBehaviour
     {
         target = TargetCheck().transform;
         timeSpawned += Time.deltaTime;
-        if (timeSpawned > 2f)
+        if (timeSpawned > 10f)
         {
             Destroy(gameObject);
         }
@@ -29,17 +29,17 @@ public class HomingMissile : MonoBehaviour
         Vector2 direction = (Vector2)target.transform.position - rb.position;
         direction.Normalize();
         float rotateAmount = Vector3.Cross(direction, transform.up).z;
-        rb.angularVelocity = -angleChangingSpeed * rotateAmount;
-        rb.velocity = transform.forward * movementSpeed;
+        rb.angularVelocity = angleChangingSpeed * -rotateAmount;
+        rb.velocity = transform.up * movementSpeed;
     }
 
     public GameObject TargetCheck()
     {
+        if (target != null) return target.gameObject; 
         List<SpaceEnemy> currentEnemies;
         float distance = Mathf.Infinity;
         GameObject closest = null;
         currentEnemies = new List<SpaceEnemy>(FindObjectsOfType<SpaceEnemy>());
-        Debug.Log(currentEnemies);
         foreach (SpaceEnemy i in currentEnemies)
         {
             Vector3 diff = i.transform.position - transform.position;
@@ -50,7 +50,6 @@ public class HomingMissile : MonoBehaviour
                 distance = curDistance;
             }
         }
-        Debug.Log(closest);
         return closest;
     }
 
