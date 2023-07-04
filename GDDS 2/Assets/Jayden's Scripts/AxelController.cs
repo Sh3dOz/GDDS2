@@ -43,6 +43,9 @@ public class AxelController : PlayerController
     // Update is called once per frame
     void Update()
     {
+        myAnim.SetBool("OnLand", onLand);
+        myAnim.SetBool("InSpace", isInSpace);
+        myAnim.SetBool("isGrounded", isGrounded);
         if (onLand)
         {
             GroundCheck();
@@ -122,9 +125,9 @@ public class AxelController : PlayerController
                 }
                 if (onLand)
                 {
-                    GroundBehaviour();
                     if (Input.GetKey(KeyCode.Space))
                     {
+                        //isJumping = false;
                         LandBehaviour();
                     }
                     if (Input.GetKeyUp(KeyCode.Space))
@@ -132,6 +135,8 @@ public class AxelController : PlayerController
                         isJumping = true;
                         LandBehaviour();
                     }
+                    GroundBehaviour();
+                    
                 }
                 else if (isInSpace)
                 {
@@ -152,6 +157,7 @@ public class AxelController : PlayerController
         if (isJumping == true)
         {
             rb.velocity = new Vector3(0f, jumpForce, 0f);
+            
         }
     }
 
@@ -159,9 +165,9 @@ public class AxelController : PlayerController
     {
         if (isGrounded)
         {
-            rb.velocity = new Vector2(runSpeed, 0f);
+            rb.velocity = new Vector2(runSpeed, rb.velocity.y);
         }
-        else
+        else if(!isJumping && !isGrounded)
         {
             rb.velocity = new Vector2(runSpeed, -12f);
         }
