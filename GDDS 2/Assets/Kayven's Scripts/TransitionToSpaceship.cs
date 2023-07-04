@@ -14,6 +14,7 @@ public class TransitionToSpaceship : MonoBehaviour {
 
     public PlayableDirector playableDirector;
     private bool isTimelineStarted = false;
+    public PlayerController spaceships;
 
 
     // Start is called before the first frame update
@@ -39,12 +40,17 @@ public class TransitionToSpaceship : MonoBehaviour {
     }
 
     public IEnumerator Transition() {
+
         yield return new WaitForSeconds(0.5f);
+        spaceships.canMove = false;
         joyStick.SetActive(true);
         player.SetActive(false);
         spaceship.SetActive(true);
         spaceshipDup.SetActive(false);
         cameras.CameraTransition();
+        yield return new WaitForSeconds(1.5f);
+        spaceships.canMove = true;
+
 
     }
 }
