@@ -111,7 +111,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6582431239514590572}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5481879806007191584
 SpriteRenderer:
@@ -194,8 +194,8 @@ Transform:
   m_LocalScale: {x: 0.3928996, y: 0.3928996, z: 0.3928996}
   m_Children:
   - {fileID: 4684466200179879057}
-  - {fileID: 7912854023620439288}
   - {fileID: 4004507544270324639}
+  - {fileID: 7912854023620439288}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -237,6 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a94506d10b20514ca6c308c1cb93bf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioS: {fileID: 0}
+  shockSound: {fileID: 0}
+  shockEffect: {fileID: 0}
+  player: {fileID: 0}
   damage: 1
 --- !u!1 &5159253543922970788
 GameObject:
@@ -267,7 +271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6582431239514590572}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &90305700101088530
 SpriteRenderer:
