@@ -56,6 +56,8 @@ public class CameraTargetChanger : MonoBehaviour {
         yield return new WaitForSeconds(1f);
 
         cameraDirector.Play();
+        Debug.Log("Playing");
+
         yield return new WaitForSeconds(0.5f);
         ceiling.SetActive(false);
         floor.SetActive(false);
