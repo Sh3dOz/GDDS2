@@ -502,6 +502,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Xav
       objectReference: {fileID: 0}
+    - target: {fileID: 1599271023247145035, guid: d8271a09a6b90454bb4e4b06909523df, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599271023247145035, guid: d8271a09a6b90454bb4e4b06909523df, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1754833649443718015, guid: d8271a09a6b90454bb4e4b06909523df, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -520,7 +528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340721199048733807, guid: d8271a09a6b90454bb4e4b06909523df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.51
+      value: -11.1
       objectReference: {fileID: 0}
     - target: {fileID: 3340721199048733807, guid: d8271a09a6b90454bb4e4b06909523df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2416,6 +2424,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &468044132
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 468044133}
+  m_Layer: 0
+  m_Name: Top
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &468044133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468044132}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -36.70839, y: -0.94, z: -16.747534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &482104546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4078,6 +4116,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
   m_PrefabInstance: {fileID: 831432235}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &834205458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 834205459}
+  m_Layer: 0
+  m_Name: Bottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &834205459
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834205458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -36.70839, y: -10.96, z: -16.747534}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &846001110
 GameObject:
   m_ObjectHideFlags: 0
@@ -5269,13 +5337,6 @@ MonoBehaviour:
     m_Bits: 64
   cirlceRadius: 0.31
   groundCheck: {fileID: 2070384219}
-  isRobot: 0
-  isJumping: 0
-  jumpHigher: 0
-  jumpForce: 0
-  jumpTime: 0
-  robotSprite: {fileID: 0}
-  corgiSprite: {fileID: 0}
   landButton: {fileID: 0}
   spaceButton: {fileID: 0}
   isWin: 0
@@ -11236,36 +11297,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 90}
---- !u!1 &1403141808 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4544099863580686436, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-  m_PrefabInstance: {fileID: 1607184145}
-  m_PrefabAsset: {fileID: 0}
---- !u!68 &1403141809
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1403141808}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 12.251541, y: 7.1944933}
-  - {x: -12.307106, y: 7.276372}
-  - {x: -12.226702, y: -7.2485876}
-  - {x: 12.115566, y: -7.0044274}
-  - {x: 12.277849, y: 7.41731}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!1001 &1406719841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11495,13 +11526,6 @@ MonoBehaviour:
     m_Bits: 0
   cirlceRadius: 0
   groundCheck: {fileID: 1026108312}
-  isRobot: 0
-  isJumping: 0
-  jumpHigher: 0
-  jumpForce: 0
-  jumpTime: 0
-  robotSprite: {fileID: 0}
-  corgiSprite: {fileID: 0}
   landButton: {fileID: 0}
   spaceButton: {fileID: 0}
   isWin: 0
@@ -11516,6 +11540,8 @@ MonoBehaviour:
   isCooldown: 0
   shieldImageCooldown: {fileID: 0}
   textCooldown: {fileID: 0}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
   outOfBounds: 0
 --- !u!60 &1447690470
 PolygonCollider2D:
