@@ -6,6 +6,7 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedScenePath-0:
+<<<<<<< HEAD
       value: 22424703114646680e0b0227036c6a001105192e293b68252320092a
       flags: 0
     RecentlyUsedScenePath-1:
@@ -31,6 +32,36 @@ EditorUserSettings:
       flags: 0
     RecentlyUsedScenePath-8:
       value: 22424703114646680e0b0227036c73150012146a1f2d2a352e3d5326ece92021
+=======
+      value: 22424703114646680e0b0227036c74110f011d246b3b66032e2c1336acf53a31f6fe
+      flags: 0
+    RecentlyUsedScenePath-1:
+      value: 22424703114646680e0b0227036c6a001105192e293b68252320092a
+      flags: 0
+    RecentlyUsedScenePath-2:
+      value: 22424703114646680e0b0227036c6b15050311242b66333e243d04
+      flags: 0
+    RecentlyUsedScenePath-3:
+      value: 22424703114646680e0b0227036c7d1f19195f396c1b2535232c5326ece92021
+      flags: 0
+    RecentlyUsedScenePath-4:
+      value: 22424703114646680e0b0227036c72111f1958072926337e38271427fb
+      flags: 0
+    RecentlyUsedScenePath-5:
+      value: 22424703114646680e0b0227036c72111f19563f22213229
+      flags: 0
+    RecentlyUsedScenePath-6:
+      value: 224247031146466b010f152702134d1510043d2e253c2922621a1c3ef2ec312badd437e4f7363a0f3a07e1394b0d0032e2060c38f50e040e5f1bf30705e6
+      flags: 0
+    RecentlyUsedScenePath-7:
+      value: 22424703114646680e0b0227036c73150012146a1f2d2a352e3d5326ece92021
+      flags: 0
+    RecentlyUsedScenePath-8:
+      value: 22424703114646680e0b0227036c73150012146a7e66333e243d04
+      flags: 0
+    RecentlyUsedScenePath-9:
+      value: 22424703114646680e0b0227036c75110f131d246b3b66032e2c1336acf53a31f6fe
+>>>>>>> parent of b0b7a80 (Revert "Merge branch 'main' of https://github.com/Sh3dOz/GDDS2")
       flags: 0
     RecentlyUsedScenePath-9:
       value: 22424703114646680e0b0227036c73150012146a7e66333e243d04
