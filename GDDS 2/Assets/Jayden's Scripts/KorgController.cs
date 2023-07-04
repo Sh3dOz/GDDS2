@@ -41,6 +41,8 @@ public class KorgController : PlayerController
     // Start is called before the first frame update
     void Start()
     {
+        landButton.GetComponent<Button>().onClick.AddListener(() => ShieldActive());
+        spaceButton.GetComponent<Button>().onClick.AddListener(() => ShootMissile());
         myAnim = GetComponent<Animator>();
         currentShieldCooldown = shieldCooldown;
         tempGrav = gravScale;
@@ -323,7 +325,9 @@ public class KorgController : PlayerController
     }
     public void ShootMissile()
     {
+        if (currentMissileCooldown < missileCooldown) return;
         Instantiate(missilePrefab, shootPos.position, Quaternion.identity);
+        currentMissileCooldown = 0f;
     }
 }
 

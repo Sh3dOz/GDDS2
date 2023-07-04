@@ -45,6 +45,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        landButton.onClick.RemoveAllListeners();
+        spaceButton.onClick.RemoveAllListeners();
         player = FindObjectOfType<PlayerController>();
         spaceship = FindObjectOfType<TransitionToSpaceship>();
         progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);

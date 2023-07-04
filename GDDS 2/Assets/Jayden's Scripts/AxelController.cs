@@ -32,6 +32,10 @@ public class AxelController : PlayerController
     // Start is called before the first frame update
     void Start()
     {
+        landButton.GetComponent<Button>().onClick.AddListener(() => EMPActivated());
+        spaceButton.GetComponent<Button>().onClick.AddListener(() => DeflectBullets());
+        currentEMPCooldown = empCooldown;
+        currentDeflectCooldown = deflectCooldown;
         myAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<LevelManager>();
@@ -166,10 +170,7 @@ public class AxelController : PlayerController
         if (isGrounded)
         {
             rb.velocity = new Vector2(runSpeed, rb.velocity.y);
-        }
-        else if(!isJumping && !isGrounded)
-        {
-            rb.velocity = new Vector2(runSpeed, -12f);
+            isJumping = false;
         }
     }
 
@@ -203,8 +204,15 @@ public class AxelController : PlayerController
         }
     }
 
-    public void EMPActived() 
+    public void EMPActivated() 
     {
+        if (currentEMPCooldown < empCooldown) return;
         Instantiate(empEffect, transform.position, Quaternion.identity, this.gameObject.transform);
+        currentEMPCooldown = 0f;
+    }
+
+    public void DeflectBullets()
+    {
+
     }
 }
