@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Upgrades : MonoBehaviour
 {
@@ -10,7 +11,18 @@ public class Upgrades : MonoBehaviour
     public GameObject charSprite;
     int selectedIndex;
     string selectedChar;
+    public Text coinsCollectedText;
+    public float coinsCollectedAll;
 
+    void Update() {
+
+        UpdatePlayerCoins();
+    }
+
+    public void UpdatePlayerCoins() {
+        coinsCollectedAll = PlayerPrefs.GetFloat("Coins");
+        coinsCollectedText.text = "Coins Collected:" + coinsCollectedAll;
+    }
     public void UpgradePassive()
     {
         if(PlayerPrefs.GetInt(selectedChar + "Passive") == 0)
@@ -55,7 +67,7 @@ public class Upgrades : MonoBehaviour
             selectedIndex = 0;
         }
         selectedChar = allChar[selectedIndex];
-        charSprite.GetComponent<SpriteRenderer>().sprite = charSprites[selectedIndex];
+        charSprite.GetComponent<Image>().sprite = charSprites[selectedIndex];
     }
 
     public void SwitchCharRight()
@@ -66,7 +78,7 @@ public class Upgrades : MonoBehaviour
             selectedIndex = allChar.Count-1;
         }
         selectedChar = allChar[selectedIndex];
-        charSprite.GetComponent<SpriteRenderer>().sprite = charSprites[selectedIndex];
+        charSprite.GetComponent<Image>().sprite = charSprites[selectedIndex];
     }
 
     public void Back()
