@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     public bool isAlive;
     public bool isWin;
-    [SerializeField]PlayerController player;
+    PlayerController player;
     public Slider progressSlider;
     public Slider healthSlider;
     public Transform startPos;
@@ -43,6 +42,7 @@ public class LevelManager : MonoBehaviour
         spaceship = FindObjectOfType<TransitionToSpaceship>();
         progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
         progressSlider.value = 0;
+        player = FindObjectOfType<PlayerController>();
         healthSlider.value = player.health;
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
@@ -76,7 +76,6 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = FindObjectOfType<PlayerController>(); // So that it updates after the switch
         progressCheck();
     }
 
@@ -102,29 +101,28 @@ public class LevelManager : MonoBehaviour
     IEnumerator Instructions()
     {
         //First time launching
-        player.canMove = false;
         Time.timeScale = 0f;
         healthPanel.SetActive(true);
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         healthPanel.SetActive(false);
         scorePanel.SetActive(true);
-        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitForSeconds(1f);
+        Debug.Log("Haro?");
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         scorePanel.SetActive(false);
         progressPanel.SetActive(true);
-        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         progressPanel.SetActive(false);
         pausePanel.SetActive(true);
-        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         pausePanel.SetActive(false);
         movementPanel.SetActive(true);
-        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitForSeconds(1f);
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         movementPanel.SetActive(false);
         Time.timeScale = 1f;
-        player.canMove = true;
     }
 
 }

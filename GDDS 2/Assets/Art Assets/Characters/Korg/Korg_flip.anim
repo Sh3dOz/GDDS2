@@ -224,13 +224,6 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: Unflip
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 0.13333334
     functionName: UpdateSprite
     data: 
@@ -247,13 +240,6 @@ AnimationClip:
     messageOptions: 0
   - time: 0.26666668
     functionName: Flip
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.26666668
-    functionName: FlipSprite
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

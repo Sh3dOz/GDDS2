@@ -21,15 +21,14 @@ public abstract class PlayerController : MonoBehaviour
     public GameObject joystick;
     public Sprite spaceShip;
     public SpriteRenderer sr;
-    public Sprite playerSprite;
-    public bool canMove = true;
+    public GameObject playerSprite;
+    public bool canMove;
 
     [Header("Health")]
     public int health = 3;
     public bool isDamaged;
     public Collider2D col;
     public LevelManager manager;
-    public bool canBeDamaged = true;
 
     [Header("GroundCheck")]
     public bool isGrounded;
@@ -48,10 +47,16 @@ public abstract class PlayerController : MonoBehaviour
      // Reference to the SpriteRenderer component
     public Sprite corgiSprite;
 
-    [Header("Transition")]
-    public GameObject landButton;
-    public GameObject spaceButton;
-    
+    [Header("Shield")]
+    public bool isShielded;
+    public float shieldCooldown = 30f;
+    public float currentShieldCooldown;
+    public float shieldDuration = 5f;
+    public GameObject shieldButton;
+    public GameObject shieldPrefab;
+    [SerializeField] bool isCooldown;
+    [SerializeField] Image shieldImageCooldown;
+    [SerializeField] TMP_Text textCooldown;
 
     public bool isWin = false;
     public GameObject damagedEffect;
@@ -66,7 +71,7 @@ public abstract class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
 
-        if (isDamaged != true && canBeDamaged == true)
+        if (isDamaged != true && isShielded == false)
         {
             health -= damage;
             manager.healthSlider.value = health;
@@ -78,7 +83,7 @@ public abstract class PlayerController : MonoBehaviour
             manager.isAlive = false;
             Destroy(gameObject);
         }
-        if (canBeDamaged == false || isDamaged == false)
+        if (isShielded == false || isDamaged == false)
         {
             isDamaged = true;
         }
@@ -99,28 +104,58 @@ public abstract class PlayerController : MonoBehaviour
         weapons[currentWeapon].Fire();
     }
 
+    public void ShieldActive()
+    {
+        StartCoroutine("ShieldEffect");
+    }
 
+    public IEnumerator ShieldEffect()
+    {
+        if (isCooldown) yield break;
+
+        isCooldown = true;
+        currentShieldCooldown = 0;
+        shieldImageCooldown.fillAmount = 0.0f;
+        isShielded = true;
+        Instantiate(shieldPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
+        yield return new WaitForSeconds(shieldDuration);
+        isShielded = false;
+
+        yield return new WaitForSeconds(shieldCooldown);//Cooldown
+    }
+
+    public void ShieldCooldown()
+    {
+        if(currentShieldCooldown > shieldCooldown)
+        {
+            textCooldown.text = "";
+            shieldImageCooldown.fillAmount = 1f;
+            isCooldown = false;
+        }
+        else
+        {
+            currentShieldCooldown += Time.deltaTime;
+            textCooldown.text = Mathf.RoundToInt(shieldCooldown - currentShieldCooldown).ToString();
+            shieldImageCooldown.fillAmount = currentShieldCooldown / shieldCooldown;
+        }
+    }
 
     public void ToggleMode()
     {
         if (onLand)
         {
-            landButton.SetActive(false);
-            spaceButton.SetActive(true);
+            shieldButton.SetActive(false);
             joystick.SetActive(true);
             sr.sprite = spaceShip;
-            UpdateSprite();
-            //playerSprite.SetActive(false);
+            playerSprite.SetActive(false);
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
         if (isInSpace)
         {
-            landButton.SetActive(true);
-            spaceButton.SetActive(true);
+            shieldButton.SetActive(true);
             joystick.SetActive(false);
-            sr.sprite = playerSprite;
-            UpdateSprite();
-            //playerSprite.SetActive(true);
+            sr.sprite = null;
+            playerSprite.SetActive(true);
         }
         onLand = !onLand;
         isInSpace = !isInSpace;
@@ -138,8 +173,8 @@ public abstract class PlayerController : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        //movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-        //movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+        movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+        movement.y = VirtualJoystick.GetAxis("Vertical", 0);
         Movement();
     }
 
