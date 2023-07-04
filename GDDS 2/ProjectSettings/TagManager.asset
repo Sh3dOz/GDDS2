@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TransformPower
   - Ground
+  - Confider
   layers:
   - Default
   - TransparentFX
