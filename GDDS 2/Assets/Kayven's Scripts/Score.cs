@@ -19,6 +19,9 @@ public class Score : MonoBehaviour {
     [Header("Timer")]
     private float timer;
     private float timer2;
+    public Text timeText;
+    public float timePast;
+
 
     [Header("Score Deducted")]
     public float scoreDeducted = 34f;
@@ -32,6 +35,8 @@ public class Score : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+        CountTime();
 
         scoreText.text = "Score = " + currentScore.ToString();
 
@@ -54,5 +59,20 @@ public class Score : MonoBehaviour {
                                               //Debug.Log("SlowerDeductionSpeed");
             }
         }
+    }
+
+    public void CountTime() {
+        timePast = 0 + Time.timeSinceLevelLoad;
+        ShowTime();
+    }
+
+    public void ShowTime() {
+        int minutes;
+        int seconds;
+
+        minutes = (int)timePast / 60; // Derive minutes by dividing seconds by 60 seconds
+        seconds = (int)timePast % 60; // Derive remainder after dividing by 60 seconds
+
+        timeText.text = "Time = " + minutes.ToString() + ":" + seconds.ToString("d2");
     }
 }

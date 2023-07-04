@@ -1,13 +1,22 @@
 fileFormatVersion: 2
-guid: 991ee6b674f94fa4cb36b03a539a46a5
+guid: 47246c7f952d767409722a8937112b49
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4719228301834447908
-    second: Floor Redo_0
+      213: -2074244790900640891
+    second: Flipped_0
   - first:
-      213: 7371078474990462843
-    second: Floor Redo_1
+      213: 5852933362629692374
+    second: Flipped_1
+  - first:
+      213: 8606655992862040313
+    second: Flipped_2
+  - first:
+      213: 2886486890922550837
+    second: Flipped_3
+  - first:
+      213: 5601564191747929989
+    second: Flipped_4
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -47,17 +56,17 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.5, y: 0.05}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 320, y: 0, z: 316, w: 1597}
+  spriteBorder: {x: 1041, y: 961, z: 913, w: 958}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -110,48 +119,115 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Floor Redo_0
+      name: Flipped_0
       rect:
         serializedVersion: 2
-        x: 168
-        y: 0
-        width: 2451
-        height: 1774
+        x: 584
+        y: 920
+        width: 157
+        height: 203
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 786, y: 0, z: 758, w: 1597}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd3103fecdee18eb0800000000000000
-      internalID: -4719228301834447908
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Floor Redo_1
-      rect:
-        serializedVersion: 2
-        x: 110
-        y: 0
-        width: 207
-        height: 177
-      alignment: 9
-      pivot: {x: 0.38183263, y: 0.48714465}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b77a551c1d45b4660800000000000000
-      internalID: 7371078474990462843
+      spriteID: 583b92d3a5dc633e0800000000000000
+      internalID: -2074244790900640891
       vertices: []
       indices: 
       edges: []
       weights: []
-    outline: []
+    - serializedVersion: 2
+      name: Flipped_1
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 923
+        width: 157
+        height: 204
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db439512ebc93150800000000000000
+      internalID: 5852933362629692374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flipped_2
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 962
+        width: 95
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f06786860cf07770800000000000000
+      internalID: 8606655992862040313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flipped_3
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 976
+        width: 119
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 536a246b88cde0820800000000000000
+      internalID: 2886486890922550837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Flipped_4
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 994
+        width: 72
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587feab34f0ccbd40800000000000000
+      internalID: 5601564191747929989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: 2, y: -74}
+      - {x: 2, y: 79}
+      - {x: 131, y: 79}
+      - {x: 131, y: -74}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000

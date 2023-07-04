@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2898602711352345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2210315896841959488}
+  m_Layer: 8
+  m_Name: ShootPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2210315896841959488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2898602711352345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.16, y: -0.19, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3340721199048733807}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1288418732450083938
 GameObject:
   m_ObjectHideFlags: 0
@@ -44,6 +74,7 @@ GameObject:
   - component: {fileID: 1754833649443718015}
   - component: {fileID: 6513533196360056147}
   - component: {fileID: 1209789402315035635}
+  - component: {fileID: 6663077562468726593}
   m_Layer: 8
   m_Name: Korg
   m_TagString: Player
@@ -63,6 +94,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3054780026457524527}
+  - {fileID: 2210315896841959488}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,18 +138,20 @@ MonoBehaviour:
   jumpHeight: 10
   movement: {x: 0, y: 0}
   rb: {fileID: 0}
-  weapons: []
+  weapons:
+  - {fileID: 6663077562468726593}
   currentWeapon: 0
   weaponDamage: 0
   joystick: {fileID: 0}
   spaceShip: {fileID: 21300000, guid: 25a3ac823bad9a146ad5b09a54491e80, type: 3}
   sr: {fileID: 0}
-  playerSprite: {fileID: 0}
+  playerSprite: {fileID: 3251815835186883796, guid: ca8f85bdc60fa804b8fe634d321d7312, type: 3}
   canMove: 1
   health: 4
   isDamaged: 0
   col: {fileID: 0}
   manager: {fileID: 0}
+  canBeDamaged: 1
   isGrounded: 0
   groundLayer:
     serializedVersion: 2
@@ -131,20 +165,25 @@ MonoBehaviour:
   jumpTime: 0
   robotSprite: {fileID: 0}
   corgiSprite: {fileID: 0}
-  isShielded: 0
-  shieldCooldown: 30
-  currentShieldCooldown: 0
-  shieldDuration: 5
-  shieldButton: {fileID: 0}
-  shieldPrefab: {fileID: 9108538028449765855, guid: 688804245b5dfde4f9ef203458734fe0, type: 3}
-  isCooldown: 0
-  shieldImageCooldown: {fileID: 0}
-  textCooldown: {fileID: 0}
+  landButton: {fileID: 0}
+  spaceButton: {fileID: 0}
   isWin: 0
   damagedEffect: {fileID: 3467726240160300806, guid: 3531e1b66a1b14a41b2cda66566754f4, type: 3}
   UI: {fileID: 0}
   damageSound: {fileID: 8300000, guid: 0a130a18a7634894eb815c21a6485ae7, type: 3}
   gravScale: -12
+  hoverGrav: 0
+  hovering: 0
+  shieldCooldown: 30
+  currentShieldCooldown: 0
+  shieldDuration: 5
+  shieldPrefab: {fileID: 9108538028449765855, guid: 688804245b5dfde4f9ef203458734fe0, type: 3}
+  isCooldown: 0
+  shieldImageCooldown: {fileID: 0}
+  textCooldown: {fileID: 0}
+  missileCooldown: 30
+  shootPos: {fileID: 2210315896841959488}
+  missilePrefab: {fileID: 6749069539742230770, guid: 52a023c857a96ac49afc9563c9903f9b, type: 3}
 --- !u!212 &1754833649443718015
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -306,3 +345,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6663077562468726593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592910687184584493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726cdeead2825f14cae5d7a985445c09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1297164824057264851, guid: a98adbb59d2e81244a9eb1b85965efda, type: 3}
+  shootPos: {fileID: 2210315896841959488}
+  fireRate: 0.2
+  damage: 1
