@@ -37,17 +37,6 @@ public abstract class PlayerController : MonoBehaviour
     public float cirlceRadius;
     public Transform groundCheck;
 
-    [Header("LilBoy")]
-    public bool isRobot;
-    public bool isJumping;
-    public float jumpHigher;
-    public float jumpForce;
-    public float jumpTime;
-    private float jumpTimeCounter;
-    public Sprite robotSprite; // Assign the robot sprite in the Inspector
-     // Reference to the SpriteRenderer component
-    public Sprite corgiSprite;
-
     [Header("Transition")]
     public GameObject landButton;
     public GameObject spaceButton;
