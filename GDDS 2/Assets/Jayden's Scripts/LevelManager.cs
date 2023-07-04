@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class LevelManager : MonoBehaviour
 {
@@ -12,12 +13,15 @@ public class LevelManager : MonoBehaviour
     [SerializeField]PlayerController player;
     public Slider progressSlider;
     public Slider healthSlider;
+    public Button landButton, spaceButton;
+    public Image landCooldown, spaceCooldown;
     public Transform startPos;
     public Transform endPos;
 
     public int coinCount;
     public Text coinText;
     public AudioSource coinSound;
+    public CinemachineVirtualCamera cam;
 
     [Header("Instrcutions")]
     [SerializeField] GameObject instructionsCanvas;
@@ -30,7 +34,9 @@ public class LevelManager : MonoBehaviour
 
     [Header("Characters")]
     [SerializeField] GameObject korg;
+    [SerializeField] Sprite shieldIcon, shieldCooldown, missileIcon, missileCooldown;
     [SerializeField] GameObject axel;
+    [SerializeField] Sprite empIcon, empCooldown, deflectIcon, deflectCooldown;
     [SerializeField] GameObject x;
 
     public bool deadedCoStarted = false;
@@ -58,15 +64,30 @@ public class LevelManager : MonoBehaviour
             {
                 case "Korg":
                     korg.SetActive(true);
+                    landButton.image.overrideSprite = shieldIcon;
+                    landCooldown.overrideSprite = shieldCooldown;
+                    spaceButton.image.overrideSprite = missileIcon;
+                    spaceCooldown.overrideSprite = missileCooldown;
+                    cam.Follow = korg.transform;
                     break;
                 case "Axel":
                     axel.SetActive(true);
+                    landButton.image.overrideSprite = empIcon;
+                    landCooldown.overrideSprite = empCooldown;
+                    spaceButton.image.overrideSprite = deflectIcon;
+                    spaceCooldown.overrideSprite = deflectCooldown;
+                    cam.Follow = axel.transform;
                     break;
                 case "X":
                     x.SetActive(true);
                     break;
                 default:
                     korg.SetActive(true);
+                    landButton.image.overrideSprite = shieldIcon;
+                    landCooldown.overrideSprite = shieldCooldown;
+                    spaceButton.image.overrideSprite = missileIcon;
+                    spaceCooldown.overrideSprite = missileCooldown;
+                    cam.Follow = korg.transform;
                     break;
             }
             Destroy(instructionsCanvas);

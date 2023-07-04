@@ -1,10 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class AxelController : PlayerController
 {
     Animator myAnim;
+
+    [Header("EMP")]
+    public float empCooldown = 30f;
+    float currentEMPCooldown;
+    public float empDuration = 5f;
+    public GameObject empEffect;
+    [SerializeField] Image empImageCooldown;
+    [SerializeField] TMP_Text textCooldown;
+
+    [Header("Deflect")]
+    public float deflectCooldown = 30f;
+    float currentDeflectCooldown;
+    public float deflectDuration = 5f;
+    public GameObject defectEffect;
+    [SerializeField] Image deflectImageCooldown;
+
+    [Header("LilBoy")]
+    public bool isJumping;
+    public float jumpHigher;
+    public float jumpForce;
+    public float jumpTime;
+    private float jumpTimeCounter;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +43,20 @@ public class AxelController : PlayerController
     // Update is called once per frame
     void Update()
     {
-        GroundCheck();
+        myAnim.SetBool("OnLand", onLand);
+        myAnim.SetBool("InSpace", isInSpace);
+        myAnim.SetBool("isGrounded", isGrounded);
+        if (onLand)
+        {
+            GroundCheck();
+            EMPCooldown();
+            GroundBehaviour();
+        }
+        else if (isInSpace)
+        {
+            Fire(weaponDamage);
+            DeflectCooldown();
+        }
         if (manager.isWin) canMove = false;
         if (canMove)
         {
@@ -36,10 +73,7 @@ public class AxelController : PlayerController
                         {
                             case TouchPhase.Began:
                                 print("Began Touch " + i);
-                                if (t.position.x < Screen.width / 2)
-                                {
-                                    LandBehaviour();
-                                }
+                                LandBehaviour();
                                 break;
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);
@@ -91,11 +125,18 @@ public class AxelController : PlayerController
                 }
                 if (onLand)
                 {
-                    GroundBehaviour();
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if (Input.GetKey(KeyCode.Space))
                     {
+                        //isJumping = false;
                         LandBehaviour();
                     }
+                    if (Input.GetKeyUp(KeyCode.Space))
+                    {
+                        isJumping = true;
+                        LandBehaviour();
+                    }
+                    GroundBehaviour();
+                    
                 }
                 else if (isInSpace)
                 {
@@ -104,25 +145,66 @@ public class AxelController : PlayerController
             }
         }
         else
-        {
+        {   
             rb.velocity = new Vector3(0f, 0f, 0f);
         }
     }
 
     public override void LandBehaviour()
     {
-        
+        jumpTime += Time.deltaTime;
+
+        if (isJumping == true)
+        {
+            rb.velocity = new Vector3(0f, jumpForce, 0f);
+            
+        }
     }
 
     public void GroundBehaviour()
     {
         if (isGrounded)
         {
-            rb.velocity = new Vector2(runSpeed, 0f);
+            rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+        }
+        else if(!isJumping && !isGrounded)
+        {
+            rb.velocity = new Vector2(runSpeed, -12f);
+        }
+    }
+
+    void EMPCooldown()
+    {
+        if(currentEMPCooldown > empCooldown)
+        {
+            textCooldown.text = "";
+            empImageCooldown.fillAmount = 1f;
         }
         else
         {
-            rb.velocity = new Vector2(runSpeed, 0f);
+            currentEMPCooldown += Time.deltaTime;
+            textCooldown.text = Mathf.RoundToInt(empCooldown - currentEMPCooldown).ToString();
+            empImageCooldown.fillAmount = currentEMPCooldown / empCooldown;
         }
+    }
+
+    void DeflectCooldown()
+    {
+        if (currentDeflectCooldown > deflectCooldown)
+        {
+            textCooldown.text = "";
+            deflectImageCooldown.fillAmount = 1f;
+        }
+        else
+        {
+            currentDeflectCooldown += Time.deltaTime;
+            textCooldown.text = Mathf.RoundToInt(deflectCooldown - currentDeflectCooldown).ToString();
+            deflectImageCooldown.fillAmount = currentDeflectCooldown / deflectCooldown;
+        }
+    }
+
+    public void EMPActived() 
+    {
+        Instantiate(empEffect, transform.position, Quaternion.identity, this.gameObject.transform);
     }
 }

@@ -24,4 +24,12 @@ public class BasicEnemy : ShootingEnemy
             Shoot();
         }
     }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.transform.parent.GetComponent<AxelController>())
+        {
+            isActivated = false;
+        }
+    }
 }
