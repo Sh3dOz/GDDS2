@@ -29,6 +29,11 @@ public class AxelController : PlayerController
     public float jumpForce;
     public float jumpTime;
     private float jumpTimeCounter;
+    [SerializeField] bool isHovering;
+    float hoveringCounter;
+    [SerializeField] bool hoveringCooldown;
+    float hoverCooldown = 2.5f;
+    float hoverDuration = 3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -77,7 +82,14 @@ public class AxelController : PlayerController
                         {
                             case TouchPhase.Began:
                                 print("Began Touch " + i);
+                                touchTimer += Time.deltaTime;
                                 LandBehaviour();
+                                if(touchTimer > 0.3f)
+                                {
+                                    if (hoveringCooldown) return;
+                                    isHovering = true;
+                                    HoldBehaviour();
+                                }
                                 break;
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);
@@ -131,13 +143,31 @@ public class AxelController : PlayerController
                 {
                     if (Input.GetKey(KeyCode.Space))
                     {
-                        //isJumping = false;
-                        LandBehaviour();
+                        touchTimer += Time.deltaTime;
+                        if (isGrounded)
+                        {
+                            touchTimer += Time.deltaTime;
+                            LandBehaviour();
+                        }
+                        else if(touchTimer > 0.3f)
+                        {
+                             if (hoveringCooldown) return;
+                             isHovering = true;
+                             HoldBehaviour();
+                        }
+                        else 
+                        {
+                            rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+                        }
                     }
                     if (Input.GetKeyUp(KeyCode.Space))
                     {
+                        touchTimer = 0f;
                         isJumping = true;
                         LandBehaviour();
+                        isHovering = false;
+                        hoveringCounter = 0f;
+                        rb.gravityScale = 1f;
                     }
                     GroundBehaviour();
                     
@@ -171,6 +201,36 @@ public class AxelController : PlayerController
         {
             rb.velocity = new Vector2(runSpeed, rb.velocity.y);
             isJumping = false;
+        }
+        if (hoveringCooldown)
+        {
+            Debug.Log("hovering works?");
+            touchTimer = 0f;
+            hoverCooldown -= Time.deltaTime;
+            if(hoverCooldown <= 0)
+            {
+                hoverCooldown = 2.5f;
+                hoveringCooldown = false;
+            }
+        }
+    }
+
+    void HoldBehaviour()
+    {
+        if (hoveringCooldown) return;
+        if (isHovering)
+        {
+            if (hoveringCounter < hoverDuration)
+            {
+                hoveringCounter += Time.deltaTime;
+            }
+            else
+            {
+                isHovering = false;
+                hoveringCounter = 0f;
+                hoveringCooldown = true;
+            }
+            rb.gravityScale = 0f;
         }
     }
 

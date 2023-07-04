@@ -23,6 +23,7 @@ public abstract class PlayerController : MonoBehaviour
     public SpriteRenderer sr;
     public Sprite playerSprite;
     public bool canMove = true;
+    public float touchTimer;
 
     [Header("Health")]
     public int health = 3;
