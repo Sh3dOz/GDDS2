@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Upgrades : MonoBehaviour
-{
+public class Upgrades : MonoBehaviour { 
+
     public List<string> allChar;
     public List<Sprite> charSprites;
     public GameObject charSprite;
@@ -13,6 +13,10 @@ public class Upgrades : MonoBehaviour
     string selectedChar;
     public Text coinsCollectedText;
     public float coinsCollectedAll;
+
+    public GameObject korgSkillUpgrade;
+    public GameObject axelSkillUpgrade;
+    public GameObject xavierSkillUpgrade;
 
     void Update() {
 
@@ -35,6 +39,18 @@ public class Upgrades : MonoBehaviour
         }
     }
 
+    public void SelectingWhoToUpgradeSkills() {
+        if(selectedIndex == 0) {
+            korgSkillUpgrade.SetActive(true);
+        }
+        if (selectedIndex == 1) {
+            axelSkillUpgrade.SetActive(true);
+        }
+        if (selectedIndex == 2) {
+            xavierSkillUpgrade.SetActive(true);
+        }
+    }
+
     public void UpgradeSkill()
     {
         if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0)
@@ -44,6 +60,9 @@ public class Upgrades : MonoBehaviour
         else if (PlayerPrefs.GetInt(selectedChar + "Skill") > 0)
         {
             PlayerPrefs.SetInt(selectedChar + "Skill", PlayerPrefs.GetInt(selectedChar + "Skill") + 1);
+        }
+        if (PlayerPrefs.GetInt(selectedChar + "Skill") >= 2) {
+            korgSkillUpgrade.SetActive(false);
         }
     }
 
@@ -85,4 +104,5 @@ public class Upgrades : MonoBehaviour
     {
         SceneManager.LoadScene("Level Select");
     }
+
 }
