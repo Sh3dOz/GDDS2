@@ -22,6 +22,7 @@ public class AxelController : PlayerController
     public float deflectDuration = 5f;
     public GameObject defectEffect;
     [SerializeField] Image deflectImageCooldown;
+    [SerializeField] TMP_Text deflectText;
 
     [Header("LilBoy")]
     public bool isJumping;

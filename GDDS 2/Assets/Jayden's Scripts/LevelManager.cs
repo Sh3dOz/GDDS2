@@ -47,11 +47,6 @@ public class LevelManager : MonoBehaviour
     {
         landButton.onClick.RemoveAllListeners();
         spaceButton.onClick.RemoveAllListeners();
-        player = FindObjectOfType<PlayerController>();
-        spaceship = FindObjectOfType<TransitionToSpaceship>();
-        progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
-        progressSlider.value = 0;
-        healthSlider.value = player.health;
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
             PlayerPrefs.SetInt("PlayGame", 1);
@@ -93,6 +88,12 @@ public class LevelManager : MonoBehaviour
                     break;
             }
             Destroy(instructionsCanvas);
+        player = FindObjectOfType<PlayerController>();
+        spaceship = FindObjectOfType<TransitionToSpaceship>();
+        progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
+        progressSlider.value = 0;
+        healthSlider.value = player.health;
+        
         }
     }
 

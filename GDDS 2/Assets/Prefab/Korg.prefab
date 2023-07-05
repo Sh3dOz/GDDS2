@@ -147,6 +147,7 @@ MonoBehaviour:
   sr: {fileID: 0}
   playerSprite: {fileID: 3251815835186883796, guid: ca8f85bdc60fa804b8fe634d321d7312, type: 3}
   canMove: 1
+  touchTimer: 0
   health: 4
   isDamaged: 0
   col: {fileID: 0}
@@ -158,13 +159,6 @@ MonoBehaviour:
     m_Bits: 64
   cirlceRadius: 0.31
   groundCheck: {fileID: 3054780026457524527}
-  isRobot: 0
-  isJumping: 0
-  jumpHigher: 0
-  jumpForce: 0
-  jumpTime: 0
-  robotSprite: {fileID: 0}
-  corgiSprite: {fileID: 0}
   landButton: {fileID: 0}
   spaceButton: {fileID: 0}
   isWin: 0
@@ -174,6 +168,9 @@ MonoBehaviour:
   gravScale: -12
   hoverGrav: 0
   hovering: 0
+  arrowEffect: {fileID: 0}
+  arrowEffectFlip: {fileID: 0}
+  arrowPos: {fileID: 1592910687184584493}
   shieldCooldown: 30
   currentShieldCooldown: 0
   shieldDuration: 5

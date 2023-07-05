@@ -35,9 +35,11 @@ public class KorgController : PlayerController
 
     [Header("Space Missile")]
     [SerializeField] float missileCooldown = 30f;
-    float currentMissileCooldown;
+    [SerializeField] float currentMissileCooldown;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject missilePrefab;
+    [SerializeField] Image missileImageCooldown;
+    [SerializeField] TMP_Text missileText;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class KorgController : PlayerController
         spaceButton.GetComponent<Button>().onClick.AddListener(() => ShootMissile());
         myAnim = GetComponent<Animator>();
         currentShieldCooldown = shieldCooldown;
+        currentMissileCooldown = missileCooldown;
         tempGrav = gravScale;
         tempGravRate = gravRate;
         rb = GetComponent<Rigidbody2D>();
@@ -90,6 +93,10 @@ public class KorgController : PlayerController
                                 if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                                 {
                                     LandBehaviour();
+                                }
+                                else
+                                {
+                                    Debug.Log("touch UI");
                                 }
                                 break;
                             case TouchPhase.Stationary:
@@ -142,6 +149,7 @@ public class KorgController : PlayerController
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
                     ToggleMode();
+                    if(isInSpace) transform.localScale = new Vector3(1f, 1f, 1f);
                 }
                 if (onLand)
                 {
@@ -197,12 +205,10 @@ public class KorgController : PlayerController
         if (isGrounded)
         {
             rb.velocity = new Vector2(runSpeed, 0f);
-            Debug.Log("haro?");
         }
         else
         {
             rb.velocity = new Vector2(runSpeed, gravScale);
-            Debug.Log("ground?");
         }
     }
 
@@ -275,7 +281,7 @@ public class KorgController : PlayerController
 
     public void ShieldCooldown()
     {
-        if (currentShieldCooldown > shieldCooldown)
+        if (currentShieldCooldown >= shieldCooldown)
         {
             textCooldown.text = "";
             shieldImageCooldown.fillAmount = 1f;
@@ -311,22 +317,22 @@ public class KorgController : PlayerController
 
     public void MissileCooldown()
     {
-        if (currentMissileCooldown > missileCooldown)
+        if (currentMissileCooldown >= missileCooldown)
         {
-            textCooldown.text = "";
-            shieldImageCooldown.fillAmount = 1f;
+            missileText.text = "";
+            missileImageCooldown.fillAmount = 1f;
         }
         else
         {
-            currentShieldCooldown += Time.deltaTime;
-            textCooldown.text = Mathf.RoundToInt(missileCooldown - currentMissileCooldown).ToString();
-            shieldImageCooldown.fillAmount = currentMissileCooldown / missileCooldown;
+            currentMissileCooldown += Time.deltaTime;
+            missileText.text = Mathf.RoundToInt(missileCooldown - currentMissileCooldown).ToString();
+            missileImageCooldown.fillAmount = currentMissileCooldown / missileCooldown;
         }
     }
     public void ShootMissile()
     {
         if (currentMissileCooldown < missileCooldown) return;
-        Instantiate(missilePrefab, shootPos.position, Quaternion.identity);
+        Instantiate(missilePrefab, shootPos.position, Quaternion.Euler(0f,0f,0f));
         currentMissileCooldown = 0f;
     }
 }
