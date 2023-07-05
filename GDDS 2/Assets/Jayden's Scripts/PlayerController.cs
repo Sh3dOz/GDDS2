@@ -106,7 +106,7 @@ public abstract class PlayerController : MonoBehaviour
         if (isInSpace)
         {
             landButton.SetActive(true);
-            spaceButton.SetActive(true);
+            spaceButton.SetActive(false);
             joystick.SetActive(false);
             sr.sprite = playerSprite;
             UpdateSprite();

@@ -26,6 +26,7 @@ public class ShootingEnemy : MonoBehaviour
             {
                 nextFire = Time.time + fireRate;
                 GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
+                bullet.transform.localScale = new Vector3(-1f, 1, 1f);
                 bullet.GetComponent<Bullet>().speed = bulletSpeed;
                 bullet.GetComponent<Bullet>().damage = damage;
                 bulletCount--;

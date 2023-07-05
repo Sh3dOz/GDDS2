@@ -292,7 +292,7 @@ public class AxelController : PlayerController
     public void EMPActivated() 
     {
         if (currentEMPCooldown < empCooldown) return;
-        Instantiate(empEffect, transform.position, Quaternion.identity, this.gameObject.transform);
+        Instantiate(empEffect, transform.position, Quaternion.identity);
         currentEMPCooldown = 0f;
     }
 

@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d7a97c387214f4c9220ec45bc53c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7017532385788158762, guid: 0e0fd8fc3e9960a4e875673044507ece, type: 3}
+  bulletPrefab: {fileID: 3727091252880461974, guid: 2d4fb20814407d94f85065a1715fd374, type: 3}
   bulletCount: 0
   maxBullet: 20
   isReloading: 0

@@ -33,4 +33,14 @@ public class CollisionTrapController : MonoBehaviour
             Debug.Log("ZAPped");
         }
     }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("touch?");
+        if(other.tag == "Player")
+        {
+            Debug.Log("Player?");
+            Destroy(gameObject);
+        }
+    }
 }
