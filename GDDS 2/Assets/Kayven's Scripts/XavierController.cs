@@ -45,9 +45,7 @@ public class XavierController : PlayerController {
         else if (isInSpace) {
             Fire(weaponDamage);
         }
-        if (transform.position.y > top.position.y || transform.position.y < bottom.position.y) {
-            outOfBounds = true;
-        }
+
         if (manager.isWin) canMove = false;
         if (canMove) {
             if (Input.touchCount > 0) {
@@ -65,6 +63,7 @@ public class XavierController : PlayerController {
                                 //hovering = true;
                                 break;
                             case TouchPhase.Moved:
+                                //MouseDetect();
                                 LandBehaviour();
                                 print("Moving Touch " + i);
                                 break;
@@ -121,18 +120,24 @@ public class XavierController : PlayerController {
         }
     }
 
+
+    public void MouseDetect() {
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float newYPosition = touchPosition.y;
+
+        if (touchPosition.y < top.position.y || touchPosition.y > bottom.position.y) {
+            LandBehaviour();
+        }
+    }
     public override void LandBehaviour() {
 
-        if (!outOfBounds) {
-
+ 
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float newYPosition = touchPosition.y;
 
-            Vector3 newPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
-            transform.position = newPosition;
+                Vector3 newPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
+                transform.position = newPosition;
         }
-
-    }
     public void GroundBehaviour() {
         rb.velocity = new Vector2(runSpeed, 0f);
         Debug.Log("haro?");
