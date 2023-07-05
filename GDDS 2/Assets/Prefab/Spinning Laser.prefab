@@ -97,9 +97,89 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1968465696909885097, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968465696909885097, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.38364774
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968465696909885097, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7287893
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968465696909885097, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062586308037266445, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062586308037266445, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.38364774
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062586308037266445, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7287893
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062586308037266445, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571879848221466041, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571879848221466041, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.38364774
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571879848221466041, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7287893
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571879848221466041, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894261368804114751, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894261368804114751, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.38364774
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894261368804114751, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7287893
+      objectReference: {fileID: 0}
+    - target: {fileID: 5894261368804114751, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7940027539404658059, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
       propertyPath: m_Name
       value: Laser trap 1x5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975589111769459308, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975589111769459308, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.b
+      value: 0.38364774
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975589111769459308, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7287893
+      objectReference: {fileID: 0}
+    - target: {fileID: 8975589111769459308, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
