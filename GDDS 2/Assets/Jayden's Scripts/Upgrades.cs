@@ -15,6 +15,16 @@ public class Upgrades : MonoBehaviour {
     public float coinsCollectedAll;
 
     public GameObject korgSkillUpgrade;
+    public GameObject upgradeButton;
+    public GameObject korgUpgrade1;
+    public float upgrade1Value = 20;
+    public GameObject korgUpgrade2;
+    public float upgrade2Value = 100;
+    public GameObject korgUpgrade3;
+    public float upgrade3Value = 1000;
+    public GameObject korrgSkillMaxed;
+
+
     public GameObject axelSkillUpgrade;
     public GameObject xavierSkillUpgrade;
 
@@ -36,13 +46,30 @@ public class Upgrades : MonoBehaviour {
         else if (PlayerPrefs.GetInt(selectedChar + "Passive") > 0)
         {
             PlayerPrefs.SetInt(selectedChar + "Passive", PlayerPrefs.GetInt(selectedChar + "Passive") + 1);
+
         }
     }
 
+
+
     public void SelectingWhoToUpgradeSkills() {
-        if(selectedIndex == 0) {
+        if (selectedIndex == 0) {
             korgSkillUpgrade.SetActive(true);
+            if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0) {
+                korgUpgrade1.SetActive(true);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 1) {
+                korgUpgrade2.SetActive(true);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 2) {
+                korgUpgrade3.SetActive(true);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Skill") >= 3) {
+                upgradeButton.SetActive(false);
+                korrgSkillMaxed.SetActive(true);
+            }
         }
+                    
         if (selectedIndex == 1) {
             axelSkillUpgrade.SetActive(true);
         }
@@ -56,15 +83,33 @@ public class Upgrades : MonoBehaviour {
         if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0)
         {
             PlayerPrefs.SetInt(selectedChar + "Skill", 1);
+            PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade1Value);
+            korgUpgrade2.SetActive(true);
+            korgUpgrade1.SetActive(false);
         }
         else if (PlayerPrefs.GetInt(selectedChar + "Skill") > 0)
         {
-            PlayerPrefs.SetInt(selectedChar + "Skill", PlayerPrefs.GetInt(selectedChar + "Skill") + 1);
+
+            if (PlayerPrefs.GetInt(selectedChar + "Skill") == 2) {
+                PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade2Value);
+                korgUpgrade3.SetActive(true);
+                korgUpgrade2.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 3) {
+                PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade3Value);
+                korgUpgrade3.SetActive(false);
+                upgradeButton.SetActive(false);
+                korrgSkillMaxed.SetActive(true);
+            }
         }
-        if (PlayerPrefs.GetInt(selectedChar + "Skill") >= 2) {
-            korgSkillUpgrade.SetActive(false);
-        }
+        PlayerPrefs.SetInt(selectedChar + "Skill", PlayerPrefs.GetInt(selectedChar + "Skill") + 1);
     }
+
+    public void ResetSkillLevel() {
+        PlayerPrefs.SetInt(selectedChar + "Skill", 0);
+    }
+
+
 
     public void UpgradePowerup()
     {
