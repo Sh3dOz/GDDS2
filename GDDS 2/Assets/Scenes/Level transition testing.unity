@@ -1078,8 +1078,8 @@ MonoBehaviour:
   isCooldown: 0
   shieldImageCooldown: {fileID: 0}
   textCooldown: {fileID: 0}
-  top: {fileID: 0}
-  bottom: {fileID: 0}
+  top: {fileID: 468044133}
+  bottom: {fileID: 834205459}
   outOfBounds: 0
 --- !u!60 &89964858
 PolygonCollider2D:
@@ -4103,7 +4103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468044132}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.70839, y: -0.94, z: -16.747534}
+  m_LocalPosition: {x: -36.70839, y: -0.01, z: -16.747534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6766,7 +6766,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 834205458}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.70839, y: -10.96, z: -16.747534}
+  m_LocalPosition: {x: -36.70839, y: -11.36, z: -16.747534}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
