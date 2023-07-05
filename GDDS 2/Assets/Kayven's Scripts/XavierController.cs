@@ -59,8 +59,6 @@ public class XavierController : PlayerController {
                                 break;
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);
-                                //StopCoroutine("GravWait");
-                                //hovering = true;
                                 break;
                             case TouchPhase.Moved:
                                 //MouseDetect();
@@ -131,13 +129,16 @@ public class XavierController : PlayerController {
     }
     public override void LandBehaviour() {
 
- 
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            float newYPosition = touchPosition.y;
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float newYPosition = touchPosition.y;
 
-                Vector3 newPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
-                transform.position = newPosition;
+
+        if (touchPosition.y < top.position.y && touchPosition.y > bottom.position.y) {
+            Vector3 newPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
+            transform.position = newPosition;
         }
+    }
+        
     public void GroundBehaviour() {
         rb.velocity = new Vector2(runSpeed, 0f);
         Debug.Log("haro?");
