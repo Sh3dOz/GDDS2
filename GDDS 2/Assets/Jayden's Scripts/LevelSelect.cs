@@ -9,6 +9,7 @@ public class LevelSelect : MonoBehaviour
     public string levelSelected;
     [SerializeField] string difficultySelected;
     [SerializeField] Animator UIAnim;
+    [SerializeField] Dropdown difficultySelect;
     [SerializeField] GameObject uiElement;
     [SerializeField] GameObject nextButton, startButton;
     [SerializeField] Image korg, axel, x;

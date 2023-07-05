@@ -6,7 +6,7 @@ public class LevelAnimation : MonoBehaviour
 {
     [SerializeField] Animator UIAnim;
     [SerializeField] GameObject uiElement;
-    [SerializeField] GameObject nextButton, startButton, backButton, backBack;
+    [SerializeField] GameObject BG, startButton, backButton, backBack;
     public void StartNext()
     {
         
@@ -18,7 +18,6 @@ public class LevelAnimation : MonoBehaviour
         uiElement.SetActive(!uiElement.activeInHierarchy);
         backButton.SetActive(!backButton.activeInHierarchy);
         backBack.SetActive(!backBack.activeInHierarchy);
-        nextButton.SetActive(!nextButton.activeInHierarchy);
         startButton.SetActive(!startButton.activeInHierarchy);
         
     }
@@ -32,5 +31,10 @@ public class LevelAnimation : MonoBehaviour
     public void Back()
     {
         UIAnim.SetTrigger("Level");
+    }
+
+    public void EnableBG()
+    {
+        BG.SetActive(!BG.activeInHierarchy);
     }
 }
