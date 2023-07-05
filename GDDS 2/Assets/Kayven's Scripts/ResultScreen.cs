@@ -8,7 +8,7 @@ public class ResultScreen : MonoBehaviour {
 
     public Text score;
     public PlayerController player;
-    public LevelManager theLevelManager;
+    public LevelManager manager;
 
     public Score scoreCounter;
 
@@ -21,6 +21,7 @@ public class ResultScreen : MonoBehaviour {
 
     public float coinsCollected;
     public Text coinsCollectedText;
+    public float coinsCollectedForTotal;
     public float healthLeft;
     public Text healthLeftText;
     public float incrementSpeed;
@@ -43,6 +44,7 @@ public class ResultScreen : MonoBehaviour {
     public AudioSource levelMusic;
     public AudioClip winMusic;
     public bool deadedCoStarted = false;
+    public bool countingStarted = false;
     public AudioSource UI;
     public GameObject uiElements;
 
@@ -52,13 +54,13 @@ public class ResultScreen : MonoBehaviour {
 
         
 
-        theLevelManager = FindObjectOfType<LevelManager>();
+        manager = FindObjectOfType<LevelManager>();
 
         player = FindObjectOfType<PlayerController>();
 
         scoreCounter = FindObjectOfType<Score>();
 
-        coinsCollected = theLevelManager.coinCount;
+        coinsCollected = manager.coinCount;
 
         healthLeft = player.health;
 
@@ -71,26 +73,29 @@ public class ResultScreen : MonoBehaviour {
     void Update() {
 
         // Update target score and related values if needed
-        if (theLevelManager.isWin) {
+        if (manager.isWin) {
 
             healthLeft = player.health;
-            coinsCollectedText.text = "Coins Collected: " + theLevelManager.coinCount;
+            coinsCollectedText.text = "Coins Collected: " + manager.coinCount;
             healthLeftText.text = "Health Left: " + player.health;
             incrementSpeed = targetScore / timeToCalculate;
 
             incrementSpeedForCoins = scoreWithCoins / timeToCalculate;
             incrementSpeedForHealth = scoreWithHealth / timeToCalculate;
 
-            coinsCollected = theLevelManager.coinCount;
+            coinsCollected = manager.coinCount;
 
             targetScore = scoreCounter.currentScore;
             scoreWithCoins = targetScore + (coinsCollected * coinScore);
             scoreWithHealth = targetScore + (coinsCollected * coinScore) + (healthLeft * healthScore);
 
 
+
             StartCoroutine("WinMusic");
 
             StartCoroutine("OpenResults");
+
+            StartCoroutine("CoinCounting");
 
 
             if (currentScoreLoad >= targetScore) {
@@ -130,6 +135,21 @@ public class ResultScreen : MonoBehaviour {
         UI.PlayOneShot(winMusic);
     }
 
+    public IEnumerator CoinCounting() {
+        if (countingStarted) {
+            yield break;
+        }
+        countingStarted = true;
+
+        coinsCollectedForTotal = PlayerPrefs.GetFloat("Coins", 0f); // Retrieve previously stored coins collected value
+
+        coinsCollectedForTotal += manager.coinCount; // Add current coin count to previously stored value
+
+        // Store the updated coins collected value
+        PlayerPrefs.SetFloat("Coins", coinsCollectedForTotal);
+        yield return new WaitForSeconds(0.1f);
+    }
+
     public IEnumerator OpenResults() {
         uiElements.SetActive(false);
         yield return new WaitForSeconds(0.3f);
@@ -138,6 +158,7 @@ public class ResultScreen : MonoBehaviour {
     }
 
     private IEnumerator AddScore() {
+
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the score increment
 
         while (currentScoreLoad < targetScore) {

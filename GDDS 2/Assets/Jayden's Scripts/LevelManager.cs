@@ -45,11 +45,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerController>();
-        spaceship = FindObjectOfType<TransitionToSpaceship>();
-        progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
-        progressSlider.value = 0;
-        healthSlider.value = player.health;
+        landButton.onClick.RemoveAllListeners();
+        spaceButton.onClick.RemoveAllListeners();
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
             PlayerPrefs.SetInt("PlayGame", 1);
@@ -91,6 +88,12 @@ public class LevelManager : MonoBehaviour
                     break;
             }
             Destroy(instructionsCanvas);
+        player = FindObjectOfType<PlayerController>();
+        spaceship = FindObjectOfType<TransitionToSpaceship>();
+        progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
+        progressSlider.value = 0;
+        healthSlider.value = player.health;
+        
         }
     }
 

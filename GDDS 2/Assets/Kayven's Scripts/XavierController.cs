@@ -22,8 +22,6 @@ public class XavierController : PlayerController {
 
     public Transform top;
     public Transform bottom;
-    public bool outOfBounds = false;
-
 
     void Start() {
         myAnim = GetComponent<Animator>();
@@ -36,18 +34,34 @@ public class XavierController : PlayerController {
     }
 
 
+
     // Update is called once per frame
     void Update() {
+
+        if (PlayerPrefs.GetInt("SkillForXavier") == 0) {
+            shieldCooldown = 30;
+        }
+
+        else if (PlayerPrefs.GetInt("SkillForXavier") == 1) {
+            shieldCooldown = 25;
+        }
+        else if (PlayerPrefs.GetInt("SkillForXavier") == 2) {
+            shieldCooldown = 20;
+        }
+        else if (PlayerPrefs.GetInt("SkillForXavier") == 3) {
+            shieldCooldown = 15;
+        }
+
+
         if (onLand) {
+            ShieldCooldown();
             GroundCheck();
             GroundBehaviour();
         }
         else if (isInSpace) {
             Fire(weaponDamage);
         }
-        if (transform.position.y > top.position.y || transform.position.y < bottom.position.y) {
-            outOfBounds = true;
-        }
+
         if (manager.isWin) canMove = false;
         if (canMove) {
             if (Input.touchCount > 0) {
@@ -61,10 +75,9 @@ public class XavierController : PlayerController {
                                 break;
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);
-                                //StopCoroutine("GravWait");
-                                //hovering = true;
                                 break;
                             case TouchPhase.Moved:
+                                //MouseDetect();
                                 LandBehaviour();
                                 print("Moving Touch " + i);
                                 break;
@@ -121,20 +134,60 @@ public class XavierController : PlayerController {
         }
     }
 
+
+    public void MouseDetect() {
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float newYPosition = touchPosition.y;
+
+        if (touchPosition.y < top.position.y || touchPosition.y > bottom.position.y) {
+            LandBehaviour();
+        }
+    }
     public override void LandBehaviour() {
 
-        if (!outOfBounds) {
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float newYPosition = touchPosition.y;
 
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            float newYPosition = touchPosition.y;
 
+        if (touchPosition.y < top.position.y && touchPosition.y > bottom.position.y) {
             Vector3 newPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
             transform.position = newPosition;
         }
-
     }
+        
     public void GroundBehaviour() {
         rb.velocity = new Vector2(runSpeed, 0f);
         Debug.Log("haro?");
+    }
+
+    public void ShieldActive() {
+        StartCoroutine("ShieldEffect");
+    }
+
+    public IEnumerator ShieldEffect() {
+        if (isCooldown) yield break;
+
+        isCooldown = true;
+        currentShieldCooldown = 0;
+        shieldImageCooldown.fillAmount = 0.0f;
+        canBeDamaged = false;
+        Instantiate(shieldPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
+        yield return new WaitForSeconds(shieldDuration);
+        canBeDamaged = true;
+
+        yield return new WaitForSeconds(shieldCooldown);//Cooldown
+    }
+
+    public void ShieldCooldown() {
+        if (currentShieldCooldown > shieldCooldown) {
+            textCooldown.text = "";
+            shieldImageCooldown.fillAmount = 1f;
+            isCooldown = false;
+        }
+        else {
+            currentShieldCooldown += Time.deltaTime;
+            textCooldown.text = Mathf.RoundToInt(shieldCooldown - currentShieldCooldown).ToString();
+            shieldImageCooldown.fillAmount = currentShieldCooldown / shieldCooldown;
+        }
     }
 }

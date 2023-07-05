@@ -71,6 +71,16 @@ public class MainMenu : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
         SceneManager.LoadScene("Main Menu");
     }
+
+    public void Upgrades() {
+        StartCoroutine("Upgrading");
+    }
+
+    public IEnumerator Upgrading() {
+        audioSource.PlayOneShot(pressingSound);
+        yield return new WaitForSeconds(0.2f);
+        SceneManager.LoadScene("Upgrades");
+    }
     // Quit game.
     public void QuitGame() {
         Application.Quit();
