@@ -298,6 +298,9 @@ public class AxelController : PlayerController
 
     public void DeflectBullets()
     {
+        //Cooldown
+        if (currentDeflectCooldown < deflectCooldown) return;
+        //Create Field that deflects 
 
     }
 }
