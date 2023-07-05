@@ -332,7 +332,7 @@ public class KorgController : PlayerController
     public void ShootMissile()
     {
         if (currentMissileCooldown < missileCooldown) return;
-        Instantiate(missilePrefab, shootPos.position, Quaternion.Euler(0f,0f,0f));
+        Instantiate(missilePrefab, shootPos.position, Quaternion.identity);
         currentMissileCooldown = 0f;
     }
 }

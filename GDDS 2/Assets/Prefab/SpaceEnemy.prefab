@@ -137,7 +137,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Sprite: {fileID: 5737912924642817592, guid: 87915640c51dac5428f4eb40c3a9aff9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,8 +161,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7017532385788158762, guid: 0e0fd8fc3e9960a4e875673044507ece, type: 3}
-  offset: {x: -10, y: 0, z: 0}
-  size: 10
   bulletCount: 0
   maxBullet: 20
   isReloading: 0
@@ -213,7 +211,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.77500004
 --- !u!1 &2057689395344670422
 GameObject:
   m_ObjectHideFlags: 0
