@@ -46,6 +46,7 @@ public class Upgrades : MonoBehaviour {
     void Update() {
 
         UpdatePlayerCoins();
+        UpdateSkillLevelStatus();
     }
 
     public void UpdatePlayerCoins() {
@@ -66,7 +67,22 @@ public class Upgrades : MonoBehaviour {
     }
 
 
-
+    public void UpdateSkillLevelStatus() {
+        if (selectedIndex == 2) {
+            if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0) {
+                PlayerPrefs.SetInt("SkillForXavier", 0);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 1) {
+                PlayerPrefs.SetInt("SkillForXavier", 1);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 2) {
+                PlayerPrefs.SetInt("SkillForXavier", 2);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 3) {
+                PlayerPrefs.SetInt("SkillForXavier", 3);
+            }
+        }
+    }
     public void SelectingWhoToUpgradeSkills() {
         // KORG
         if (selectedIndex == 0) {

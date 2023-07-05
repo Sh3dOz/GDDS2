@@ -22,8 +22,6 @@ public class XavierController : PlayerController {
 
     public Transform top;
     public Transform bottom;
-    public bool outOfBounds = false;
-
 
     void Start() {
         myAnim = GetComponent<Animator>();
@@ -36,9 +34,27 @@ public class XavierController : PlayerController {
     }
 
 
+
     // Update is called once per frame
     void Update() {
+
+        if (PlayerPrefs.GetInt("SkillForXavier") == 0) {
+            shieldCooldown = 30;
+        }
+
+        else if (PlayerPrefs.GetInt("SkillForXavier") == 1) {
+            shieldCooldown = 25;
+        }
+        else if (PlayerPrefs.GetInt("SkillForXavier") == 2) {
+            shieldCooldown = 20;
+        }
+        else if (PlayerPrefs.GetInt("SkillForXavier") == 3) {
+            shieldCooldown = 15;
+        }
+
+
         if (onLand) {
+            ShieldCooldown();
             GroundCheck();
             GroundBehaviour();
         }
@@ -142,5 +158,36 @@ public class XavierController : PlayerController {
     public void GroundBehaviour() {
         rb.velocity = new Vector2(runSpeed, 0f);
         Debug.Log("haro?");
+    }
+
+    public void ShieldActive() {
+        StartCoroutine("ShieldEffect");
+    }
+
+    public IEnumerator ShieldEffect() {
+        if (isCooldown) yield break;
+
+        isCooldown = true;
+        currentShieldCooldown = 0;
+        shieldImageCooldown.fillAmount = 0.0f;
+        canBeDamaged = false;
+        Instantiate(shieldPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
+        yield return new WaitForSeconds(shieldDuration);
+        canBeDamaged = true;
+
+        yield return new WaitForSeconds(shieldCooldown);//Cooldown
+    }
+
+    public void ShieldCooldown() {
+        if (currentShieldCooldown > shieldCooldown) {
+            textCooldown.text = "";
+            shieldImageCooldown.fillAmount = 1f;
+            isCooldown = false;
+        }
+        else {
+            currentShieldCooldown += Time.deltaTime;
+            textCooldown.text = Mathf.RoundToInt(shieldCooldown - currentShieldCooldown).ToString();
+            shieldImageCooldown.fillAmount = currentShieldCooldown / shieldCooldown;
+        }
     }
 }
