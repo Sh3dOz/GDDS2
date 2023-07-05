@@ -79,27 +79,43 @@ public class AxelController : PlayerController
 
                     if (onLand)
                     {
+                        if (!canInput) return;
                         switch (t.phase)
                         {
                             case TouchPhase.Began:
                                 print("Began Touch " + i);
+                                break;
+                            case TouchPhase.Stationary:
+                                print("Stationary Touch " + i);
                                 touchTimer += Time.deltaTime;
-                                LandBehaviour();
-                                if(touchTimer > 0.3f)
+                                if (isGrounded)
+                                {
+                                    touchTimer += Time.deltaTime;
+                                    LandBehaviour();
+                                }
+                                else if (touchTimer > 0.3f)
                                 {
                                     if (hoveringCooldown) return;
                                     isHovering = true;
                                     HoldBehaviour();
                                 }
-                                break;
-                            case TouchPhase.Stationary:
-                                print("Stationary Touch " + i);
+                                else
+                                {
+                                    rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+                                }
                                 break;
                             case TouchPhase.Moved:
                                 print("Moving Touch " + i);
                                 break;
                             case TouchPhase.Ended:
                                 print("Ended Touch " + i);
+                                touchTimer = 0f;
+                                isJumping = true;
+                                LandBehaviour();
+                                isHovering = false;
+                                hoveringCounter = 0f;
+                                rb.gravityScale = 1f;
+                                jumpTime = 0f;
                                 break;
                             case TouchPhase.Canceled:
                                 print("Cancelled Touch " + i);
