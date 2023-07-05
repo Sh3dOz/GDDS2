@@ -880,6 +880,7 @@ MonoBehaviour:
   sr: {fileID: 0}
   playerSprite: {fileID: -5597136377667715244, guid: cdcb398939d531d4588acbf0d4a30521, type: 3}
   canMove: 1
+  touchTimer: 0
   health: 3
   isDamaged: 0
   col: {fileID: 0}
@@ -910,6 +911,9 @@ MonoBehaviour:
   jumpHigher: 0
   jumpForce: 12
   jumpTime: 0
+  isHovering: 0
+  hoveringCooldown: 0
+  canInput: 1
 --- !u!50 &1608411068
 Rigidbody2D:
   serializedVersion: 4

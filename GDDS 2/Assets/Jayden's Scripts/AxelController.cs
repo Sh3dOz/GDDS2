@@ -34,6 +34,7 @@ public class AxelController : PlayerController
     [SerializeField] bool hoveringCooldown;
     float hoverCooldown = 2.5f;
     float hoverDuration = 3f;
+    [SerializeField] bool canInput;
     // Start is called before the first frame update
     void Start()
     {
@@ -141,6 +142,7 @@ public class AxelController : PlayerController
                 }
                 if (onLand)
                 {
+                    if (!canInput) return;
                     if (Input.GetKey(KeyCode.Space))
                     {
                         touchTimer += Time.deltaTime;
@@ -168,6 +170,7 @@ public class AxelController : PlayerController
                         isHovering = false;
                         hoveringCounter = 0f;
                         rb.gravityScale = 1f;
+                        jumpTime = 0f;
                     }
                     GroundBehaviour();
                     
@@ -188,9 +191,11 @@ public class AxelController : PlayerController
     {
         jumpTime += Time.deltaTime;
 
+        if (isHovering) return;
+        if (hoveringCooldown) return;
         if (isJumping == true)
         {
-            rb.velocity = new Vector3(0f, jumpForce, 0f);
+            rb.velocity = new Vector3(runSpeed, jumpForce, 0f);
             
         }
     }
@@ -201,16 +206,16 @@ public class AxelController : PlayerController
         {
             rb.velocity = new Vector2(runSpeed, rb.velocity.y);
             isJumping = false;
-        }
-        if (hoveringCooldown)
-        {
-            Debug.Log("hovering works?");
-            touchTimer = 0f;
-            hoverCooldown -= Time.deltaTime;
-            if(hoverCooldown <= 0)
+            if (hoveringCooldown)
             {
-                hoverCooldown = 2.5f;
-                hoveringCooldown = false;
+                canInput = true;
+                touchTimer = 0f;
+                hoverCooldown -= Time.deltaTime;
+                if (hoverCooldown <= 0)
+                {
+                    hoverCooldown = 2.5f;
+                    hoveringCooldown = false;
+                }
             }
         }
     }
@@ -223,14 +228,17 @@ public class AxelController : PlayerController
             if (hoveringCounter < hoverDuration)
             {
                 hoveringCounter += Time.deltaTime;
+                rb.gravityScale = 0f;
+                rb.velocity = new Vector2(runSpeed, 0f);
             }
             else
             {
                 isHovering = false;
                 hoveringCounter = 0f;
                 hoveringCooldown = true;
+                canInput = false;
+                rb.gravityScale = 1f;
             }
-            rb.gravityScale = 0f;
         }
     }
 
