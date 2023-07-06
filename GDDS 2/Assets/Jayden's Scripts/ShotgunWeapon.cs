@@ -9,10 +9,12 @@ public class ShotgunWeapon : Weapon
         if (Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
-            GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.Euler(-45f, 0f, 0f));
+            GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.Euler(0f, 0f, -15f));
             bullet.GetComponent<Bullet>().damage = damage;
-            bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.Euler(45f,0f,0f));
+            bullet.tag = "Player";
+            bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.Euler(0f,0f,15f));
             bullet.GetComponent<Bullet>().damage = damage;
+            bullet.tag = "Player";
         }
     }
 }

@@ -29,6 +29,7 @@ public class ShootingEnemy : MonoBehaviour
                 bullet.transform.localScale = new Vector3(-1f, 1, 1f);
                 bullet.GetComponent<Bullet>().speed = bulletSpeed;
                 bullet.GetComponent<Bullet>().damage = damage;
+                bullet.tag = "Enemy";
                 bulletCount--;
             }
         }

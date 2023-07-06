@@ -11,6 +11,7 @@ public class SharpelWeapon : Weapon
             nextFire = Time.time + fireRate;
             GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().damage = damage;
+            bullet.tag = "Player";
         }
     }
 }

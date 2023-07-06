@@ -20,7 +20,7 @@ public class AxelController : PlayerController
     public float deflectCooldown = 30f;
     float currentDeflectCooldown;
     public float deflectDuration = 5f;
-    public GameObject defectEffect;
+    public GameObject deflectEffect;
     [SerializeField] Image deflectImageCooldown;
     [SerializeField] TMP_Text deflectText;
 
@@ -278,13 +278,13 @@ public class AxelController : PlayerController
     {
         if (currentDeflectCooldown > deflectCooldown)
         {
-            textCooldown.text = "";
+            deflectText.text = "";
             deflectImageCooldown.fillAmount = 1f;
         }
         else
         {
             currentDeflectCooldown += Time.deltaTime;
-            textCooldown.text = Mathf.RoundToInt(deflectCooldown - currentDeflectCooldown).ToString();
+            deflectText.text = Mathf.RoundToInt(deflectCooldown - currentDeflectCooldown).ToString();
             deflectImageCooldown.fillAmount = currentDeflectCooldown / deflectCooldown;
         }
     }
@@ -298,9 +298,12 @@ public class AxelController : PlayerController
 
     public void DeflectBullets()
     {
+        Debug.Log("work?");
         //Cooldown
         if (currentDeflectCooldown < deflectCooldown) return;
         //Create Field that deflects 
-
+        GameObject deflectShield = Instantiate(deflectEffect, transform.position, Quaternion.identity, this.transform);
+        Destroy(deflectShield, deflectDuration);
+        currentDeflectCooldown = 0f;
     }
 }

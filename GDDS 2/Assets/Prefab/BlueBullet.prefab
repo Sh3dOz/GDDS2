@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3727091252880461975}
   - component: {fileID: 2108159019609301822}
   - component: {fileID: 5686446688408098667}
+  - component: {fileID: 325529336615703542}
   m_Layer: 0
   m_Name: BlueBullet
   m_TagString: Untagged
@@ -141,3 +142,46 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!60 &325529336615703542
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3727091252880461974}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.1416667, y: 0.40833333}
+    newSize: {x: 1.1416667, y: 0.40833333}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.57698554, y: 0.059081554}
+      - {x: 0.52425116, y: 0.12939405}
+      - {x: 0.43636054, y: 0.1645503}
+      - {x: 0.31331366, y: 0.19970655}
+      - {x: -0.07340509, y: 0.19970655}
+      - {x: -0.15250665, y: 0.18212843}
+      - {x: -0.33707696, y: 0.10302687}
+      - {x: -0.54801446, y: 0.023925304}
+      - {x: -0.5655926, y: -0.011230946}
+      - {x: -0.5655926, y: -0.046387196}
+      - {x: -0.53043634, y: -0.06396532}
+      - {x: -0.40738946, y: -0.09912157}
+      - {x: -0.15250665, y: -0.17822313}
+      - {x: -0.09098321, y: -0.20459032}
+      - {x: 0.22542304, y: -0.20459032}
+      - {x: 0.4187824, y: -0.16064501}
+      - {x: 0.5594074, y: -0.06396532}
+      - {x: 0.57698554, y: -0.011230946}
