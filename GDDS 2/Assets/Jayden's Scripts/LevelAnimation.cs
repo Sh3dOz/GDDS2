@@ -18,7 +18,6 @@ public class LevelAnimation : MonoBehaviour
         uiElement.SetActive(!uiElement.activeInHierarchy);
         backButton.SetActive(!backButton.activeInHierarchy);
         backBack.SetActive(!backBack.activeInHierarchy);
-        startButton.SetActive(!startButton.activeInHierarchy);
         
     }
     public void Next()
@@ -36,5 +35,6 @@ public class LevelAnimation : MonoBehaviour
     public void EnableBG()
     {
         BG.SetActive(!BG.activeInHierarchy);
+        startButton.SetActive(false);
     }
 }

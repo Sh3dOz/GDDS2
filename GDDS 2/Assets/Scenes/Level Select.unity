@@ -241,9 +241,8 @@ MonoBehaviour:
   levelSelected: 
   difficultySelected: 
   UIAnim: {fileID: 213550672}
-  difficultySelect: {fileID: 0}
+  difficultySelect: {fileID: 1227063166}
   uiElement: {fileID: 213550670}
-  nextButton: {fileID: 0}
   startButton: {fileID: 1344292290}
   korg: {fileID: 564396879}
   axel: {fileID: 941610053}
@@ -1941,10 +1940,10 @@ MonoBehaviour:
       - m_Target: {fileID: 40567600}
         m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
         m_MethodName: DifficultySelect
-        m_Mode: 5
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1227063166}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Dropdown, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2279,7 +2278,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1344292293}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 40567600}
+        m_TargetAssemblyTypeName: LevelSelect, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1344292293
 MonoBehaviour:
   m_ObjectHideFlags: 0

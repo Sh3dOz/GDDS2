@@ -11,7 +11,7 @@ public class LevelSelect : MonoBehaviour
     [SerializeField] Animator UIAnim;
     [SerializeField] Dropdown difficultySelect;
     [SerializeField] GameObject uiElement;
-    [SerializeField] GameObject nextButton, startButton;
+    [SerializeField] GameObject startButton;
     [SerializeField] Image korg, axel, x;
 
     public void Start()
@@ -28,15 +28,16 @@ public class LevelSelect : MonoBehaviour
         {
             x.color = new Color(0, 0, 0);
         }
+        difficultySelected = difficultySelect.options[difficultySelect.value].text;
     }
     public void StageSelect(string level)
     {
         levelSelected = level;
     }
 
-    public void DifficultySelect(string difficulty)
+    public void DifficultySelect(Dropdown dropdown)
     {
-        difficultySelected = difficulty;
+        difficultySelected = dropdown.options[dropdown.value].text;
     }
 
     public void StartLevel()
@@ -51,6 +52,8 @@ public class LevelSelect : MonoBehaviour
 
     public void CharacterSelect(string name)
     {
+        if (PlayerPrefs.GetInt(name) != 1) return;
         PlayerPrefs.SetString("Character", name);
+        startButton.SetActive(true);
     }
 }
