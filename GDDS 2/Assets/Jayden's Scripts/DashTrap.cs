@@ -81,6 +81,10 @@ public class DashTrap : MonoBehaviour
             myAnim.enabled = true;
             StartCoroutine("DashWait");
         }
+        else if(collision.tag == "EMP")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

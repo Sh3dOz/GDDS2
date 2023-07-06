@@ -25,11 +25,11 @@ public class BasicEnemy : ShootingEnemy
         }
     }
 
-    private void OnParticleCollision(GameObject other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.transform.parent.GetComponent<AxelController>())
+        if(collision.tag == "EMP")
         {
-            isActivated = false;
+            Destroy(this.gameObject);
         }
     }
 }

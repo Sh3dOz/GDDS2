@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class ParticleTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    float moveSpeed = 20f;
+    Rigidbody2D rb;
+    private void Start()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
+    }
+    private void Update()
+    {
+        rb.velocity = new Vector2(moveSpeed, 0f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    private void OnParticleCollision(GameObject other)
-    {
-        Debug.Log(other);
-        if(other.layer == 9)
+        Debug.Log("Work?");
+        if(other.gameObject.layer == 9)
         {
-            Destroy(other.transform.parent.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

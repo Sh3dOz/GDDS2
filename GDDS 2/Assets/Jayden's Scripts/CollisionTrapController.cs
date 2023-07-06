@@ -32,15 +32,9 @@ public class CollisionTrapController : MonoBehaviour
             audioS.PlayOneShot(shockSound);
             Debug.Log("ZAPped");
         }
-    }
-
-    private void OnParticleCollision(GameObject other)
-    {
-        Debug.Log("touch?");
-        if(other.tag == "Player")
+        if(collision.tag == "EMP")
         {
-            Debug.Log("Player?");
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

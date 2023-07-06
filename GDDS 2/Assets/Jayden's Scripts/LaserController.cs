@@ -82,6 +82,10 @@ public class LaserController : MonoBehaviour
                 transform.position = spawnPosition.position;
                 transform.parent = FindObjectOfType<Camera>().gameObject.transform;
             }
+            if(collision.gameObject.layer == 9)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 

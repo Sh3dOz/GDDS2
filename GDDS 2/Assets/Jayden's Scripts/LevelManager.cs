@@ -50,9 +50,7 @@ public class LevelManager : MonoBehaviour
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
             PlayerPrefs.SetInt("PlayGame", 1);
-            //Disable other characters
-            //axel.SetActive(false);
-            //x.SetActive(false);
+            korg.SetActive(true);
             StartCoroutine(Instructions());
         }
         else
@@ -66,6 +64,7 @@ public class LevelManager : MonoBehaviour
                     spaceButton.image.overrideSprite = missileIcon;
                     spaceCooldown.overrideSprite = missileCooldown;
                     cam.Follow = korg.transform;
+                    //ResultScreen.player = korg.GetComponent<PlayerController>();
                     break;
                 case "Axel":
                     axel.SetActive(true);
@@ -74,6 +73,7 @@ public class LevelManager : MonoBehaviour
                     spaceButton.image.overrideSprite = deflectIcon;
                     spaceCooldown.overrideSprite = deflectCooldown;
                     cam.Follow = axel.transform;
+                    //ResultScreen.player = axel.GetComponent<PlayerController>();
                     break;
                 case "X":
                     x.SetActive(true);
@@ -85,6 +85,7 @@ public class LevelManager : MonoBehaviour
                     spaceButton.image.overrideSprite = missileIcon;
                     spaceCooldown.overrideSprite = missileCooldown;
                     cam.Follow = korg.transform;
+                    //ResultScreen.player = korg.GetComponent<PlayerController>();
                     break;
             }
             Destroy(instructionsCanvas);
