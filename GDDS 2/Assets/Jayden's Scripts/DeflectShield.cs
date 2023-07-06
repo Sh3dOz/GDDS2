@@ -20,13 +20,19 @@ public class DeflectShield : MonoBehaviour
     {
         if (collision.GetComponent<Bullet>())
         {
-            Bullet bullet = collision.GetComponent<Bullet>();
-            Deflect(bullet);
+            if (collision.tag == "Enemy")
+            {
+                Bullet bullet = collision.GetComponent<Bullet>();
+                Deflect(bullet);
+            }
         }
     }
 
     void Deflect(Bullet bullet)
     {
         bullet.speed = bullet.speed * -1;
+        bullet.transform.localScale = new Vector3(1f, 1f, 1f);
+        bullet.tag = "Player";
+        bullet.timeSpawned = 0f;
     }
 }

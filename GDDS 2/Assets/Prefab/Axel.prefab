@@ -268,7 +268,7 @@ MonoBehaviour:
   currentWeapon: 0
   weaponDamage: 2
   joystick: {fileID: 0}
-  spaceShip: {fileID: 0}
+  spaceShip: {fileID: 21300000, guid: bdb1659e1e39b35429a3631670f53e3a, type: 3}
   sr: {fileID: 0}
   playerSprite: {fileID: -5597136377667715244, guid: cdcb398939d531d4588acbf0d4a30521, type: 3}
   canMove: 1
