@@ -22,7 +22,6 @@ public class ParticleTrigger : MonoBehaviour
         if(other.layer == 9)
         {
             Destroy(other.transform.parent.gameObject);
-            Destroy(this.gameObject);
         }
     }
 }

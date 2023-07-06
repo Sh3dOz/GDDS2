@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Laser trap 1x5
       objectReference: {fileID: 0}
+    - target: {fileID: 6027284141333551364, guid: 14a2418cd576a4547abd14876de428c9, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6582431239514590572, guid: 14a2418cd576a4547abd14876de428c9, type: 3}
       propertyPath: m_RootOrder
       value: 0
