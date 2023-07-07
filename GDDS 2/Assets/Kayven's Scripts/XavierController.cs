@@ -11,38 +11,45 @@ public class XavierController : PlayerController {
     public float gravScale;
     Animator myAnim;
 
-    [Header("Land Shield")]
-    public float shieldCooldown = 30f;
-    public float currentShieldCooldown;
-    public float shieldDuration = 5f;
-    public GameObject shieldPrefab;
+    [Header("Metorite")]
+    public float metoriteCooldown = 30f;
+    public float currentMetoriteCooldown;
+    public GameObject metoritePrefab;
+    int metoriteCharge;
+    int maxCharge = 3;
+    public float metorSpeed;
+    float metorDuration = 10f;
+    public Transform metorParent;
+    public List<Transform> metoritePos = new List<Transform>();
+    List<GameObject> metorites = new List<GameObject>();
     [SerializeField] bool isCooldown;
-    [SerializeField] Image shieldImageCooldown;
-    [SerializeField] TMP_Text textCooldown;
+    [SerializeField] Image metoriteImageCooldown;
+    [SerializeField] TMP_Text textCooldown, amountCharge;
 
     public Transform top;
     public Transform bottom;
 
     void Start() {
+        spaceButton.GetComponent<Button>().onClick.AddListener(() => LaunchMetorite());
         myAnim = GetComponent<Animator>();
         if (PlayerPrefs.GetInt("SkillForXavier") == 0)
         {
-            shieldCooldown = 30;
+            metoriteCooldown = 30;
         }
 
         else if (PlayerPrefs.GetInt("SkillForXavier") == 1)
         {
-            shieldCooldown = 25;
+            metoriteCooldown = 25;
         }
         else if (PlayerPrefs.GetInt("SkillForXavier") == 2)
         {
-            shieldCooldown = 20;
+            metoriteCooldown = 20;
         }
         else if (PlayerPrefs.GetInt("SkillForXavier") == 3)
         {
-            shieldCooldown = 15;
+            metoriteCooldown = 15;
         }
-        currentShieldCooldown = shieldCooldown;
+        currentMetoriteCooldown = metoriteCooldown;
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<LevelManager>();
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
@@ -54,13 +61,15 @@ public class XavierController : PlayerController {
 
     // Update is called once per frame
     void Update() {
-
+        myAnim.SetBool("OnLand", onLand);
+        myAnim.SetBool("InSpace", isInSpace);
 
         if (onLand) {
             GroundBehaviour();
         }
         else if (isInSpace) {
             Fire(weaponDamage);
+            MetoriteCooldown();
         }
 
         if (manager.isWin) canMove = false;
@@ -119,7 +128,7 @@ public class XavierController : PlayerController {
                 }
                 if (onLand) {
                     GroundBehaviour();
-                    if (Input.GetKeyDown(KeyCode.Space)) {
+                    if (Input.GetMouseButton(0)) {
                         LandBehaviour();
                     }
                 }
@@ -158,37 +167,38 @@ public class XavierController : PlayerController {
         
     public void GroundBehaviour() {
         rb.velocity = new Vector2(runSpeed, 0f);
-        Debug.Log("haro?");
     }
 
-    public void ShieldActive() {
-        StartCoroutine("ShieldEffect");
-    }
 
-    public IEnumerator ShieldEffect() {
-        if (isCooldown) yield break;
-
-        isCooldown = true;
-        currentShieldCooldown = 0;
-        shieldImageCooldown.fillAmount = 0.0f;
-        canBeDamaged = false;
-        Instantiate(shieldPrefab, transform.position, Quaternion.identity, this.gameObject.transform);
-        yield return new WaitForSeconds(shieldDuration);
-        canBeDamaged = true;
-
-        yield return new WaitForSeconds(shieldCooldown);//Cooldown
-    }
-
-    public void ShieldCooldown() {
-        if (currentShieldCooldown > shieldCooldown) {
+    void MetoriteCooldown()
+    {
+        if (currentMetoriteCooldown >= metoriteCooldown)
+        {
             textCooldown.text = "";
-            shieldImageCooldown.fillAmount = 1f;
-            isCooldown = false;
+            metoriteImageCooldown.fillAmount = 1f;
+            if (metoriteCharge >= maxCharge) return;
+            GameObject metor = Instantiate(metoritePrefab, metoritePos[metoriteCharge].position, Quaternion.identity, metoritePos[metoriteCharge]);
+            metorites.Add(metor);
+            metor.GetComponent<MetoriteRotate>().pivotObject = metorParent.gameObject;
+            metoriteCharge++;
+            amountCharge.text = metoriteCharge.ToString();
+            currentMetoriteCooldown = 0f;
         }
-        else {
-            currentShieldCooldown += Time.deltaTime;
-            textCooldown.text = Mathf.RoundToInt(shieldCooldown - currentShieldCooldown).ToString();
-            shieldImageCooldown.fillAmount = currentShieldCooldown / shieldCooldown;
+        else
+        {
+            currentMetoriteCooldown += Time.deltaTime;
+            textCooldown.text = Mathf.RoundToInt(metoriteCooldown - currentMetoriteCooldown).ToString();
+            metoriteImageCooldown.fillAmount = currentMetoriteCooldown / metoriteCooldown;
         }
     }
+
+    public void LaunchMetorite()
+    {
+        if (metoriteCharge <= 0) return;
+        GameObject metorite = metorites[metoriteCharge - 1];
+        metorite.GetComponent<MetoriteController>().isFired = true;
+        Destroy(metorite, metorDuration);
+        metoriteCharge--;
+    }
+
 }

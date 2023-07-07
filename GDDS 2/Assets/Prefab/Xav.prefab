@@ -814,13 +814,16 @@ MonoBehaviour:
   UI: {fileID: 0}
   damageSound: {fileID: 0}
   gravScale: 0
-  shieldCooldown: 30
-  currentShieldCooldown: 0
-  shieldDuration: 5
-  shieldPrefab: {fileID: 9108538028449765855, guid: 688804245b5dfde4f9ef203458734fe0, type: 3}
+  metoriteCooldown: 30
+  currentMetoriteCooldown: 0
+  metoritePrefab: {fileID: 967715295658764306, guid: 3f44ef990e48b204588e8da50c5bdaf6, type: 3}
+  metorSpeed: 0
+  metorParent: {fileID: 0}
+  metoritePos: []
   isCooldown: 0
-  shieldImageCooldown: {fileID: 0}
+  metoriteImageCooldown: {fileID: 0}
   textCooldown: {fileID: 0}
+  amountCharge: {fileID: 0}
   top: {fileID: 0}
   bottom: {fileID: 0}
 --- !u!1 &8437788029684458383
