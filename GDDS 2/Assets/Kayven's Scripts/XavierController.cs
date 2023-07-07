@@ -25,6 +25,23 @@ public class XavierController : PlayerController {
 
     void Start() {
         myAnim = GetComponent<Animator>();
+        if (PlayerPrefs.GetInt("SkillForXavier") == 0)
+        {
+            shieldCooldown = 30;
+        }
+
+        else if (PlayerPrefs.GetInt("SkillForXavier") == 1)
+        {
+            shieldCooldown = 25;
+        }
+        else if (PlayerPrefs.GetInt("SkillForXavier") == 2)
+        {
+            shieldCooldown = 20;
+        }
+        else if (PlayerPrefs.GetInt("SkillForXavier") == 3)
+        {
+            shieldCooldown = 15;
+        }
         currentShieldCooldown = shieldCooldown;
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<LevelManager>();
@@ -38,24 +55,8 @@ public class XavierController : PlayerController {
     // Update is called once per frame
     void Update() {
 
-        if (PlayerPrefs.GetInt("SkillForXavier") == 0) {
-            shieldCooldown = 30;
-        }
-
-        else if (PlayerPrefs.GetInt("SkillForXavier") == 1) {
-            shieldCooldown = 25;
-        }
-        else if (PlayerPrefs.GetInt("SkillForXavier") == 2) {
-            shieldCooldown = 20;
-        }
-        else if (PlayerPrefs.GetInt("SkillForXavier") == 3) {
-            shieldCooldown = 15;
-        }
-
 
         if (onLand) {
-            ShieldCooldown();
-            GroundCheck();
             GroundBehaviour();
         }
         else if (isInSpace) {

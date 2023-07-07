@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     public Slider healthSlider;
     public Button landButton, spaceButton;
     public Image landCooldown, spaceCooldown;
+    public GameObject spaceCharge;
     public Transform startPos;
     public Transform endPos;
 
@@ -38,6 +39,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject axel;
     [SerializeField] Sprite empIcon, empCooldown, deflectIcon, deflectCooldown;
     [SerializeField] GameObject x;
+    [SerializeField] Sprite metoriteIcon, metoriteCooldown;
 
     public bool deadedCoStarted = false;
     public TransitionToSpaceship spaceship;
@@ -75,6 +77,12 @@ public class LevelManager : MonoBehaviour
                     break;
                 case "X":
                     x.SetActive(true);
+                    landButton.image.overrideSprite = null;
+                    landCooldown.overrideSprite = null;
+                    spaceButton.image.overrideSprite = metoriteIcon;
+                    spaceCooldown.overrideSprite = metoriteCooldown;
+                    spaceCharge.SetActive(true);
+                    cam.Follow = x.transform;
                     break;
                 default:
                     korg.SetActive(true);
@@ -105,11 +113,18 @@ public class LevelManager : MonoBehaviour
 
     void progressCheck()
     {
-        progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
-        if (progressSlider.value == progressSlider.maxValue)
+        if (player.onLand)
         {
-            isWin = true;
-            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+            progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
+            if (progressSlider.value == progressSlider.maxValue)
+            {
+                isWin = true;
+                PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+            }
+        }
+        else if (player.isInSpace)
+        {
+
         }
     }
 
