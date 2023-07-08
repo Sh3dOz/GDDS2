@@ -6673,6 +6673,7 @@ GameObject:
   - component: {fileID: 877110514}
   - component: {fileID: 877110513}
   - component: {fileID: 877110515}
+  - component: {fileID: 877110516}
   m_Layer: 5
   m_Name: Xavier
   m_TagString: Untagged
@@ -6756,6 +6757,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &877110516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877110511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657bd6fecdea83b4a998443d4cef08df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &891558356
 GameObject:
   m_ObjectHideFlags: 0
@@ -11182,6 +11195,7 @@ GameObject:
   - component: {fileID: 1669108988}
   - component: {fileID: 1669108987}
   - component: {fileID: 1669108989}
+  - component: {fileID: 1669108990}
   m_Layer: 5
   m_Name: Korg
   m_TagString: Untagged
@@ -11265,6 +11279,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1669108990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669108985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a8fdcf8cad16345a235a9980575d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1703527253
 GameObject:
   m_ObjectHideFlags: 0
@@ -14082,6 +14108,7 @@ GameObject:
   - component: {fileID: 1982291257}
   - component: {fileID: 1982291256}
   - component: {fileID: 1982291258}
+  - component: {fileID: 1982291259}
   m_Layer: 5
   m_Name: Axel
   m_TagString: Untagged
@@ -14165,6 +14192,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1982291259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982291254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5fbe96937513b144898b57be276e8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1986731678
 GameObject:
   m_ObjectHideFlags: 0
