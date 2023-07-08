@@ -136,52 +136,38 @@ public class Upgrades : MonoBehaviour {
         }
     }
 
-            public void UpdatePassiveLevelStatus() {
-                if (selectedIndex == 0) {
-                    if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
-                        PlayerPrefs.SetInt("PassiveForKorg", 0);
-                    }
-                    else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 1) {
-                        PlayerPrefs.SetInt("PassiveForKorg", 1);
-                    }
-                    else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 2) {
-                        PlayerPrefs.SetInt("PassiveForKorg", 2);
-                    }
-                    else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 3) {
-                        PlayerPrefs.SetInt("PassiveForKorg", 3);
-                    }
-                }
-
-                if (selectedIndex == 1) {
-                    if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
-                        PlayerPrefs.SetInt("PassiveForAxel", 0);
-                    }
-                    else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 1) {
-                        PlayerPrefs.SetInt("PassiveForAxel", 1);
-                    }
-                    else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 2) {
-                        PlayerPrefs.SetInt("PassiveForAxel", 2);
-                    }
-                    else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 3) {
-                        PlayerPrefs.SetInt("PassiveForAxel", 3);
-                    }
-                }
-
-                if (selectedIndex == 2) {
-                    if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
-                        PlayerPrefs.SetInt("PassiveForXavier", 0);
-                    }
-                    else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 1) {
-                        PlayerPrefs.SetInt("PassiveForXavier", 1);
-                    }
-                    else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 2) {
-                        PlayerPrefs.SetInt("PassiveForXavier", 2);
-                    }
-                    else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 3) {
-                        PlayerPrefs.SetInt("PassiveForXavier", 3);
-                    }
-                }
+    public void UpdatePassiveLevelStatus() {
+        if (selectedIndex == 0) {
+            if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
+                PlayerPrefs.SetInt("PassiveForKorg", 0);
             }
+            else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 1) {
+                PlayerPrefs.SetInt("PassiveForKorg", 1);
+
+            }
+        }
+
+        if (selectedIndex == 1) {
+            if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
+                PlayerPrefs.SetInt("PassiveForAxel", 0);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 1) {
+                PlayerPrefs.SetInt("PassiveForAxel", 1);
+
+            }
+        }
+
+        if (selectedIndex == 2) {
+            if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
+                PlayerPrefs.SetInt("PassiveForXavier", 0);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Passive") == 1) {
+                PlayerPrefs.SetInt("PassiveForXavier", 1);
+            }
+        }
+    }
+                
+            
 
             public void SelectingWhoToUpgradePassive() {
                 // KORG

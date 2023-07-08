@@ -8,6 +8,8 @@ using Cinemachine;
 
 public class LevelManager : MonoBehaviour
 {
+    public Coin[] coins;
+    public Score score;
     public bool isAlive;
     public bool isWin;
     public bool isBossLevel;
@@ -51,6 +53,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        coins = FindObjectsOfType<Coin>();
+        score = FindObjectOfType<Score>();
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
             PlayerPrefs.SetInt("PlayGame", 1);
@@ -69,6 +73,10 @@ public class LevelManager : MonoBehaviour
                     spaceCooldown.overrideSprite = missileCooldown;
                     cam.Follow = korg.transform;
                     //ResultScreen.player = korg.GetComponent<PlayerController>();
+                    if(PlayerPrefs.GetInt("PassiveForKorg") == 1) {
+                        score.scoreDeducted = 29;
+                        score.newScoreDeducted = 60;
+                    }
                     break;
                 case "Axel":
                     axel.SetActive(true);
@@ -78,7 +86,10 @@ public class LevelManager : MonoBehaviour
                     spaceCooldown.overrideSprite = deflectCooldown;
                     cam.Follow = axel.transform;
                     //ResultScreen.player = axel.GetComponent<PlayerController>();
-                    break;
+                    if (PlayerPrefs.GetInt("PassiveForAxel") == 1) {
+                        player.health = 5;
+                    }
+                        break;
                 case "X":
                     x.SetActive(true);
                     landButton.image.sprite = null;
@@ -89,7 +100,12 @@ public class LevelManager : MonoBehaviour
                     spaceCooldown.sprite = metoriteCooldown;
                     spaceCharge.SetActive(true);
                     cam.Follow = x.transform;
-                    break;
+                    if (PlayerPrefs.GetInt("PassiveForXavier") == 1) {
+                        foreach(Coin coin in coins) {
+                            coin.coinValue = 2;
+                        }
+                    }
+                        break;
                 default:
                     korg.SetActive(true);
                     landButton.image.overrideSprite = shieldIcon;

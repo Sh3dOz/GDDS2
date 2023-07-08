@@ -55,6 +55,33 @@ public class KorgController : PlayerController
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         // Get the SpriteRenderer component
         sr = GetComponent<SpriteRenderer>();
+
+        if (PlayerPrefs.GetInt("PowerupForKorg") == 0) {
+            shieldCooldown = 30;
+        }
+        else if (PlayerPrefs.GetInt("PowerupForKorg") == 1) {
+            shieldCooldown = 25;
+        }
+        else if (PlayerPrefs.GetInt("PowerupForKorg") == 2) {
+            shieldCooldown = 20;
+        }
+        else if (PlayerPrefs.GetInt("PowerupForKorg") == 3) {
+            shieldCooldown = 15;
+        }
+
+
+        if (PlayerPrefs.GetInt("SkillForKorg") == 0) {
+            missileCooldown = 30;
+        }
+        else if (PlayerPrefs.GetInt("SkillForKorg") == 1) {
+            missileCooldown = 25;
+        }
+        else if (PlayerPrefs.GetInt("SkillForKorg") == 2) {
+            missileCooldown = 20;
+        }
+        else if (PlayerPrefs.GetInt("SkillForKorg") == 3) {
+            missileCooldown = 15;
+        }
     }
 
     // Update is called once per frame
