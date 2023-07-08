@@ -16,9 +16,11 @@ public class Upgrades : MonoBehaviour {
 
     int selectedIndex;
     string selectedChar;
+
     public Text coinsCollectedText;
     public float coinsCollectedAll;
 
+    public AudioSource audioS;
 
     [Header("Passives")]
     public float passiveValue = 100;
@@ -113,7 +115,7 @@ public class Upgrades : MonoBehaviour {
 
     public void UpdatePlayerCoins() {
         coinsCollectedAll = PlayerPrefs.GetFloat("Coins");
-        coinsCollectedText.text = "Coins Collected:" + coinsCollectedAll;
+        coinsCollectedText.text = "=" + coinsCollectedAll;
     }
 
     public void UpdateCharacterSprites() {

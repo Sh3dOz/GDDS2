@@ -1322,6 +1322,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1974923042620827977, guid: f59a53fadf9d8ae478dcf2ee49f09d0f, type: 3}
   m_PrefabInstance: {fileID: 220221589}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &221956568 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9204869557728258411, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1516880946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &238931011
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5126,7 +5131,7 @@ MonoBehaviour:
   audioS: {fileID: 0}
   shockSound: {fileID: 0}
   shockEffect: {fileID: 0}
-  player: {fileID: 0}
+  players: []
   damage: 1
 --- !u!60 &1215275149
 PolygonCollider2D:
@@ -7140,6 +7145,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 1844068050439729333, guid: 010e3b0713b7b7a43802d8e599bc4c34, type: 2}
+    - target: {fileID: 7713743463274600552, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7729438609761450000, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -7906,7 +7915,7 @@ MonoBehaviour:
   audioS: {fileID: 0}
   shockSound: {fileID: 0}
   shockEffect: {fileID: 0}
-  player: {fileID: 0}
+  players: []
   damage: 1
 --- !u!4 &1607347134
 Transform:
@@ -9666,7 +9675,7 @@ MonoBehaviour:
   audioS: {fileID: 0}
   shockSound: {fileID: 0}
   shockEffect: {fileID: 0}
-  player: {fileID: 0}
+  players: []
   damage: 1
 --- !u!4 &2004360051
 Transform:
@@ -9909,7 +9918,7 @@ PrefabInstance:
     - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
       propertyPath: audioS
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 221956568}
     - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
       propertyPath: player
       value: 
