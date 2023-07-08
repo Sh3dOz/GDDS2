@@ -74,7 +74,10 @@ public class ResultScreen : MonoBehaviour {
 
         // Update target score and related values if needed
         if (manager.isWin) {
-
+            if(player == null)
+            {
+                player = FindObjectOfType<PlayerController>();
+            }
             healthLeft = player.health;
             coinsCollectedText.text = "Coins Collected: " + manager.coinCount;
             healthLeftText.text = "Health Left: " + player.health;

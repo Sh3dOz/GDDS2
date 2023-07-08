@@ -2939,7 +2939,7 @@ GameObject:
   - component: {fileID: 4828958720151524480}
   - component: {fileID: 4828958720151524481}
   m_Layer: 5
-  m_Name: Pasue & Result
+  m_Name: Pause & Result
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

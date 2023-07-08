@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossController : MonoBehaviour
 {
     public float maxHealth;
-    float currentHealth;
+    public float currentHealth;
     enum PhaseMode {One, Second,Third};
     PhaseMode currentPhase;
 
@@ -67,5 +67,10 @@ public class BossController : MonoBehaviour
             shootTimer -= Time.deltaTime;
         }
         transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+    }
+    
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
     }
 }

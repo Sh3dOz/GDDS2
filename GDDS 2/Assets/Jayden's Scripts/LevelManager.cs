@@ -10,9 +10,12 @@ public class LevelManager : MonoBehaviour
 {
     public bool isAlive;
     public bool isWin;
+    public bool isBossLevel;
     [SerializeField]PlayerController player;
+    [SerializeField] BossController boss;
     public Slider progressSlider;
     public Slider healthSlider;
+    public Slider bossHealthBar;
     public Button landButton, spaceButton;
     public Image landCooldown, spaceCooldown;
     public GameObject spaceCharge;
@@ -40,6 +43,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Sprite empIcon, empCooldown, deflectIcon, deflectCooldown;
     [SerializeField] GameObject x;
     [SerializeField] Sprite metoriteIcon, metoriteCooldown;
+    
 
     public bool deadedCoStarted = false;
     public TransitionToSpaceship spaceship;
@@ -77,10 +81,12 @@ public class LevelManager : MonoBehaviour
                     break;
                 case "X":
                     x.SetActive(true);
-                    landButton.image.overrideSprite = null;
-                    landCooldown.overrideSprite = null;
-                    spaceButton.image.overrideSprite = metoriteIcon;
-                    spaceCooldown.overrideSprite = metoriteCooldown;
+                    landButton.image.sprite = null;
+                    landButton.image.color = new Color(0f, 0f, 0f, 0f);
+                    landCooldown.sprite = null;
+                    landCooldown.color = new Color(0f, 0f, 0f, 0f);
+                    spaceButton.image.sprite = metoriteIcon;
+                    spaceCooldown.sprite = metoriteCooldown;
                     spaceCharge.SetActive(true);
                     cam.Follow = x.transform;
                     break;
@@ -95,12 +101,23 @@ public class LevelManager : MonoBehaviour
                     break;
             }
             Destroy(instructionsCanvas);
-        player = FindObjectOfType<PlayerController>();
-        spaceship = FindObjectOfType<TransitionToSpaceship>();
-        progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
-        progressSlider.value = 0;
-        healthSlider.value = player.health;
-        
+            player = FindObjectOfType<PlayerController>();
+            spaceship = FindObjectOfType<TransitionToSpaceship>();
+            if (isBossLevel)
+            {
+                boss = FindObjectOfType<BossController>();
+                progressSlider.gameObject.SetActive(false);
+                bossHealthBar.gameObject.SetActive(true);
+                bossHealthBar.maxValue = boss.maxHealth;
+                bossHealthBar.value = bossHealthBar.maxValue;
+                healthSlider.value = player.health;
+            }
+            else
+            {
+                progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
+                progressSlider.value = 0;
+                healthSlider.value = player.health;
+            }
         }
     }
 
@@ -113,6 +130,15 @@ public class LevelManager : MonoBehaviour
 
     void progressCheck()
     {
+        if (isBossLevel)
+        {
+            bossHealthBar.value = boss.currentHealth;
+            if(bossHealthBar.value == bossHealthBar.minValue)
+            {
+                isWin = true;
+                PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+            }
+        }
         if (player.onLand)
         {
             progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
