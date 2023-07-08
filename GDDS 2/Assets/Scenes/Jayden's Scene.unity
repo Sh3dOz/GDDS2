@@ -1116,7 +1116,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetPos: {fileID: 0}
   inCombat: 0
-  isBoss: 0
+  isBoss: 1
 --- !u!4 &1383610460 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4544099864758315977, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
