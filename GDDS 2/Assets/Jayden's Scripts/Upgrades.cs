@@ -21,6 +21,8 @@ public class Upgrades : MonoBehaviour {
     public float coinsCollectedAll;
 
     public AudioSource audioS;
+    public AudioClip pressingSound;
+    public GameObject interactables;
 
     [Header("Passives")]
     public float passiveValue = 100;
@@ -172,6 +174,8 @@ public class Upgrades : MonoBehaviour {
             
 
             public void SelectingWhoToUpgradePassive() {
+                audioS.PlayOneShot(pressingSound);
+                interactables.SetActive(false);
                 // KORG
                 if (selectedIndex == 0) {
                     korgPassiveUpgrade.SetActive(true);
@@ -219,6 +223,7 @@ public class Upgrades : MonoBehaviour {
 
 
             public void UpgradePassiveForKorg() {
+                audioS.PlayOneShot(pressingSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Passive", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - passiveValue);
@@ -229,6 +234,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradePassiveForAxel() {
+                audioS.PlayOneShot(pressingSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Passive", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - passiveValue);
@@ -239,6 +245,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradePassiveForXavier() {
+                audioS.PlayOneShot(pressingSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Passive", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - passiveValue);
@@ -249,14 +256,21 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void CloseKorgPassive() {
+                audioS.PlayOneShot(pressingSound);
                 korgPassiveUpgrade.SetActive(false);
+                interactables.SetActive(true);
+
             }
             public void CloseAxelPassive() {
+                audioS.PlayOneShot(pressingSound);
                 axelPassiveUpgrade.SetActive(false);
+                interactables.SetActive(true);
             }
 
             public void CloseXavierPassive() {
+                audioS.PlayOneShot(pressingSound);
                 xavierPassiveUpgrade.SetActive(false);
+                interactables.SetActive(true);
             }
 
             public void ResetPassiveLevel() {
@@ -313,6 +327,8 @@ public class Upgrades : MonoBehaviour {
                 }
             }
             public void SelectingWhoToUpgradeSkills() {
+                audioS.PlayOneShot(pressingSound);
+                interactables.SetActive(false);
                 // KORG
                 if (selectedIndex == 0) {
                     korgSkillUpgrade.SetActive(true);
@@ -410,6 +426,7 @@ public class Upgrades : MonoBehaviour {
 
             //UPGRADES
             public void UpgradeSkillForKorg() {
+                audioS.PlayOneShot(pressingSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Skill", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade1Value);
@@ -439,6 +456,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradeSkillForAxel() {
+                audioS.PlayOneShot(pressingSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Skill", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade1Value);
@@ -469,6 +487,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradeSkillForXavier() {
+                audioS.PlayOneShot(pressingSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Skill", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade1Value);
@@ -499,14 +518,20 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void CloseKorgUpgrade() {
+                audioS.PlayOneShot(pressingSound);
                 korgSkillUpgrade.SetActive(false);
+                interactables.SetActive(true);
             }
             public void CloseAxelUpgrade() {
+                audioS.PlayOneShot(pressingSound);
                 axelSkillUpgrade.SetActive(false);
+                interactables.SetActive(true);
             }
 
             public void CloseXavierUpgrade() {
+                audioS.PlayOneShot(pressingSound);
                 xavierSkillUpgrade.SetActive(false);
+                interactables.SetActive(true);
             }
 
             public void ResetSkillLevel() {
@@ -565,6 +590,8 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void SelectingWhoToUpgradePowerup() {
+                audioS.PlayOneShot(pressingSound);
+                interactables.SetActive(false);
                 // KORG
                 if (selectedIndex == 0) {
                     korgPowerupUpgrade.SetActive(true);
@@ -663,6 +690,7 @@ public class Upgrades : MonoBehaviour {
 
             //POWERUPS
             public void UpgradePowerupForKorg() {
+                audioS.PlayOneShot(pressingSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup1Value);
@@ -692,6 +720,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradePowerupForAxel() {
+                audioS.PlayOneShot(pressingSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup1Value);
@@ -722,6 +751,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradePowerupForXavier() {
+                audioS.PlayOneShot(pressingSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup1Value);
@@ -752,14 +782,20 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void CloseKorgPowerup() {
+                audioS.PlayOneShot(pressingSound);
                 korgPowerupUpgrade.SetActive(false);
+                interactables.SetActive(true);
             }
             public void CloseAxelPowerup() {
+                audioS.PlayOneShot(pressingSound);
                 axelPowerupUpgrade.SetActive(false);
+                interactables.SetActive(true);
             }
 
             public void CloseXavierPowerup() {
+                audioS.PlayOneShot(pressingSound);
                 xavierPowerupUpgrade.SetActive(false);
+                interactables.SetActive(true);
             }
 
             public void ResetPowerupLevel() {
@@ -771,6 +807,7 @@ public class Upgrades : MonoBehaviour {
 
 
             public void SwitchCharLeft() {
+                audioS.PlayOneShot(pressingSound);
                 selectedIndex--;
                 if (selectedIndex < 0) {
                     selectedIndex = 0;
@@ -780,6 +817,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void SwitchCharRight() {
+                audioS.PlayOneShot(pressingSound);
                 selectedIndex++;
                 if (selectedIndex > allChar.Count - 1) {
                     selectedIndex = allChar.Count - 1;
@@ -789,6 +827,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void Back() {
+                audioS.PlayOneShot(pressingSound);
                 SceneManager.LoadScene("Level Select");
             }
 
