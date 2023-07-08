@@ -28,7 +28,7 @@ public class LevelSelect : MonoBehaviour
         {
             x.color = new Color(0, 0, 0);
         }
-        difficultySelected = difficultySelect.options[difficultySelect.value].text;
+        difficultySelected = PlayerPrefs.GetString("Difficulty", "Easy");
     }
     public void StageSelect(string level)
     {
@@ -38,6 +38,7 @@ public class LevelSelect : MonoBehaviour
     public void DifficultySelect(Dropdown dropdown)
     {
         difficultySelected = dropdown.options[dropdown.value].text;
+        PlayerPrefs.SetString("Difficulty", difficultySelected);
     }
 
     public void StartLevel()
