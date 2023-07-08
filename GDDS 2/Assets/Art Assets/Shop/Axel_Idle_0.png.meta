@@ -1,7 +1,16 @@
 fileFormatVersion: 2
 guid: 8d68aab32ccee2148b627b512206392c
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8507270162025829962
+    second: Axel_Idle_0_0
+  - first:
+      213: -5932163156018647244
+    second: Axel_Idle_0_1
+  - first:
+      213: 8429516297959037996
+    second: Axel_Idle_0_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -41,7 +50,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -102,7 +111,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Axel_Idle_0_0
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 1166
+        width: 337
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b9ab207cda10f980800000000000000
+      internalID: -8507270162025829962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Axel_Idle_0_1
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 1166
+        width: 346
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43f29df1a09bcada0800000000000000
+      internalID: -5932163156018647244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Axel_Idle_0_2
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 1166
+        width: 343
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2cd6385968abf470800000000000000
+      internalID: 8429516297959037996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -6672,6 +6672,7 @@ GameObject:
   - component: {fileID: 877110512}
   - component: {fileID: 877110514}
   - component: {fileID: 877110513}
+  - component: {fileID: 877110515}
   m_Layer: 5
   m_Name: Xavier
   m_TagString: Untagged
@@ -6736,6 +6737,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 877110511}
   m_CullTransparentMesh: 1
+--- !u!95 &877110515
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877110511}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7e9cae28577f1804b8e47620f155e7da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &891558356
 GameObject:
   m_ObjectHideFlags: 0
@@ -11161,6 +11181,7 @@ GameObject:
   - component: {fileID: 1669108986}
   - component: {fileID: 1669108988}
   - component: {fileID: 1669108987}
+  - component: {fileID: 1669108989}
   m_Layer: 5
   m_Name: Korg
   m_TagString: Untagged
@@ -11207,7 +11228,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 26c8c846c1e20064891e0ee30f4c5a59, type: 3}
+  m_Sprite: {fileID: 6778071477772015497, guid: 2f457f91f1a21234792c8d73d73b96b4, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -11225,6 +11246,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669108985}
   m_CullTransparentMesh: 1
+--- !u!95 &1669108989
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669108985}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bf4576514a719dc4a9bbcfbe45c727da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1703527253
 GameObject:
   m_ObjectHideFlags: 0
@@ -14041,6 +14081,7 @@ GameObject:
   - component: {fileID: 1982291255}
   - component: {fileID: 1982291257}
   - component: {fileID: 1982291256}
+  - component: {fileID: 1982291258}
   m_Layer: 5
   m_Name: Axel
   m_TagString: Untagged
@@ -14105,6 +14146,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982291254}
   m_CullTransparentMesh: 1
+--- !u!95 &1982291258
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982291254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4453b31da67ee144eadaf0a50faf6f6c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1986731678
 GameObject:
   m_ObjectHideFlags: 0
