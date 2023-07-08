@@ -2089,7 +2089,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadLevel: Main
   audioSource: {fileID: 1358155597}
-  pressingSound: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
+  pressingSound: {fileID: 8300000, guid: f51f4e3e965cde143b1269a66b415c74, type: 3}
   resetPanel: {fileID: 789115939}
 --- !u!1 &1330352887
 GameObject:

@@ -1063,7 +1063,7 @@ MonoBehaviour:
   uiAudioMixer: {fileID: 24100000, guid: feaae2c2e03a4214896a69a165f1c576, type: 2}
   uiVolumeSlider: {fileID: 784926467}
   audioSource: {fileID: 1998528340}
-  pressingSound: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
+  pressingSound: {fileID: 8300000, guid: f51f4e3e965cde143b1269a66b415c74, type: 3}
 --- !u!1 &1391540057
 GameObject:
   m_ObjectHideFlags: 0

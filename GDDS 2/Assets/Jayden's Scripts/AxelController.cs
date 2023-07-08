@@ -49,6 +49,33 @@ public class AxelController : PlayerController
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         // Get the SpriteRenderer component
         sr = GetComponent<SpriteRenderer>();
+
+        if (PlayerPrefs.GetInt("PowerupForAxel") == 0) {
+            empCooldown = 30;
+        }
+        else if (PlayerPrefs.GetInt("PowerupForAxel") == 1) {
+            empCooldown = 25;
+        }
+        else if (PlayerPrefs.GetInt("PowerupForAxel") == 2) {
+            empCooldown = 20;
+        }
+        else if (PlayerPrefs.GetInt("PowerupForAxel") == 3) {
+            empCooldown = 15;
+        }
+
+
+        if (PlayerPrefs.GetInt("SkillForAxel") == 0) {
+            empCooldown = 30;
+        }
+        else if (PlayerPrefs.GetInt("SkillForAxel") == 1) {
+            deflectCooldown = 25;
+        }
+        else if (PlayerPrefs.GetInt("SkillForAxel") == 2) {
+            deflectCooldown = 20;
+        }
+        else if (PlayerPrefs.GetInt("SkillForAxel") == 3) {
+            deflectCooldown = 15;
+        }
     }
 
     // Update is called once per frame

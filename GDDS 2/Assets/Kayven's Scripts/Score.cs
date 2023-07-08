@@ -38,9 +38,6 @@ public class Score : MonoBehaviour {
 
         CountTime();
 
-        scoreText.text = "Score = " + currentScore.ToString();
-
-        currentScore = maxScore;
 
         timer += Time.deltaTime;
         timer2 += Time.deltaTime;

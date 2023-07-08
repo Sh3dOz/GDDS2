@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour {
     public IEnumerator StartGame()
     {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         if (PlayerPrefs.GetInt("Main") == 1)
         {
             SceneManager.LoadScene("Level Select");
@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour {
     }
     public IEnumerator Credit() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Credits");
     }
 
@@ -48,7 +48,7 @@ public class MainMenu : MonoBehaviour {
 
     public IEnumerator Setting() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Settings");
     }
 
@@ -58,7 +58,7 @@ public class MainMenu : MonoBehaviour {
 
     public IEnumerator Instruction() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Instructions");
     }
 
@@ -68,7 +68,7 @@ public class MainMenu : MonoBehaviour {
 
     public IEnumerator LoadMainMenu() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Main Menu");
     }
 
@@ -78,7 +78,7 @@ public class MainMenu : MonoBehaviour {
 
     public IEnumerator Upgrading() {
         audioSource.PlayOneShot(pressingSound);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Upgrades");
     }
     // Quit game.

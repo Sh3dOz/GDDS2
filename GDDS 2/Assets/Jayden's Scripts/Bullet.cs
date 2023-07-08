@@ -22,19 +22,28 @@ public abstract class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerController>())
+        if(this.tag == "Player")
         {
-            Debug.Log(collision.gameObject);
-            if (this.tag == "Player") return;
-            collision.GetComponent<PlayerController>().TakeDamage(damage);
-            if (collision.GetComponent<PlayerController>().isDamaged) return;
-            Destroy(gameObject);
+            if (collision.GetComponent<BossController>())
+            {
+                collision.GetComponent<BossController>().TakeDamage(damage);
+                Destroy(gameObject);
+            }
+            else if (collision.GetComponent<ShootingEnemy>())
+            {
+                if (this.tag == "Enemy") return;
+                collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
+                Destroy(gameObject);
+            }
         }
-        if (collision.GetComponent<ShootingEnemy>())
+        if(this.tag == "Enemy")
         {
-            if (this.tag == "Enemy") return;
-            collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
-            Destroy(gameObject);
+            if (collision.GetComponent<PlayerController>())
+            {
+                collision.GetComponent<PlayerController>().TakeDamage(damage);
+                if (collision.GetComponent<PlayerController>().isDamaged) return;
+                Destroy(gameObject);
+            }
         }
     }
 

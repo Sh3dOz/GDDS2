@@ -1,7 +1,37 @@
 fileFormatVersion: 2
 guid: 581218492d7ad1744aec610aea79f4a1
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5644388133249717269
+    second: Xavier_Idle_0__Idle_1_0
+  - first:
+      213: 5963900183082143312
+    second: Xavier_Idle_0__Idle_1_1
+  - first:
+      213: -3833756045060132300
+    second: Xavier_Idle_0__Idle_1_2
+  - first:
+      213: -7964115465835182029
+    second: Xavier_Idle_0__Idle_1_3
+  - first:
+      213: -5006133116040163262
+    second: Xavier_Idle_0__Idle_1_4
+  - first:
+      213: 1557693743924875843
+    second: Xavier_Idle_0__Idle_1_5
+  - first:
+      213: -913276891243752151
+    second: Xavier_Idle_0__Idle_1_6
+  - first:
+      213: -5774966168432596019
+    second: Xavier_Idle_0__Idle_1_7
+  - first:
+      213: 73969995552748867
+    second: Xavier_Idle_0__Idle_1_8
+  - first:
+      213: 8071339666266376772
+    second: Xavier_Idle_0__Idle_1_9
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -102,7 +132,217 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_0
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1850
+        width: 585
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51497c81a15e45e40800000000000000
+      internalID: 5644388133249717269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_1
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 1850
+        width: 585
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e8f705e9704c250800000000000000
+      internalID: 5963900183082143312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_2
+      rect:
+        serializedVersion: 2
+        x: 1774
+        y: 1850
+        width: 585
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4323faa6033cbcac0800000000000000
+      internalID: -3833756045060132300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_3
+      rect:
+        serializedVersion: 2
+        x: 2517
+        y: 1850
+        width: 585
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33803b4fd27c97190800000000000000
+      internalID: -7964115465835182029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_4
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1043
+        width: 585
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2405b106474a68ab0800000000000000
+      internalID: -5006133116040163262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_5
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1043
+        width: 585
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3429d73053a0e9510800000000000000
+      internalID: 1557693743924875843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_6
+      rect:
+        serializedVersion: 2
+        x: 1774
+        y: 1043
+        width: 585
+        height: 679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 925d7d391836353f0800000000000000
+      internalID: -913276891243752151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_7
+      rect:
+        serializedVersion: 2
+        x: 2517
+        y: 991
+        width: 585
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb2dacedd23bdfa0800000000000000
+      internalID: -5774966168432596019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_8
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 189
+        width: 585
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34575fca15bc60100800000000000000
+      internalID: 73969995552748867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xavier_Idle_0__Idle_1_9
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 189
+        width: 585
+        height: 680
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ac355a9a8230070800000000000000
+      internalID: 8071339666266376772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
