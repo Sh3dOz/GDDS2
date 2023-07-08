@@ -8,7 +8,10 @@ public class Upgrades : MonoBehaviour {
 
     public List<string> allChar;
     public List<Sprite> charSprites;
+    public List<Sprite> bgSprites;
     public GameObject charSprite;
+    public GameObject bgSprite;
+
     int selectedIndex;
     string selectedChar;
     public Text coinsCollectedText;
@@ -114,19 +117,97 @@ public class Upgrades : MonoBehaviour {
 
     }
 
-    public void UpgradePassive()
-    {
-        if(PlayerPrefs.GetInt(selectedChar + "Passive") == 0)
-        {
-            PlayerPrefs.SetInt(selectedChar + "Passive", 1);
+    public void SelectingWhoToUpgradePassive() {
+        // KORG
+        if (selectedIndex == 0) {
+            korgPassiveUpgrade.SetActive(true);
+            if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
+                korgPassiveButton.SetActive(true);
+                korgPassive.SetActive(true);
+                korgPassiveMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Passive") >= 1) {
+                korgPassiveButton.SetActive(false);
+                korgPassive.SetActive(false);
+                korgPassiveMaxed.SetActive(true);
+            }
         }
-        else if (PlayerPrefs.GetInt(selectedChar + "Passive") > 0)
-        {
-            PlayerPrefs.SetInt(selectedChar + "Passive", PlayerPrefs.GetInt(selectedChar + "Passive") + 1);
 
+        // Axel
+        else if (selectedIndex == 1) {
+            axelPassiveUpgrade.SetActive(true);
+            if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
+                axelPassiveButton.SetActive(true);
+                axelPassive.SetActive(true);
+                axelPassiveMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Passive") >= 1) {
+                axelPassiveButton.SetActive(false);
+                axelPassive.SetActive(false);
+                axelPassiveMaxed.SetActive(true);
+            }
+        }
+        // Xavier
+        else if (selectedIndex == 2) {
+            xavierPassiveUpgrade.SetActive(true);
+            if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
+                xavierPassiveButton.SetActive(true);
+                xavierPassive.SetActive(true);
+                xavierPassiveMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Passive") >= 1) {
+                xavierPassiveButton.SetActive(false);
+                xavierPassive.SetActive(false);
+                xavierPassiveMaxed.SetActive(true);
+            }
         }
     }
 
+
+    public void UpgradePassiveForKorg() {
+        if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
+            PlayerPrefs.SetInt(selectedChar + "Passive", 1);
+            PlayerPrefs.SetFloat("Coins", coinsCollectedAll - passiveValue);
+            korgPassiveMaxed.SetActive(true); // For resets
+            korgPassiveButton.SetActive(false); // For resets
+            korgPassive.SetActive(false);
+        }
+    }
+
+    public void UpgradePassiveForAxel() {
+        if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
+            PlayerPrefs.SetInt(selectedChar + "Passive", 1);
+            PlayerPrefs.SetFloat("Coins", coinsCollectedAll - passiveValue);
+            axelPassiveMaxed.SetActive(true); // For resets
+            axelPassiveButton.SetActive(false); // For resets
+            axelPassive.SetActive(false);
+        }
+    }
+
+    public void UpgradePassiveForXavier() {
+        if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
+            PlayerPrefs.SetInt(selectedChar + "Passive", 1);
+            PlayerPrefs.SetFloat("Coins", coinsCollectedAll - passiveValue);
+            xavierPassiveMaxed.SetActive(true); // For resets
+            xavierPassiveButton.SetActive(false); // For resets
+            xavierPassive.SetActive(false);
+        }
+    }
+
+    public void CloseKorgPassive() {
+        korgPassiveUpgrade.SetActive(false);
+    }
+    public void CloseAxelPassive() {
+        axelPassiveUpgrade.SetActive(false);
+    }
+
+    public void CloseXavierPassive() {
+        xavierPassiveUpgrade.SetActive(false);
+    }
+
+    public void ResetPassiveLevel() {
+        PlayerPrefs.SetInt(selectedChar + "Passive", 0);
+    }
 
 
 
@@ -573,6 +654,7 @@ public class Upgrades : MonoBehaviour {
         }
         selectedChar = allChar[selectedIndex];
         charSprite.GetComponent<Image>().sprite = charSprites[selectedIndex];
+        bgSprite.GetComponent<Image>().sprite = bgSprites[selectedIndex];
     }
 
     public void SwitchCharRight()
@@ -584,6 +666,7 @@ public class Upgrades : MonoBehaviour {
         }
         selectedChar = allChar[selectedIndex];
         charSprite.GetComponent<Image>().sprite = charSprites[selectedIndex];
+        bgSprite.GetComponent<Image>().sprite = bgSprites[selectedIndex];
     }
 
     public void Back()
