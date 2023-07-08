@@ -450,7 +450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loadLevel: Kayven's Scene
   audioSource: {fileID: 1571942101}
-  pressingSound: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
+  pressingSound: {fileID: 8300000, guid: f51f4e3e965cde143b1269a66b415c74, type: 3}
+  resetPanel: {fileID: 0}
 --- !u!114 &557528365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +924,7 @@ GameObject:
   - component: {fileID: 1571942102}
   - component: {fileID: 1571942101}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
