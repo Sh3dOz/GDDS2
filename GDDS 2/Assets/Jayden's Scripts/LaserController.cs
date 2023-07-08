@@ -8,6 +8,7 @@ public class LaserController : MonoBehaviour
     public Transform targetPosition;
     public GameObject laserBeam;
     public bool isEnemy;
+    public int laserDamage = 1;
     public enum currentMode {NotActive, Active, DoneFiring };
     public currentMode myMode;
     public PolygonCollider2D smallLaser;
@@ -68,8 +69,15 @@ public class LaserController : MonoBehaviour
 
     public void DiaableLaser()
     {
-        laserBeam.SetActive(false);
-        GetComponentInParent<LaserController>().myMode = currentMode.DoneFiring;
+        if (isEnemy)
+        {
+            laserBeam.SetActive(false);
+            GetComponentInParent<LaserController>().myMode = currentMode.DoneFiring;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -82,9 +90,16 @@ public class LaserController : MonoBehaviour
                 transform.position = spawnPosition.position;
                 transform.parent = FindObjectOfType<Camera>().gameObject.transform;
             }
-            if(collision.gameObject.layer == 9)
+            if(collision.gameObject.tag == "EMP")
             {
                 Destroy(this.gameObject);
+            }
+        }
+        else
+        {
+            if (collision.GetComponent<PlayerController>())
+            {
+                collision.GetComponent<PlayerController>().TakeDamage(laserDamage);
             }
         }
     }

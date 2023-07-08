@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivotObject: {fileID: 0}
-  rotationSpeed: 15
+  rotationSpeed: 30
 --- !u!114 &1310991192242734883
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,12 +10,15 @@ public class BossController : MonoBehaviour
     PhaseMode currentPhase;
 
     [Header("Shooting")]
+    public Transform shootPos;
     public Transform eyePos, topLimit, botLimit;
     public GameObject pharseOneBullet;
+    float shootTimer;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        shootTimer = Random.Range(2, 6);
     }
 
     // Update is called once per frame
@@ -54,6 +57,15 @@ public class BossController : MonoBehaviour
 
     void ShootEyes()
     {
-
+        if(shootTimer <= 0f)
+        {
+            GameObject laser = Instantiate(pharseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+            shootTimer = Random.Range(2, 6);
+        }
+        else
+        {
+            shootTimer -= Time.deltaTime;
+        }
+        transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
     }
 }

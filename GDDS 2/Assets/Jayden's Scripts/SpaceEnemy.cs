@@ -9,6 +9,7 @@ public class SpaceEnemy : ShootingEnemy
     public GameObject target;
     public Transform targetPos;
     public bool inCombat;
+    public bool isBoss;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class SpaceEnemy : ShootingEnemy
     // Update is called once per frame
     void Update()
     {
+        if (isBoss) return;
         Shoot(); Movement();
     }
 
