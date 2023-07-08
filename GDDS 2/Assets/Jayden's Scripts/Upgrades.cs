@@ -15,6 +15,29 @@ public class Upgrades : MonoBehaviour {
     public float coinsCollectedAll;
 
 
+    [Header("Passives")]
+    public float passiveValue = 100;
+
+    [Header("Korg Passive")]
+    public GameObject korgPassiveUpgrade;
+    public GameObject korgPassiveButton;
+    public GameObject korgPassive;
+    public GameObject korgPassiveMaxed;
+
+    [Header("Axel Passive")]
+    public GameObject axelPassiveUpgrade;
+    public GameObject axelPassiveButton;
+    public GameObject axelPassive;
+    public GameObject axelPassiveMaxed;
+
+    [Header("Xavier Passive")]
+    public GameObject xavierPassiveUpgrade;
+    public GameObject xavierPassiveButton;
+    public GameObject xavierPassive;
+    public GameObject xavierPassiveMaxed;
+
+
+    [Header("Upgrades")]
     public float upgrade1Value = 1;
     public float upgrade2Value = 2;
     public float upgrade3Value = 3;
@@ -43,16 +66,54 @@ public class Upgrades : MonoBehaviour {
     public GameObject xavierUpgrade3;
     public GameObject xavierSkillMaxed;
 
+
+    [Header("Powerup")]
+    public float powerup1Value = 4;
+    public float powerup2Value = 5;
+    public float powerup3Value = 6;
+
+    [Header("Korg Upgrade")]
+    public GameObject korgPowerupUpgrade;
+    public GameObject korgPowerupButton;
+    public GameObject korgPowerup1;
+    public GameObject korgPowerup2;
+    public GameObject korgPowerup3;
+    public GameObject korgPowerupMaxed;
+
+    [Header("Axel Upgrade")]
+    public GameObject axelPowerupUpgrade;
+    public GameObject axelPowerupButton;
+    public GameObject axelPowerup1;
+    public GameObject axelPowerup2;
+    public GameObject axelPowerup3;
+    public GameObject axelPowerupMaxed;
+
+    [Header("Xavier Upgrade")]
+    public GameObject xavierPowerupUpgrade;
+    public GameObject xavierPowerupButton;
+    public GameObject xavierPowerup1;
+    public GameObject xavierPowerup2;
+    public GameObject xavierPowerup3;
+    public GameObject xavierPowerupMaxed;
+
     void Update() {
 
         UpdatePlayerCoins();
+        UpdatePassiveLevelStatus();
         UpdateSkillLevelStatus();
+        UpdatePowerupLevelStatus();
+
     }
 
     public void UpdatePlayerCoins() {
         coinsCollectedAll = PlayerPrefs.GetFloat("Coins");
         coinsCollectedText.text = "Coins Collected:" + coinsCollectedAll;
     }
+
+    public void UpdatePassiveLevelStatus() {
+
+    }
+
     public void UpgradePassive()
     {
         if(PlayerPrefs.GetInt(selectedChar + "Passive") == 0)
@@ -65,6 +126,9 @@ public class Upgrades : MonoBehaviour {
 
         }
     }
+
+
+
 
 
     public void UpdateSkillLevelStatus() {
@@ -125,18 +189,20 @@ public class Upgrades : MonoBehaviour {
                 axelSkillMaxed.SetActive(false);
             }
             else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 1) {
+                axelUpgradeButton.SetActive(true);
                 axelUpgrade1.SetActive(false);
                 axelUpgrade2.SetActive(true);
                 axelUpgrade3.SetActive(false);
                 axelSkillMaxed.SetActive(false);
             }
             else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 2) {
+                axelUpgradeButton.SetActive(true);
                 axelUpgrade1.SetActive(false);
                 axelUpgrade2.SetActive(false);
                 axelUpgrade3.SetActive(true);
                 axelSkillMaxed.SetActive(false);
             }
-            else if (PlayerPrefs.GetInt(selectedChar + "Skill") >= 3) {
+            else if (PlayerPrefs.GetInt(selectedChar + "Skill") >= 3) {;
                 axelUpgrade1.SetActive(false);
                 axelUpgrade2.SetActive(false);
                 axelUpgrade3.SetActive(false);
@@ -155,12 +221,14 @@ public class Upgrades : MonoBehaviour {
                 xavierSkillMaxed.SetActive(false);
             }
             else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 1) {
+                xavierUpgradeButton.SetActive(true);
                 xavierUpgrade1.SetActive(false);
                 xavierUpgrade2.SetActive(true);
                 xavierUpgrade3.SetActive(false);
                 xavierSkillMaxed.SetActive(false);
             }
             else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 2) {
+                xavierUpgradeButton.SetActive(true);
                 xavierUpgrade1.SetActive(false);
                 xavierUpgrade2.SetActive(false);
                 xavierUpgrade3.SetActive(true);
@@ -284,17 +352,217 @@ public class Upgrades : MonoBehaviour {
 
 
 
-    public void UpgradePowerup()
-    {
-        if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0)
-        {
-            PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
+
+
+    public void UpdatePowerupLevelStatus() {
+
+    }
+
+    public void SelectingWhoToUpgradePowerup() {
+        // KORG
+        if (selectedIndex == 0) {
+            korgPowerupUpgrade.SetActive(true);
+            if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
+                korgPowerupButton.SetActive(true);
+                korgPowerup1.SetActive(true);
+                korgPowerup2.SetActive(false);
+                korgPowerup3.SetActive(false);
+                korgPowerupMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 1) {
+                korgPowerup1.SetActive(false);
+                korgPowerup2.SetActive(true);
+                korgPowerup3.SetActive(false);
+                korgPowerupMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 2) {
+                korgPowerup1.SetActive(false);
+                korgPowerup2.SetActive(false);
+                korgPowerup3.SetActive(true);
+                korgPowerupMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") >= 3) {
+                korgPowerup1.SetActive(false);
+                korgPowerup2.SetActive(false);
+                korgPowerup3.SetActive(false);
+                korgPowerupMaxed.SetActive(true);
+            }
         }
-        else if (PlayerPrefs.GetInt(selectedChar + "Powerup") > 0)
-        {
-            PlayerPrefs.SetInt(selectedChar + "Powerup", PlayerPrefs.GetInt(selectedChar + "Powerup") + 1);
+
+        // AXEL
+        else if (selectedIndex == 1) {
+            axelPowerupUpgrade.SetActive(true);
+            if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
+                axelPowerupButton.SetActive(true);
+                axelPowerup1.SetActive(true);
+                axelPowerup2.SetActive(false);
+                axelPowerup3.SetActive(false);
+                axelPowerupMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 1) {
+                axelPowerupButton.SetActive(true);
+                axelPowerup1.SetActive(false);
+                axelPowerup2.SetActive(true);
+                axelPowerup3.SetActive(false);
+                axelPowerupMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 2) {
+                axelPowerupButton.SetActive(true);
+                axelPowerup1.SetActive(false);
+                axelPowerup2.SetActive(false);
+                axelPowerup3.SetActive(true);
+                axelPowerupMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") >= 3) {
+                ;
+                axelPowerup1.SetActive(false);
+                axelPowerup2.SetActive(false);
+                axelPowerup3.SetActive(false);
+                axelPowerupMaxed.SetActive(true);
+            }
+        }
+
+        // XAVIER
+        if (selectedIndex == 2) {
+            xavierPowerupUpgrade.SetActive(true);
+            if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
+                xavierPowerupButton.SetActive(true);
+                xavierPowerup1.SetActive(true);
+                xavierPowerup2.SetActive(false);
+                xavierPowerup3.SetActive(false);
+                xavierPowerupMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 1) {
+                xavierPowerupButton.SetActive(true);
+                xavierPowerup1.SetActive(false);
+                xavierPowerup2.SetActive(true);
+                xavierPowerup3.SetActive(false);
+                xavierPowerupMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 2) {
+                xavierPowerupButton.SetActive(true);
+                xavierPowerup1.SetActive(false);
+                xavierPowerup2.SetActive(false);
+                xavierPowerup3.SetActive(true);
+                xavierPowerupMaxed.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") >= 3) {
+                xavierPowerup1.SetActive(false);
+                xavierPowerup2.SetActive(false);
+                xavierPowerup3.SetActive(false);
+                xavierPowerupMaxed.SetActive(true);
+            }
         }
     }
+
+    //UPGRADES
+    public void UpgradePowerupForKorg() {
+        if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
+            PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
+            PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup1Value);
+            korgPowerupMaxed.SetActive(false); // For resets
+            korgPowerupButton.SetActive(true); // For resets
+            korgPowerup2.SetActive(true);
+            korgPowerup1.SetActive(false);
+        }
+        else if (PlayerPrefs.GetInt(selectedChar + "Powerup") > 0) {
+            PlayerPrefs.SetInt(selectedChar + "Powerup", PlayerPrefs.GetInt(selectedChar + "Powerup") + 1);
+
+            if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 2) {
+                PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup2Value);
+                korgPowerupMaxed.SetActive(false); // For resets
+                korgPowerupButton.SetActive(true); // For resets
+                korgPowerup3.SetActive(true);
+                korgPowerup2.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 3) {
+                PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup3Value);
+                korgPowerup3.SetActive(false);
+                axelPowerupButton.SetActive(false);
+                korgPowerupMaxed.SetActive(true);
+            }
+        }
+
+    }
+
+    public void UpgradePowerupForAxel() {
+        if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
+            PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
+            PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup1Value);
+            axelPowerupMaxed.SetActive(false); // For resets
+            axelPowerupButton.SetActive(true); // For resets
+            axelPowerup2.SetActive(true);
+            axelPowerup1.SetActive(false);
+        }
+        else if (PlayerPrefs.GetInt(selectedChar + "Powerup") > 0) {
+
+            PlayerPrefs.SetInt(selectedChar + "Powerup", PlayerPrefs.GetInt(selectedChar + "Powerup") + 1);
+
+            if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 2) {
+                PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup2Value);
+                axelPowerupMaxed.SetActive(false); // For resets
+                axelPowerupButton.SetActive(true); // For resets
+                axelPowerup3.SetActive(true);
+                axelPowerup2.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 3) {
+                PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup3Value);
+                axelPowerup3.SetActive(false);
+                axelPowerupButton.SetActive(false);
+                axelPowerupMaxed.SetActive(true);
+            }
+        }
+
+    }
+
+    public void UpgradePowerupForXavier() {
+        if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
+            PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
+            PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup1Value);
+            xavierPowerupMaxed.SetActive(false); // For resets
+            xavierPowerupButton.SetActive(true); // For resets
+            xavierPowerup2.SetActive(true);
+            xavierPowerup1.SetActive(false);
+        }
+        else if (PlayerPrefs.GetInt(selectedChar + "Powerup") > 0) {
+
+            PlayerPrefs.SetInt(selectedChar + "Powerup", PlayerPrefs.GetInt(selectedChar + "Powerup") + 1);
+
+            if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 2) {
+                PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup2Value);
+                xavierPowerupMaxed.SetActive(false); // For resets
+                xavierPowerupButton.SetActive(true); // For resets
+                xavierPowerup3.SetActive(true);
+                xavierPowerup2.SetActive(false);
+            }
+            else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 3) {
+                PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup3Value);
+                xavierPowerup3.SetActive(false);
+                xavierPowerupButton.SetActive(false);
+                xavierPowerupMaxed.SetActive(true);
+            }
+        }
+
+    }
+
+    public void CloseKorgPowerup() {
+        korgPowerupUpgrade.SetActive(false);
+    }
+    public void CloseAxelPowerup() {
+        axelPowerupUpgrade.SetActive(false);
+    }
+
+    public void CloseXavierPowerup() {
+        xavierPowerupUpgrade.SetActive(false);
+    }
+
+    public void ResetPowerupLevel() {
+        PlayerPrefs.SetInt(selectedChar + "Powerup", 0);
+    }
+
+
+
+
 
     public void SwitchCharLeft()
     {
