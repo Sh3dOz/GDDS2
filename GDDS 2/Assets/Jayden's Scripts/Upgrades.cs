@@ -22,6 +22,7 @@ public class Upgrades : MonoBehaviour {
 
     public AudioSource audioS;
     public AudioClip pressingSound;
+    public AudioClip upgradeSound;
     public GameObject interactables;
 
     [Header("Passives")]
@@ -32,18 +33,24 @@ public class Upgrades : MonoBehaviour {
     public GameObject korgPassiveButton;
     public GameObject korgPassive;
     public GameObject korgPassiveMaxed;
+    public GameObject korgPassiveEmpty;
+    public GameObject korgPassiveFull;
 
     [Header("Axel Passive")]
     public GameObject axelPassiveUpgrade;
     public GameObject axelPassiveButton;
     public GameObject axelPassive;
     public GameObject axelPassiveMaxed;
+    public GameObject axelPassiveEmpty;
+    public GameObject axelPassiveFull;
 
     [Header("Xavier Passive")]
     public GameObject xavierPassiveUpgrade;
     public GameObject xavierPassiveButton;
     public GameObject xavierPassive;
     public GameObject xavierPassiveMaxed;
+    public GameObject xavierPassiveEmpty;
+    public GameObject xavierPassiveFull;
 
 
     [Header("Upgrades")]
@@ -58,6 +65,10 @@ public class Upgrades : MonoBehaviour {
     public GameObject korgUpgrade2;
     public GameObject korgUpgrade3;
     public GameObject korgSkillMaxed;
+    public GameObject korgSkillEmpty;
+    public GameObject korgSkillOneThird;
+    public GameObject korgSkillTwoThird;
+    public GameObject korgSkillFull;
 
     [Header("Axel Upgrade")]
     public GameObject axelSkillUpgrade;
@@ -66,6 +77,10 @@ public class Upgrades : MonoBehaviour {
     public GameObject axelUpgrade2;
     public GameObject axelUpgrade3;
     public GameObject axelSkillMaxed;
+    public GameObject axelSkillEmpty;
+    public GameObject axelSkillOneThird;
+    public GameObject axelSkillTwoThird;
+    public GameObject axelSkillFull;
 
     [Header("Xavier Upgrade")]
     public GameObject xavierSkillUpgrade;
@@ -74,6 +89,11 @@ public class Upgrades : MonoBehaviour {
     public GameObject xavierUpgrade2;
     public GameObject xavierUpgrade3;
     public GameObject xavierSkillMaxed;
+    public GameObject xavierSkillEmpty;
+    public GameObject xavierSkillOneThird;
+    public GameObject xavierSkillTwoThird;
+    public GameObject xavierSkillFull;
+
 
 
     [Header("Powerup")]
@@ -81,29 +101,41 @@ public class Upgrades : MonoBehaviour {
     public float powerup2Value = 5;
     public float powerup3Value = 6;
 
-    [Header("Korg Upgrade")]
+    [Header("Korg Powerup")]
     public GameObject korgPowerupUpgrade;
     public GameObject korgPowerupButton;
     public GameObject korgPowerup1;
     public GameObject korgPowerup2;
     public GameObject korgPowerup3;
     public GameObject korgPowerupMaxed;
+    public GameObject korgPowerupEmpty;
+    public GameObject korgPowerupOneThird;
+    public GameObject korgPowerupTwoThird;
+    public GameObject korgPowerupFull;
 
-    [Header("Axel Upgrade")]
+    [Header("Axel Powerup")]
     public GameObject axelPowerupUpgrade;
     public GameObject axelPowerupButton;
     public GameObject axelPowerup1;
     public GameObject axelPowerup2;
     public GameObject axelPowerup3;
     public GameObject axelPowerupMaxed;
+    public GameObject axelPowerupEmpty;
+    public GameObject axelPowerupOneThird;
+    public GameObject axelPowerupTwoThird;
+    public GameObject axelPowerupFull;
 
-    [Header("Xavier Upgrade")]
+    [Header("Xavier Powerup")]
     public GameObject xavierPowerupUpgrade;
     public GameObject xavierPowerupButton;
     public GameObject xavierPowerup1;
     public GameObject xavierPowerup2;
     public GameObject xavierPowerup3;
     public GameObject xavierPowerupMaxed;
+    public GameObject xavierPowerupEmpty;
+    public GameObject xavierPowerupOneThird;
+    public GameObject xavierPowerupTwoThird;
+    public GameObject xavierPowerupFull;
 
     void Update() {
 
@@ -183,11 +215,15 @@ public class Upgrades : MonoBehaviour {
                         korgPassiveButton.SetActive(true);
                         korgPassive.SetActive(true);
                         korgPassiveMaxed.SetActive(false);
+                korgPassiveEmpty.SetActive(true);
+                korgPassiveFull.SetActive(false);
                     }
                     else if (PlayerPrefs.GetInt(selectedChar + "Passive") >= 1) {
                         korgPassiveButton.SetActive(false);
                         korgPassive.SetActive(false);
                         korgPassiveMaxed.SetActive(true);
+                korgPassiveEmpty.SetActive(false);
+                korgPassiveFull.SetActive(true);
                     }
                 }
 
@@ -198,11 +234,15 @@ public class Upgrades : MonoBehaviour {
                         axelPassiveButton.SetActive(true);
                         axelPassive.SetActive(true);
                         axelPassiveMaxed.SetActive(false);
+                axelPassiveEmpty.SetActive(true);
+                axelPassiveFull.SetActive(false);
                     }
                     else if (PlayerPrefs.GetInt(selectedChar + "Passive") >= 1) {
                         axelPassiveButton.SetActive(false);
                         axelPassive.SetActive(false);
                         axelPassiveMaxed.SetActive(true);
+                axelPassiveEmpty.SetActive(false);
+                axelPassiveFull.SetActive(true);
                     }
                 }
                 // Xavier
@@ -212,12 +252,16 @@ public class Upgrades : MonoBehaviour {
                         xavierPassiveButton.SetActive(true);
                         xavierPassive.SetActive(true);
                         xavierPassiveMaxed.SetActive(false);
+                xavierPassiveEmpty.SetActive(true);
+                xavierPassiveFull.SetActive(false);
                     }
                     else if (PlayerPrefs.GetInt(selectedChar + "Passive") >= 1) {
                         xavierPassiveButton.SetActive(false);
                         xavierPassive.SetActive(false);
                         xavierPassiveMaxed.SetActive(true);
-                    }
+                xavierPassiveEmpty.SetActive(false);
+                xavierPassiveFull.SetActive(true);
+            }
                 }
             }
 
@@ -230,7 +274,9 @@ public class Upgrades : MonoBehaviour {
                     korgPassiveMaxed.SetActive(true); // For resets
                     korgPassiveButton.SetActive(false); // For resets
                     korgPassive.SetActive(false);
-                }
+            korgPassiveEmpty.SetActive(false);
+            korgPassiveFull.SetActive(true);
+        }
             }
 
             public void UpgradePassiveForAxel() {
@@ -241,7 +287,9 @@ public class Upgrades : MonoBehaviour {
                     axelPassiveMaxed.SetActive(true); // For resets
                     axelPassiveButton.SetActive(false); // For resets
                     axelPassive.SetActive(false);
-                }
+            axelPassiveEmpty.SetActive(false);
+            axelPassiveFull.SetActive(true);
+        }
             }
 
             public void UpgradePassiveForXavier() {
@@ -252,7 +300,9 @@ public class Upgrades : MonoBehaviour {
                     xavierPassiveMaxed.SetActive(true); // For resets
                     xavierPassiveButton.SetActive(false); // For resets
                     xavierPassive.SetActive(false);
-                }
+            xavierPassiveEmpty.SetActive(false);
+            xavierPassiveFull.SetActive(true);
+        }
             }
 
             public void CloseKorgPassive() {
@@ -338,25 +388,41 @@ public class Upgrades : MonoBehaviour {
                         korgUpgrade2.SetActive(false);
                         korgUpgrade3.SetActive(false);
                         korgSkillMaxed.SetActive(false);
+                korgSkillEmpty.SetActive(true);
+                korgSkillOneThird.SetActive(false);
+                korgSkillTwoThird.SetActive(false);
+                korgSkillFull.SetActive(false);
                     }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 1) {
                         korgUpgrade1.SetActive(false);
                         korgUpgrade2.SetActive(true);
                         korgUpgrade3.SetActive(false);
                         korgSkillMaxed.SetActive(false);
-                    }
+                korgSkillEmpty.SetActive(false);
+                korgSkillOneThird.SetActive(true);
+                korgSkillTwoThird.SetActive(false);
+                korgSkillFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 2) {
                         korgUpgrade1.SetActive(false);
                         korgUpgrade2.SetActive(false);
                         korgUpgrade3.SetActive(true);
                         korgSkillMaxed.SetActive(false);
-                    }
+                korgSkillEmpty.SetActive(false);
+                korgSkillOneThird.SetActive(false);
+                korgSkillTwoThird.SetActive(true);
+                korgSkillFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") >= 3) {
                         korgUpgrade1.SetActive(false);
                         korgUpgrade2.SetActive(false);
                         korgUpgrade3.SetActive(false);
                         korgSkillMaxed.SetActive(true);
-                    }
+                korgSkillEmpty.SetActive(false);
+                korgSkillOneThird.SetActive(false);
+                korgSkillTwoThird.SetActive(false);
+                korgSkillFull.SetActive(true);
+            }
                 }
 
                 // AXEL
@@ -368,6 +434,10 @@ public class Upgrades : MonoBehaviour {
                         axelUpgrade2.SetActive(false);
                         axelUpgrade3.SetActive(false);
                         axelSkillMaxed.SetActive(false);
+                axelSkillEmpty.SetActive(true);
+                axelSkillOneThird.SetActive(false);
+                axelSkillTwoThird.SetActive(false);
+                axelSkillFull.SetActive(false);
                     }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 1) {
                         axelUpgradeButton.SetActive(true);
@@ -375,20 +445,32 @@ public class Upgrades : MonoBehaviour {
                         axelUpgrade2.SetActive(true);
                         axelUpgrade3.SetActive(false);
                         axelSkillMaxed.SetActive(false);
-                    }
+                axelSkillEmpty.SetActive(false);
+                axelSkillOneThird.SetActive(true);
+                axelSkillTwoThird.SetActive(false);
+                axelSkillFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 2) {
                         axelUpgradeButton.SetActive(true);
                         axelUpgrade1.SetActive(false);
                         axelUpgrade2.SetActive(false);
                         axelUpgrade3.SetActive(true);
                         axelSkillMaxed.SetActive(false);
-                    }
+                axelSkillEmpty.SetActive(false);
+                axelSkillOneThird.SetActive(false);
+                axelSkillTwoThird.SetActive(true);
+                axelSkillFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") >= 3) {;
                         axelUpgrade1.SetActive(false);
                         axelUpgrade2.SetActive(false);
                         axelUpgrade3.SetActive(false);
                         axelSkillMaxed.SetActive(true);
-                    }
+                axelSkillEmpty.SetActive(false);
+                axelSkillOneThird.SetActive(false);
+                axelSkillTwoThird.SetActive(false);
+                axelSkillFull.SetActive(true);
+            }
                 }
 
                 // XAVIER
@@ -400,6 +482,10 @@ public class Upgrades : MonoBehaviour {
                         xavierUpgrade2.SetActive(false);
                         xavierUpgrade3.SetActive(false);
                         xavierSkillMaxed.SetActive(false);
+                xavierSkillEmpty.SetActive(true);
+                xavierSkillOneThird.SetActive(false);
+                xavierSkillTwoThird.SetActive(false);
+                xavierSkillFull.SetActive(false);
                     }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 1) {
                         xavierUpgradeButton.SetActive(true);
@@ -407,20 +493,32 @@ public class Upgrades : MonoBehaviour {
                         xavierUpgrade2.SetActive(true);
                         xavierUpgrade3.SetActive(false);
                         xavierSkillMaxed.SetActive(false);
-                    }
+                xavierSkillEmpty.SetActive(false);
+                xavierSkillOneThird.SetActive(true);
+                xavierSkillTwoThird.SetActive(false);
+                xavierSkillFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 2) {
                         xavierUpgradeButton.SetActive(true);
                         xavierUpgrade1.SetActive(false);
                         xavierUpgrade2.SetActive(false);
                         xavierUpgrade3.SetActive(true);
                         xavierSkillMaxed.SetActive(false);
-                    }
+                xavierSkillEmpty.SetActive(false);
+                xavierSkillOneThird.SetActive(false);
+                xavierSkillTwoThird.SetActive(true);
+                xavierSkillFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") >= 3) {
                         xavierUpgrade1.SetActive(false);
                         xavierUpgrade2.SetActive(false);
                         xavierUpgrade3.SetActive(false);
                         xavierSkillMaxed.SetActive(true);
-                    }
+                xavierSkillEmpty.SetActive(false);
+                xavierSkillOneThird.SetActive(false);
+                xavierSkillTwoThird.SetActive(false);
+                xavierSkillFull.SetActive(true);
+            }
                 }
             }
 
@@ -434,7 +532,11 @@ public class Upgrades : MonoBehaviour {
                     korgUpgradeButton.SetActive(true); // For resets
                     korgUpgrade2.SetActive(true);
                     korgUpgrade1.SetActive(false);
-                }
+            korgSkillEmpty.SetActive(false);
+            korgSkillOneThird.SetActive(true);
+            korgSkillTwoThird.SetActive(false);
+            korgSkillFull.SetActive(false);
+        }
                 else if (PlayerPrefs.GetInt(selectedChar + "Skill") > 0) {
                     PlayerPrefs.SetInt(selectedChar + "Skill", PlayerPrefs.GetInt(selectedChar + "Skill") + 1);
 
@@ -444,12 +546,20 @@ public class Upgrades : MonoBehaviour {
                         korgUpgradeButton.SetActive(true); // For resets
                         korgUpgrade3.SetActive(true);
                         korgUpgrade2.SetActive(false);
-                    }
+                korgSkillEmpty.SetActive(false);
+                korgSkillOneThird.SetActive(false);
+                korgSkillTwoThird.SetActive(true);
+                korgSkillFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 3) {
                         PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade3Value);
                         korgUpgrade3.SetActive(false);
                         axelUpgradeButton.SetActive(false);
                         korgSkillMaxed.SetActive(true);
+                korgSkillEmpty.SetActive(false);
+                korgSkillOneThird.SetActive(false);
+                korgSkillTwoThird.SetActive(false);
+                korgSkillFull.SetActive(true);
                     }
                 }
 
@@ -464,7 +574,11 @@ public class Upgrades : MonoBehaviour {
                     axelUpgradeButton.SetActive(true); // For resets
                     axelUpgrade2.SetActive(true);
                     axelUpgrade1.SetActive(false);
-                }
+            axelSkillEmpty.SetActive(false);
+            axelSkillOneThird.SetActive(true);
+            axelSkillTwoThird.SetActive(false);
+            axelSkillFull.SetActive(false);
+        }
                 else if (PlayerPrefs.GetInt(selectedChar + "Skill") > 0) {
 
                     PlayerPrefs.SetInt(selectedChar + "Skill", PlayerPrefs.GetInt(selectedChar + "Skill") + 1);
@@ -475,12 +589,20 @@ public class Upgrades : MonoBehaviour {
                         axelUpgradeButton.SetActive(true); // For resets
                         axelUpgrade3.SetActive(true);
                         axelUpgrade2.SetActive(false);
-                    }
+                axelSkillEmpty.SetActive(false);
+                axelSkillOneThird.SetActive(false);
+                axelSkillTwoThird.SetActive(true);
+                axelSkillFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 3) {
                         PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade3Value);
                         axelUpgrade3.SetActive(false);
                         axelUpgradeButton.SetActive(false);
                         axelSkillMaxed.SetActive(true);
+                axelSkillEmpty.SetActive(false);
+                axelSkillOneThird.SetActive(false);
+                axelSkillTwoThird.SetActive(false);
+                axelSkillFull.SetActive(true);
                     }
                 }
 
@@ -495,7 +617,11 @@ public class Upgrades : MonoBehaviour {
                     xavierUpgradeButton.SetActive(true); // For resets
                     xavierUpgrade2.SetActive(true);
                     xavierUpgrade1.SetActive(false);
-                }
+            xavierSkillEmpty.SetActive(false);
+            xavierSkillOneThird.SetActive(true);
+            xavierSkillTwoThird.SetActive(false);
+            xavierSkillFull.SetActive(false);
+        }
                 else if (PlayerPrefs.GetInt(selectedChar + "Skill") > 0) {
 
                     PlayerPrefs.SetInt(selectedChar + "Skill", PlayerPrefs.GetInt(selectedChar + "Skill") + 1);
@@ -506,12 +632,20 @@ public class Upgrades : MonoBehaviour {
                         xavierUpgradeButton.SetActive(true); // For resets
                         xavierUpgrade3.SetActive(true);
                         xavierUpgrade2.SetActive(false);
-                    }
+                xavierSkillEmpty.SetActive(false);
+                xavierSkillOneThird.SetActive(false);
+                xavierSkillTwoThird.SetActive(true);
+                xavierSkillFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Skill") == 3) {
                         PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade3Value);
                         xavierUpgrade3.SetActive(false);
                         xavierUpgradeButton.SetActive(false);
                         xavierSkillMaxed.SetActive(true);
+                xavierSkillEmpty.SetActive(false);
+                xavierSkillOneThird.SetActive(false);
+                xavierSkillTwoThird.SetActive(false);
+                xavierSkillFull.SetActive(true);
                     }
                 }
 
@@ -601,25 +735,41 @@ public class Upgrades : MonoBehaviour {
                         korgPowerup2.SetActive(false);
                         korgPowerup3.SetActive(false);
                         korgPowerupMaxed.SetActive(false);
+                korgPowerupEmpty.SetActive(true);
+                korgPowerupOneThird.SetActive(false);
+                korgPowerupTwoThird.SetActive(false);
+                korgPowerupFull.SetActive(false);
                     }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 1) {
                         korgPowerup1.SetActive(false);
                         korgPowerup2.SetActive(true);
                         korgPowerup3.SetActive(false);
                         korgPowerupMaxed.SetActive(false);
-                    }
+                korgPowerupEmpty.SetActive(false);
+                korgPowerupOneThird.SetActive(true);
+                korgPowerupTwoThird.SetActive(false);
+                korgPowerupFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 2) {
                         korgPowerup1.SetActive(false);
                         korgPowerup2.SetActive(false);
                         korgPowerup3.SetActive(true);
                         korgPowerupMaxed.SetActive(false);
-                    }
+                korgPowerupEmpty.SetActive(false);
+                korgPowerupOneThird.SetActive(false);
+                korgPowerupTwoThird.SetActive(true);
+                korgPowerupFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") >= 3) {
                         korgPowerup1.SetActive(false);
                         korgPowerup2.SetActive(false);
                         korgPowerup3.SetActive(false);
                         korgPowerupMaxed.SetActive(true);
-                    }
+                korgPowerupEmpty.SetActive(false);
+                korgPowerupOneThird.SetActive(false);
+                korgPowerupTwoThird.SetActive(false);
+                korgPowerupFull.SetActive(true);
+            }
                 }
 
                 // AXEL
@@ -631,6 +781,10 @@ public class Upgrades : MonoBehaviour {
                         axelPowerup2.SetActive(false);
                         axelPowerup3.SetActive(false);
                         axelPowerupMaxed.SetActive(false);
+                axelPowerupEmpty.SetActive(true);
+                axelPowerupOneThird.SetActive(false);
+                axelPowerupTwoThird.SetActive(false);
+                axelPowerupFull.SetActive(false);
                     }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 1) {
                         axelPowerupButton.SetActive(true);
@@ -638,21 +792,33 @@ public class Upgrades : MonoBehaviour {
                         axelPowerup2.SetActive(true);
                         axelPowerup3.SetActive(false);
                         axelPowerupMaxed.SetActive(false);
-                    }
+                axelPowerupEmpty.SetActive(false);
+                axelPowerupOneThird.SetActive(true);
+                axelPowerupTwoThird.SetActive(false);
+                axelPowerupFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 2) {
                         axelPowerupButton.SetActive(true);
                         axelPowerup1.SetActive(false);
                         axelPowerup2.SetActive(false);
                         axelPowerup3.SetActive(true);
                         axelPowerupMaxed.SetActive(false);
-                    }
+                axelPowerupEmpty.SetActive(false);
+                axelPowerupOneThird.SetActive(false);
+                axelPowerupTwoThird.SetActive(true);
+                axelPowerupFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") >= 3) {
                         ;
                         axelPowerup1.SetActive(false);
                         axelPowerup2.SetActive(false);
                         axelPowerup3.SetActive(false);
                         axelPowerupMaxed.SetActive(true);
-                    }
+                axelPowerupEmpty.SetActive(false);
+                axelPowerupOneThird.SetActive(false);
+                axelPowerupTwoThird.SetActive(false);
+                axelPowerupFull.SetActive(true);
+            }
                 }
 
                 // XAVIER
@@ -664,6 +830,10 @@ public class Upgrades : MonoBehaviour {
                         xavierPowerup2.SetActive(false);
                         xavierPowerup3.SetActive(false);
                         xavierPowerupMaxed.SetActive(false);
+                xavierPowerupEmpty.SetActive(true);
+                xavierPowerupOneThird.SetActive(false);
+                xavierPowerupTwoThird.SetActive(false);
+                xavierPowerupFull.SetActive(false);
                     }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 1) {
                         xavierPowerupButton.SetActive(true);
@@ -671,20 +841,32 @@ public class Upgrades : MonoBehaviour {
                         xavierPowerup2.SetActive(true);
                         xavierPowerup3.SetActive(false);
                         xavierPowerupMaxed.SetActive(false);
-                    }
+                xavierPowerupEmpty.SetActive(false);
+                xavierPowerupOneThird.SetActive(true);
+                xavierPowerupTwoThird.SetActive(false);
+                xavierPowerupFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 2) {
                         xavierPowerupButton.SetActive(true);
                         xavierPowerup1.SetActive(false);
                         xavierPowerup2.SetActive(false);
                         xavierPowerup3.SetActive(true);
                         xavierPowerupMaxed.SetActive(false);
-                    }
+                xavierPowerupEmpty.SetActive(false);
+                xavierPowerupOneThird.SetActive(false);
+                xavierPowerupTwoThird.SetActive(true);
+                xavierPowerupFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") >= 3) {
                         xavierPowerup1.SetActive(false);
                         xavierPowerup2.SetActive(false);
                         xavierPowerup3.SetActive(false);
                         xavierPowerupMaxed.SetActive(true);
-                    }
+                xavierPowerupEmpty.SetActive(false);
+                xavierPowerupOneThird.SetActive(false);
+                xavierPowerupTwoThird.SetActive(false);
+                xavierPowerupFull.SetActive(true);
+            }
                 }
             }
 
@@ -698,7 +880,11 @@ public class Upgrades : MonoBehaviour {
                     korgPowerupButton.SetActive(true); // For resets
                     korgPowerup2.SetActive(true);
                     korgPowerup1.SetActive(false);
-                }
+            korgPowerupEmpty.SetActive(false);
+            korgPowerupOneThird.SetActive(true);
+            korgPowerupTwoThird.SetActive(false);
+            korgPowerupFull.SetActive(false);
+        }
                 else if (PlayerPrefs.GetInt(selectedChar + "Powerup") > 0) {
                     PlayerPrefs.SetInt(selectedChar + "Powerup", PlayerPrefs.GetInt(selectedChar + "Powerup") + 1);
 
@@ -708,12 +894,20 @@ public class Upgrades : MonoBehaviour {
                         korgPowerupButton.SetActive(true); // For resets
                         korgPowerup3.SetActive(true);
                         korgPowerup2.SetActive(false);
-                    }
+                korgPowerupEmpty.SetActive(false);
+                korgPowerupOneThird.SetActive(false);
+                korgPowerupTwoThird.SetActive(true);
+                korgPowerupFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 3) {
                         PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup3Value);
                         korgPowerup3.SetActive(false);
                         axelPowerupButton.SetActive(false);
                         korgPowerupMaxed.SetActive(true);
+                korgPowerupEmpty.SetActive(false);
+                korgPowerupOneThird.SetActive(false);
+                korgPowerupTwoThird.SetActive(false);
+                korgPowerupFull.SetActive(true);
                     }
                 }
 
@@ -728,7 +922,11 @@ public class Upgrades : MonoBehaviour {
                     axelPowerupButton.SetActive(true); // For resets
                     axelPowerup2.SetActive(true);
                     axelPowerup1.SetActive(false);
-                }
+            axelPowerupEmpty.SetActive(false);
+            axelPowerupOneThird.SetActive(true);
+            axelPowerupTwoThird.SetActive(false);
+            axelPowerupFull.SetActive(false);
+        }
                 else if (PlayerPrefs.GetInt(selectedChar + "Powerup") > 0) {
 
                     PlayerPrefs.SetInt(selectedChar + "Powerup", PlayerPrefs.GetInt(selectedChar + "Powerup") + 1);
@@ -739,12 +937,20 @@ public class Upgrades : MonoBehaviour {
                         axelPowerupButton.SetActive(true); // For resets
                         axelPowerup3.SetActive(true);
                         axelPowerup2.SetActive(false);
-                    }
+                axelPowerupEmpty.SetActive(false);
+                axelPowerupOneThird.SetActive(false);
+                axelPowerupTwoThird.SetActive(true);
+                axelPowerupFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 3) {
                         PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup3Value);
                         axelPowerup3.SetActive(false);
                         axelPowerupButton.SetActive(false);
                         axelPowerupMaxed.SetActive(true);
+                axelPowerupEmpty.SetActive(false);
+                axelPowerupOneThird.SetActive(false);
+                axelPowerupTwoThird.SetActive(false);
+                axelPowerupFull.SetActive(true);
                     }
                 }
 
@@ -759,7 +965,11 @@ public class Upgrades : MonoBehaviour {
                     xavierPowerupButton.SetActive(true); // For resets
                     xavierPowerup2.SetActive(true);
                     xavierPowerup1.SetActive(false);
-                }
+            xavierPowerupEmpty.SetActive(false);
+            xavierPowerupOneThird.SetActive(true);
+            xavierPowerupTwoThird.SetActive(false);
+            xavierPowerupFull.SetActive(false);
+        }
                 else if (PlayerPrefs.GetInt(selectedChar + "Powerup") > 0) {
 
                     PlayerPrefs.SetInt(selectedChar + "Powerup", PlayerPrefs.GetInt(selectedChar + "Powerup") + 1);
@@ -770,12 +980,20 @@ public class Upgrades : MonoBehaviour {
                         xavierPowerupButton.SetActive(true); // For resets
                         xavierPowerup3.SetActive(true);
                         xavierPowerup2.SetActive(false);
-                    }
+                xavierPowerupEmpty.SetActive(false);
+                xavierPowerupOneThird.SetActive(false);
+                xavierPowerupTwoThird.SetActive(true);
+                xavierPowerupFull.SetActive(false);
+            }
                     else if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 3) {
                         PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup3Value);
                         xavierPowerup3.SetActive(false);
                         xavierPowerupButton.SetActive(false);
                         xavierPowerupMaxed.SetActive(true);
+                xavierPowerupEmpty.SetActive(false);
+                xavierPowerupOneThird.SetActive(false);
+                xavierPowerupTwoThird.SetActive(false);
+                xavierPowerupFull.SetActive(true);
                     }
                 }
 
