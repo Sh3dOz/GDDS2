@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     public bool isWin;
     public bool isBossLevel;
     public bool gotSpace;
+    public bool gotLand = true;
     [SerializeField]PlayerController player;
     [SerializeField] BossController boss;
     public Slider progressSlider;
@@ -133,8 +134,17 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                landDistance = Mathf.Abs(endPos.position.x - startPos.position.x);
-                progressSlider.maxValue = landDistance + (gotSpace ? landDistance : 0);
+                if (gotLand)
+                {
+                    landDistance = Mathf.Abs(endPos.position.x - startPos.position.x);
+                    progressSlider.maxValue = landDistance + (gotSpace ? landDistance : 0);
+                }
+                else
+                {
+                    landDistance = 0;
+                    progressSlider.maxValue = 1;
+                    GetComponent<EnemySpawn>().enabled = true;
+                }
                 progressSlider.value = 0;
                 healthSlider.value = player.health;
             }
@@ -186,7 +196,7 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    float spaceSegment = landDistance / EnemySpawn.maxWave;
+                    float spaceSegment = (progressSlider.maxValue -landDistance) / EnemySpawn.maxWave;
                     progressSlider.value = landDistance + (spaceSegment * EnemySpawn.currWave - 1);
                 }
             }
