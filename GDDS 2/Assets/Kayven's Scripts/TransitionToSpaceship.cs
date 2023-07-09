@@ -15,7 +15,6 @@ public class TransitionToSpaceship : MonoBehaviour {
     public Sprite spaceshipSprite;
 
     public PlayableDirector playableDirector;
-    private bool isTimelineStarted = false;
     public PlayerController spaceships;
     public LevelManager playerSwitch;
 
@@ -29,11 +28,6 @@ public class TransitionToSpaceship : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (spaceship.activeSelf && isTimelineStarted) {
-            playableDirector.Play();
-            isTimelineStarted = true;
-            
-        }
 
     }
 
@@ -45,9 +39,10 @@ public class TransitionToSpaceship : MonoBehaviour {
     }
 
     public IEnumerator Transition() {
+        
         Object.Destroy(spaceshipDup);
-        spaceships.playerSprite = spaceshipSprite;
-        yield return new WaitForSeconds(4.5f);
         playerSwitch.SwitchMode();
+        yield return new WaitForSeconds(0.5f);
+        playableDirector.Play();
     }
 }
