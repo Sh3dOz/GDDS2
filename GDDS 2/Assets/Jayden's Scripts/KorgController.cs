@@ -175,7 +175,7 @@ public class KorgController : PlayerController
             {
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
-                    ToggleMode();
+                    manager.SwitchMode();
                     if(isInSpace) transform.localScale = new Vector3(1f, 1f, 1f);
                 }
                 if (onLand)

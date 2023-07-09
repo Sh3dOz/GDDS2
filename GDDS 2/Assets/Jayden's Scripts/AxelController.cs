@@ -182,7 +182,7 @@ public class AxelController : PlayerController
             {
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
-                    ToggleMode();
+                    manager.SwitchMode();
                 }
                 if (onLand)
                 {

@@ -68,6 +68,10 @@ public class XavierController : PlayerController {
             GroundBehaviour();
         }
         else if (isInSpace) {
+            if(metorParent.gameObject.activeInHierarchy == false)
+            {
+                metorParent.gameObject.SetActive(true);
+            }
             Fire(weaponDamage);
             MetoriteCooldown();
         }
@@ -124,7 +128,7 @@ public class XavierController : PlayerController {
             }
             else {
                 if (Input.GetKeyDown(KeyCode.Tab)) {
-                    ToggleMode();
+                    manager.SwitchMode();
                 }
                 if (onLand) {
                     GroundBehaviour();
@@ -166,6 +170,10 @@ public class XavierController : PlayerController {
     }
         
     public void GroundBehaviour() {
+        if (metorParent.gameObject.activeInHierarchy)
+        {
+            metorParent.gameObject.SetActive(false);
+        }
         rb.velocity = new Vector2(runSpeed, 0f);
     }
 
@@ -195,7 +203,8 @@ public class XavierController : PlayerController {
     public void LaunchMetorite()
     {
         if (metoriteCharge <= 0) return;
-        GameObject metorite = metorites[metoriteCharge - 1];
+        GameObject metorite = metorites[0];
+        metorites.Remove(metorite);
         metorite.GetComponent<MetoriteController>().isFired = true;
         Destroy(metorite, metorDuration);
         metoriteCharge--;

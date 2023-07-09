@@ -13,12 +13,15 @@ public class LevelManager : MonoBehaviour
     public bool isAlive;
     public bool isWin;
     public bool isBossLevel;
+    public bool gotSpace;
     [SerializeField]PlayerController player;
     [SerializeField] BossController boss;
     public Slider progressSlider;
+    float landDistance;
     public Slider healthSlider;
     public Slider bossHealthBar;
     public Button landButton, spaceButton;
+    public GameObject joystick;
     public Image landCooldown, spaceCooldown;
     public GameObject spaceCharge;
     public Transform startPos;
@@ -27,7 +30,7 @@ public class LevelManager : MonoBehaviour
     public int coinCount;
     public Text coinText;
     public AudioSource coinSound;
-    public CinemachineVirtualCamera cam;
+    public CinemachineVirtualCamera vcam;
 
     [Header("Instrcutions")]
     [SerializeField] GameObject instructionsCanvas;
@@ -71,7 +74,7 @@ public class LevelManager : MonoBehaviour
                     landCooldown.overrideSprite = shieldCooldown;
                     spaceButton.image.overrideSprite = missileIcon;
                     spaceCooldown.overrideSprite = missileCooldown;
-                    cam.Follow = korg.transform;
+                    vcam.Follow = korg.transform;
                     //ResultScreen.player = korg.GetComponent<PlayerController>();
                     if(PlayerPrefs.GetInt("PassiveForKorg") == 1) {
                         score.scoreDeducted = 29;
@@ -84,7 +87,7 @@ public class LevelManager : MonoBehaviour
                     landCooldown.overrideSprite = empCooldown;
                     spaceButton.image.overrideSprite = deflectIcon;
                     spaceCooldown.overrideSprite = deflectCooldown;
-                    cam.Follow = axel.transform;
+                    vcam.Follow = axel.transform;
                     //ResultScreen.player = axel.GetComponent<PlayerController>();
                     if (PlayerPrefs.GetInt("PassiveForAxel") == 1) {
                         player.health = 5;
@@ -99,7 +102,7 @@ public class LevelManager : MonoBehaviour
                     spaceButton.image.sprite = metoriteIcon;
                     spaceCooldown.sprite = metoriteCooldown;
                     spaceCharge.SetActive(true);
-                    cam.Follow = x.transform;
+                    vcam.Follow = x.transform;
                     if (PlayerPrefs.GetInt("PassiveForXavier") == 1) {
                         foreach(Coin coin in coins) {
                             coin.coinValue = 2;
@@ -112,7 +115,7 @@ public class LevelManager : MonoBehaviour
                     landCooldown.overrideSprite = shieldCooldown;
                     spaceButton.image.overrideSprite = missileIcon;
                     spaceCooldown.overrideSprite = missileCooldown;
-                    cam.Follow = korg.transform;
+                    vcam.Follow = korg.transform;
                     //ResultScreen.player = korg.GetComponent<PlayerController>();
                     break;
             }
@@ -130,7 +133,8 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                progressSlider.maxValue = Mathf.Abs(endPos.position.x - startPos.position.x);
+                landDistance = Mathf.Abs(endPos.position.x - startPos.position.x);
+                progressSlider.maxValue = landDistance + (gotSpace ? landDistance : 0);
                 progressSlider.value = 0;
                 healthSlider.value = player.health;
             }
@@ -149,24 +153,42 @@ public class LevelManager : MonoBehaviour
         if (isBossLevel)
         {
             bossHealthBar.value = boss.currentHealth;
-            if(bossHealthBar.value == bossHealthBar.minValue)
+            if (bossHealthBar.value == bossHealthBar.minValue)
             {
                 isWin = true;
                 PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
             }
         }
-        if (player.onLand)
+        else
         {
-            progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
-            if (progressSlider.value == progressSlider.maxValue)
+            if (player.onLand)
             {
-                isWin = true;
-                PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+                progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
+                if (progressSlider.value >= landDistance)
+                {
+                    if (gotSpace)
+                    {
+                        SwitchMode();
+                    }
+                    else
+                    {
+                        isWin = true;
+                        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+                    }
+                }
             }
-        }
-        else if (player.isInSpace)
-        {
-
+            else if (player.isInSpace)
+            {
+                if (EnemySpawn.currWave > EnemySpawn.maxWave)
+                {
+                    isWin = true;
+                }
+                else
+                {
+                    float spaceSegment = landDistance / EnemySpawn.maxWave;
+                    progressSlider.value = landDistance + (spaceSegment * EnemySpawn.currWave - 1);
+                }
+            }
         }
     }
 
@@ -207,4 +229,28 @@ public class LevelManager : MonoBehaviour
         player.canMove = true;
     }
 
+    public void SwitchMode()
+    {
+        if(player.onLand)
+        {
+            landButton.gameObject.SetActive(false);
+            spaceButton.gameObject.SetActive(true);
+            joystick.SetActive(true);
+            player.sr.sprite = player.spaceShip;
+            vcam.Follow = null;
+            player.UpdateSprite();
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        if (player.isInSpace)
+        {
+            landButton.gameObject.SetActive(true);
+            spaceButton.gameObject.SetActive(false);
+            joystick.SetActive(false);
+            player.sr.sprite = player.playerSprite;
+            vcam.Follow = this.gameObject.transform;
+            player.UpdateSprite();
+        }
+        player.onLand = !player.onLand;
+        player.isInSpace = !player.isInSpace;
+    }
 }

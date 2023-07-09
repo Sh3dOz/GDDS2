@@ -4,6 +4,7 @@ using UnityEngine;
 using Terresquall;
 using UnityEngine.UI;
 using TMPro;
+using Cinemachine;
 
 public abstract class PlayerController : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public abstract class PlayerController : MonoBehaviour
     [Header("Transition")]
     public GameObject landButton;
     public GameObject spaceButton;
+    public CinemachineVirtualCamera vcam;
     
 
     public bool isWin = false;
@@ -87,33 +89,6 @@ public abstract class PlayerController : MonoBehaviour
     {
         weapons[currentWeapon].damage = damage;
         weapons[currentWeapon].Fire();
-    }
-
-
-
-    public void ToggleMode()
-    {
-        if (onLand)
-        {
-            landButton.SetActive(false);
-            spaceButton.SetActive(true);
-            joystick.SetActive(true);
-            sr.sprite = spaceShip;
-            UpdateSprite();
-            //playerSprite.SetActive(false);
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-        if (isInSpace)
-        {
-            landButton.SetActive(true);
-            spaceButton.SetActive(false);
-            joystick.SetActive(false);
-            sr.sprite = playerSprite;
-            UpdateSprite();
-            //playerSprite.SetActive(true);
-        }
-        onLand = !onLand;
-        isInSpace = !isInSpace;
     }
 
     public void GroundCheck()

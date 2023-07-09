@@ -7,8 +7,9 @@ public class EnemySpawn : MonoBehaviour
     public List<GameObject> enemiesToSpawn;
     public List<GameObject> enemiesSpawned;
     public List<ShootingEnemy> waveToSpawn;
-    public int currWave;
+    public static int currWave;
     public int waveValue;
+    public static int maxWave;
 
     public Transform spawnLoaction;
     public int waveDuration;
@@ -23,6 +24,22 @@ public class EnemySpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        string difficulty = PlayerPrefs.GetString("Difficulty");
+        switch (difficulty)
+        {
+            case "Easy":
+                maxWave = 3;
+                break;
+            case "Normal":
+                maxWave = 5;
+                break;
+            case "Hard":
+                maxWave = 7;
+                break;
+            default:
+                maxWave = 3;
+                break;
+        }
         GenerateWaves();
     }
 
@@ -100,7 +117,10 @@ public class EnemySpawn : MonoBehaviour
         if(enemiesSpawned.Count == 0)
         {
             currWave += 1;
-            GenerateWaves();
+            if (currWave <= maxWave)
+            {
+                GenerateWaves();
+            }
         }
     }
 }
