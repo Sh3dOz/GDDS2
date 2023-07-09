@@ -166,7 +166,7 @@ MonoBehaviour:
   isReloading: 0
   bulletSpeed: -10
   shootPos: {fileID: 2057689395344670421}
-  fireRate: 1
+  fireRate: 2
   damage: 1
   health: 25
   cost: 1
@@ -175,6 +175,7 @@ MonoBehaviour:
   target: {fileID: 0}
   targetPos: {fileID: 0}
   inCombat: 0
+  isBoss: 0
 --- !u!50 &2057689394824813409
 Rigidbody2D:
   serializedVersion: 4
