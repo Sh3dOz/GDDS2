@@ -1045,7 +1045,12 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void Back() {
+                StartCoroutine("BackToLevelSelect");
+            }
+
+            public IEnumerator BackToLevelSelect() {
                 audioS.PlayOneShot(pressingSound);
+                yield return new WaitForSeconds(0.5f);
                 SceneManager.LoadScene("Level Select");
             }
 
