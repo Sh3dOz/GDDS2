@@ -927,7 +927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &1380295682
 Animator:
   serializedVersion: 3
@@ -1866,8 +1866,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 413845714}
     - target: {fileID: 4544099864220997470, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: isBossLevel
+      propertyPath: gotSpace
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544099864220997470, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: isBossLevel
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4544099864220997470, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: bossHealthBar
@@ -1996,6 +2000,10 @@ PrefabInstance:
     - target: {fileID: 5067576698676642004, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114840622725354301, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5200974396478313170, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: parallexEffect

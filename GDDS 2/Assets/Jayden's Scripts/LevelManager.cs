@@ -169,6 +169,7 @@ public class LevelManager : MonoBehaviour
                     if (gotSpace)
                     {
                         SwitchMode();
+                        GetComponent<EnemySpawn>().enabled = true;
                     }
                     else
                     {
