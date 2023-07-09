@@ -22901,7 +22901,7 @@ MonoBehaviour:
   coinsCollectedAll: 0
   audioS: {fileID: 1661124660}
   pressingSound: {fileID: 8300000, guid: f51f4e3e965cde143b1269a66b415c74, type: 3}
-  upgradeSound: {fileID: 0}
+  upgradeSound: {fileID: 8300000, guid: da41288133a745e41b43edeca905df49, type: 3}
   interactables: {fileID: 1983189134}
   passiveValue: 100
   korgPassiveUpgrade: {fileID: 391621144}

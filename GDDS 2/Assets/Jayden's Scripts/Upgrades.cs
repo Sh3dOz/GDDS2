@@ -267,7 +267,7 @@ public class Upgrades : MonoBehaviour {
 
 
             public void UpgradePassiveForKorg() {
-                audioS.PlayOneShot(pressingSound);
+                audioS.PlayOneShot(upgradeSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Passive", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - passiveValue);
@@ -280,7 +280,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradePassiveForAxel() {
-                audioS.PlayOneShot(pressingSound);
+                audioS.PlayOneShot(upgradeSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Passive", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - passiveValue);
@@ -293,7 +293,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradePassiveForXavier() {
-                audioS.PlayOneShot(pressingSound);
+                audioS.PlayOneShot(upgradeSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Passive") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Passive", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - passiveValue);
@@ -524,7 +524,7 @@ public class Upgrades : MonoBehaviour {
 
             //UPGRADES
             public void UpgradeSkillForKorg() {
-                audioS.PlayOneShot(pressingSound);
+                audioS.PlayOneShot(upgradeSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Skill", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade1Value);
@@ -566,7 +566,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradeSkillForAxel() {
-                audioS.PlayOneShot(pressingSound);
+                audioS.PlayOneShot(upgradeSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Skill", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade1Value);
@@ -609,7 +609,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradeSkillForXavier() {
-                audioS.PlayOneShot(pressingSound);
+                audioS.PlayOneShot(upgradeSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Skill") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Skill", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - upgrade1Value);
@@ -872,7 +872,7 @@ public class Upgrades : MonoBehaviour {
 
             //POWERUPS
             public void UpgradePowerupForKorg() {
-                audioS.PlayOneShot(pressingSound);
+                audioS.PlayOneShot(upgradeSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup1Value);
@@ -914,7 +914,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradePowerupForAxel() {
-                audioS.PlayOneShot(pressingSound);
+                audioS.PlayOneShot(upgradeSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup1Value);
@@ -957,7 +957,7 @@ public class Upgrades : MonoBehaviour {
             }
 
             public void UpgradePowerupForXavier() {
-                audioS.PlayOneShot(pressingSound);
+                audioS.PlayOneShot(upgradeSound);
                 if (PlayerPrefs.GetInt(selectedChar + "Powerup") == 0) {
                     PlayerPrefs.SetInt(selectedChar + "Powerup", 1);
                     PlayerPrefs.SetFloat("Coins", coinsCollectedAll - powerup1Value);
