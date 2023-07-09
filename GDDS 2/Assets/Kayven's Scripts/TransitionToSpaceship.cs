@@ -12,14 +12,19 @@ public class TransitionToSpaceship : MonoBehaviour {
     public GameObject joyStick;
     public CameraTargetChanger cameras;
 
+    public Sprite spaceshipSprite;
+
     public PlayableDirector playableDirector;
     private bool isTimelineStarted = false;
     public PlayerController spaceships;
+    public LevelManager playerSwitch;
 
 
     // Start is called before the first frame update
     void Start() {
         cameras = FindObjectOfType<CameraTargetChanger>();
+        spaceships = FindObjectOfType<PlayerController>();
+        playerSwitch = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -40,17 +45,9 @@ public class TransitionToSpaceship : MonoBehaviour {
     }
 
     public IEnumerator Transition() {
-
-        yield return new WaitForSeconds(0.5f);
-        spaceships.canMove = false;
-        joyStick.SetActive(true);
-        player.SetActive(false);
-        spaceship.SetActive(true);
-        spaceshipDup.SetActive(false);
-        cameras.CameraTransition();
-        yield return new WaitForSeconds(1.5f);
-        spaceships.canMove = true;
-
-
+        Object.Destroy(spaceshipDup);
+        spaceships.playerSprite = spaceshipSprite;
+        yield return new WaitForSeconds(4.5f);
+        playerSwitch.SwitchMode();
     }
 }
