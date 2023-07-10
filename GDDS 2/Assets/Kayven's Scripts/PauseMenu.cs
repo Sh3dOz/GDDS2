@@ -44,6 +44,15 @@ public class PauseMenu : MonoBehaviour {
         Debug.Log("LoadMain");
         SceneManager.LoadScene("Main Menu");
     }
+    public void SelectNextLevel() {
+        StartCoroutine("SelectingNextLevel");
+    }
+
+    public IEnumerator SelectingNextLevel() {
+        audioSource.PlayOneShot(pressingSound);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Level Select");
+    }
 
     public void Retry() {
 
