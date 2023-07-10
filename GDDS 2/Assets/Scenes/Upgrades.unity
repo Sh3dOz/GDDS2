@@ -15553,9 +15553,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2114848005}
-        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-        m_MethodName: Back
+      - m_Target: {fileID: 2114848006}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: BackToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23001,8 +23001,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
-  audioSource: {fileID: 0}
-  pressingSound: {fileID: 0}
+  audioSource: {fileID: 1661124660}
+  pressingSound: {fileID: 8300000, guid: f51f4e3e965cde143b1269a66b415c74, type: 3}
 --- !u!1 &2118729490
 GameObject:
   m_ObjectHideFlags: 0
