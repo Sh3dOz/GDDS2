@@ -45,6 +45,7 @@ public class LosingScreen : MonoBehaviour {
         coinsCollectedText.text = "Coins Collected: " + coinsCollected;
 
         yield return new WaitForSeconds(0.2f);
+        UI.PlayOneShot(crash);
         losingScreens.SetActive(true);
     }
 
@@ -52,8 +53,8 @@ public class LosingScreen : MonoBehaviour {
         if (deadedCoStarted) {
             yield break;
         }
-        deadedCoStarted = true;
         UI.PlayOneShot(crash);
+        deadedCoStarted = true;
     }
 
 }

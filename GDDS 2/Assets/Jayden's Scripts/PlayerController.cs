@@ -79,8 +79,10 @@ public abstract class PlayerController : MonoBehaviour
 
     IEnumerator waitDamage()
     {
+        canBeDamaged = false;
         Debug.Log("damaged");
         yield return new WaitForSeconds(1f);
+        canBeDamaged = true;
         isDamaged = false;
     }
 

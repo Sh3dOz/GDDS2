@@ -37,11 +37,14 @@ public class BasicBullet : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponentInParent<PlayerController>()) {
-            collision.GetComponent<PlayerController>().TakeDamage(damage);
             foreach (PlayerController player in players) {
-                Instantiate(shotEffect, player.transform.position, Quaternion.identity);
+                if (player.canBeDamaged == true) {
+                    collision.GetComponent<PlayerController>().TakeDamage(damage);
+                    Instantiate(shotEffect, player.transform.position, Quaternion.identity);
+                    audioS.PlayOneShot(shotSound);
+                }
             }
-            audioS.PlayOneShot(shotSound);
+
             Debug.Log("ZAPped");
         }
         if (collision.tag == "EMP") {

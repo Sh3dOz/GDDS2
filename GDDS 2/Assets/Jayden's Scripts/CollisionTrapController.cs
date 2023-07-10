@@ -27,11 +27,13 @@ public class CollisionTrapController : MonoBehaviour
     {
         if (collision.GetComponentInParent<PlayerController>())
         {
-            collision.GetComponent<PlayerController>().TakeDamage(damage);
             foreach (PlayerController player in players) {
-                Instantiate(shockEffect, player.transform.position, Quaternion.identity);
+                if (player.canBeDamaged == true) {
+                    collision.GetComponent<PlayerController>().TakeDamage(damage);
+                    audioS.PlayOneShot(shockSound);
+                    Instantiate(shockEffect, player.transform.position, Quaternion.identity);
+                }
             }
-            audioS.PlayOneShot(shockSound);
             Debug.Log("ZAPped");
         }
         if(collision.tag == "EMP")
