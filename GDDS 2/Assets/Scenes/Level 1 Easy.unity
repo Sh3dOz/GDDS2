@@ -3212,6 +3212,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: flipSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8abcae3b49aee1f4d8cb90eef4a07b14, type: 3}
     - target: {fileID: 9183412295458183377, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9525399

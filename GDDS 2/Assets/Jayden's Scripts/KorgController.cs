@@ -23,6 +23,7 @@ public class KorgController : PlayerController
     public GameObject arrowEffect;
     public GameObject arrowEffectFlip;
     public GameObject arrowPos;
+    public AudioClip flipSound;
 
     [Header("Land Shield")]
     public float shieldCooldown = 30f;
@@ -206,6 +207,7 @@ public class KorgController : PlayerController
     {
         if (flipped)
         {
+            UI.PlayOneShot(flipSound);
             Instantiate(arrowEffectFlip, arrowPos.transform.position, Quaternion.identity);
             accelerate = true;
             unflip = true;
@@ -218,6 +220,7 @@ public class KorgController : PlayerController
         }
         else
         {
+            UI.PlayOneShot(flipSound);
             Instantiate(arrowEffect, arrowPos.transform.position, Quaternion.identity);
             StopCoroutine("GravWait");
             accelerate = false;
