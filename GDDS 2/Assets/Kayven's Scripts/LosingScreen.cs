@@ -13,6 +13,8 @@ public class LosingScreen : MonoBehaviour {
     public bool deadedCoStarted = false;
     public LevelManager manager;
 
+    public GameObject enemies;
+
     public Text coinsCollectedText;
     public float coinsCollectedForTotal;
     public float coinsCollected;
@@ -34,6 +36,7 @@ public class LosingScreen : MonoBehaviour {
 
     public IEnumerator LosingScreene() {
         levelMusic.Stop();
+        enemies.SetActive(false);
 
         coinsCollectedForTotal = PlayerPrefs.GetFloat("Coins", 0f); // Retrieve previously stored coins collected value
 

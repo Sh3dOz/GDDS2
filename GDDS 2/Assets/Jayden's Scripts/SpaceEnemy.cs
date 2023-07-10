@@ -13,6 +13,7 @@ public class SpaceEnemy : ShootingEnemy
     // Start is called before the first frame update
     void Start()
     {
+        UI = GameObject.Find("Sound Audio").GetComponent<AudioSource>();
         bulletCount = maxBullet;
         rb = GetComponent<Rigidbody2D>();
         target = FindObjectOfType<PlayerController>().gameObject;

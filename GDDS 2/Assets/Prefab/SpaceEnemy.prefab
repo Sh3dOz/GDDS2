@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 2057689394824813421}
   m_Layer: 7
   m_Name: SpaceEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,6 +171,8 @@ MonoBehaviour:
   health: 25
   cost: 1
   enemyPrefab: {fileID: 2057689394824813410}
+  UI: {fileID: 0}
+  shootingSound: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
   moveSpeed: 5
   target: {fileID: 0}
   targetPos: {fileID: 0}
