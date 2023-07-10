@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using Cinemachine;
 
 public class TransitionToSpaceship : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class TransitionToSpaceship : MonoBehaviour {
     public bool transitioned = false;
     public GameObject joyStick;
     public CameraTargetChanger cameras;
+    public CinemachineVirtualCamera vcam1;
 
     public Sprite spaceshipSprite;
 
@@ -32,17 +34,34 @@ public class TransitionToSpaceship : MonoBehaviour {
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.tag == "Player") {           
-            StartCoroutine("Transition");
+        if (this.GetComponent<PlayerController>()) return;
+        if (collision.tag == "Player") {
+            Transition();
             Debug.Log("Transg");
         }
     }
 
-    public IEnumerator Transition() {
-        
-        Object.Destroy(spaceshipDup);
-        playerSwitch.SwitchMode();
-        yield return new WaitForSeconds(0.5f);
+    public void Transition() {
+        vcam1.Priority = 9;
         playableDirector.Play();
+        spaceshipDup.GetComponent<SpriteRenderer>().sprite = null;
+    }
+
+    void SwitchDup()
+    {
+        spaceshipDup.GetComponent<SpriteRenderer>().sprite = null;
+    }
+
+    void SwitchMode()
+    {
+        playerSwitch.SwitchMode();
+        vcam1.Priority = 11;
+        StartCoroutine(WaitLol());
+        Destroy(spaceshipDup);
+    }
+
+    IEnumerator WaitLol()
+    {
+        yield return new WaitForSeconds(2f);
     }
 }

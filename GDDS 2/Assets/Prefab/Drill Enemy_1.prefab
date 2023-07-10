@@ -121,6 +121,8 @@ MonoBehaviour:
   damage: 2
   isActivated: 0
   isTracking: 0
+  dangerSign: {fileID: 4110097583841402739, guid: fcaa74508c1e59e44ad69764f0394006, type: 3}
+  dangerSpawn: {fileID: 0}
 --- !u!60 &4823801548402446622
 PolygonCollider2D:
   m_ObjectHideFlags: 0
