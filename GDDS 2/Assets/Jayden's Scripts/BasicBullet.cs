@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BasicBullet : Bullet { 
 
-        public AudioSource audioS;
-    public AudioClip shotSound;
-    public GameObject shotEffect;
 
 
     // Start is called before the first frame update
@@ -34,12 +31,6 @@ public class BasicBullet : Bullet {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.GetComponentInParent<PlayerController>()) {
-            foreach (PlayerController player in players) {
-                if (player.canBeDamaged == true) {
-                    Instantiate(shotEffect, player.transform.position, Quaternion.identity);
-                    audioS.PlayOneShot(shotSound);
-                }
-            }
 
             Debug.Log("ZAPped");
         }

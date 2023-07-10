@@ -9,11 +9,16 @@ public abstract class Bullet : MonoBehaviour
     public float timeSpawned;
     public int damage;
 
-    public PlayerController[] players;
+    public AudioSource audioS;
+    public AudioClip shotSound;
+    public GameObject shotEffect;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        players = FindObjectsOfType<PlayerController>();
+        audioS = FindObjectOfType<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -23,13 +28,10 @@ public abstract class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.tag == "Player") {
-            Debug.Log("Collide");
-            foreach (PlayerController player in players) {
-                if (player.canBeDamaged == true) {
-                    collision.GetComponent<PlayerController>().TakeDamage(damage);
-                }
-            }
+            if (collision.GetComponent<PlayerController>().canBeDamaged) {
+                collision.GetComponent<PlayerController>().TakeDamage(damage);
+                audioS.PlayOneShot(shotSound);
+        }
             if (this.tag == "Player") {
                 if (collision.GetComponent<BossController>()) {
                     collision.GetComponent<BossController>().TakeDamage(damage);
@@ -49,7 +51,6 @@ public abstract class Bullet : MonoBehaviour
                 }
             }
         }
-    }
 
     public abstract void DestroyBullet();
 
