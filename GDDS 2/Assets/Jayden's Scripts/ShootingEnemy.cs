@@ -17,6 +17,8 @@ public class ShootingEnemy : MonoBehaviour
     public int cost;
     public GameObject enemyPrefab;
     EnemySpawn spawnManager;
+    public AudioSource UI;
+    public AudioClip shootingSound;
 
     public void Shoot()
     {
@@ -31,6 +33,7 @@ public class ShootingEnemy : MonoBehaviour
                 bullet.GetComponent<Bullet>().damage = damage;
                 bullet.tag = "Enemy";
                 bulletCount--;
+                UI.PlayOneShot(shootingSound);
             }
         }
         else
