@@ -5886,8 +5886,8 @@ MonoBehaviour:
   playableDirector: {fileID: 1905882807}
   spaceships: {fileID: 0}
   playerSwitch: {fileID: 0}
-  audioS: {fileID: 0}
-  warpSound: {fileID: 0}
+  audioS: {fileID: 1506218090}
+  warpSound: {fileID: 8300000, guid: 19622ccfeaaf0fd48b19b281d807333f, type: 3}
   warp: {fileID: 443691178}
   warpParticle: {fileID: 443691176}
   speedWarp: {fileID: 386944955}
