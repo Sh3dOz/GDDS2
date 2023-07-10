@@ -542,6 +542,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 369973623}
     m_Modifications:
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1506218090}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1905882804}
@@ -553,6 +557,10 @@ PrefabInstance:
       propertyPath: dangerSpawn
       value: 
       objectReference: {fileID: 1905882809}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: missileSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28e33d21921b39c4b894731960fe8061, type: 3}
     - target: {fileID: 6068960619224543121, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -13662,6 +13670,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1974923042620827977, guid: f59a53fadf9d8ae478dcf2ee49f09d0f, type: 3}
   m_PrefabInstance: {fileID: 1462380583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1506218090 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9204869557728258411, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1905882797}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1508157203 stripped
 GameObject:

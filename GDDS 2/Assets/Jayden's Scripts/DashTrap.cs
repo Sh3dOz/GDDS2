@@ -18,6 +18,9 @@ public class DashTrap : MonoBehaviour
     bool spawnedDanger;
     public GameObject dangerSign;
     public Transform dangerSpawn;
+    public AudioSource UI;
+    public AudioClip missileSound;
+
     // Start is called before the first frame update
     void Start()
     {
