@@ -9,15 +9,20 @@ public class DashTrap : MonoBehaviour
     bool isDashing = false;
     public Transform dashPos;
     bool dashWait;
+    float dashDuration;
     public GameObject target;
     public int damage;
     Animator myAnim;
     public bool isActivated;
     public bool isTracking;
+    bool spawnedDanger;
+    public GameObject dangerSign;
+    public Transform dangerSpawn;
     // Start is called before the first frame update
     void Start()
     {
         myAnim = GetComponent<Animator>();
+        dashDuration = isTracking ? 1f : 3f;
     }
 
     // Update is called once per frame
@@ -30,6 +35,11 @@ public class DashTrap : MonoBehaviour
     {
         if (isActivated)
         {
+            if (!spawnedDanger)
+            {
+                GameObject danger = Instantiate(dangerSign, dangerSpawn.position, Quaternion.identity, this.transform);
+                Destroy(danger, dashDuration);
+            }
             if (isTracking)
             {
                 if(isDashing == false)
