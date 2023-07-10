@@ -12,6 +12,7 @@ public class BasicWeapon : Weapon
             GameObject bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.identity);
             bullet.GetComponent<Bullet>().damage = damage;
             bullet.tag = "Player";
+            UI.PlayOneShot(shootingSound);
         }
     }
 }

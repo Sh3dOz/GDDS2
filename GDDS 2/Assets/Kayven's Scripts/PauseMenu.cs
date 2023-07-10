@@ -39,6 +39,7 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public IEnumerator LoadMainMenu() {
+        audioSource.PlayOneShot(pressingSound);
         yield return new WaitForSeconds(0.5f);
         Debug.Log("LoadMain");
         SceneManager.LoadScene("Main Menu");

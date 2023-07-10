@@ -10,6 +10,8 @@ public abstract class Weapon : MonoBehaviour
     public float fireRate;
     protected float nextFire;
     public int damage;
+    public AudioSource UI;
+    public AudioClip shootingSound;
 
     public abstract void Fire();
    
