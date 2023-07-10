@@ -28,14 +28,4 @@ public class BasicBullet : Bullet {
             Destroy(gameObject);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponentInParent<PlayerController>()) {
-
-            Debug.Log("ZAPped");
-        }
-        if (collision.tag == "EMP") {
-            Destroy(this.gameObject);
-        }
-    }
 }

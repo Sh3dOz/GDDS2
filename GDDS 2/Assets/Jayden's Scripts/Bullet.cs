@@ -27,30 +27,37 @@ public abstract class Bullet : MonoBehaviour
         DestroyBullet();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-            if (collision.GetComponent<PlayerController>().canBeDamaged) {
+    private void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if (this.tag == "Player")
+        {
+            if (collision.GetComponent<BossController>())
+            {
+                collision.GetComponent<BossController>().TakeDamage(damage);
+                Destroy(gameObject);
+            }
+            else if (collision.GetComponent<ShootingEnemy>())
+            {
+                if (this.tag == "Enemy") return;
+                collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
+        if (this.tag == "Enemy")
+        {
+            if (collision.GetComponent<PlayerController>())
+            {
+                Debug.Log("haro?");
+                if (collision.GetComponent<PlayerController>().isDamaged || !collision.GetComponent<PlayerController>().canBeDamaged) return;
                 collision.GetComponent<PlayerController>().TakeDamage(damage);
-                audioS.PlayOneShot(shotSound);
-        }
-            if (this.tag == "Player") {
-                if (collision.GetComponent<BossController>()) {
-                    collision.GetComponent<BossController>().TakeDamage(damage);
-                    Destroy(gameObject);
-                }
-                else if (collision.GetComponent<ShootingEnemy>()) {
-                    if (this.tag == "Enemy") return;
-                    collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
-                    Destroy(gameObject);
-                }
-            }
-            if (this.tag == "Enemy") {
-                if (collision.GetComponent<PlayerController>()) {
-                    collision.GetComponent<PlayerController>().TakeDamage(damage);
-                    if (collision.GetComponent<PlayerController>().isDamaged) return;
-                    Destroy(gameObject);
-                }
+                Destroy(gameObject);
             }
         }
+        if (collision.tag == "EMP")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     public abstract void DestroyBullet();
 
