@@ -138,7 +138,10 @@ MonoBehaviour:
   rb: {fileID: 0}
   timeSpawned: 0
   damage: 1
-  audioS: {fileID: 0}
+  audioS: {fileID: 7388460584226568727, guid: 43a67bdea03669d45a2ee726c5c99192, type: 3}
   shotSound: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
   shotEffect: {fileID: 4349132735671360474, guid: 311a2a83d164aa841b8738a446fd005d, type: 3}
-  players: []
+  players:
+  - {fileID: 8165408541574906696, guid: d8271a09a6b90454bb4e4b06909523df, type: 3}
+  - {fileID: 7275681211231475141, guid: 19f8586929b5d27479cd37873b801919, type: 3}
+  - {fileID: 5152778470174452004, guid: 4f0237183dc6e4342a4bfd999062a164, type: 3}

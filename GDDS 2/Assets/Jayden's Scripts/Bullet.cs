@@ -8,10 +8,12 @@ public abstract class Bullet : MonoBehaviour
     public Rigidbody2D rb;
     public float timeSpawned;
     public int damage;
+
+    public PlayerController[] players;
     // Start is called before the first frame update
     void Start()
     {
-        
+        players = FindObjectsOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -20,29 +22,31 @@ public abstract class Bullet : MonoBehaviour
         DestroyBullet();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(this.tag == "Player")
-        {
-            if (collision.GetComponent<BossController>())
-            {
-                collision.GetComponent<BossController>().TakeDamage(damage);
-                Destroy(gameObject);
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == "Player") {
+            Debug.Log("Collide");
+            foreach (PlayerController player in players) {
+                if (player.canBeDamaged == true) {
+                    collision.GetComponent<PlayerController>().TakeDamage(damage);
+                }
             }
-            else if (collision.GetComponent<ShootingEnemy>())
-            {
-                if (this.tag == "Enemy") return;
-                collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
-                Destroy(gameObject);
+            if (this.tag == "Player") {
+                if (collision.GetComponent<BossController>()) {
+                    collision.GetComponent<BossController>().TakeDamage(damage);
+                    Destroy(gameObject);
+                }
+                else if (collision.GetComponent<ShootingEnemy>()) {
+                    if (this.tag == "Enemy") return;
+                    collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
+                    Destroy(gameObject);
+                }
             }
-        }
-        if(this.tag == "Enemy")
-        {
-            if (collision.GetComponent<PlayerController>())
-            {
-                collision.GetComponent<PlayerController>().TakeDamage(damage);
-                if (collision.GetComponent<PlayerController>().isDamaged) return;
-                Destroy(gameObject);
+            if (this.tag == "Enemy") {
+                if (collision.GetComponent<PlayerController>()) {
+                    collision.GetComponent<PlayerController>().TakeDamage(damage);
+                    if (collision.GetComponent<PlayerController>().isDamaged) return;
+                    Destroy(gameObject);
+                }
             }
         }
     }

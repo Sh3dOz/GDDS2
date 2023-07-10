@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicBullet : Bullet
+public class BasicBullet : Bullet { 
 
-{
-
-    public AudioSource audioS;
+        public AudioSource audioS;
     public AudioClip shotSound;
     public GameObject shotEffect;
-    public PlayerController[] players;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        players = FindObjectsOfType<PlayerController>();
         audioS = FindObjectOfType<AudioSource>();
     }
 
@@ -39,7 +36,6 @@ public class BasicBullet : Bullet
         if (collision.GetComponentInParent<PlayerController>()) {
             foreach (PlayerController player in players) {
                 if (player.canBeDamaged == true) {
-                    collision.GetComponent<PlayerController>().TakeDamage(damage);
                     Instantiate(shotEffect, player.transform.position, Quaternion.identity);
                     audioS.PlayOneShot(shotSound);
                 }
