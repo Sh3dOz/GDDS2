@@ -11,6 +11,7 @@ public abstract class PlayerController : MonoBehaviour
     [Header("Movement")]
     public bool isInSpace;
     public bool onLand;
+    public bool pcInput;
     public float moveSpeed;
     public float runSpeed;
     public float jumpHeight;
@@ -103,10 +104,16 @@ public abstract class PlayerController : MonoBehaviour
 
     public void SpaceBehaviour()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        //movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-        //movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+        if (pcInput)
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+            movement.y = VirtualJoystick.GetAxis("Vertical", 0);
+        }
         Movement();
     }
 
