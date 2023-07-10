@@ -20,6 +20,17 @@ public class TransitionToSpaceship : MonoBehaviour {
     public PlayerController spaceships;
     public LevelManager playerSwitch;
 
+    public AudioSource audioS;
+    public AudioClip warpSound;
+    public ParticleSystem warp;
+    public GameObject warpParticle;
+    public GameObject speedWarp;
+    public ParticleSystem.MainModule warpModule;
+
+    public GameObject ceiling;
+    public GameObject floor;
+    public GameObject walls;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -45,6 +56,28 @@ public class TransitionToSpaceship : MonoBehaviour {
         vcam1.Priority = 9;
         playableDirector.Play();
         spaceshipDup.GetComponent<SpriteRenderer>().sprite = null;
+        StartCoroutine("Warp");
+    }
+
+
+    public IEnumerator Warp() {
+        audioS.PlayOneShot(warpSound);
+
+        warpParticle.SetActive(true);
+        warpModule = warp.main;
+        yield return new WaitForSeconds(0.5f);
+
+        warpModule.startSpeed = 14;
+        yield return new WaitForSeconds(1f);
+        warpModule.startSpeed = 24;
+
+        Debug.Log("Playing");
+
+        yield return new WaitForSeconds(1.4f);
+        ceiling.SetActive(false);
+        floor.SetActive(false);
+        walls.SetActive(false);
+        speedWarp.SetActive(true);
     }
 
     void SwitchDup()
