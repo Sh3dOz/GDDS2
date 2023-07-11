@@ -108,5 +108,6 @@ public class TransitionToSpaceship : MonoBehaviour {
     IEnumerator WaitLol()
     {
         yield return new WaitForSeconds(2f);
+        playerSwitch.GetComponent<EnemySpawn>().enabled = true;
     }
 }

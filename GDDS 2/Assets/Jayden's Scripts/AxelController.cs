@@ -159,7 +159,6 @@ public class AxelController : PlayerController
                         {
                             case TouchPhase.Began:
                                 print("Began Touch " + i);
-                                joystick.transform.position = t.position;
                                 break;
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);

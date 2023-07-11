@@ -172,7 +172,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            if (player.onLand)
+            if (player && player.onLand)
             {
                 progressSlider.value = Mathf.Abs(player.gameObject.transform.position.x - startPos.position.x);
                 if (progressSlider.value >= landDistance)

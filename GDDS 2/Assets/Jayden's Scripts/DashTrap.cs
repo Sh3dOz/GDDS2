@@ -14,6 +14,7 @@ public class DashTrap : MonoBehaviour
     public int damage;
     Animator myAnim;
     public bool isActivated;
+    bool killActive;
     public bool isTracking;
     bool spawnedDanger;
     public GameObject dangerSign;
@@ -24,7 +25,6 @@ public class DashTrap : MonoBehaviour
     {
         myAnim = GetComponent<Animator>();
         dashDuration = isTracking ? 1f : 3f;
-        Destroy(this.gameObject, 10f);
     }
 
     // Update is called once per frame
@@ -37,9 +37,13 @@ public class DashTrap : MonoBehaviour
     {
         if (isActivated)
         {
-            if (!spawnedDanger)
+            if (killActive) {
+                Destroy(this.gameObject, 10f);
+                killActive = false;
+            }
+                if (!spawnedDanger)
             {
-                GameObject danger = Instantiate(dangerSign, dangerSpawn.position, Quaternion.identity, this.transform);
+                GameObject danger = Instantiate(dangerSign, new Vector3(dangerSpawn.position.x, transform.position.y, 0f), Quaternion.identity, this.transform);
                 danger.transform.position = new Vector3(danger.transform.position.x, danger.transform.position.y, 0f);
                 spawnedDanger = true;
                 Destroy(danger, dashDuration);

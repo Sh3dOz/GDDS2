@@ -22,7 +22,13 @@ public class ShootingEnemy : MonoBehaviour
     public AudioClip deathSound;
     public GameObject deathExplosion;
     public LevelManager manager;
+    public GameObject hurtEffect;
+    public AudioClip shotSound;
 
+
+    void Start() {
+        manager = FindObjectOfType<LevelManager>();
+    }
     public void Shoot()
     {
         if (bulletCount > 0)
@@ -56,6 +62,8 @@ public class ShootingEnemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        Instantiate(hurtEffect, transform.position, Quaternion.identity);
+        manager.audioS.PlayOneShot(shotSound);
         if(health <= 0)
         {
             Die();
