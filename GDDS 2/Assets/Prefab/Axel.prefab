@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 5152778470174452005}
   m_Layer: 0
   m_Name: Axel
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInSpace: 0
   onLand: 1
+  pcInput: 0
   moveSpeed: 12
   runSpeed: 6
   jumpHeight: 0
@@ -286,6 +287,7 @@ MonoBehaviour:
   groundCheck: {fileID: 5152778469647410258}
   landButton: {fileID: 0}
   spaceButton: {fileID: 0}
+  vcam: {fileID: 0}
   isWin: 0
   damagedEffect: {fileID: 0}
   UI: {fileID: 0}
@@ -323,6 +325,8 @@ MonoBehaviour:
   shootPos: {fileID: 5152778470785291977}
   fireRate: 0.2
   damage: 2
+  UI: {fileID: 0}
+  shootingSound: {fileID: 0}
 --- !u!1 &5152778470785291978
 GameObject:
   m_ObjectHideFlags: 0

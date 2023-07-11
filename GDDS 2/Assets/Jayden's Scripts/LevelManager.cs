@@ -61,10 +61,12 @@ public class LevelManager : MonoBehaviour
     {
         coins = FindObjectsOfType<Coin>();
         score = FindObjectOfType<Score>();
+        spaceship = FindObjectOfType<TransitionToSpaceship>();
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
             PlayerPrefs.SetInt("PlayGame", 1);
             korg.SetActive(true);
+            player = FindObjectOfType<PlayerController>();
             StartCoroutine(Instructions());
         }
         else
@@ -78,8 +80,9 @@ public class LevelManager : MonoBehaviour
                     spaceButton.image.overrideSprite = missileIcon;
                     spaceCooldown.overrideSprite = missileCooldown;
                     vcam.Follow = korg.transform;
-                    //ResultScreen.player = korg.GetComponent<PlayerController>();
-                    if(PlayerPrefs.GetInt("PassiveForKorg") == 1) {
+                    player = FindObjectOfType<PlayerController>();
+                    if (PlayerPrefs.GetInt("PassiveForKorg") == 1)
+                    {
                         score.scoreDeducted = 29;
                         score.newScoreDeducted = 60;
                     }
@@ -91,11 +94,12 @@ public class LevelManager : MonoBehaviour
                     spaceButton.image.overrideSprite = deflectIcon;
                     spaceCooldown.overrideSprite = deflectCooldown;
                     vcam.Follow = axel.transform;
-                    //ResultScreen.player = axel.GetComponent<PlayerController>();
-                    if (PlayerPrefs.GetInt("PassiveForAxel") == 1) {
+                    player = FindObjectOfType<PlayerController>();
+                    if (PlayerPrefs.GetInt("PassiveForAxel") == 1)
+                    {
                         player.health = 5;
                     }
-                        break;
+                    break;
                 case "X":
                     x.SetActive(true);
                     landButton.image.sprite = null;
@@ -106,12 +110,15 @@ public class LevelManager : MonoBehaviour
                     spaceCooldown.sprite = metoriteCooldown;
                     spaceCharge.SetActive(true);
                     vcam.Follow = x.transform;
-                    if (PlayerPrefs.GetInt("PassiveForXavier") == 1) {
-                        foreach(Coin coin in coins) {
+                    player = FindObjectOfType<PlayerController>();
+                    if (PlayerPrefs.GetInt("PassiveForXavier") == 1)
+                    {
+                        foreach (Coin coin in coins)
+                        {
                             coin.coinValue = 2;
                         }
                     }
-                        break;
+                    break;
                 default:
                     korg.SetActive(true);
                     landButton.image.overrideSprite = shieldIcon;
@@ -119,38 +126,37 @@ public class LevelManager : MonoBehaviour
                     spaceButton.image.overrideSprite = missileIcon;
                     spaceCooldown.overrideSprite = missileCooldown;
                     vcam.Follow = korg.transform;
-                    //ResultScreen.player = korg.GetComponent<PlayerController>();
+                    player = FindObjectOfType<PlayerController>();
                     break;
             }
             Destroy(instructionsCanvas);
-            player = FindObjectOfType<PlayerController>();
-            spaceship = FindObjectOfType<TransitionToSpaceship>();
-            if (isBossLevel)
+        }
+        if (isBossLevel)
+        {
+            boss = FindObjectOfType<BossController>();
+            progressSlider.gameObject.SetActive(false);
+            bossHealthBar.gameObject.SetActive(true);
+            bossHealthBar.maxValue = boss.maxHealth;
+            bossHealthBar.value = bossHealthBar.maxValue;
+            healthSlider.value = player.health;
+        }
+        else
+        {
+            if (gotLand)
             {
-                boss = FindObjectOfType<BossController>();
-                progressSlider.gameObject.SetActive(false);
-                bossHealthBar.gameObject.SetActive(true);
-                bossHealthBar.maxValue = boss.maxHealth;
-                bossHealthBar.value = bossHealthBar.maxValue;
-                healthSlider.value = player.health;
+                landDistance = Mathf.Abs(endPos.position.x - startPos.position.x);
+                progressSlider.maxValue = landDistance + (gotSpace ? landDistance : 0);
             }
             else
             {
-                if (gotLand)
-                {
-                    landDistance = Mathf.Abs(endPos.position.x - startPos.position.x);
-                    progressSlider.maxValue = landDistance + (gotSpace ? landDistance : 0);
-                }
-                else
-                {
-                    landDistance = 0;
-                    progressSlider.maxValue = 1;
-                    GetComponent<EnemySpawn>().enabled = true;
-                }
-                progressSlider.value = 0;
-                healthSlider.value = player.health;
+                landDistance = 0;
+                progressSlider.maxValue = 1;
+                GetComponent<EnemySpawn>().enabled = true;
             }
+            progressSlider.value = 0;
+            healthSlider.value = player.health;
         }
+        
     }
 
     // Update is called once per frame
@@ -167,6 +173,7 @@ public class LevelManager : MonoBehaviour
             bossHealthBar.value = boss.currentHealth;
             if (bossHealthBar.value == bossHealthBar.minValue)
             {
+                Debug.Log("Boss Win");
                 isWin = true;
                 PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
             }
@@ -185,6 +192,7 @@ public class LevelManager : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log("Land Win");
                         isWin = true;
                         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
                         if (PlayerPrefs.GetInt("Axel") != 1) {
@@ -205,6 +213,7 @@ public class LevelManager : MonoBehaviour
             {
                 if (EnemySpawn.currWave > EnemySpawn.maxWave)
                 {
+                    Debug.Log("Space Win");
                     isWin = true;
                     PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
                 }

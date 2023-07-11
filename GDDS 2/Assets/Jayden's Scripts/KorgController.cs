@@ -94,6 +94,7 @@ public class KorgController : PlayerController
         myAnim.SetBool("InSpace", isInSpace);
         if (onLand)
         {
+            FlipCheck();
             GroundCheck();
             ShieldCooldown();
             GroundBehaviour();
@@ -242,6 +243,15 @@ public class KorgController : PlayerController
         }
     }
 
+    void FlipCheck()
+    {
+        if(flip && unflip)
+        {
+            flip = false;
+            unflip = false;
+        }
+        FlipRun();
+    }
     IEnumerator GravWait()
     {
         if (accelerate)
@@ -289,7 +299,7 @@ public class KorgController : PlayerController
         }
         if(transform.localScale.y > 0)
         {
-            transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+            //transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
         }
     }
     public void Flip()
@@ -300,13 +310,25 @@ public class KorgController : PlayerController
         }
         if (transform.localScale.y < 0)
         {
-            transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+            //transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
         }
     }
 
     public void FlipSprite()
     {
         transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+    }
+
+    public void FlipRun()
+    {
+        if (flipped)
+        {
+            transform.localScale = new Vector2(transform.localScale.x, -1f);
+        }
+        else
+        {
+            transform.localScale = new Vector2(transform.localScale.x, 1f);
+        }
     }
 
     public void ShieldCooldown()

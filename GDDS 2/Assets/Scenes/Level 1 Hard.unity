@@ -5095,11 +5095,11 @@ Transform:
   - {fileID: 1695773997}
   - {fileID: 5532839}
   - {fileID: 1483878700}
-  - {fileID: 1608909357}
   - {fileID: 1399959322}
-  - {fileID: 1993675635}
+  - {fileID: 1608909357}
   - {fileID: 1367721646}
   - {fileID: 683501805}
+  - {fileID: 1993675635}
   - {fileID: 1687781399}
   - {fileID: 246544006}
   - {fileID: 55713183}
@@ -6867,6 +6867,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1943193694333317589, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1974453769721334279, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 185.8453
@@ -7012,6 +7016,22 @@ PrefabInstance:
     - target: {fileID: 3264312889698976352, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358317214781103734, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -31.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3551210198453121186, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Name
@@ -7419,6 +7439,10 @@ PrefabInstance:
       objectReference: {fileID: 1844068050439729333, guid: 010e3b0713b7b7a43802d8e599bc4c34, type: 2}
     - target: {fileID: 4800344703891265191, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067576698676642004, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5320182232338309728, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
