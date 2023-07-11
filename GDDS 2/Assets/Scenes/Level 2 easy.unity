@@ -17075,6 +17075,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4544099864220997471, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4544099864378900209, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -17515,6 +17519,14 @@ PrefabInstance:
       propertyPath: damageSound
       value: 
       objectReference: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
+    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: weaponDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: currentWeapon
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9183412295458183377, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9525399

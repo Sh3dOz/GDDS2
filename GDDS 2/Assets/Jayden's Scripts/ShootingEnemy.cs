@@ -72,8 +72,8 @@ public class ShootingEnemy : MonoBehaviour
             {
                 spawnManager.enemiesSpawned.Remove(i);
                 Instantiate(deathExplosion, i.transform.position, Quaternion.identity);
-                manager.audioS.PlayOneShot(deathSound);
                 Destroy(gameObject);
+                manager.audioS.PlayOneShot(deathSound);
                 break;
             }
         }
