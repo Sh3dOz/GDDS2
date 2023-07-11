@@ -186,6 +186,17 @@ public class LevelManager : MonoBehaviour
                     {
                         isWin = true;
                         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+                        if (PlayerPrefs.GetInt("Axel") != 1) {
+                            if (SceneManager.GetActiveScene().name == "Level 1 Easy" || SceneManager.GetActiveScene().name == "Level 1 Normal" || SceneManager.GetActiveScene().name == "Level 1 Hard") {
+                                PlayerPrefs.SetInt("Axel", 1);
+                            }
+                        }
+                        if (PlayerPrefs.GetInt("X") != 1) {
+                            if (SceneManager.GetActiveScene().name == "level 2 easy" || SceneManager.GetActiveScene().name == "level 2 normal" || SceneManager.GetActiveScene().name == "level 2 hard") {
+                                PlayerPrefs.SetInt("X", 1);
+                            }
+                        }
+                        
                     }
                 }
             }
@@ -194,6 +205,7 @@ public class LevelManager : MonoBehaviour
                 if (EnemySpawn.currWave > EnemySpawn.maxWave)
                 {
                     isWin = true;
+                    PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
                 }
                 else
                 {
