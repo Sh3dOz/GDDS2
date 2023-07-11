@@ -20,10 +20,13 @@ public class Shrapnel : Bullet {
     void Split() {
         GameObject sharpnel1 = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 0));
         sharpnel1.GetComponent<Bullet>().damage = damage / 3;
-        GameObject sharpnel2= Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, -45));
+        sharpnel1.tag = "Player";
+        GameObject sharpnel2= Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, -15));
         sharpnel2.GetComponent<Bullet>().damage = damage / 3;
-        GameObject sharpnel3 = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 45));
+        sharpnel2.tag = "Player";
+        GameObject sharpnel3 = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 15));
         sharpnel3.GetComponent<Bullet>().damage = damage / 3;
+        sharpnel3.tag = "Player";
     }
 
     public override void DestroyBullet()

@@ -38,7 +38,6 @@ public abstract class Bullet : MonoBehaviour
             }
             else if (collision.GetComponent<ShootingEnemy>())
             {
-                if (this.tag == "Enemy") return;
                 collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
                 Destroy(gameObject);
             }

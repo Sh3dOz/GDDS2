@@ -232,13 +232,20 @@ public class AxelController : PlayerController
 
     public override void LandBehaviour()
     {
-        jumpTime += Time.deltaTime;
+        if (jumpTime < 3f)
+        {
+            jumpTime += Time.deltaTime;
+        }
+        else
+        {
+            jumpTime = 3f;
+        }
 
         if (isHovering) return;
         if (hoveringCooldown) return;
         if (isJumping == true)
         {
-            rb.velocity = new Vector3(runSpeed, jumpForce, 0f);
+            rb.velocity = new Vector3(runSpeed, jumpForce * (jumpTime/3), 0f);
             
         }
     }

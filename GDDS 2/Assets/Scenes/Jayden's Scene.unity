@@ -686,6 +686,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5921343393852458199, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
   m_PrefabInstance: {fileID: 4544099863379956629}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1078489126 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5684703147772970937, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 4544099863379956629}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1090221320 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
@@ -1211,6 +1216,8 @@ MonoBehaviour:
   deathSound: {fileID: 0}
   deathExplosion: {fileID: 0}
   manager: {fileID: 0}
+  hurtEffect: {fileID: 0}
+  shotSound: {fileID: 0}
   moveSpeed: 0
   target: {fileID: 0}
   targetPos: {fileID: 0}
@@ -1326,6 +1333,29 @@ Transform:
   m_Father: {fileID: 1380295684}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1704488399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5067576698676642004, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 4544099863379956629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1704488403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1704488399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd863e3b537257343ac895d1cead09e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 158738227921989610, guid: 6fff354442c81d64284d5da24f1b3562, type: 3}
+  shootPos: {fileID: 1078489126}
+  fireRate: 0.2
+  damage: 3
+  UI: {fileID: 0}
+  shootingSound: {fileID: 0}
 --- !u!1 &1739579336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,7 +1372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1739579337
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2636,4 +2666,5 @@ PrefabInstance:
     - {fileID: 8844254386165166623, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
     - {fileID: 2841434567836414588, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
     - {fileID: 4544099863743982356, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+    - {fileID: 878342946246002872, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}

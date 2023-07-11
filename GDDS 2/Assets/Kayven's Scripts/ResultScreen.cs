@@ -62,7 +62,10 @@ public class ResultScreen : MonoBehaviour {
 
         coinsCollected = manager.coinCount;
 
-        healthLeft = player.health;
+        if (LevelManager.playerSpawned)
+        {
+            healthLeft = player.health;
+        }
 
         // Calculate initial target score and related values
         targetScore = scoreCounter.currentScore;

@@ -14,6 +14,7 @@ public class LevelManager : MonoBehaviour
     public bool isWin;
     public bool isBossLevel;
     public bool gotSpace;
+    public static bool playerSpawned;
     public bool gotLand = true;
     [SerializeField]PlayerController player;
     [SerializeField] BossController boss;
