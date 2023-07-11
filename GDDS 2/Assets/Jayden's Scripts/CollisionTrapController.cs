@@ -7,14 +7,14 @@ public class CollisionTrapController : MonoBehaviour
     public AudioSource audioS;
     public AudioClip shockSound;
     public GameObject shockEffect;
-    public PlayerController[] players;
+    public PlayerController player;
 
 
     public int damage;
     // Start is called before the first frame update
     void Start()
     {
-        players = FindObjectsOfType<PlayerController>();
+        player = FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -25,17 +25,14 @@ public class CollisionTrapController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponentInParent<PlayerController>())
+        PlayerController p = collision.GetComponent<PlayerController>();
+        if (p)
         {
-            foreach (PlayerController player in players) {
-                if (player.canBeDamaged == true) {
-                    collision.GetComponent<PlayerController>().TakeDamage(damage);
-                    audioS.PlayOneShot(shockSound);
-                    Instantiate(shockEffect, player.transform.position, Quaternion.identity);
-                }
-            }
-            Debug.Log("ZAPped");
+            collision.GetComponent<PlayerController>().TakeDamage(damage);
+            audioS.PlayOneShot(shockSound);
+            Instantiate(shockEffect, p.transform.position, Quaternion.identity);
         }
+        
         if(collision.tag == "EMP")
         {
             Destroy(this.gameObject);
