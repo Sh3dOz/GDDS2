@@ -16637,6 +16637,14 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 1844068050439729333, guid: 010e3b0713b7b7a43802d8e599bc4c34, type: 2}
+    - target: {fileID: 878342946246002872, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 672161034}
+    - target: {fileID: 878342946246002872, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: shootingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
     - target: {fileID: 1028859163336576871, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.03
@@ -16867,6 +16875,18 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1353494434}
+    - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
+    - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: damagedEffect
+      value: 
+      objectReference: {fileID: 4349132735671360474, guid: 311a2a83d164aa841b8738a446fd005d, type: 3}
     - target: {fileID: 3358317214781103737, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: UI
       value: 
@@ -16877,7 +16897,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
     - target: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 328
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17217,7 +17237,7 @@ PrefabInstance:
       objectReference: {fileID: 1329180607}
     - target: {fileID: 4544099863512324831, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 336
+      value: 7.8
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863512324831, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17233,7 +17253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863743982357, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 336
+      value: 7.8
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863743982357, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17355,6 +17375,18 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1353494434}
+    - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
+    - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: damagedEffect
+      value: 
+      objectReference: {fileID: 4349132735671360474, guid: 311a2a83d164aa841b8738a446fd005d, type: 3}
     - target: {fileID: 5806470567554562489, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: UI
       value: 
