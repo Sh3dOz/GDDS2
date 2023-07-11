@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour
     public Transform startPos;
     public Transform endPos;
 
+    public AudioSource audioS;
     public int coinCount;
     public Text coinText;
     public AudioSource coinSound;

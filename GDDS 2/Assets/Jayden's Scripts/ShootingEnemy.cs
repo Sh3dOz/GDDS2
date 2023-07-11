@@ -19,6 +19,9 @@ public class ShootingEnemy : MonoBehaviour
     EnemySpawn spawnManager;
     public AudioSource UI;
     public AudioClip shootingSound;
+    public AudioClip deathSound;
+    public GameObject deathExplosion;
+    public LevelManager manager;
 
     public void Shoot()
     {
@@ -61,12 +64,15 @@ public class ShootingEnemy : MonoBehaviour
 
     public void Die()
     {
+        manager = FindObjectOfType<LevelManager>();
         spawnManager = FindObjectOfType<EnemySpawn>();
         foreach(GameObject i in spawnManager.enemiesSpawned)
         {
             if (i == this.gameObject)
             {
                 spawnManager.enemiesSpawned.Remove(i);
+                Instantiate(deathExplosion, i.transform.position, Quaternion.identity);
+                manager.audioS.PlayOneShot(deathSound);
                 Destroy(gameObject);
                 break;
             }

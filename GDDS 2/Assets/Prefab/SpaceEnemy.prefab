@@ -173,6 +173,9 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2057689394824813410}
   UI: {fileID: 0}
   shootingSound: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
+  deathSound: {fileID: 8300000, guid: a390798c2206a4e48a0a2875d0ee668f, type: 3}
+  deathExplosion: {fileID: 905367780436635809, guid: aceb7464d27f93741a2187e4c0b001b6, type: 3}
+  manager: {fileID: 0}
   moveSpeed: 5
   target: {fileID: 0}
   targetPos: {fileID: 0}
