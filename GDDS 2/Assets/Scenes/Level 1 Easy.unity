@@ -3369,6 +3369,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 8abcae3b49aee1f4d8cb90eef4a07b14, type: 3}
     - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
+    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: shootingSound
       value: 
       objectReference: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
