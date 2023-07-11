@@ -1770,6 +1770,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &463206781 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5067576698676642004, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1881239599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!320 &463206782
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463206781}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 653ef90d0c8d3164b9d1fdb0316a6fbc, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -7324573170625338391, guid: 653ef90d0c8d3164b9d1fdb0316a6fbc, type: 2}
+    value: {fileID: 463206785}
+  - key: {fileID: 6964000291900270037, guid: 653ef90d0c8d3164b9d1fdb0316a6fbc, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
+--- !u!114 &463206783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463206781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdab640fb0820de408a40d1bfbc98cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceship: {fileID: 0}
+  player: {fileID: 0}
+  spaceshipDup: {fileID: 0}
+  transitioned: 0
+  joyStick: {fileID: 0}
+  cameras: {fileID: 0}
+  vcam1: {fileID: 1881239609}
+  spaceshipSprite: {fileID: 21300000, guid: 25a3ac823bad9a146ad5b09a54491e80, type: 3}
+  playableDirector: {fileID: 463206782}
+  playableDirector2: {fileID: 0}
+  playableDirector3: {fileID: 0}
+  spaceships: {fileID: 0}
+  playerSwitch: {fileID: 0}
+  audioS: {fileID: 0}
+  warpSound: {fileID: 0}
+  warp: {fileID: 0}
+  warpParticle: {fileID: 0}
+  speedWarp: {fileID: 0}
+  ceiling: {fileID: 0}
+  floor: {fileID: 0}
+  walls: {fileID: 0}
+--- !u!95 &463206785 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4648428334775102474, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1881239599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465292354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,6 +2357,8 @@ MonoBehaviour:
   vcam1: {fileID: 1881239609}
   spaceshipSprite: {fileID: 21300000, guid: 25a3ac823bad9a146ad5b09a54491e80, type: 3}
   playableDirector: {fileID: 1881239610}
+  playableDirector2: {fileID: 1329180601}
+  playableDirector3: {fileID: 463206782}
   spaceships: {fileID: 0}
   playerSwitch: {fileID: 0}
   audioS: {fileID: 1353494434}
@@ -2794,6 +2860,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1974923042620827977, guid: f59a53fadf9d8ae478dcf2ee49f09d0f, type: 3}
   m_PrefabInstance: {fileID: 647164943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &672161034 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7388460584226568727, guid: 43a67bdea03669d45a2ee726c5c99192, type: 3}
+  m_PrefabInstance: {fileID: 612556308}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &675570665
 PrefabInstance:
@@ -15106,6 +15177,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6894821831449634889, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
   m_PrefabInstance: {fileID: 1310786711}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1329180600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3358317214781103734, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1881239599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!320 &1329180601
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329180600}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 653ef90d0c8d3164b9d1fdb0316a6fbc, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -7324573170625338391, guid: 653ef90d0c8d3164b9d1fdb0316a6fbc, type: 2}
+    value: {fileID: 1329180604}
+  - key: {fileID: 6964000291900270037, guid: 653ef90d0c8d3164b9d1fdb0316a6fbc, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References: []
+--- !u!114 &1329180602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329180600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdab640fb0820de408a40d1bfbc98cb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spaceship: {fileID: 0}
+  player: {fileID: 0}
+  spaceshipDup: {fileID: 0}
+  transitioned: 0
+  joyStick: {fileID: 0}
+  cameras: {fileID: 0}
+  vcam1: {fileID: 1881239609}
+  spaceshipSprite: {fileID: 21300000, guid: 25a3ac823bad9a146ad5b09a54491e80, type: 3}
+  playableDirector: {fileID: 1329180601}
+  playableDirector2: {fileID: 0}
+  playableDirector3: {fileID: 0}
+  spaceships: {fileID: 0}
+  playerSwitch: {fileID: 0}
+  audioS: {fileID: 0}
+  warpSound: {fileID: 0}
+  warp: {fileID: 0}
+  warpParticle: {fileID: 0}
+  speedWarp: {fileID: 0}
+  ceiling: {fileID: 0}
+  floor: {fileID: 0}
+  walls: {fileID: 0}
+--- !u!95 &1329180604 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3358317214781103733, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1881239599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1329180607 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 1881239599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1353494434 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 9204869557728258411, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
@@ -16548,6 +16688,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1943193694333317589, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1974453769721334279, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 185.8453
@@ -16696,7 +16840,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3358317214781103734, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358317214781103734, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358317214781103737, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1353494434}
+    - target: {fileID: 3358317214781103737, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: shootingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
+    - target: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 328
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.1
       objectReference: {fileID: 0}
     - target: {fileID: 3551210198453121186, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Name
@@ -17026,9 +17190,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -292
       objectReference: {fileID: 0}
+    - target: {fileID: 4544099863512324828, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 1329180607}
     - target: {fileID: 4544099863512324831, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.2
+      value: 336
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863512324831, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17036,7 +17204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863512324831, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -8.246988
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863565662943, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
@@ -17044,7 +17212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863743982357, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.2
+      value: 336
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863743982357, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17052,7 +17220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863743982357, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -8.246988
       objectReference: {fileID: 0}
     - target: {fileID: 4544099863743982570, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: orthographic size
@@ -17060,6 +17228,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544099864109937576, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544099864220997471, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4544099864378900209, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
@@ -17158,6 +17330,14 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5806470567554562489, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 672161034}
+    - target: {fileID: 5806470567554562489, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: shootingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
     - target: {fileID: 5845960573737162898, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -17494,6 +17674,14 @@ PrefabInstance:
       propertyPath: damageSound
       value: 
       objectReference: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
+    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: weaponDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: currentWeapon
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9183412295458183377, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9525399
@@ -17644,6 +17832,8 @@ MonoBehaviour:
   vcam1: {fileID: 1881239609}
   spaceshipSprite: {fileID: 21300000, guid: 25a3ac823bad9a146ad5b09a54491e80, type: 3}
   playableDirector: {fileID: 1881239610}
+  playableDirector2: {fileID: 0}
+  playableDirector3: {fileID: 0}
   spaceships: {fileID: 0}
   playerSwitch: {fileID: 0}
   audioS: {fileID: 0}

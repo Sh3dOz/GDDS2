@@ -17,6 +17,9 @@ public class TransitionToSpaceship : MonoBehaviour {
     public Sprite spaceshipSprite;
 
     public PlayableDirector playableDirector;
+    public PlayableDirector playableDirector2;
+    public PlayableDirector playableDirector3;
+
     public PlayerController spaceships;
     public LevelManager playerSwitch;
 
@@ -48,6 +51,15 @@ public class TransitionToSpaceship : MonoBehaviour {
         if (this.GetComponent<PlayerController>()) return;
         if (collision.tag == "Player") {
             Transition();
+            if(collision.name == "Korg") {
+                playableDirector.Play();
+            }
+            else if (collision.name == "Axel") {
+                playableDirector2.Play();
+            }
+            else if (collision.name == "Xav") {
+                playableDirector3.Play();
+            }
             Debug.Log("Transg");
         }
     }
