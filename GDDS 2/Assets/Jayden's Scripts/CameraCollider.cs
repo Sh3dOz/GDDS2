@@ -35,7 +35,7 @@ public class CameraCollider : MonoBehaviour
         }
         if (collision.GetComponent<DashTrap>() && collision.GetComponent<DashTrap>().isActivated == true)
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
         }
     }
 }

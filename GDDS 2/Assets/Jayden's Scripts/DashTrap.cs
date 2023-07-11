@@ -18,14 +18,13 @@ public class DashTrap : MonoBehaviour
     bool spawnedDanger;
     public GameObject dangerSign;
     public Transform dangerSpawn;
-    public AudioSource UI;
-    public AudioClip missileSound;
 
     // Start is called before the first frame update
     void Start()
     {
         myAnim = GetComponent<Animator>();
         dashDuration = isTracking ? 1f : 3f;
+        Destroy(this.gameObject, 10f);
     }
 
     // Update is called once per frame
@@ -41,6 +40,8 @@ public class DashTrap : MonoBehaviour
             if (!spawnedDanger)
             {
                 GameObject danger = Instantiate(dangerSign, dangerSpawn.position, Quaternion.identity, this.transform);
+                danger.transform.position = new Vector3(danger.transform.position.x, danger.transform.position.y, 0f);
+                spawnedDanger = true;
                 Destroy(danger, dashDuration);
             }
             if (isTracking)
@@ -68,6 +69,7 @@ public class DashTrap : MonoBehaviour
     IEnumerator DashWait()
     {
         isActivated = true;
+        target = FindObjectOfType<PlayerController>().gameObject;
         dashWait = true;
         if (isTracking)
         {
@@ -84,6 +86,7 @@ public class DashTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.gameObject);
         if (collision.GetComponent<PlayerController>())
         {
             collision.GetComponent<PlayerController>().TakeDamage(damage);
