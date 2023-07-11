@@ -61,6 +61,7 @@ public class ShootingEnemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        manager = FindObjectOfType<LevelManager>();
         health -= damage;
         Instantiate(hurtEffect, transform.position, Quaternion.identity);
         manager.audioS.PlayOneShot(shotSound);

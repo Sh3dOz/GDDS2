@@ -10,9 +10,15 @@ public class HomingMissile : MonoBehaviour
     public float movementSpeed = 10f;
     int damage = 10;
     float timeSpawned;
+
+    public GameObject explosion;
+    public AudioClip explodeAound;
+    public LevelManager manager;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        manager = FindObjectOfType<LevelManager>();
     }
     private void Update()
     {
@@ -58,6 +64,8 @@ public class HomingMissile : MonoBehaviour
         if (collision.GetComponent<SpaceEnemy>())
         {
             collision.GetComponent<SpaceEnemy>().TakeDamage(damage);
+            Instantiate(explosion, transform.position, Quaternion.identity);
+            manager.audioS.PlayOneShot(explodeAound);
             Destroy(gameObject);
         }
     }

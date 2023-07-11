@@ -227,3 +227,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   angleChangingSpeed: 200
   movementSpeed: 10
+  explosion: {fileID: 6093450849743099348, guid: 54d5ecee5410bcc4c905bec37df96e38, type: 3}
+  explodeAound: {fileID: 8300000, guid: fb020e3d6fe63f54ba690e2c7c5202d5, type: 3}
+  manager: {fileID: 0}
