@@ -12,10 +12,8 @@ public class KorgController : PlayerController
     public float gravScale;
     bool accelerate = false;
     float gravRate = 0.2f;
-    float tempGrav;
+    float maxGrav;
     float tempGravRate;
-    [SerializeField] float hoverGrav;
-    [SerializeField] bool hovering;
     bool flipped;
     bool unflip;
     bool flip;
@@ -34,6 +32,18 @@ public class KorgController : PlayerController
     [SerializeField] Image shieldImageCooldown;
     [SerializeField] TMP_Text textCooldown;
 
+    [Header("Hover")]
+    [SerializeField] float hoverGrav;
+    [SerializeField] bool hovering;
+    [SerializeField] bool isHovering;
+    float hoveringCounter;
+    [SerializeField] bool hoveringCooldown;
+    float hoverCooldown = 2.5f;
+    float hoverDuration = 3f;
+    float tempGrav;
+    bool tempFlip;
+    bool checkFlip;
+
     [Header("Space Missile")]
     [SerializeField] float missileCooldown = 30f;
     [SerializeField] float currentMissileCooldown;
@@ -49,7 +59,7 @@ public class KorgController : PlayerController
         myAnim = GetComponent<Animator>();
         currentShieldCooldown = shieldCooldown;
         currentMissileCooldown = missileCooldown;
-        tempGrav = gravScale;
+        maxGrav = gravScale;
         tempGravRate = gravRate;
         rb = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<LevelManager>();
@@ -183,10 +193,38 @@ public class KorgController : PlayerController
                 if (onLand)
                 {
                     GroundBehaviour();
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if (Input.GetKey(KeyCode.Space))
                     {
-                        LandBehaviour();
+                        if (isGrounded) return;
+                        touchTimer += Time.deltaTime;
+                        if (touchTimer > 0.1f)
+                        {
+                            if (hoveringCooldown) return;
+                            isHovering = true;
+                            hovering = true;
+                            HoldBehaviour();
+                        }
+                        else
+                        {
+                            rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+                        }
                     }
+                    
+                    if (Input.GetKeyUp(KeyCode.Space))
+                    {
+                        if(!isHovering)
+                        {
+                            LandBehaviour();
+                        }
+                        else
+                        {
+                            StartCoroutine("GravWait");
+                        }
+                        touchTimer = 0f;
+                        isHovering = false;
+                        hoveringCounter = 0f;
+                    }
+
                 }
                 else if (isInSpace)
                 {
@@ -208,6 +246,9 @@ public class KorgController : PlayerController
     {
         if (flipped)
         {
+            StopCoroutine("GravWait");
+            hovering = false;
+            checkFlip = false;
             UI.PlayOneShot(flipSound);
             Instantiate(arrowEffectFlip, arrowPos.transform.position, Quaternion.identity);
             accelerate = true;
@@ -216,15 +257,19 @@ public class KorgController : PlayerController
         }
         else if (hovering)
         {
+            accelerate = false;
             StartCoroutine("GravWait");
             return;
         }
         else
         {
+            StopCoroutine("GravWait");
+            checkFlip = false;
+            hovering = false;
             UI.PlayOneShot(flipSound);
             Instantiate(arrowEffect, arrowPos.transform.position, Quaternion.identity);
-            StopCoroutine("GravWait");
-            accelerate = false;
+            accelerate = true;
+            StartCoroutine("GravWait");
             gravScale = -gravScale;
             flip = true;
         }
@@ -236,6 +281,16 @@ public class KorgController : PlayerController
         if (isGrounded)
         {
             rb.velocity = new Vector2(runSpeed, 0f);
+            if (hoveringCooldown)
+            {
+                touchTimer = 0f;
+                hoverCooldown -= Time.deltaTime;
+                if (hoverCooldown <= 0)
+                {
+                    hoverCooldown = 2.5f;
+                    hoveringCooldown = false;
+                }
+            }
         }
         else
         {
@@ -254,16 +309,42 @@ public class KorgController : PlayerController
     }
     IEnumerator GravWait()
     {
+        if (!checkFlip)
+        {
+            if (flipped)
+            {
+                maxGrav = -12f;
+                tempGrav = -5f;
+                tempFlip = true;
+            }
+            else
+            {
+                maxGrav = 12f;
+                tempGrav = 5f;
+                tempFlip = false;
+            }
+            checkFlip = true;
+        }
         if (accelerate)
         {
-            while (gravScale != tempGrav)
+            
+            while (gravScale != maxGrav)
             {
-                gravScale = -5f;
-                gravScale -= gravRate;
-                gravRate += gravRate;
-                if (Mathf.Abs(gravScale) > Mathf.Abs(tempGrav))
+                gravScale = tempGrav;
+                if (tempFlip)
                 {
-                    gravScale = tempGrav;
+                    gravScale -= gravRate;
+                }
+                else
+                {
+                    gravScale += gravRate;
+                }
+                gravRate += gravRate;
+                if (Mathf.Abs(gravScale) > Mathf.Abs(maxGrav))
+                {
+                    gravScale = maxGrav;
+                    tempFlip = !tempFlip;
+                    checkFlip = false;
                 }
                 yield return new WaitForSeconds(.1f);
             }
@@ -274,20 +355,49 @@ public class KorgController : PlayerController
         }
         else if (hovering)
         {
-            gravScale = hoverGrav;
-            while (gravScale != tempGrav)
+            Debug.Log("Hover");
+            while (gravScale != maxGrav)
             {
-                gravScale = -5f;
+                gravScale = hoverGrav;
                 gravScale -= gravRate;
                 gravRate += gravRate;
-                if (Mathf.Abs(gravScale) > Mathf.Abs(tempGrav))
+                if (Mathf.Abs(gravScale) > Mathf.Abs(maxGrav))
                 {
-                    gravScale = tempGrav;
+                    gravScale = maxGrav;
                 }
                 yield return new WaitForSeconds(.1f);
             }
             hovering = false;
             gravRate = tempGravRate;
+        }
+    }
+
+    void HoldBehaviour()
+    {
+        if (hoveringCooldown) return;
+        if (hovering == false) hoverGrav = gravScale;
+        hovering = true;
+        if (isHovering)
+        {
+            if (hoveringCounter < hoverDuration)
+            {
+                hoveringCounter += Time.deltaTime;
+                gravScale = 0f;
+                rb.velocity = new Vector2(runSpeed, gravScale);
+            }
+            else
+            {
+                isHovering = false;
+                hoveringCounter = 0f;
+                hoveringCooldown = true;
+                touchTimer = 0f;
+                LandBehaviour();
+
+            }
+        }
+        else
+        {
+            hovering = false;
         }
     }
 
@@ -316,7 +426,7 @@ public class KorgController : PlayerController
 
     public void FlipSprite()
     {
-        transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
+        //transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
     }
 
     public void FlipRun()

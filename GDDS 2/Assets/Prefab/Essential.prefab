@@ -3260,6 +3260,7 @@ MonoBehaviour:
   spaceCharge: {fileID: 4771440179663766617}
   startPos: {fileID: 7719881901993034873}
   endPos: {fileID: 5879452685738029377}
+  audioS: {fileID: 0}
   coinCount: 0
   coinText: {fileID: 4392567316252239333}
   coinSound: {fileID: 9204869557728258411}
@@ -6688,15 +6689,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5152778470174452006, guid: 4f0237183dc6e4342a4bfd999062a164, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5416666
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5152778470174452006, guid: 4f0237183dc6e4342a4bfd999062a164, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5416666
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5152778470174452006, guid: 4f0237183dc6e4342a4bfd999062a164, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5416666
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5152778470174452006, guid: 4f0237183dc6e4342a4bfd999062a164, type: 3}
       propertyPath: m_LocalPosition.x

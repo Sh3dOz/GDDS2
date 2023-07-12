@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInSpace: 0
   onLand: 1
+  pcInput: 0
   moveSpeed: 10
   runSpeed: 5
   jumpHeight: 10
@@ -150,7 +151,7 @@ MonoBehaviour:
   touchTimer: 0
   health: 4
   isDamaged: 0
-  col: {fileID: 0}
+  col: {fileID: 6513533196360056147}
   manager: {fileID: 0}
   canBeDamaged: 1
   isGrounded: 0
@@ -161,16 +162,16 @@ MonoBehaviour:
   groundCheck: {fileID: 3054780026457524527}
   landButton: {fileID: 0}
   spaceButton: {fileID: 0}
+  vcam: {fileID: 0}
   isWin: 0
   damagedEffect: {fileID: 3467726240160300806, guid: 3531e1b66a1b14a41b2cda66566754f4, type: 3}
   UI: {fileID: 0}
-  damageSound: {fileID: 8300000, guid: 0a130a18a7634894eb815c21a6485ae7, type: 3}
+  damageSound: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
   gravScale: -12
-  hoverGrav: 0
-  hovering: 0
   arrowEffect: {fileID: 0}
   arrowEffectFlip: {fileID: 0}
   arrowPos: {fileID: 1592910687184584493}
+  flipSound: {fileID: 8300000, guid: 8abcae3b49aee1f4d8cb90eef4a07b14, type: 3}
   shieldCooldown: 30
   currentShieldCooldown: 0
   shieldDuration: 5
@@ -178,9 +179,16 @@ MonoBehaviour:
   isCooldown: 0
   shieldImageCooldown: {fileID: 0}
   textCooldown: {fileID: 0}
+  hoverGrav: 0
+  hovering: 0
+  isHovering: 0
+  hoveringCooldown: 0
   missileCooldown: 30
+  currentMissileCooldown: 0
   shootPos: {fileID: 2210315896841959488}
   missilePrefab: {fileID: 6749069539742230770, guid: 52a023c857a96ac49afc9563c9903f9b, type: 3}
+  missileImageCooldown: {fileID: 0}
+  missileText: {fileID: 0}
 --- !u!212 &1754833649443718015
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -358,3 +366,5 @@ MonoBehaviour:
   shootPos: {fileID: 2210315896841959488}
   fireRate: 0.2
   damage: 1
+  UI: {fileID: 0}
+  shootingSound: {fileID: 0}

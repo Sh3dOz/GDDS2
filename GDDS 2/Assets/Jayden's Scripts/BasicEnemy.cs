@@ -8,17 +8,24 @@ public class BasicEnemy : ShootingEnemy
     public Vector2 boxSize;
     public LayerMask whoToShoot;
     public bool isActivated;
-    LevelManager manager;
+    public GameObject expolsionEffect;
     // Start is called before the first frame update
     void Start()
-    {
-        manager = FindObjectOfType<LevelManager>();
+    { 
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (manager.isWin == true) isActivated = false;
+        if (manager)
+        {
+            if (manager.isWin == true) isActivated = false;
+        }
+        else
+        {
+            manager = FindObjectOfType<LevelManager>();
+        }
         if (isActivated)
         {
             Shoot();
@@ -27,6 +34,11 @@ public class BasicEnemy : ShootingEnemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.GetComponent<PlayerController>())
+        {
+            collision.GetComponent<PlayerController>().TakeDamage(damage);
+            Destroy(this.gameObject);
+        }
         if(collision.tag == "EMP")
         {
             Destroy(this.gameObject);

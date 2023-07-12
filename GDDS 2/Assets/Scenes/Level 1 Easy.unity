@@ -3397,14 +3397,6 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: flipSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 8abcae3b49aee1f4d8cb90eef4a07b14, type: 3}
-    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: damageSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
-    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: shootingSound
       value: 
       objectReference: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
@@ -7917,10 +7909,6 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 816946246}
-    - target: {fileID: 4325737721963884240, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
-      propertyPath: shootingSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
     - target: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
       propertyPath: m_RootOrder
       value: 3
