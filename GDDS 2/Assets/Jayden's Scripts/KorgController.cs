@@ -130,25 +130,42 @@ public class KorgController : PlayerController
                         {
                             case TouchPhase.Began:
                                 print("Began Touch " + i);
-                                if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
-                                {
-                                    LandBehaviour();
-                                }
-                                else
-                                {
-                                    Debug.Log("touch UI");
-                                }
                                 break;
                             case TouchPhase.Stationary:
                                 print("Stationary Touch " + i);
-                                //StopCoroutine("GravWait");
-                                //hovering = true;
+                                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
+                                if (isGrounded) return;
+                                touchTimer += Time.deltaTime;
+                                if (touchTimer > 0.1f)
+                                {
+                                    if (hoveringCooldown) return;
+                                    isHovering = true;
+                                    if (hovering == false) hoverGrav = gravScale;
+                                    hovering = true;
+                                    HoldBehaviour();
+                                }
+                                else
+                                {
+                                    rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+                                }
                                 break;
                             case TouchPhase.Moved:
                                 print("Moving Touch " + i);
                                 break;
                             case TouchPhase.Ended:
                                 print("Ended Touch " + i);
+                                if (!isHovering)
+                                {
+                                    LandBehaviour();
+                                }
+                                else
+                                {
+                                    accelerate = false;
+                                    StartCoroutine("GravWait");
+                                }
+                                touchTimer = 0f;
+                                isHovering = false;
+                                hoveringCounter = 0f;
                                 break;
                             case TouchPhase.Canceled:
                                 print("Cancelled Touch " + i);

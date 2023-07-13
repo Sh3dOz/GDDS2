@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class AxelController : PlayerController
 {
@@ -26,7 +27,7 @@ public class AxelController : PlayerController
 
     [Header("LilBoy")]
     public bool isJumping;
-    public float jumpTime;
+    public float jumpForce = 2f;
     private float jumpTimeCounter;
     // Start is called before the first frame update
     void Start()
@@ -103,6 +104,7 @@ public class AxelController : PlayerController
                         {
                             case TouchPhase.Began:
                                 print("Began Touch " + i);
+                                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
                                 LandBehaviour();
                                 break;
                             case TouchPhase.Stationary:
@@ -116,7 +118,6 @@ public class AxelController : PlayerController
                                 break;
                             case TouchPhase.Canceled:
                                 print("Cancelled Touch " + i);
-                                LandBehaviour();
                                 break;
                         }
 
@@ -154,28 +155,10 @@ public class AxelController : PlayerController
                 }
                 if (onLand)
                 {
-                    if (Input.GetKey(KeyCode.Space))
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        touchTimer += Time.deltaTime;
-                        if (isGrounded)
-                        {
-                            touchTimer += Time.deltaTime;
-                            LandBehaviour();
-                        }
-                        else 
-                        {
-                            rb.velocity = new Vector2(runSpeed, rb.velocity.y);
-                        }
-                    }
-                    if (Input.GetKeyUp(KeyCode.Space))
-                    {
-                        touchTimer = 0f;
-                        isJumping = true;
                         LandBehaviour();
-                        jumpTime = 0f;
-                    }
-                    GroundBehaviour();
-                    
+                    }          
                 }
                 else if (isInSpace)
                 {
@@ -191,29 +174,12 @@ public class AxelController : PlayerController
 
     public override void LandBehaviour()
     {
-        if (jumpTime < 3f)
-        {
-            jumpTime += Time.deltaTime;
-        }
-        else
-        {
-            jumpTime = 3f;
-        }
-
-        if (isJumping == true)
-        {
-            rb.velocity = new Vector3(runSpeed, jumpTime * 4, 0f);
-            
-        }
+        rb.velocity = new Vector3(runSpeed, jumpForce, 0f);
     }
 
     public void GroundBehaviour()
     {
-        if (isGrounded)
-        {
-            rb.velocity = new Vector2(runSpeed, rb.velocity.y);
-            isJumping = false;
-        }
+        rb.velocity = new Vector2(runSpeed, rb.velocity.y);
     }
 
 

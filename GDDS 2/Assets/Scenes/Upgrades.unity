@@ -1858,7 +1858,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset Pas
+  m_Text: Reset Passive
 --- !u!222 &128926782
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3021,7 +3021,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset Skl
+  m_Text: Reset Skill
 --- !u!222 &237931777
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21876,7 +21876,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reset Pow
+  m_Text: Reset Power
 --- !u!222 &2038571754
 CanvasRenderer:
   m_ObjectHideFlags: 0
