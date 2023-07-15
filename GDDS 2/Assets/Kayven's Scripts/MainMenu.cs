@@ -24,12 +24,13 @@ public class MainMenu : MonoBehaviour {
     {
         audioSource.PlayOneShot(pressingSound);
         yield return new WaitForSeconds(0.5f);
-        if (PlayerPrefs.GetInt("Main") == 1)
+        if (PlayerPrefs.GetInt("PlayGame") == 1)
         {
             SceneManager.LoadScene("Level Select");
         }
         else
         {
+            PlayerPrefs.SetInt("PlayGame", 1);
             PlayerPrefs.SetInt("Korg", 1);
             SceneManager.LoadScene(loadLevel);
         }
