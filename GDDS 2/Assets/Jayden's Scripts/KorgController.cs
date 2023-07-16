@@ -67,30 +67,30 @@ public class KorgController : PlayerController
         // Get the SpriteRenderer component
         sr = GetComponent<SpriteRenderer>();
 
-        if (PlayerPrefs.GetInt("PowerupForKorg") == 0) {
+        if (PlayerPrefs.GetInt("KorgPowerup") == 0) {
             missileCooldown = 30;
         }
-        else if (PlayerPrefs.GetInt("PowerupForKorg") == 1) {
+        else if (PlayerPrefs.GetInt("KorgPowerup") == 1) {
             missileCooldown = 25;
         }
-        else if (PlayerPrefs.GetInt("PowerupForKorg") == 2) {
+        else if (PlayerPrefs.GetInt("KorgPowerup") == 2) {
             missileCooldown = 20;
         }
-        else if (PlayerPrefs.GetInt("PowerupForKorg") == 3) {
+        else if (PlayerPrefs.GetInt("KorgPowerup") == 3) {
             missileCooldown = 15;
         }
 
 
-        if (PlayerPrefs.GetInt("SkillForKorg") == 0) {
+        if (PlayerPrefs.GetInt("KorgSkill") == 0) {
             shieldCooldown = 30;
         }
-        else if (PlayerPrefs.GetInt("SkillForKorg") == 1) {
+        else if (PlayerPrefs.GetInt("KorgSkill") == 1) {
             shieldCooldown = 25;
         }
-        else if (PlayerPrefs.GetInt("SkillForKorg") == 2) {
+        else if (PlayerPrefs.GetInt("KorgSkill") == 2) {
             shieldCooldown = 20;
         }
-        else if (PlayerPrefs.GetInt("SkillForKorg") == 3) {
+        else if (PlayerPrefs.GetInt("KorgSkill") == 3) {
             shieldCooldown = 15;
         }
     }
@@ -263,7 +263,13 @@ public class KorgController : PlayerController
 
     public override void LandBehaviour()
     {
-        if (flipped)
+        if (hovering)
+        {
+            accelerate = false;
+            StartCoroutine("GravWait");
+            return;
+        }
+        else if (flipped)
         {
             StopCoroutine("GravWait");
             hovering = false;
@@ -273,12 +279,6 @@ public class KorgController : PlayerController
             accelerate = true;
             unflip = true;
             StartCoroutine("GravWait");
-        }
-        else if (hovering)
-        {
-            accelerate = false;
-            StartCoroutine("GravWait");
-            return;
         }
         else
         {

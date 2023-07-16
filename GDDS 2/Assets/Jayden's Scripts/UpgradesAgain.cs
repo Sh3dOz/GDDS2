@@ -7,6 +7,7 @@ public class UpgradesAgain : MonoBehaviour
 {
     public Text coinText;
     float coinCollected;
+    public static bool canInput = true;
 
     [Header("SwitchCharacter")]
     public Image BG;
@@ -58,26 +59,30 @@ public class UpgradesAgain : MonoBehaviour
     
     public void OpenPassive()
     {
-        if (passivePanel.activeInHierarchy) return;
+        if (canInput == false) return;
         passivePanel.SetActive(true);
+        canInput = false;
     }
 
     public void OpenSkill()
     {
-        if (skillPanel.activeInHierarchy) return;
+        if (canInput == false) return;
         skillPanel.SetActive(true);
+        canInput = false;
     }
 
     public void OpenPowerup()
     {
-        if (powerupPanel.activeInHierarchy) return;
+        if (canInput == false) return;
         powerupPanel.SetActive(true);
+        canInput = false;
     }
 
     public void OpenHealth()
     {
-        if (healthPanel.activeInHierarchy) return;
+        if (canInput == false) return;
         healthPanel.SetActive(true);
+        canInput = false;
     }
 
     public void UpgradePassive(PassivePanel ability)

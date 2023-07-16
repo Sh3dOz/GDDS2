@@ -96,5 +96,6 @@ public class PassivePanel : MonoBehaviour
     public void ClosePanel(GameObject panel)
     {
         panel.SetActive(false);
+        UpgradesAgain.canInput = true;
     }
 }

@@ -43,30 +43,30 @@ public class AxelController : PlayerController
         // Get the SpriteRenderer component
         sr = GetComponent<SpriteRenderer>();
 
-        if (PlayerPrefs.GetInt("PowerupForAxel") == 0) {
+        if (PlayerPrefs.GetInt("AxelSkill") == 0) {
             empCooldown = 30;
         }
-        else if (PlayerPrefs.GetInt("PowerupForAxel") == 1) {
-            empCooldown = 25;
+        else if (PlayerPrefs.GetInt("AxelSkill") == 1) {
+            empCooldown = 27;
         }
-        else if (PlayerPrefs.GetInt("PowerupForAxel") == 2) {
-            empCooldown = 20;
+        else if (PlayerPrefs.GetInt("AxelSkill") == 2) {
+            empCooldown = 24;
         }
-        else if (PlayerPrefs.GetInt("PowerupForAxel") == 3) {
-            empCooldown = 15;
+        else if (PlayerPrefs.GetInt("AxelSkill") == 3) {
+            empCooldown = 21;
         }
 
 
-        if (PlayerPrefs.GetInt("SkillForAxel") == 0) {
+        if (PlayerPrefs.GetInt("AxelPowerup") == 0) {
             empCooldown = 30;
         }
-        else if (PlayerPrefs.GetInt("SkillForAxel") == 1) {
+        else if (PlayerPrefs.GetInt("AxelPowerup") == 1) {
             deflectCooldown = 25;
         }
-        else if (PlayerPrefs.GetInt("SkillForAxel") == 2) {
+        else if (PlayerPrefs.GetInt("AxelPowerup") == 2) {
             deflectCooldown = 20;
         }
-        else if (PlayerPrefs.GetInt("SkillForAxel") == 3) {
+        else if (PlayerPrefs.GetInt("AxelPowerup") == 3) {
             deflectCooldown = 15;
         }
     }
