@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 530c8da96479328428633b38ff75eaf2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - coinImage: {instanceID: 0}
+  - coinCost: {instanceID: 0}
+  - firstBar: {instanceID: 0}
+  - secondBar: {instanceID: 0}
+  - thirdBar: {instanceID: 0}
+  - firstEmpty: {fileID: 8940740203633187958, guid: ee7a5138162f3254da19a7dc5464703e, type: 3}
+  - secondEmpty: {fileID: 296241668497926467, guid: ee7a5138162f3254da19a7dc5464703e, type: 3}
+  - thirdEmpty: {fileID: 4764817591268593858, guid: ee7a5138162f3254da19a7dc5464703e, type: 3}
+  - firstFilled: {fileID: 8087685235571410144, guid: ee7a5138162f3254da19a7dc5464703e, type: 3}
+  - secondFilled: {fileID: 4557568262178561813, guid: ee7a5138162f3254da19a7dc5464703e, type: 3}
+  - thirdFilled: {fileID: -5110696718715575006, guid: ee7a5138162f3254da19a7dc5464703e, type: 3}
+  - maxedPanel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
