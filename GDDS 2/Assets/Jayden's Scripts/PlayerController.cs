@@ -68,8 +68,15 @@ public abstract class PlayerController : MonoBehaviour
         }
         if (health <= 0)
         {
-            manager.isAlive = false;
-            Destroy(gameObject);
+            if (PlayerPrefs.GetInt("God") == 1)
+            {
+                health = 5000;
+            }
+            else
+            {
+                manager.isAlive = false;
+                Destroy(gameObject);
+            }
         }
         if (canBeDamaged == false || isDamaged == false)
         {

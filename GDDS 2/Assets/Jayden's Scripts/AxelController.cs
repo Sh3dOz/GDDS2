@@ -217,6 +217,7 @@ public class AxelController : PlayerController
     {
         if (currentEMPCooldown < empCooldown) return;
         GameObject go = Instantiate(empEffect, transform.position, Quaternion.identity);
+        Destroy(go, empDuration);
         currentEMPCooldown = 0f;
     }
 

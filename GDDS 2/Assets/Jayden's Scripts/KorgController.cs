@@ -85,13 +85,13 @@ public class KorgController : PlayerController
             shieldCooldown = 30;
         }
         else if (PlayerPrefs.GetInt("KorgSkill") == 1) {
-            shieldCooldown = 25;
+            shieldCooldown = 27;
         }
         else if (PlayerPrefs.GetInt("KorgSkill") == 2) {
-            shieldCooldown = 20;
+            shieldCooldown = 24;
         }
         else if (PlayerPrefs.GetInt("KorgSkill") == 3) {
-            shieldCooldown = 15;
+            shieldCooldown = 21;
         }
     }
 

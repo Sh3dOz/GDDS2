@@ -236,6 +236,8 @@ MonoBehaviour:
   shootPos: {fileID: 8814942069269082029}
   fireRate: 0.2
   damage: 1
+  UI: {fileID: 0}
+  shootingSound: {fileID: 0}
 --- !u!60 &7275681211231475142
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -843,6 +845,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInSpace: 0
   onLand: 1
+  pcInput: 0
   moveSpeed: 5
   runSpeed: 5
   jumpHeight: 0
@@ -872,9 +875,9 @@ MonoBehaviour:
   spaceButton: {fileID: 0}
   vcam: {fileID: 0}
   isWin: 0
-  damagedEffect: {fileID: 0}
+  damagedEffect: {fileID: 3467726240160300806, guid: 3531e1b66a1b14a41b2cda66566754f4, type: 3}
   UI: {fileID: 0}
-  damageSound: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
   gravScale: 0
   metoriteCooldown: 30
   currentMetoriteCooldown: 0

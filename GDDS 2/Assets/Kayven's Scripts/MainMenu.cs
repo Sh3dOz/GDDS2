@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip pressingSound;
     public GameObject resetPanel;
+    public GameObject godPanel;
 
     void Start() {
 
@@ -103,5 +104,28 @@ public class MainMenu : MonoBehaviour {
     public void DisableReset()
     {
         resetPanel.SetActive(false);
+    }
+
+    public void OpenGod()
+    {
+        int isGod = PlayerPrefs.GetInt("God");
+        if (isGod == 0)
+        {
+            godPanel.SetActive(true);
+        }
+        else if(isGod == 1)
+        {
+            PlayerPrefs.SetInt("God", 0);
+        }
+    }
+    public void EnableGod()
+    {
+        PlayerPrefs.SetInt("God", 1);
+        godPanel.SetActive(false);
+    }
+
+    public void CloseGod()
+    {
+        godPanel.SetActive(false);
     }
 }

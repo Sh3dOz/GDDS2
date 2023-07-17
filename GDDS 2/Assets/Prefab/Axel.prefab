@@ -289,9 +289,9 @@ MonoBehaviour:
   spaceButton: {fileID: 0}
   vcam: {fileID: 0}
   isWin: 0
-  damagedEffect: {fileID: 0}
+  damagedEffect: {fileID: 3467726240160300806, guid: 3531e1b66a1b14a41b2cda66566754f4, type: 3}
   UI: {fileID: 0}
-  damageSound: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
   empCooldown: 30
   empDuration: 1
   empEffect: {fileID: 2149358710423880799, guid: b42065e3338718c4aa31a55d8f49405e, type: 3}
