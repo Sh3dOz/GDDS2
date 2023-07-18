@@ -10,7 +10,6 @@ public class BossController : MonoBehaviour
     PhaseMode currentPhase;
 
     [Header("Phase1")]
-    public Transform shootPos;
     public Transform eyePos, topLimit, botLimit;
     public GameObject phaseOneBullet;
     float shootTimer;
@@ -95,7 +94,8 @@ public class BossController : MonoBehaviour
         if (shotLaser)
         {
             //Shoot Bouncing Bullets
-            Instantiate(phaseTwoBullet, eyePos.position, Quaternion.identity);
+            Instantiate(phaseTwoBullet, eyePos.position, Quaternion.Euler(new Vector3(0f,0f,-15f)));
+            Instantiate(phaseTwoBullet, eyePos.position, Quaternion.Euler(new Vector3(0f, 0f, 15f)));
             transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
         }
     }

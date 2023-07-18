@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class Bullet : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed;
     public Rigidbody2D rb;
     public float timeSpawned;
     public int damage;
@@ -17,8 +18,8 @@ public abstract class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         audioS = FindObjectOfType<AudioSource>();
-
     }
 
     // Update is called once per frame

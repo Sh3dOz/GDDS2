@@ -9,6 +9,7 @@ TagManager:
   - Confider
   - EMP
   - Enemy
+  - Laser
   layers:
   - Default
   - TransparentFX
