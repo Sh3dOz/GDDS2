@@ -21,7 +21,7 @@ public class BossBullet : Bullet
     public override void DestroyBullet()
     {
         timeSpawned += Time.deltaTime;
-        if (timeSpawned > 2f)
+        if (timeSpawned > 5f)
         {
             Destroy(gameObject);
         }
@@ -32,7 +32,7 @@ public class BossBullet : Bullet
         if(collision.tag == "Laser")
         {
             Debug.Log("yes?");
-            Vector3 rotationToAdd = new Vector3(0f, 0f, transform.rotation.z);
+            Vector3 rotationToAdd = new Vector3(0f,0f,(360f - transform.eulerAngles.z)*2);
             Debug.Log(rotationToAdd);
             transform.Rotate(rotationToAdd);
         }
