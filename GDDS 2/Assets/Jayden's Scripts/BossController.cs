@@ -9,11 +9,20 @@ public class BossController : MonoBehaviour
     enum PhaseMode {One, Second,Third};
     PhaseMode currentPhase;
 
-    [Header("Shooting")]
+    [Header("Phase1")]
     public Transform shootPos;
     public Transform eyePos, topLimit, botLimit;
-    public GameObject pharseOneBullet;
+    public GameObject phaseOneBullet;
     float shootTimer;
+
+    [Header("Phase2")]
+    public Transform midPos;
+    public Transform topG;
+    public Transform botG;
+    public GameObject phaseTwoLaser;
+    public GameObject phaseTwoBullet;
+    float laserDuration;
+    bool shotLaser;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +40,7 @@ public class BossController : MonoBehaviour
                 ShootEyes();
                 break;
             case PhaseMode.Second:
+                ShootLaser();
                 break;
             case PhaseMode.Third:
                 break;
@@ -59,7 +69,7 @@ public class BossController : MonoBehaviour
     {
         if(shootTimer <= 0f)
         {
-            GameObject laser = Instantiate(pharseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+            GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
             shootTimer = Random.Range(2, 6);
         }
         else
@@ -68,9 +78,45 @@ public class BossController : MonoBehaviour
         }
         transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
     }
+
+    void ShootLaser()
+    {
+        if (!shotLaser)
+        {
+            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+            //Shoot laser
+            GameObject topLaser = Instantiate(phaseTwoLaser, topG.position, Quaternion.identity);
+            GameObject botLaser = Instantiate(phaseTwoLaser, botG.position, Quaternion.identity);
+            Destroy(topLaser, laserDuration);
+            Destroy(botLaser, laserDuration);
+            shotLaser = true;
+            StartCoroutine(WaitLaser());
+        }
+        if (shotLaser)
+        {
+            //Shoot Bouncing Bullets
+            Instantiate(phaseTwoBullet, eyePos.position, Quaternion.identity);
+            transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+        }
+    }
+
+    IEnumerator WaitLaser()
+    {
+        yield return new WaitForSeconds(laserDuration + 5f);
+        shotLaser = false;
+    }
     
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        if(currentHealth < maxHealth)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+
     }
 }

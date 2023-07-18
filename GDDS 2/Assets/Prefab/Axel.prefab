@@ -274,7 +274,7 @@ MonoBehaviour:
   playerSprite: {fileID: -5597136377667715244, guid: cdcb398939d531d4588acbf0d4a30521, type: 3}
   canMove: 1
   touchTimer: 0
-  health: 3
+  health: 4
   isDamaged: 0
   col: {fileID: 5152778470174452008}
   manager: {fileID: 0}

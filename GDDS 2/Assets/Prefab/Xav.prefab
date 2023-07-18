@@ -860,9 +860,9 @@ MonoBehaviour:
   playerSprite: {fileID: -6454386598425557665, guid: 53bb75b5d08199245a7f3627bf79fa81, type: 3}
   canMove: 1
   touchTimer: 0
-  health: 3
+  health: 4
   isDamaged: 0
-  col: {fileID: 0}
+  col: {fileID: 7275681211231475142}
   manager: {fileID: 0}
   canBeDamaged: 1
   isGrounded: 0
