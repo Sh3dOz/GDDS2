@@ -995,7 +995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1380295682
 Animator:
   serializedVersion: 3
@@ -1697,6 +1697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Laser
       objectReference: {fileID: 0}
+    - target: {fileID: 7945349743027483808, guid: 608f42aaf11dfba449111c2008852ce9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7945349743027483809, guid: 608f42aaf11dfba449111c2008852ce9, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2173,7 +2177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544099864220997470, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: isBossLevel
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4544099864220997470, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: bossHealthBar

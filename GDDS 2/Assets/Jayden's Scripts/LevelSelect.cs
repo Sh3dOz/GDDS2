@@ -53,8 +53,11 @@ public class LevelSelect : MonoBehaviour
 
     public void CharacterSelect(string name)
     {
+        //Check if character is unlocked
         if (PlayerPrefs.GetInt(name) != 1) return;
+        //Set playerprefs
         PlayerPrefs.SetString("Character", name);
+        //Cannot start without selecting a character
         startButton.SetActive(true);
     }
 }
