@@ -265,7 +265,7 @@ public class LevelManager : MonoBehaviour
 
     public void SwitchMode()
     {
-        if(player.onLand)
+        if(!player.onLand)
         {
             landButton.gameObject.SetActive(false);
             spaceButton.gameObject.SetActive(true);
@@ -275,13 +275,13 @@ public class LevelManager : MonoBehaviour
             player.UpdateSprite();
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
-        if (player.isInSpace)
+        if (!player.isInSpace)
         {
             landButton.gameObject.SetActive(true);
             spaceButton.gameObject.SetActive(false);
             joystick.SetActive(false);
             player.sr.sprite = player.playerSprite;
-            vcam.Follow = this.gameObject.transform;
+            vcam.Follow = player.transform;
             player.UpdateSprite();
         }
         player.onLand = !player.onLand;

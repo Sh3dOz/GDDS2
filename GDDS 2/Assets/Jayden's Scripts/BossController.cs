@@ -9,6 +9,8 @@ public class BossController : MonoBehaviour
     enum PhaseMode {One, Second,Third};
     PhaseMode currentPhase;
 
+    Animator myAnim;
+
     [Header("Phase1")]
     public Transform eyePos, topLimit, botLimit;
     public GameObject phaseOneBullet;
@@ -20,18 +22,24 @@ public class BossController : MonoBehaviour
     public Transform botG;
     public GameObject phaseTwoLaser;
     public GameObject phaseTwoBullet;
-    float laserDuration;
+    float laserDuration = 5f;
+    bool laserPhase;
     bool shotLaser;
+    float nextFire;
+    public float fireRate;
+    float fireTimer;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         shootTimer = Random.Range(2, 6);
+        myAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        myAnim.SetFloat("Health", currentHealth);
         PharseCheck();
         switch (currentPhase)
         {
@@ -80,23 +88,37 @@ public class BossController : MonoBehaviour
 
     void ShootLaser()
     {
-        if (!shotLaser)
+        if (laserPhase)
         {
-            transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-            //Shoot laser
-            GameObject topLaser = Instantiate(phaseTwoLaser, topG.position, Quaternion.identity);
-            GameObject botLaser = Instantiate(phaseTwoLaser, botG.position, Quaternion.identity);
-            Destroy(topLaser, laserDuration);
-            Destroy(botLaser, laserDuration);
-            shotLaser = true;
-            StartCoroutine(WaitLaser());
+            if (!shotLaser)
+            {
+                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                float dist = transform.position.x - midPos.position.x;
+                if (dist > Mathf.Epsilon) return;
+                //Shoot laser
+                GameObject topLaser = Instantiate(phaseTwoLaser, topG.position, Quaternion.identity, topG.transform);
+                GameObject botLaser = Instantiate(phaseTwoLaser, botG.position, Quaternion.identity, botG.transform);
+                Destroy(topLaser, laserDuration);
+                Destroy(botLaser, laserDuration);
+                shotLaser = true;
+                StartCoroutine(WaitLaser());
+            }
+            if (shotLaser)
+            {
+                //Shoot Bouncing Bullets
+                if (fireTimer > nextFire)
+                {
+                    nextFire = fireTimer + fireRate;
+                    Instantiate(phaseTwoBullet, eyePos.position, Quaternion.Euler(new Vector3(0f, 0f, -15f)));
+                    Instantiate(phaseTwoBullet, eyePos.position, Quaternion.Euler(new Vector3(0f, 0f, 15f)));
+                }
+                fireTimer += Time.deltaTime;
+            }
         }
-        if (shotLaser)
+        else
         {
-            //Shoot Bouncing Bullets
-            Instantiate(phaseTwoBullet, eyePos.position, Quaternion.Euler(new Vector3(0f,0f,-15f)));
-            Instantiate(phaseTwoBullet, eyePos.position, Quaternion.Euler(new Vector3(0f, 0f, 15f)));
-            transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+            ShootEyes();
+            StartCoroutine(WaitShoot());
         }
     }
 
@@ -104,8 +126,14 @@ public class BossController : MonoBehaviour
     {
         yield return new WaitForSeconds(laserDuration + 5f);
         shotLaser = false;
+        laserPhase = false;
     }
-    
+    IEnumerator WaitShoot()
+    {
+        yield return new WaitForSeconds(5f);
+        laserPhase = true;
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;

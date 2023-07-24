@@ -42,7 +42,10 @@ public class AxelController : PlayerController
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         // Get the SpriteRenderer component
         sr = GetComponent<SpriteRenderer>();
-
+        if (isInSpace)
+        {
+            manager.SwitchMode();
+        }
         if (PlayerPrefs.GetInt("AxelSkill") == 0) {
             empCooldown = 30;
         }

@@ -55,6 +55,10 @@ public class XavierController : PlayerController {
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         // Get the SpriteRenderer component
         sr = GetComponent<SpriteRenderer>();
+        if (isInSpace)
+        {
+            manager.SwitchMode();
+        }
     }
 
 

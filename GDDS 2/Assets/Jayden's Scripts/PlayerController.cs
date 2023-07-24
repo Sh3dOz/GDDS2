@@ -111,15 +111,12 @@ public abstract class PlayerController : MonoBehaviour
 
     public void SpaceBehaviour()
     {
+        movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
+        movement.y = VirtualJoystick.GetAxis("Vertical", 0);
         if (pcInput)
         {
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
-        }
-        else
-        {
-            movement.x = VirtualJoystick.GetAxis("Horizontal", 0);
-            movement.y = VirtualJoystick.GetAxis("Vertical", 0);
         }
         Movement();
     }
