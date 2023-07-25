@@ -124,7 +124,7 @@ public class BossController : MonoBehaviour
 
     IEnumerator WaitLaser()
     {
-        yield return new WaitForSeconds(laserDuration + 5f);
+        yield return new WaitForSeconds(laserDuration);
         shotLaser = false;
         laserPhase = false;
     }
