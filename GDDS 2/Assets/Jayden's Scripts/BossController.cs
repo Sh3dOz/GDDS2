@@ -28,6 +28,14 @@ public class BossController : MonoBehaviour
     float nextFire;
     public float fireRate;
     float fireTimer;
+
+    [Header("Phase3")]
+    public Transform bouncePos, bouncePos2, bouncePos3;
+    public GameObject phaseThreeBullet;
+    bool chosenAction;
+    bool doneWithAction;
+    bool doneWithAction2;
+    int rand;
     // Start is called before the first frame update
     void Start()
     {
@@ -120,6 +128,66 @@ public class BossController : MonoBehaviour
             ShootEyes();
             StartCoroutine(WaitShoot());
         }
+    }
+
+    void Phase3()
+    {
+        if (chosenAction == false)
+        {
+            rand = Random.Range(1, 3);
+            chosenAction = true;
+        }
+        switch (rand)
+        {
+            case 1:
+                transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+                break;
+            case 2:
+                //Move to Mid
+                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                float dist = transform.position.x - midPos.position.x;
+                if (dist > Mathf.Epsilon) return;
+                
+                //Shoot
+                ShootBubbles();
+
+                //Bob
+                transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+                
+                //Move to Mid
+                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                dist = transform.position.x - midPos.position.x;
+                if (dist > Mathf.Epsilon) return;
+                
+                //Shoot Laser
+                Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+
+                //Reset
+                chosenAction = false;
+                break;
+            case 3:
+                //Laser
+                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                dist = transform.position.x - midPos.position.x;
+                if (dist > Mathf.Epsilon) return;
+                Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                break;
+        }
+    }
+
+    void ShootBubbles()
+    {
+        Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-117f));
+        Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-142f));
+        Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-65f));
+
+        Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 117f));
+        Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 70f));
+        Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 34f));
+
+        Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, 39f));
+        Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -10f));
+        Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -52f));
     }
 
     IEnumerator WaitLaser()
