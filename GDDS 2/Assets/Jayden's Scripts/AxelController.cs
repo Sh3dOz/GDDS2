@@ -64,13 +64,13 @@ public class AxelController : PlayerController
             empCooldown = 30;
         }
         else if (PlayerPrefs.GetInt("AxelPowerup") == 1) {
-            deflectCooldown = 25;
+            deflectCooldown = 27;
         }
         else if (PlayerPrefs.GetInt("AxelPowerup") == 2) {
-            deflectCooldown = 20;
+            deflectCooldown = 24;
         }
         else if (PlayerPrefs.GetInt("AxelPowerup") == 3) {
-            deflectCooldown = 15;
+            deflectCooldown = 21;
         }
     }
 

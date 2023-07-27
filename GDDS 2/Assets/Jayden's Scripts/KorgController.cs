@@ -74,13 +74,13 @@ public class KorgController : PlayerController
             missileCooldown = 30;
         }
         else if (PlayerPrefs.GetInt("KorgPowerup") == 1) {
-            missileCooldown = 25;
+            missileCooldown = 27;
         }
         else if (PlayerPrefs.GetInt("KorgPowerup") == 2) {
-            missileCooldown = 20;
+            missileCooldown = 24;
         }
         else if (PlayerPrefs.GetInt("KorgPowerup") == 3) {
-            missileCooldown = 15;
+            missileCooldown = 21;
         }
 
 
@@ -95,6 +95,11 @@ public class KorgController : PlayerController
         }
         else if (PlayerPrefs.GetInt("KorgSkill") == 3) {
             shieldCooldown = 21;
+        }
+
+        if(PlayerPrefs.GetInt("KorgPassive") == 1)
+        {
+
         }
     }
 

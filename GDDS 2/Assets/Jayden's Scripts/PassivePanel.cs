@@ -21,7 +21,9 @@ public class PassivePanel : MonoBehaviour
     public Image firstBar, secondBar, thirdBar;
     public Sprite firstEmpty, secondEmpty, thirdEmpty, firstFilled, secondFilled, thirdFilled;
     public List<float> upgradeCost;
+    public List<string> passiveKorg, passiveAxel, passiveX;
     public List<string> upgradeText;
+    public List<string> passiveText;
     public GameObject upgradeButton;
     public GameObject maxedPanel;
     // Start is called before the first frame update
@@ -54,12 +56,27 @@ public class PassivePanel : MonoBehaviour
 
     public void UpdatePoints()
     {
+        switch (UpgradesAgain.selectedCharacter)
+        {
+            case "Korg":
+                passiveText = passiveKorg;
+                break;
+            case "Axel":
+                passiveText = passiveAxel;
+                break;
+            case "X":
+                passiveText = passiveX;
+                break;
+            default:
+                passiveText = passiveKorg;
+                break;
+        }
         abilityIndex = PlayerPrefs.GetInt(UpgradesAgain.selectedCharacter + abilityName);
         switch (abilityIndex)
         {
             case 0:
                 coinCost.text = upgradeCost[abilityIndex].ToString();
-                abilityText.text = upgradeText[abilityIndex];
+                abilityText.text = isPassive ? passiveText[abilityIndex] : upgradeText[abilityIndex];
                 firstBar.sprite = firstEmpty;
                 secondBar.sprite = secondEmpty;
                 thirdBar.sprite = thirdEmpty;
@@ -67,21 +84,21 @@ public class PassivePanel : MonoBehaviour
 
             case 1:
                 coinCost.text = upgradeCost[abilityIndex].ToString();
-                abilityText.text = upgradeText[abilityIndex];
+                abilityText.text = isPassive ? passiveText[abilityIndex] : upgradeText[abilityIndex];
                 firstBar.sprite = firstFilled;
                 secondBar.sprite = secondEmpty;
                 thirdBar.sprite = thirdEmpty;
                 break;
             case 2:
                 coinCost.text = upgradeCost[abilityIndex].ToString();
-                abilityText.text = upgradeText[abilityIndex];
+                abilityText.text = isPassive ? passiveText[abilityIndex] : upgradeText[abilityIndex];
                 firstBar.sprite = firstFilled;
                 secondBar.sprite = secondFilled;
                 thirdBar.sprite = thirdEmpty;
                 break;
             case 3:
                 coinCost.text = upgradeCost[abilityIndex].ToString();
-                abilityText.text = upgradeText[abilityIndex];
+                abilityText.text = isPassive ? passiveText[abilityIndex] : upgradeText[abilityIndex];
                 firstBar.sprite = firstFilled;
                 secondBar.sprite = secondFilled;
                 thirdBar.sprite = thirdFilled;
