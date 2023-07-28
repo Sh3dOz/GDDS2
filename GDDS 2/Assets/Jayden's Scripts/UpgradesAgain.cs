@@ -17,13 +17,16 @@ public class UpgradesAgain : MonoBehaviour
     public List<Sprite> charSprites;
     public List<Sprite> bgSprites;
     public List<RuntimeAnimatorController> charAnim;
-    int index;
+    public int index;
 
     [Header("Upgrades")]
     public GameObject passivePanel;
     public GameObject skillPanel;
     public GameObject powerupPanel;
     public GameObject healthPanel;
+
+    [Header("SkillPreview")]
+    public GameObject hoverSkill, landSkill;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,23 @@ public class UpgradesAgain : MonoBehaviour
             Character.GetComponent<Animator>().runtimeAnimatorController = charAnim[index];
             selectedCharacter = allChar[index];
         }
+        if(index != 0)
+        {
+            hoverSkill.SetActive(false);
+        }
+        else
+        {
+            hoverSkill.SetActive(true);
+        }
+        if(index == 2)
+        {
+            landSkill.SetActive(false);
+        }
+        else
+        {
+            landSkill.SetActive(true);
+        }
+
     }
 
     public void SwitchCharacterRight()
@@ -54,6 +74,22 @@ public class UpgradesAgain : MonoBehaviour
             Character.GetComponent<Image>().sprite = charSprites[index];
             Character.GetComponent<Animator>().runtimeAnimatorController = charAnim[index];
             selectedCharacter = allChar[index];
+        }
+        if (index != 0)
+        {
+            hoverSkill.SetActive(false);
+        }
+        else
+        {
+            hoverSkill.SetActive(true);
+        }
+        if (index == 2)
+        {
+            landSkill.SetActive(false);
+        }
+        else
+        {
+            landSkill.SetActive(true);
         }
     }
     

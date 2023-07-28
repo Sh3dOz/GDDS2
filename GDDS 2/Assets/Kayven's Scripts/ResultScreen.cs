@@ -12,6 +12,7 @@ public class ResultScreen : MonoBehaviour {
 
     public Score scoreCounter;
 
+    float scoreMultipler = 1f;
     public float targetScore = 9000;
     public float scoreWithCoins;
     public float scoreWithHealth;
@@ -51,8 +52,22 @@ public class ResultScreen : MonoBehaviour {
     public string nextLevel;
 
     void Start() {
+        if (PlayerPrefs.GetString("Character") == "Korg")
+        {
+            if (PlayerPrefs.GetInt("KorgPassive") == 1)
+            {
+                scoreMultipler = 1.05f;
+            }
+            else if (PlayerPrefs.GetInt("KorgPassive") == 2)
+            {
+                scoreMultipler = 1.1f;
+            }
+            else if (PlayerPrefs.GetInt("KorgPassive") == 2)
+            {
+                scoreMultipler = 1.15f;
+            }
+        }
 
-        
 
         manager = FindObjectOfType<LevelManager>();
 
@@ -68,7 +83,7 @@ public class ResultScreen : MonoBehaviour {
         }
 
         // Calculate initial target score and related values
-        targetScore = scoreCounter.currentScore;
+        targetScore = scoreCounter.currentScore * scoreMultipler;
         scoreWithCoins = targetScore + (coinsCollected * coinScore);
         scoreWithHealth = targetScore + (coinsCollected * coinScore) + (healthLeft * healthScore);
     }
