@@ -228,7 +228,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 984334858123003921, guid: e8ddd395b26d0ea4ebd5e9b4ce7701f7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 984334858123003921, guid: e8ddd395b26d0ea4ebd5e9b4ce7701f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1199,10 +1199,10 @@ MonoBehaviour:
   phaseTwoLaser: {fileID: 7945349743027483808, guid: 608f42aaf11dfba449111c2008852ce9, type: 3}
   phaseTwoBullet: {fileID: 7002321299943575057, guid: e8ddd395b26d0ea4ebd5e9b4ce7701f7, type: 3}
   fireRate: 1
-  bouncePos: {fileID: 0}
-  bouncePos2: {fileID: 0}
-  bouncePos3: {fileID: 0}
-  phaseThreeBullet: {fileID: 0}
+  phaseThreeBullet: {fileID: 7002321299943575057, guid: e8ddd395b26d0ea4ebd5e9b4ce7701f7, type: 3}
+  bouncePos: {fileID: 627608000}
+  bouncePos2: {fileID: 249439121}
+  bouncePos3: {fileID: 216658363}
 --- !u!60 &1380295686
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1595,7 +1595,7 @@ Transform:
   m_LocalScale: {x: 0.1782, y: 0.1782, z: 0.1782}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1740544284
 GameObject:
