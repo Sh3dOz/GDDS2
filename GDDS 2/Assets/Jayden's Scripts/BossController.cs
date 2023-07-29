@@ -30,11 +30,13 @@ public class BossController : MonoBehaviour
     float fireTimer;
 
     [Header("Phase3")]
-    public Transform bouncePos, bouncePos2, bouncePos3;
     public GameObject phaseThreeBullet;
+    public Transform bouncePos, bouncePos2, bouncePos3;
     bool chosenAction;
     bool doneWithAction;
     bool doneWithAction2;
+    bool shotBubbles;
+    bool shotLas;
     int rand;
     // Start is called before the first frame update
     void Start()
@@ -58,6 +60,7 @@ public class BossController : MonoBehaviour
                 ShootLaser();
                 break;
             case PhaseMode.Third:
+                Phase3();
                 break;
             default:
                 break;
@@ -140,43 +143,132 @@ public class BossController : MonoBehaviour
         switch (rand)
         {
             case 1:
-                transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+                if (!doneWithAction)
+                {
+                    //Bob
+                    transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+                    StartCoroutine(WaitAction1(3f));
+                }
+                else if (!doneWithAction2)
+                {
+                    if (!shotBubbles)
+                    {
+                        //Move to Mid
+                        transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                        float dist = transform.position.x - midPos.position.x;
+                        if (dist > Mathf.Epsilon) return;
+                    }
+                    //Shoot
+                    ShootBubbles();
+
+                    //Bob
+                    transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+                }
+                else if (doneWithAction && doneWithAction2)
+                {
+                    //Move to Mid
+                    transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                    float dist = transform.position.x - midPos.position.x;
+                    if (dist > Mathf.Epsilon) return;
+
+                    if (!shotLas)
+                    {
+                        //Shoot Laser
+                        GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                        Destroy(laser, 10f);
+                        shotLas = true;
+                        if(laser == null)
+                        {
+
+                        }
+                    }
+                    //Reset
+                    chosenAction = false;
+                }
                 break;
             case 2:
-                //Move to Mid
-                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                float dist = transform.position.x - midPos.position.x;
-                if (dist > Mathf.Epsilon) return;
-                
-                //Shoot
-                ShootBubbles();
+                if (!doneWithAction)
+                {
+                    if (!shotBubbles)
+                    {
+                        //Move to Mid
+                        transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                        float dist = transform.position.x - midPos.position.x;
+                        if (dist > Mathf.Epsilon) return;
+                    }
+                    //Shoot
+                    ShootBubbles();
 
-                //Bob
-                transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
-                
-                //Move to Mid
-                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                dist = transform.position.x - midPos.position.x;
-                if (dist > Mathf.Epsilon) return;
-                
-                //Shoot Laser
-                Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                    //Bob
+                    transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+                }
+                else if (!doneWithAction2)
+                {
+                    //Move to Mid
+                    transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                    float dist = transform.position.x - midPos.position.x;
+                    if (dist > Mathf.Epsilon) return;
 
-                //Reset
-                chosenAction = false;
+                    if (!shotLas)
+                    {
+                        //Shoot Laser
+                        GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                        Destroy(laser, 10f);
+                        shotLas = true;
+                        StartCoroutine(WaitAction2(10f));
+                    }
+                }
+                else if (doneWithAction && doneWithAction2)
+                {
+                    //Reset
+                    ResetPhase3();
+                }
                 break;
             case 3:
-                //Laser
-                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                dist = transform.position.x - midPos.position.x;
-                if (dist > Mathf.Epsilon) return;
-                Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                if (!doneWithAction)
+                {
+                    //Move to Mid
+                    transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                    float dist = transform.position.x - midPos.position.x;
+                    if (dist > Mathf.Epsilon) return;
+
+                    if (!shotLas)
+                    {
+                        //Shoot Laser
+                        GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                        Destroy(laser, 10f);
+                        shotLas = true;
+                        StartCoroutine(WaitAction1(10f));
+                    }
+
+                }
+                else if (!doneWithAction2)
+                {
+                    //Bob
+                    transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+
+                    //Wait for bob to be done
+
+                    //Move to Mid
+                    transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                    float dist = transform.position.x - midPos.position.x;
+                    if (dist > Mathf.Epsilon) return;
+
+                    //Shoot
+                    ShootBubbles();
+                }
+                else if (doneWithAction && doneWithAction2)
+                {
+                    //Reset
+                    ResetPhase3();
+                }
                 break;
         }
     }
 
     void ShootBubbles()
     {
+        if (shotBubbles) return;
         Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-117f));
         Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-142f));
         Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-65f));
@@ -188,8 +280,20 @@ public class BossController : MonoBehaviour
         Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, 39f));
         Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -10f));
         Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -52f));
+        shotBubbles = true;
     }
 
+    IEnumerator WaitAction1(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        doneWithAction = true;
+    }
+
+    IEnumerator WaitAction2(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        doneWithAction2 = true;
+    }
     IEnumerator WaitLaser()
     {
         yield return new WaitForSeconds(laserDuration);
@@ -200,6 +304,18 @@ public class BossController : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         laserPhase = true;
+    }
+
+    IEnumerator WaitAny(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+    }
+
+    void ResetPhase3()
+    {
+        chosenAction = false;
+        shotLas = false;
+        shotBubbles = false;
     }
 
     public void TakeDamage(int damage)
@@ -213,6 +329,6 @@ public class BossController : MonoBehaviour
 
     void Die()
     {
-
+        gameObject.SetActive(false);
     }
 }
