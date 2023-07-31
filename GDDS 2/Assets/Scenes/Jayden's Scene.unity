@@ -1200,7 +1200,7 @@ MonoBehaviour:
   phaseTwoBullet: {fileID: 7002321299943575057, guid: e8ddd395b26d0ea4ebd5e9b4ce7701f7, type: 3}
   fireRate: 1
   phaseThreeBullet: {fileID: 7002321299943575057, guid: e8ddd395b26d0ea4ebd5e9b4ce7701f7, type: 3}
-  bouncePos: {fileID: 627608000}
+  bouncePos: {fileID: 216658363}
   bouncePos2: {fileID: 249439121}
   bouncePos3: {fileID: 216658363}
 --- !u!60 &1380295686

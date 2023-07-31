@@ -54,7 +54,8 @@ public class BossController : MonoBehaviour
         switch (currentPhase)
         {
             case PhaseMode.One:
-                ShootEyes();
+                //ShootEyes();
+                Phase3();
                 break;
             case PhaseMode.Second:
                 ShootLaser();
@@ -137,7 +138,7 @@ public class BossController : MonoBehaviour
     {
         if (chosenAction == false)
         {
-            rand = Random.Range(1, 3);
+            rand = Random.Range(1, 4);
             chosenAction = true;
         }
         switch (rand)
@@ -163,6 +164,7 @@ public class BossController : MonoBehaviour
 
                     //Bob
                     transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+                    StartCoroutine(WaitAction2(5f));
                 }
                 else if (doneWithAction && doneWithAction2)
                 {
@@ -174,16 +176,15 @@ public class BossController : MonoBehaviour
                     if (!shotLas)
                     {
                         //Shoot Laser
-                        GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                        GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
                         Destroy(laser, 10f);
                         shotLas = true;
                         if(laser == null)
                         {
-
+                            //Reset
+                            StartCoroutine(WaitAny(10f));
                         }
                     }
-                    //Reset
-                    chosenAction = false;
                 }
                 break;
             case 2:
@@ -201,6 +202,7 @@ public class BossController : MonoBehaviour
 
                     //Bob
                     transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+                    StartCoroutine(WaitAction1(5f));
                 }
                 else if (!doneWithAction2)
                 {
@@ -212,10 +214,14 @@ public class BossController : MonoBehaviour
                     if (!shotLas)
                     {
                         //Shoot Laser
-                        GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                        GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
                         Destroy(laser, 10f);
                         shotLas = true;
-                        StartCoroutine(WaitAction2(10f));
+                        if (laser == null)
+                        {
+                            //Reset
+                            StartCoroutine(WaitAction2(10f));
+                        }
                     }
                 }
                 else if (doneWithAction && doneWithAction2)
@@ -235,10 +241,14 @@ public class BossController : MonoBehaviour
                     if (!shotLas)
                     {
                         //Shoot Laser
-                        GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                        GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
                         Destroy(laser, 10f);
                         shotLas = true;
-                        StartCoroutine(WaitAction1(10f));
+                        if (laser == null)
+                        {
+                            //Reset
+                            StartCoroutine(WaitAction1(10f));
+                        }
                     }
 
                 }
@@ -247,20 +257,25 @@ public class BossController : MonoBehaviour
                     //Bob
                     transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
 
-                    //Wait for bob to be done
-
-                    //Move to Mid
-                    transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                    float dist = transform.position.x - midPos.position.x;
-                    if (dist > Mathf.Epsilon) return;
-
-                    //Shoot
-                    ShootBubbles();
+                    StartCoroutine(WaitAction2(3f));
                 }
                 else if (doneWithAction && doneWithAction2)
                 {
+                    if (!shotBubbles)
+                    {
+                        //Move to Mid
+                        transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
+                        float dist = transform.position.x - midPos.position.x;
+                        if (dist > Mathf.Epsilon) return;
+                    }
+                    //Shoot
+                    ShootBubbles();
+
+                    //Bob
+                    transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+
                     //Reset
-                    ResetPhase3();
+                    StartCoroutine(WaitAny(5f));
                 }
                 break;
         }
@@ -273,13 +288,13 @@ public class BossController : MonoBehaviour
         Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-142f));
         Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-65f));
 
-        Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 117f));
-        Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 70f));
-        Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 34f));
+        //Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 117f));
+        //Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 70f));
+        //Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 34f));
 
-        Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, 39f));
-        Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -10f));
-        Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -52f));
+        //Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, 39f));
+        //Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -10f));
+        //Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -52f));
         shotBubbles = true;
     }
 
@@ -309,19 +324,23 @@ public class BossController : MonoBehaviour
     IEnumerator WaitAny(float duration)
     {
         yield return new WaitForSeconds(duration);
+        ResetPhase3();
     }
 
     void ResetPhase3()
     {
         chosenAction = false;
+        doneWithAction = false;
+        doneWithAction2 = false;
         shotLas = false;
         shotBubbles = false;
+        StopAllCoroutines();
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if(currentHealth < maxHealth)
+        if(currentHealth < 0)
         {
             Die();
         }
