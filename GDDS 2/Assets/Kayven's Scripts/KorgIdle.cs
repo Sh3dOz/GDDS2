@@ -5,10 +5,13 @@ using UnityEngine;
 public class KorgIdle : MonoBehaviour {
 
     private Animator anim;
+    public bool isToilet = false;
+    public Toilet toilet;
 
     // Start is called before the first frame update
     void Start() {
         anim = GetComponent<Animator>();
+        toilet = FindObjectOfType<Toilet>();
         StartCoroutine(GenerateIdleBehaviour());
     }
 
@@ -29,6 +32,13 @@ public class KorgIdle : MonoBehaviour {
             else if (randomNumber == 2) {
                 anim.SetTrigger("KorgIdle2");
             }
+        }
+    }
+
+    public void ToiletBreak() {
+        if (!isToilet) {
+            toilet.anim.SetTrigger("ToiletDrop");
+            isToilet = false;
         }
     }
 }
