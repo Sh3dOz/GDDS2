@@ -21,10 +21,13 @@ public class KorgIdle : MonoBehaviour {
         while (true) {
             yield return new WaitForSeconds(7f);
 
-            // Generate random number between 1
-            int randomNumber = Random.Range(1, 2);
+            // Generate random number between 1 and 2
+            int randomNumber = Random.Range(1, 3);
             if (randomNumber == 1) {
                 anim.SetTrigger("KorgIdle1");
+            }
+            else if (randomNumber == 2) {
+                anim.SetTrigger("KorgIdle2");
             }
         }
     }
