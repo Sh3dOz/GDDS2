@@ -38,6 +38,7 @@ public class KorgIdle : MonoBehaviour {
     public void ToiletBreak() {
         if (!isToilet) {
             toilet.anim.SetTrigger("ToiletDrop");
+            isToilet = true;
             isToilet = false;
         }
     }

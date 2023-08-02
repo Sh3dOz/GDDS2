@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Toilet : MonoBehaviour
 {
-    public UpgradesAgain upgrade;
-    public KorgIdle korg;
+    //public UpgradesAgain upgrade;
+    //public KorgIdle korg;
     public Animator anim;
 
     // Start is called before the first frame update
