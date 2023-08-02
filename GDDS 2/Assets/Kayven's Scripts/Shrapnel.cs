@@ -46,10 +46,12 @@ public class Shrapnel : Bullet {
             if (collision.GetComponent<BossController>())
             {
                 collision.GetComponent<BossController>().TakeDamage(damage);
+                Destroy(gameObject);
             }
             else
             {
                 collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
+                Destroy(gameObject);
             }
         }
     }

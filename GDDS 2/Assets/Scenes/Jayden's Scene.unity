@@ -1229,10 +1229,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500
   currentHealth: 0
+  phaseOneBullet: {fileID: 7945349743027483808, guid: ccd42f6d3cb43b446a7b22394ffa5e13, type: 3}
   eyePos: {fileID: 1542234195}
   topLimit: {fileID: 829443283}
   botLimit: {fileID: 2067457394}
-  phaseOneBullet: {fileID: 7945349743027483808, guid: ccd42f6d3cb43b446a7b22394ffa5e13, type: 3}
+  shotColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
   shootPos: {fileID: 77815108}
   midPos: {fileID: 419965302}
   topG: {fileID: 1015591343}
@@ -1503,6 +1504,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404303387}
   m_CullTransparentMesh: 1
+--- !u!1 &1491177927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4544099865218966171, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+  m_PrefabInstance: {fileID: 4544099863379956629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1491177928
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491177927}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 16.88, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 15.34}
+  m_EdgeRadius: 0
 --- !u!1 &1542234194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2425,11 +2457,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544099865218966148, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Size.x
-      value: 29.77354
+      value: 28.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4544099865218966148, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_Size.y
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4544099865218966148, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Offset.x
-      value: 2.3867702
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4544099865218966171, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
@@ -2511,6 +2547,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 117.2
       objectReference: {fileID: 0}
+    - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 647141997}
     - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: pcInput
       value: 1

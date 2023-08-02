@@ -10,11 +10,13 @@ public class BossController : MonoBehaviour
     PhaseMode currentPhase;
 
     Animator myAnim;
+    SpriteRenderer sr;
 
     [Header("Phase1")]
-    public Transform eyePos, topLimit, botLimit;
     public GameObject phaseOneBullet;
+    public Transform eyePos, topLimit, botLimit;
     float shootTimer;
+    public Color shotColor;
 
     [Header("Phase2")]
     public Transform shootPos;
@@ -25,6 +27,7 @@ public class BossController : MonoBehaviour
     public GameObject phaseTwoBullet;
     float laserDuration = 5f;
     bool laserPhase;
+    bool canFire;
     bool shotLaser;
     float nextFire;
     public float fireRate;
@@ -45,6 +48,7 @@ public class BossController : MonoBehaviour
         currentHealth = maxHealth;
         shootTimer = Random.Range(2, 6);
         myAnim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -76,10 +80,12 @@ public class BossController : MonoBehaviour
         }
         else if(currentHealth >= maxHealth * 0.25)
         {
+            sr.color = Color.white;
             currentPhase = PhaseMode.Second;
         }
         else
         {
+            sr.color = Color.white;
             currentPhase = PhaseMode.Third;
         }
     }
@@ -89,34 +95,48 @@ public class BossController : MonoBehaviour
         if(shootTimer <= 0f)
         {
             GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+            sr.color = Color.white;
             shootTimer = Random.Range(2, 6);
+        }
+        else if(shootTimer <= 1f)
+        {
+            shootTimer -= Time.deltaTime;
+            sr.color = Color.Lerp(sr.color, shotColor, .5f);
         }
         else
         {
             shootTimer -= Time.deltaTime;
         }
+
+        
         transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
     }
 
-    IEnumerator ShootLaser()
+    void ShootLaser()
     {
         if (laserPhase)
         {
             if (!shotLaser)
             {
+                //Charging up
+                sr.color = Color.white;
+                StartCoroutine(WaitFire(.5f));
                 transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
                 float dist = transform.position.y - midPos.position.y;
-                if (dist > Mathf.Epsilon) yield break;
-                //Charging up
-
-                yield return new WaitForSeconds(3f);
-                //Shoot laser
-                GameObject topLaser = Instantiate(phaseTwoLaser, topG.position, Quaternion.identity, topG.transform);
-                GameObject botLaser = Instantiate(phaseTwoLaser, botG.position, Quaternion.identity, botG.transform);
-                Destroy(topLaser, laserDuration);
-                Destroy(botLaser, laserDuration);
-                shotLaser = true;
-                StartCoroutine(WaitLaser());
+                if (dist > Mathf.Epsilon) return;
+                
+                if (canFire)
+                {
+                    //Shoot laser
+                    
+                    GameObject topLaser = Instantiate(phaseTwoLaser, topG.position, Quaternion.identity, topG.transform);
+                    GameObject botLaser = Instantiate(phaseTwoLaser, botG.position, Quaternion.identity, botG.transform);
+                    Destroy(topLaser, laserDuration);
+                    Destroy(botLaser, laserDuration);
+                    shotLaser = true;
+                    canFire = false;
+                    StartCoroutine(WaitLaser());
+                }
             }
             if (shotLaser)
             {
@@ -318,8 +338,17 @@ public class BossController : MonoBehaviour
     IEnumerator WaitShoot()
     {
         Debug.Log("Wait bubbles");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4.5f);
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.5f);
         laserPhase = true;
+        StopAllCoroutines();
+    }
+
+    IEnumerator WaitFire(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        canFire = true;
     }
 
     IEnumerator WaitAny(float duration)
