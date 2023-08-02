@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
     public Slider healthSlider;
     public Slider bossHealthBar;
     public Button landButton, spaceButton;
+    public GameObject landCollider, spaceCollider;
     public GameObject joystick;
     public Image landCooldown, spaceCooldown;
     public GameObject spaceCharge;
@@ -139,6 +140,21 @@ public class LevelManager : MonoBehaviour
             bossHealthBar.maxValue = boss.maxHealth;
             bossHealthBar.value = bossHealthBar.maxValue;
             healthSlider.value = player.health;
+            landButton.gameObject.SetActive(false);
+            spaceButton.gameObject.SetActive(true);
+            landCollider.SetActive(false);
+            spaceCollider.SetActive(true);
+            joystick.SetActive(true);
+            if(player.sr == null)
+            {
+                player.sr = player.GetComponent<SpriteRenderer>();
+            }
+            player.sr.sprite = player.spaceShip;
+            vcam.Follow = null;
+            player.UpdateSprite();
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            player.onLand = !player.onLand;
+            player.isInSpace = !player.isInSpace;
         }
         else
         {
@@ -152,6 +168,17 @@ public class LevelManager : MonoBehaviour
                 landDistance = 0;
                 progressSlider.maxValue = 1;
                 GetComponent<EnemySpawn>().enabled = true;
+                landButton.gameObject.SetActive(false);
+                spaceButton.gameObject.SetActive(true);
+                landCollider.SetActive(true);
+                spaceCollider.SetActive(false);
+                joystick.SetActive(true);
+                player.sr.sprite = player.spaceShip;
+                vcam.Follow = null;
+                player.UpdateSprite();
+                transform.localScale = new Vector3(1f, 1f, 1f);
+                player.onLand = !player.onLand;
+                player.isInSpace = !player.isInSpace;
             }
             progressSlider.value = 0;
             healthSlider.value = player.health;
@@ -265,20 +292,24 @@ public class LevelManager : MonoBehaviour
 
     public void SwitchMode()
     {
-        if(!player.onLand)
+        if(player.onLand)
         {
             landButton.gameObject.SetActive(false);
             spaceButton.gameObject.SetActive(true);
+            landCollider.SetActive(true);
+            spaceCollider.SetActive(false);
             joystick.SetActive(true);
             player.sr.sprite = player.spaceShip;
             vcam.Follow = null;
             player.UpdateSprite();
             transform.localScale = new Vector3(1f, 1f, 1f);
         }
-        if (!player.isInSpace)
+        if (player.isInSpace)
         {
             landButton.gameObject.SetActive(true);
             spaceButton.gameObject.SetActive(false);
+            landCollider.SetActive(false);
+            spaceCollider.SetActive(true);
             joystick.SetActive(false);
             player.sr.sprite = player.playerSprite;
             vcam.Follow = player.transform;

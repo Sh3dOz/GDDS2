@@ -22,6 +22,7 @@ public class XavierController : PlayerController {
     public Transform metorParent;
     public List<Transform> metoritePos = new List<Transform>();
     List<GameObject> metorites = new List<GameObject>();
+    [SerializeField] Sprite selectMetor;
     [SerializeField] bool isCooldown;
     [SerializeField] Image metoriteImageCooldown;
     [SerializeField] TMP_Text textCooldown, amountCharge;
@@ -55,10 +56,6 @@ public class XavierController : PlayerController {
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         // Get the SpriteRenderer component
         sr = GetComponent<SpriteRenderer>();
-        if (isInSpace)
-        {
-            manager.SwitchMode();
-        }
     }
 
 
@@ -194,6 +191,10 @@ public class XavierController : PlayerController {
             metoriteCharge++;
             amountCharge.text = metoriteCharge.ToString();
             currentMetoriteCooldown = 0f;
+            if( metor == metorites[0])
+            {
+                metor.GetComponent<SpriteRenderer>().sprite = selectMetor;
+            }
         }
         else
         {
@@ -211,6 +212,9 @@ public class XavierController : PlayerController {
         metorite.GetComponent<MetoriteController>().isFired = true;
         Destroy(metorite, metorDuration);
         metoriteCharge--;
+        amountCharge.text = metoriteCharge.ToString();
+        GameObject nextMetor = metorites[0];
+        nextMetor.GetComponent<SpriteRenderer>().sprite = selectMetor;
     }
 
 }

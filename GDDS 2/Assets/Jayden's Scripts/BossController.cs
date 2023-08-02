@@ -17,6 +17,7 @@ public class BossController : MonoBehaviour
     float shootTimer;
 
     [Header("Phase2")]
+    public Transform shootPos;
     public Transform midPos;
     public Transform topG;
     public Transform botG;
@@ -54,8 +55,7 @@ public class BossController : MonoBehaviour
         switch (currentPhase)
         {
             case PhaseMode.One:
-                //ShootEyes();
-                Phase3();
+                ShootEyes();
                 break;
             case PhaseMode.Second:
                 ShootLaser();
@@ -98,15 +98,18 @@ public class BossController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
     }
 
-    void ShootLaser()
+    IEnumerator ShootLaser()
     {
         if (laserPhase)
         {
             if (!shotLaser)
             {
                 transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                float dist = transform.position.x - midPos.position.x;
-                if (dist > Mathf.Epsilon) return;
+                float dist = transform.position.y - midPos.position.y;
+                if (dist > Mathf.Epsilon) yield break;
+                //Charging up
+
+                yield return new WaitForSeconds(3f);
                 //Shoot laser
                 GameObject topLaser = Instantiate(phaseTwoLaser, topG.position, Quaternion.identity, topG.transform);
                 GameObject botLaser = Instantiate(phaseTwoLaser, botG.position, Quaternion.identity, botG.transform);
@@ -121,8 +124,8 @@ public class BossController : MonoBehaviour
                 if (fireTimer > nextFire)
                 {
                     nextFire = fireTimer + fireRate;
-                    Instantiate(phaseTwoBullet, eyePos.position, Quaternion.Euler(new Vector3(0f, 0f, -15f)));
-                    Instantiate(phaseTwoBullet, eyePos.position, Quaternion.Euler(new Vector3(0f, 0f, 15f)));
+                    Instantiate(phaseTwoBullet, shootPos.position, Quaternion.Euler(new Vector3(0f, 0f, -15f)));
+                    Instantiate(phaseTwoBullet, shootPos.position, Quaternion.Euler(new Vector3(0f, 0f, 15f)));
                 }
                 fireTimer += Time.deltaTime;
             }
@@ -156,7 +159,7 @@ public class BossController : MonoBehaviour
                     {
                         //Move to Mid
                         transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                        float dist = transform.position.x - midPos.position.x;
+                        float dist = transform.position.y - midPos.position.y;
                         if (dist > Mathf.Epsilon) return;
                     }
                     //Shoot
@@ -170,7 +173,7 @@ public class BossController : MonoBehaviour
                 {
                     //Move to Mid
                     transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                    float dist = transform.position.x - midPos.position.x;
+                    float dist = transform.position.y - midPos.position.y;
                     if (dist > Mathf.Epsilon) return;
 
                     if (!shotLas)
@@ -179,12 +182,10 @@ public class BossController : MonoBehaviour
                         GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
                         Destroy(laser, 10f);
                         shotLas = true;
-                        if(laser == null)
-                        {
-                            //Reset
-                            StartCoroutine(WaitAny(10f));
-                        }
+                     
                     }
+                    //Reset
+                    StartCoroutine(WaitAny(10f));
                 }
                 break;
             case 2:
@@ -194,7 +195,7 @@ public class BossController : MonoBehaviour
                     {
                         //Move to Mid
                         transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                        float dist = transform.position.x - midPos.position.x;
+                        float dist = transform.position.y - midPos.position.y;
                         if (dist > Mathf.Epsilon) return;
                     }
                     //Shoot
@@ -208,7 +209,7 @@ public class BossController : MonoBehaviour
                 {
                     //Move to Mid
                     transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                    float dist = transform.position.x - midPos.position.x;
+                    float dist = transform.position.y - midPos.position.y;
                     if (dist > Mathf.Epsilon) return;
 
                     if (!shotLas)
@@ -217,12 +218,9 @@ public class BossController : MonoBehaviour
                         GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
                         Destroy(laser, 10f);
                         shotLas = true;
-                        if (laser == null)
-                        {
-                            //Reset
-                            StartCoroutine(WaitAction2(10f));
-                        }
                     }
+                    //Reset
+                    StartCoroutine(WaitAction2(10f));
                 }
                 else if (doneWithAction && doneWithAction2)
                 {
@@ -235,7 +233,7 @@ public class BossController : MonoBehaviour
                 {
                     //Move to Mid
                     transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                    float dist = transform.position.x - midPos.position.x;
+                    float dist = transform.position.y - midPos.position.y;
                     if (dist > Mathf.Epsilon) return;
 
                     if (!shotLas)
@@ -244,12 +242,9 @@ public class BossController : MonoBehaviour
                         GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
                         Destroy(laser, 10f);
                         shotLas = true;
-                        if (laser == null)
-                        {
-                            //Reset
-                            StartCoroutine(WaitAction1(10f));
-                        }
                     }
+                    //Reset
+                    StartCoroutine(WaitAction1(10f));
 
                 }
                 else if (!doneWithAction2)
@@ -265,7 +260,7 @@ public class BossController : MonoBehaviour
                     {
                         //Move to Mid
                         transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
-                        float dist = transform.position.x - midPos.position.x;
+                        float dist = transform.position.y - midPos.position.y;
                         if (dist > Mathf.Epsilon) return;
                     }
                     //Shoot
@@ -288,41 +283,48 @@ public class BossController : MonoBehaviour
         Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-142f));
         Instantiate(phaseThreeBullet, bouncePos.position, Quaternion.Euler(0f,0f,-65f));
 
-        //Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 117f));
-        //Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 70f));
-        //Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 34f));
+        Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 117f));
+        Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 70f));
+        Instantiate(phaseThreeBullet, bouncePos2.position, Quaternion.Euler(0f, 0f, 34f));
 
-        //Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, 39f));
-        //Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -10f));
-        //Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -52f));
+        Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, 39f));
+        Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -10f));
+        Instantiate(phaseThreeBullet, bouncePos3.position, Quaternion.Euler(0f, 0f, -52f));
         shotBubbles = true;
     }
 
     IEnumerator WaitAction1(float duration)
     {
+        Debug.Log("Wait 1");
         yield return new WaitForSeconds(duration);
         doneWithAction = true;
+        StopAllCoroutines();
     }
 
     IEnumerator WaitAction2(float duration)
     {
+        Debug.Log("Wait 2");
         yield return new WaitForSeconds(duration);
         doneWithAction2 = true;
+        StopAllCoroutines();
     }
     IEnumerator WaitLaser()
     {
+        Debug.Log("Wait Laser");
         yield return new WaitForSeconds(laserDuration);
         shotLaser = false;
         laserPhase = false;
     }
     IEnumerator WaitShoot()
     {
+        Debug.Log("Wait bubbles");
         yield return new WaitForSeconds(5f);
         laserPhase = true;
     }
 
     IEnumerator WaitAny(float duration)
     {
+        Debug.Log("Wait Reset");
         yield return new WaitForSeconds(duration);
         ResetPhase3();
     }

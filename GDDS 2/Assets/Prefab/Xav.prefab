@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 4071368681443369132}
   - component: {fileID: 7275681211231475142}
   - component: {fileID: 7275681211231475141}
+  - component: {fileID: 2660099160897311926}
   m_Layer: 8
   m_Name: Xav
   m_TagString: Player
@@ -888,12 +889,31 @@ MonoBehaviour:
   - {fileID: 3716188051066367754}
   - {fileID: 3104284136400711534}
   - {fileID: 940809308167537604}
+  selectMetor: {fileID: 130174398946783479, guid: 45901e09c30192248a7e35081025c0e7, type: 3}
   isCooldown: 0
   metoriteImageCooldown: {fileID: 0}
   textCooldown: {fileID: 0}
   amountCharge: {fileID: 0}
   top: {fileID: 0}
   bottom: {fileID: 0}
+--- !u!114 &2660099160897311926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8278546678396004544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd863e3b537257343ac895d1cead09e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 158738227921989610, guid: 6fff354442c81d64284d5da24f1b3562, type: 3}
+  shootPos: {fileID: 8814942069269082029}
+  fireRate: 0.2
+  damage: 3
+  UI: {fileID: 0}
+  shootingSound: {fileID: 0}
 --- !u!1 &8437788029684458383
 GameObject:
   m_ObjectHideFlags: 0

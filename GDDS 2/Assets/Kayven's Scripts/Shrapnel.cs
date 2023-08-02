@@ -43,7 +43,14 @@ public class Shrapnel : Bullet {
     {
         if (collision.GetComponent<ShootingEnemy>())
         {
-            Split();
+            if (collision.GetComponent<BossController>())
+            {
+                collision.GetComponent<BossController>().TakeDamage(damage);
+            }
+            else
+            {
+                collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
+            }
         }
     }
 }

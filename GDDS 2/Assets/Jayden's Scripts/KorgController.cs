@@ -66,10 +66,6 @@ public class KorgController : PlayerController
         weapons = new List<Weapon>(GetComponentsInChildren<Weapon>(true));
         // Get the SpriteRenderer component
         sr = GetComponent<SpriteRenderer>();
-        if (isInSpace)
-        {
-            manager.SwitchMode();
-        }
         if (PlayerPrefs.GetInt("KorgPowerup") == 0) {
             missileCooldown = 30;
         }
@@ -95,11 +91,6 @@ public class KorgController : PlayerController
         }
         else if (PlayerPrefs.GetInt("KorgSkill") == 3) {
             shieldCooldown = 21;
-        }
-
-        if(PlayerPrefs.GetInt("KorgPassive") == 1)
-        {
-
         }
     }
 
