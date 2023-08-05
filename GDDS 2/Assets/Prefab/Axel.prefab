@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 5152778470174452003}
   - component: {fileID: 5152778470174452004}
   - component: {fileID: 5152778470174452005}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Axel
   m_TagString: Player
   m_Icon: {fileID: 0}

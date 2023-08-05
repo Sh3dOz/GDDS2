@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraCollider : MonoBehaviour
 {
+    public bool isTrigger, isBullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,24 +19,30 @@ public class CameraCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<BasicEnemy>())
+        if (isTrigger)
         {
-            collision.GetComponent<BasicEnemy>().isActivated = true;
+            if (collision.GetComponent<BasicEnemy>())
+            {
+                collision.GetComponent<BasicEnemy>().isActivated = true;
+            }
         }
     }
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<RandomTrapController>())
+        if (isTrigger)
         {
-            collision.GetComponent<RandomTrapController>().ResetTrap();
-        }
-        if (collision.GetComponent<BasicEnemy>())
-        {
-            collision.GetComponent<BasicEnemy>().isActivated = false;
-        }
-        if (collision.GetComponent<DashTrap>() && collision.GetComponent<DashTrap>().isActivated == true)
-        {
-            //Destroy(collision.gameObject);
+            if (collision.GetComponent<RandomTrapController>())
+            {
+                collision.GetComponent<RandomTrapController>().ResetTrap();
+            }
+            if (collision.GetComponent<BasicEnemy>())
+            {
+                collision.GetComponent<BasicEnemy>().isActivated = false;
+            }
+            if (collision.GetComponent<DashTrap>() && collision.GetComponent<DashTrap>().isActivated == true)
+            {
+                //Destroy(collision.gameObject);
+            }
         }
     }
 }
