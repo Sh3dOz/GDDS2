@@ -29,12 +29,27 @@ public class BouncingBullet : Bullet
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject);
+        Debug.Log(rb.velocity);
         if (collision.gameObject.GetComponent<CameraCollider>())
         {
             if (collision.gameObject.GetComponent<CameraCollider>().isBullet)
             {
-                rb.velocity = Vector3.Reflect(rb.velocity, collision.GetContact(0).normal);
+                /*Vector3 normal = collision.contacts[0].normal;
+                Vector3 vel = rb.velocity;
+                // measure angle
+                if (Vector3.Angle(vel, -normal) > maxAngle)
+                {
+                    // bullet bounces off the surface
+                    rb.velocity = Vector3.Reflect(vel, normal);
+                }
+                else
+                {
+                    // bullet penetrates the target - apply damage...
+                    Destroy(gameObject); // and destroy the bullet
+                }
+                */
+                rb.velocity = Vector3.Reflect(rb.velocity, collision.contacts[0].normal);
+                Debug.Log(rb.velocity);
                 //Vector3 rotationToAdd = new Vector3(0f, 0f, (360f - transform.eulerAngles.z) * 2);
                 //transform.Rotate(rotationToAdd);
             }
