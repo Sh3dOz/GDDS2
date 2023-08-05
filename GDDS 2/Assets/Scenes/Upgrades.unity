@@ -7239,7 +7239,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9.1
+  m_fontSize: 9.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12101,7 +12101,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &877110512
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14971,6 +14971,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isToilet: 0
   toilet: {fileID: 0}
+  UI: {fileID: 1661124660}
+  toiletTime: {fileID: 8300000, guid: 52807da79a5f30340b28046da7624b4a, type: 3}
 --- !u!95 &1054823903
 Animator:
   serializedVersion: 3
@@ -15381,7 +15383,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9.1
+  m_fontSize: 9.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -18799,9 +18801,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff68687c450a184389e6db8d8dff019, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgrade: {fileID: 0}
-  korg: {fileID: 0}
   anim: {fileID: 0}
+  UI: {fileID: 1661124660}
+  doorOpen: {fileID: 8300000, guid: 74838cf67623d364f89879d8a1306d8b, type: 3}
+  doorClose: {fileID: 8300000, guid: 7e959e22b452b2e429fd3550b9a6e55e, type: 3}
 --- !u!114 &1494207578
 MonoBehaviour:
   m_ObjectHideFlags: 0

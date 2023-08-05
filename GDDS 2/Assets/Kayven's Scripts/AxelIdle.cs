@@ -19,7 +19,7 @@ public class AxelIdle : MonoBehaviour {
 
     private IEnumerator GenerateIdleBehaviour() {
         while (true) {
-            yield return new WaitForSeconds(7f);
+            yield return new WaitForSeconds(15f);
 
             // Generate random number between 1 and 2
             int randomNumber = Random.Range(1, 3);
