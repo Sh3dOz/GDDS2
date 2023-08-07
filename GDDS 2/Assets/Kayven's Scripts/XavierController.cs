@@ -159,14 +159,30 @@ public class XavierController : PlayerController {
     }
     public override void LandBehaviour() {
 
-        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float newYPosition = touchPosition.y;
+        //Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //float newYPosition = touchPosition.y;
 
 
-        if (touchPosition.y < top.position.y && touchPosition.y > bottom.position.y) {
-            Vector3 newPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
-            transform.position = newPosition;
-        }
+        //if (touchPosition.y < top.position.y && touchPosition.y > bottom.position.y) {
+        //    Vector3 newPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
+        //    transform.position = newPosition;
+        //}
+
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = Camera.main.transform.position.z; // Set the mouse's z-coordinate to match the camera's z-coordinate
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        // Control boundaries 
+        float minY = bottom.position.y;
+        float maxY = top.position.y;
+        float clampedY = Mathf.Clamp(touchPosition.y, minY, maxY);
+
+        Vector3 newPosition = transform.position;
+        newPosition.y = clampedY;
+
+        // Lerp to the position of mouse
+        float lerpSpeed = 2f;
+        transform.position = Vector3.Lerp(transform.position, newPosition, lerpSpeed * Time.deltaTime);
     }
         
     public void GroundBehaviour() {
