@@ -50,6 +50,7 @@ public abstract class PlayerController : MonoBehaviour
     public GameObject damagedEffect;
     public AudioSource UI;
     public AudioClip damageSound;
+    public int numberOfFlashes = 3;
 
     public void Movement()
     {
@@ -87,11 +88,14 @@ public abstract class PlayerController : MonoBehaviour
 
     IEnumerator waitDamage()
     {
+
         canBeDamaged = false;
+        sr.color = new Color(1.0f, 0, 0, 0.5f);
         Debug.Log("damaged");
         yield return new WaitForSeconds(1f);
         canBeDamaged = true;
         isDamaged = false;
+        sr.color = new Color(1, 1, 1, 1);
     }
 
 
