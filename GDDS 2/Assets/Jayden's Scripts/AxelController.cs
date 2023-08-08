@@ -29,6 +29,8 @@ public class AxelController : PlayerController
     public bool isJumping;
     public float jumpForce = 2f;
     private float jumpTimeCounter;
+    public GameObject jumpParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -174,6 +176,7 @@ public class AxelController : PlayerController
     public override void LandBehaviour()
     {
         rb.velocity = new Vector3(runSpeed, jumpForce, 0f);
+        Instantiate(jumpParticles, transform.position, Quaternion.identity);
     }
 
     public void GroundBehaviour()

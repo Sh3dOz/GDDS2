@@ -2640,6 +2640,10 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 739951169}
+    - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: jumpParticles
+      value: 
+      objectReference: {fileID: 7939475485244240571, guid: 60d2c3280c167bb4a93e827cd85bda0e, type: 3}
     - target: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -32.6
