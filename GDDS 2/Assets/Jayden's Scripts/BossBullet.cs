@@ -34,5 +34,21 @@ public class BossBullet : Bullet
             Vector3 rotationToAdd = new Vector3(0f,0f,(360f - transform.eulerAngles.z)*2);
             transform.Rotate(rotationToAdd);
         }
+        if (this.tag == "Enemy")
+        {
+            if (collision.GetComponent<PlayerController>())
+            {
+                Debug.Log("haro?");
+                if (collision.GetComponent<PlayerController>().isDamaged || !collision.GetComponent<PlayerController>().canBeDamaged)
+                {
+                    
+                }
+                else
+                {
+                    collision.GetComponent<PlayerController>().TakeDamage(damage);
+                }
+                Destroy(gameObject);
+            }
+        }
     }
 }

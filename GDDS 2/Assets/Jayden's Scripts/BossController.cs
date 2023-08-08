@@ -17,6 +17,8 @@ public class BossController : MonoBehaviour
     public Transform eyePos, topLimit, botLimit;
     float shootTimer;
     public Color shotColor;
+    bool shotPharse1;
+    float timer;
 
     [Header("Phase2")]
     public Transform shootPos;
@@ -32,6 +34,7 @@ public class BossController : MonoBehaviour
     float nextFire;
     public float fireRate;
     float fireTimer;
+    float laserTimer;
 
     [Header("Phase3")]
     public GameObject phaseThreeBullet;
@@ -55,11 +58,10 @@ public class BossController : MonoBehaviour
     void Update()
     {
         myAnim.SetFloat("Health", currentHealth);
-        PharseCheck();
         switch (currentPhase)
         {
             case PhaseMode.One:
-                ShootEyes();
+                StartCoroutine(ShootEyes());
                 break;
             case PhaseMode.Second:
                 ShootLaser();
@@ -90,15 +92,22 @@ public class BossController : MonoBehaviour
         }
     }
 
-    void ShootEyes()
+    IEnumerator ShootEyes()
     {
-        if(shootTimer <= 0f)
+        if (shootTimer <= 0f)
         {
-            GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
-            sr.color = Color.white;
-            shootTimer = Random.Range(2, 6);
+            if (!shotPharse1)
+            {
+                GameObject laser = Instantiate(phaseOneBullet, eyePos.position, Quaternion.identity, eyePos);
+                laser.transform.localScale = new Vector3(-1f, 1f, 1f);
+                sr.color = Color.white;
+                shotPharse1 = true;
+                yield return new WaitForSeconds(2f);
+                shotPharse1 = false;
+                shootTimer = Random.Range(2, 6);
+            }
         }
-        else if(shootTimer <= 1f)
+        else if (shootTimer <= 1f)
         {
             shootTimer -= Time.deltaTime;
             sr.color = Color.Lerp(sr.color, shotColor, .5f);
@@ -108,8 +117,12 @@ public class BossController : MonoBehaviour
             shootTimer -= Time.deltaTime;
         }
 
-        
-        transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
+        if (!shotPharse1)
+        {
+            timer += Time.deltaTime;
+            transform.position = new Vector3(transform.position.x, Mathf.PingPong(timer * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);  
+        }
+
     }
 
     void ShootLaser()
@@ -152,8 +165,21 @@ public class BossController : MonoBehaviour
         }
         else
         {
-            ShootEyes();
-            StartCoroutine(WaitShoot());
+            if (shotPharse1) return;
+            if(laserTimer >= 5f)
+            {
+                laserPhase = true;
+                laserTimer = 0f;
+                shotPharse1 = false;
+                shootTimer = Random.Range(2, 6);
+            }
+            else if(laserTimer > 4f)
+            {
+                sr.color = Color.Lerp(sr.color, Color.red, .5f);
+            }
+
+            StartCoroutine(ShootEyes());
+            laserTimer += Time.deltaTime;
         }
     }
 
@@ -194,6 +220,7 @@ public class BossController : MonoBehaviour
                     //Move to Mid
                     transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
                     float dist = transform.position.y - midPos.position.y;
+                    sr.color = Color.Lerp(sr.color, Color.red, 0.5f);
                     if (dist > Mathf.Epsilon) return;
 
                     if (!shotLas)
@@ -371,7 +398,8 @@ public class BossController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if(currentHealth < 0)
+        PharseCheck();
+        if (currentHealth < 0)
         {
             Die();
         }

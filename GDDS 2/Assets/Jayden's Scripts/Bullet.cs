@@ -48,8 +48,14 @@ public abstract class Bullet : MonoBehaviour
             if (collision.GetComponent<PlayerController>())
             {
                 Debug.Log("haro?");
-                if (collision.GetComponent<PlayerController>().isDamaged || !collision.GetComponent<PlayerController>().canBeDamaged) return;
-                collision.GetComponent<PlayerController>().TakeDamage(damage);
+                if (collision.GetComponent<PlayerController>().isDamaged || !collision.GetComponent<PlayerController>().canBeDamaged)
+                {
+
+                }
+                else
+                {
+                    collision.GetComponent<PlayerController>().TakeDamage(damage);
+                }
                 Destroy(gameObject);
             }
         }
