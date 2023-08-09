@@ -62,9 +62,24 @@ public class ResultScreen : MonoBehaviour {
             {
                 scoreMultipler = 1.1f;
             }
-            else if (PlayerPrefs.GetInt("KorgPassive") == 2)
+            else if (PlayerPrefs.GetInt("KorgPassive") == 3)
             {
                 scoreMultipler = 1.15f;
+            }
+        }
+        else if(PlayerPrefs.GetString("Character") == "X")
+        {
+            if(PlayerPrefs.GetInt("XPassive") == 1)
+            {
+                coinsCollected *= 1.1f;
+            }
+            else if(PlayerPrefs.GetInt("XPassive") == 2)
+            {
+                coinsCollected *= 1.2f;
+            }
+            else if(PlayerPrefs.GetInt("XPassive") == 3)
+            {
+                coinsCollected *= 1.3f;
             }
         }
 

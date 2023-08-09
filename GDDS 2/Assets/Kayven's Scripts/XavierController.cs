@@ -33,22 +33,21 @@ public class XavierController : PlayerController {
     void Start() {
         spaceButton.GetComponent<Button>().onClick.AddListener(() => LaunchMetorite());
         myAnim = GetComponent<Animator>();
-        if (PlayerPrefs.GetInt("PowerupForXavier") == 0)
+        if (PlayerPrefs.GetInt("XPowerup") == 0)
         {
             metoriteCooldown = 30;
         }
-
-        else if (PlayerPrefs.GetInt("PowerupForXavier") == 1)
+        else if (PlayerPrefs.GetInt("XPowerup") == 1)
         {
-            metoriteCooldown = 25;
+            metoriteCooldown = 27;
         }
-        else if (PlayerPrefs.GetInt("PowerupForXavier") == 2)
+        else if (PlayerPrefs.GetInt("XPowerup") == 2)
         {
-            metoriteCooldown = 20;
+            metoriteCooldown = 24;
         }
-        else if (PlayerPrefs.GetInt("PowerupForXavier") == 3)
+        else if (PlayerPrefs.GetInt("XPowerup") == 3)
         {
-            metoriteCooldown = 15;
+            metoriteCooldown = 21;
         }
         currentMetoriteCooldown = metoriteCooldown;
         rb = GetComponent<Rigidbody2D>();

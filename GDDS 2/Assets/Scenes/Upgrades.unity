@@ -7239,7 +7239,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9.05
+  m_fontSize: 9.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15383,7 +15383,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9.05
+  m_fontSize: 9.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -17026,15 +17026,15 @@ MonoBehaviour:
   - 'Passive : Gains 10% more points'
   - 'Passive : Gains 15% more points'
   passiveAxel:
-  - 'Passive : Gains 15% more points based on time taken to complete the level'
-  - 
-  - 
-  - 
+  - 'Passive: Increase Health by 0'
+  - 'Passive: Increase Health by 1'
+  - 'Passive: Increase Health by 2'
+  - 'Passive: Increase Health by 3'
   passiveX:
-  - 
-  - 
-  - 
-  - 
+  - 'Passive: Increase Coin Gain by 0%'
+  - 'Passive: Increase Coin Gain by 10%'
+  - 'Passive: Increase Coin Gain by 20%'
+  - 'Passive: Increase Coin Gain by 30%'
   upgradeText:
   - 'Passive : Gains 0% more points based on time taken to complete the level'
   - 'Passive : Gains 5% more points based on time taken to complete the level'

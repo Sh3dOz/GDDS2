@@ -18,6 +18,7 @@ public class UpgradesAgain : MonoBehaviour
     public List<Sprite> bgSprites;
     public List<RuntimeAnimatorController> charAnim;
     public int index;
+    public GameObject skillButton;
 
     [Header("Upgrades")]
     public GameObject passivePanel;
@@ -54,15 +55,16 @@ public class UpgradesAgain : MonoBehaviour
         {
             hoverSkill.SetActive(true);
         }
-        if(index == 2)
+        if (index == 2)
         {
             landSkill.SetActive(false);
+            skillButton.SetActive(false);
         }
         else
         {
             landSkill.SetActive(true);
+            skillButton.SetActive(true);
         }
-
     }
 
     public void SwitchCharacterRight()
@@ -75,21 +77,23 @@ public class UpgradesAgain : MonoBehaviour
             Character.GetComponent<Animator>().runtimeAnimatorController = charAnim[index];
             selectedCharacter = allChar[index];
         }
-        if (index != 0)
+        if (index == 0)
         {
-            hoverSkill.SetActive(false);
+            hoverSkill.SetActive(true);
         }
         else
         {
-            hoverSkill.SetActive(true);
+            hoverSkill.SetActive(false);
         }
         if (index == 2)
         {
             landSkill.SetActive(false);
+            skillButton.SetActive(false);
         }
         else
         {
             landSkill.SetActive(true);
+            skillButton.SetActive(true);
         }
     }
     

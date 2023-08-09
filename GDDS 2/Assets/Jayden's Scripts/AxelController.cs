@@ -70,6 +70,23 @@ public class AxelController : PlayerController
         else if (PlayerPrefs.GetInt("AxelPowerup") == 3) {
             deflectCooldown = 21;
         }
+
+        if(PlayerPrefs.GetInt("AxelPassive") == 0)
+        {
+            health = 3;
+        }
+        else if(PlayerPrefs.GetInt("AxelPassive") == 1)
+        {
+            health = 4;
+        }
+        else if (PlayerPrefs.GetInt("AxelPassive") == 2)
+        {
+            health = 5;
+        }
+        else if (PlayerPrefs.GetInt("AxelPassive") == 3)
+        {
+            health = 6;
+        }
     }
 
     // Update is called once per frame
