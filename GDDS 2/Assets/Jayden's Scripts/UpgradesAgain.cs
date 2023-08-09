@@ -36,6 +36,24 @@ public class UpgradesAgain : MonoBehaviour
         index = 0;
         selectedCharacter = allChar[index];
     }
+    private void Update()
+    {
+        MaxCheck();
+    }
+
+    void MaxCheck()
+    {
+        if (PlayerPrefs.GetInt("Baller") == 1) return;
+        if(PlayerPrefs.GetInt("KorgFullyMax") == 1 && PlayerPrefs.GetInt("AxelFullyMax") == 1 && PlayerPrefs.GetInt("XFullyMax") == 1)
+        {
+            PlayerPrefs.SetInt("Baller", 1);
+        }
+        if (PlayerPrefs.GetInt(selectedCharacter + "FullyMax") == 1) return;
+        if(PlayerPrefs.GetInt(selectedCharacter + "PassiveMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "SkillMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "PowerupMax") == 1)
+        {
+            PlayerPrefs.SetInt(selectedCharacter + "FullyMax", 1);
+        }
+    }
 
     public void SwitchCharacterLeft()
     {
@@ -132,6 +150,10 @@ public class UpgradesAgain : MonoBehaviour
         PlayerPrefs.SetFloat("Coins", coinCollected - ability.upgradeCost[ability.abilityIndex]);
         coinCollected = PlayerPrefs.GetFloat("Coins");
         coinText.text = "=" + " " + coinCollected;
+        if(PlayerPrefs.GetInt(selectedCharacter + "Passive") == 3) 
+        {
+            PlayerPrefs.SetInt(selectedCharacter + "PassiveMax", 1);
+        }
     }
 
     public void UpgradeSkill(PassivePanel ability)
@@ -141,6 +163,10 @@ public class UpgradesAgain : MonoBehaviour
         PlayerPrefs.SetFloat("Coins", coinCollected - ability.upgradeCost[ability.abilityIndex]);
         coinCollected = PlayerPrefs.GetFloat("Coins");
         coinText.text = "=" + " " + coinCollected;
+        if (PlayerPrefs.GetInt(selectedCharacter + "Skill") == 3)
+        {
+            PlayerPrefs.SetInt(selectedCharacter + "SkillMax", 1);
+        }
     }
 
     public void UpgradePoweup(PassivePanel ability)
@@ -150,14 +176,9 @@ public class UpgradesAgain : MonoBehaviour
         PlayerPrefs.SetFloat("Coins", coinCollected - ability.upgradeCost[ability.abilityIndex]);
         coinCollected = PlayerPrefs.GetFloat("Coins");
         coinText.text = "=" + " " + coinCollected;
-    }
-
-    public void UpgradeHealth(PassivePanel ability)
-    {
-        if (coinCollected < ability.upgradeCost[ability.abilityIndex]) return;
-        PlayerPrefs.SetInt(selectedCharacter + "Health", PlayerPrefs.GetInt(selectedCharacter + "Health") + 1);
-        PlayerPrefs.SetFloat("Coins", coinCollected - ability.upgradeCost[ability.abilityIndex]);
-        coinCollected = PlayerPrefs.GetFloat("Coins");
-        coinText.text = "=" + " " + coinCollected;
+        if (PlayerPrefs.GetInt(selectedCharacter + "Powerup") == 3)
+        {
+            PlayerPrefs.SetInt(selectedCharacter + "PowerupMax", 1);
+        }
     }
 }

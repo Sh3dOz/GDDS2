@@ -28,7 +28,8 @@ public abstract class PlayerController : MonoBehaviour
     public float touchTimer;
 
     [Header("Health")]
-    public int health = 3;
+    public int health;
+    public int maxHealth = 3;
     public bool isDamaged;
     public Collider2D col;
     public LevelManager manager;

@@ -797,6 +797,7 @@ MonoBehaviour:
   levelMusic: {fileID: 0}
   deadedCoStarted: 0
   manager: {fileID: 0}
+  progressSlider: {fileID: 7593397040541496583}
   enemies: {fileID: 0}
   coinsCollectedText: {fileID: 0}
   coinsCollectedForTotal: 0

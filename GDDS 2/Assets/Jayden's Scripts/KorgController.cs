@@ -92,6 +92,7 @@ public class KorgController : PlayerController
         else if (PlayerPrefs.GetInt("KorgSkill") == 3) {
             shieldCooldown = 21;
         }
+        health = maxHealth;
     }
 
     // Update is called once per frame

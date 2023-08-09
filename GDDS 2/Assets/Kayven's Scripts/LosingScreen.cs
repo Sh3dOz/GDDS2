@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LosingScreen : MonoBehaviour {
-    public KorgController player;
+    public PlayerController player;
     public GameObject losingScreens;
     public AudioSource UI;
     public AudioClip crash;
     public AudioSource levelMusic;
     public bool deadedCoStarted = false;
     public LevelManager manager;
+    public Slider progressSlider;
 
     public GameObject enemies;
 
@@ -21,7 +22,7 @@ public class LosingScreen : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        player = FindObjectOfType<KorgController>();
+        player = FindObjectOfType<PlayerController>();
         manager = FindObjectOfType<LevelManager>();
     }
 
@@ -44,6 +45,7 @@ public class LosingScreen : MonoBehaviour {
 
         // Store the updated coins collected value
         PlayerPrefs.SetFloat("Coins", coinsCollectedForTotal);
+        PlayerPrefs.SetFloat("Distance", PlayerPrefs.GetFloat("Distance") + progressSlider.value);
 
         coinsCollectedText.text = "Coins Collected: " + coinsCollected;
 

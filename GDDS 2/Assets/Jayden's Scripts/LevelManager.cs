@@ -203,6 +203,7 @@ public class LevelManager : MonoBehaviour
                 Debug.Log("Boss Win");
                 isWin = true;
                 PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+                GameWin(true, 3, PlayerPrefs.GetString("Difficulty"));
             }
         }
         else
@@ -222,32 +223,110 @@ public class LevelManager : MonoBehaviour
                         Debug.Log("Land Win");
                         isWin = true;
                         PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
-                        if (PlayerPrefs.GetInt("Axel") != 1) {
-                            if (SceneManager.GetActiveScene().name == "Level 1 Easy" || SceneManager.GetActiveScene().name == "Level 1 Normal" || SceneManager.GetActiveScene().name == "Level 1 Hard") {
-                                PlayerPrefs.SetInt("Axel", 1);
-                            }
-                        }
-                        if (PlayerPrefs.GetInt("X") != 1) {
-                            if (SceneManager.GetActiveScene().name == "level 2 easy" || SceneManager.GetActiveScene().name == "level 2 normal" || SceneManager.GetActiveScene().name == "level 2 hard") {
-                                PlayerPrefs.SetInt("X", 1);
-                            }
-                        }
-                        
+                        GameWin(false, 1, PlayerPrefs.GetString("Difficulty"));
+                    }
+                }
+                else if (player.isInSpace)
+                {
+                    if (EnemySpawn.currWave > EnemySpawn.maxWave)
+                    {
+                        Debug.Log("Space Win");
+                        isWin = true;
+                        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+                        GameWin(false, 2, PlayerPrefs.GetString("Difficulty"));
+                    }
+                    else
+                    {
+                        float spaceSegment = (progressSlider.maxValue - landDistance) / EnemySpawn.maxWave;
+                        progressSlider.value = landDistance + (spaceSegment * EnemySpawn.currWave - 1);
                     }
                 }
             }
-            else if (player.isInSpace)
+        }
+    }
+
+    void GameWin(bool isBoss, int level, string difficulty)
+    {
+        if (!isWin) return;
+        string character = PlayerPrefs.GetString("Character");
+        if (isBoss == true)
+        {
+            if (SceneManager.GetActiveScene().name == "Level 3")
             {
-                if (EnemySpawn.currWave > EnemySpawn.maxWave)
+                PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + difficulty + level, 1);
+                if (PlayerPrefs.GetInt("Not a Jetpack Joyride rip-off") != 1)
                 {
-                    Debug.Log("Space Win");
-                    isWin = true;
-                    PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+                    PlayerPrefs.SetInt("Not a Jetpack Joyride rip-off", 1);
+                }
+            }
+            if (PlayerPrefs.GetInt("Canon Event") != 1)
+            {
+                if (PlayerPrefs.GetInt("KorgBoss") == 1 && PlayerPrefs.GetInt("AxelBoss") == 1 && PlayerPrefs.GetInt("XBoss") == 1)
+                {
+                    PlayerPrefs.SetInt("Canon Event", 1);
                 }
                 else
                 {
-                    float spaceSegment = (progressSlider.maxValue -landDistance) / EnemySpawn.maxWave;
-                    progressSlider.value = landDistance + (spaceSegment * EnemySpawn.currWave - 1);
+                    if (PlayerPrefs.GetString("Character") == "Korg")
+                    {
+                        PlayerPrefs.SetInt("KorgBoss", 1);
+                    }
+                    else if (PlayerPrefs.GetString("Character") == "Axel")
+                    {
+                        PlayerPrefs.SetInt("AxelBoxx", 1);
+                    }
+                    else if (PlayerPrefs.GetString("Character") == "X")
+                    {
+                        PlayerPrefs.SetInt("XBoss", 1);
+                    }
+                }
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("Distance", PlayerPrefs.GetFloat("Distance") + progressSlider.value);
+            PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+            if (level == 1)
+            {
+                PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + difficulty + level, 1);
+                if (PlayerPrefs.GetInt("Why are you running") != 1)
+                {
+                    PlayerPrefs.SetInt("Why are you running", 1);
+                }
+                if (PlayerPrefs.GetInt("Axel") != 1)
+                {
+                    PlayerPrefs.SetInt("Axel", 1);
+                }
+            }
+            else if (level == 2)
+            {
+                PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + difficulty + level, 1);
+                if (PlayerPrefs.GetInt("Where's my money") != 1)
+                {
+                    PlayerPrefs.SetInt("Where's my money", 1);
+                }
+                if (PlayerPrefs.GetInt("X") != 1)
+                {
+                    PlayerPrefs.SetInt("X", 1);
+                }
+            }
+        }
+        if (PlayerPrefs.GetInt("Touch some grass") != 1)
+        {
+            PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + "Boss" + PlayerPrefs.GetString("Difficulty"), 1);
+            if (PlayerPrefs.GetInt("KorgAll") != 1 && PlayerPrefs.GetInt("AxelAll") != 1 && PlayerPrefs.GetInt("XAll") != 1)
+            {
+                if (PlayerPrefs.GetInt("KorgEasy1") == 1 && PlayerPrefs.GetInt("KorgEasy2") == 1 && PlayerPrefs.GetInt("KorgEasy3") == 1 && PlayerPrefs.GetInt("KorgNormal1") == 1 && PlayerPrefs.GetInt("KorgNormal2") == 1 && PlayerPrefs.GetInt("KorgNormal3") == 1 && PlayerPrefs.GetInt("KorgHard1") == 1 && PlayerPrefs.GetInt("KorgHard2") == 1 && PlayerPrefs.GetInt("KorgHard3") == 1)
+                {
+                    PlayerPrefs.SetInt("KorgAll", 1);
+                }
+                else if (PlayerPrefs.GetInt("AxelEasy1") == 1 && PlayerPrefs.GetInt("AxelEasy2") == 1 && PlayerPrefs.GetInt("AxelEasy3") == 1 && PlayerPrefs.GetInt("AxelNormal1") == 1 && PlayerPrefs.GetInt("AxelNormal2") == 1 && PlayerPrefs.GetInt("AxelNormal3") == 1 && PlayerPrefs.GetInt("AxelHard1") == 1 && PlayerPrefs.GetInt("AxelHard2") == 1 && PlayerPrefs.GetInt("AxelHard3") == 1)
+                {
+                    PlayerPrefs.SetInt("AxelAll", 1);
+                }
+                else if (PlayerPrefs.GetInt("XEasy1") == 1 && PlayerPrefs.GetInt("XEasy2") == 1 && PlayerPrefs.GetInt("XEasy3") == 1 && PlayerPrefs.GetInt("XNormal1") == 1 && PlayerPrefs.GetInt("XNormal2") == 1 && PlayerPrefs.GetInt("XNormal3") == 1 && PlayerPrefs.GetInt("XHard1") == 1 && PlayerPrefs.GetInt("XHard2") == 1 && PlayerPrefs.GetInt("XHard3") == 1)
+                {
+                    PlayerPrefs.SetInt("XAll", 1);
                 }
             }
         }
@@ -317,5 +396,16 @@ public class LevelManager : MonoBehaviour
         }
         player.onLand = !player.onLand;
         player.isInSpace = !player.isInSpace;
+    }
+
+    void CheckAchievement()
+    {
+        if(PlayerPrefs.GetInt("Frantic Runner") != 1)
+        {
+            if(PlayerPrefs.GetFloat("Distance") >= 1000f)
+            {
+                PlayerPrefs.SetInt("Frantic Runner", 1);
+            }
+        }
     }
 }

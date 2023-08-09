@@ -73,20 +73,21 @@ public class AxelController : PlayerController
 
         if(PlayerPrefs.GetInt("AxelPassive") == 0)
         {
-            health = 3;
+            maxHealth = 3;
         }
         else if(PlayerPrefs.GetInt("AxelPassive") == 1)
         {
-            health = 4;
+            maxHealth = 4;
         }
         else if (PlayerPrefs.GetInt("AxelPassive") == 2)
         {
-            health = 5;
+            maxHealth = 5;
         }
         else if (PlayerPrefs.GetInt("AxelPassive") == 3)
         {
-            health = 6;
+            maxHealth = 6;
         }
+        health = maxHealth;
     }
 
     // Update is called once per frame
