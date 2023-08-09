@@ -45,6 +45,11 @@ public class BossController : MonoBehaviour
     bool shotBubbles;
     bool shotLas;
     int rand;
+
+    [Header("Glow")]
+    Color originalColor;
+    public Color glowColor;
+    public float glowIntensity = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -203,13 +208,16 @@ public class BossController : MonoBehaviour
                 {
                     if (!shotBubbles)
                     {
+                        StartGlow();
                         //Move to Mid
                         transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
                         float dist = transform.position.y - midPos.position.y;
+                        Debug.Log(dist);
                         if (dist > Mathf.Epsilon) return;
                     }
                     //Shoot
                     ShootBubbles();
+                    StopGlow();
 
                     //Bob
                     transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
@@ -227,6 +235,7 @@ public class BossController : MonoBehaviour
                     {
                         //Shoot Laser
                         GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
+                        StopGlow();
                         Destroy(laser, 10f);
                         shotLas = true;
                      
@@ -240,6 +249,7 @@ public class BossController : MonoBehaviour
                 {
                     if (!shotBubbles)
                     {
+                        StartGlow();
                         //Move to Mid
                         transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
                         float dist = transform.position.y - midPos.position.y;
@@ -247,6 +257,7 @@ public class BossController : MonoBehaviour
                     }
                     //Shoot
                     ShootBubbles();
+                    StopGlow();
 
                     //Bob
                     transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
@@ -257,12 +268,14 @@ public class BossController : MonoBehaviour
                     //Move to Mid
                     transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
                     float dist = transform.position.y - midPos.position.y;
+                    sr.color = Color.Lerp(sr.color, Color.red, 0.5f);
                     if (dist > Mathf.Epsilon) return;
 
                     if (!shotLas)
                     {
                         //Shoot Laser
                         GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
+                        StopGlow();
                         Destroy(laser, 10f);
                         shotLas = true;
                     }
@@ -281,12 +294,14 @@ public class BossController : MonoBehaviour
                     //Move to Mid
                     transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
                     float dist = transform.position.y - midPos.position.y;
+                    sr.color = Color.Lerp(sr.color, Color.red, 0.5f);
                     if (dist > Mathf.Epsilon) return;
 
                     if (!shotLas)
                     {
                         //Shoot Laser
                         GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
+                        StopGlow();
                         Destroy(laser, 10f);
                         shotLas = true;
                     }
@@ -305,6 +320,7 @@ public class BossController : MonoBehaviour
                 {
                     if (!shotBubbles)
                     {
+                        StartGlow();
                         //Move to Mid
                         transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, midPos.position.y, 1f), transform.position.z);
                         float dist = transform.position.y - midPos.position.y;
@@ -312,6 +328,7 @@ public class BossController : MonoBehaviour
                     }
                     //Shoot
                     ShootBubbles();
+                    StopGlow();
 
                     //Bob
                     transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time * 2, topLimit.position.y - botLimit.position.y) + botLimit.position.y);
@@ -340,9 +357,18 @@ public class BossController : MonoBehaviour
         shotBubbles = true;
     }
 
+    public void StartGlow()
+    {
+        sr.color = glowColor * glowIntensity;
+    }
+
+    public void StopGlow()
+    {
+        sr.color = Color.white;
+    }
+
     IEnumerator WaitAction1(float duration)
     {
-        Debug.Log("Wait 1");
         yield return new WaitForSeconds(duration);
         doneWithAction = true;
         StopAllCoroutines();
@@ -350,21 +376,18 @@ public class BossController : MonoBehaviour
 
     IEnumerator WaitAction2(float duration)
     {
-        Debug.Log("Wait 2");
         yield return new WaitForSeconds(duration);
         doneWithAction2 = true;
         StopAllCoroutines();
     }
     IEnumerator WaitLaser()
-    {
-        Debug.Log("Wait Laser");
+    { 
         yield return new WaitForSeconds(laserDuration);
         shotLaser = false;
         laserPhase = false;
     }
     IEnumerator WaitShoot()
     {
-        Debug.Log("Wait bubbles");
         yield return new WaitForSeconds(4.5f);
         sr.color = Color.red;
         yield return new WaitForSeconds(0.5f);
@@ -380,7 +403,6 @@ public class BossController : MonoBehaviour
 
     IEnumerator WaitAny(float duration)
     {
-        Debug.Log("Wait Reset");
         yield return new WaitForSeconds(duration);
         ResetPhase3();
     }

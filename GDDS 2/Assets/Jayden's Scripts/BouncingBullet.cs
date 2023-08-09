@@ -7,7 +7,6 @@ public class BouncingBullet : Bullet
 
     Vector2 lastReflection;
     Vector2 lastVelocity;
-    float maxAngle = 90f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +21,6 @@ public class BouncingBullet : Bullet
         DestroyBullet();
         Movement();
         lastVelocity = rb.velocity;
-        print(rb.velocity);
     }
 
     public override void DestroyBullet()
@@ -42,15 +40,9 @@ public class BouncingBullet : Bullet
             if (collision.gameObject.GetComponent<CameraCollider>().isBullet)
             {
                 lastReflection = Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
-                print("Original: " + lastVelocity);
-                print("Reflected: " + lastReflection);
-                print("Normal: " + collision.contacts[0].normal);
                 transform.rotation = Quaternion.Euler(0,0,Mathf.Atan2(lastReflection.y, lastReflection.x) * Mathf.Rad2Deg);
                 rb.velocity = Vector2.zero;
                 rb.MovePosition(rb.position + lastReflection * Time.fixedDeltaTime);
-                Debug.Log(rb.velocity);
-                //Vector3 rotationToAdd = new Vector3(0f, 0f, (360f - transform.eulerAngles.z) * 2);
-                //transform.Rotate(rotationToAdd);
             }
         }
         if (this.tag == "Enemy")
@@ -64,10 +56,5 @@ public class BouncingBullet : Bullet
                 Destroy(gameObject);
             }
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        //transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(lastReflection.y, lastReflection.x) * Mathf.Rad2Deg);
     }
 }
