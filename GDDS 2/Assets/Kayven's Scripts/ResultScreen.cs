@@ -36,6 +36,7 @@ public class ResultScreen : MonoBehaviour {
 
     public GameObject resultsScreen;
     public GameObject quitButton;
+    public GameObject nextButton;
     public float quitTime = 0.3f;
 
     public float duration = 1f;
@@ -50,7 +51,7 @@ public class ResultScreen : MonoBehaviour {
     public GameObject uiElements;
 
     public string nextLevel;
-
+    public GameObject shopPanel;
     void Start() {
         if (PlayerPrefs.GetString("Character") == "Korg")
         {
@@ -239,6 +240,10 @@ public class ResultScreen : MonoBehaviour {
 
     private IEnumerator CanExit() {
         yield return new WaitForSeconds(quitTime);
-            quitButton.SetActive(true);       
+        quitButton.SetActive(true);  
+        if(manager.activateShop == true)
+        {
+            shopPanel.SetActive(true);
+        }
     }
 }

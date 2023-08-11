@@ -63,7 +63,7 @@ public class HomingMissile : MonoBehaviour
     {
         if (collision.GetComponent<SpaceEnemy>())
         {
-            collision.GetComponent<SpaceEnemy>().TakeDamage(damage);
+            collision.GetComponent<SpaceEnemy>().TakeDamage(damage,this.gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
             manager.audioS.PlayOneShot(explodeAound);
             Destroy(gameObject);

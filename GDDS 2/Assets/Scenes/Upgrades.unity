@@ -28148,6 +28148,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 4453b31da67ee144eadaf0a50faf6f6c, type: 2}
   - {fileID: 9100000, guid: 7e9cae28577f1804b8e47620f155e7da, type: 2}
   index: 0
+  skillButton: {fileID: 1986731678}
   passivePanel: {fileID: 1300212226}
   skillPanel: {fileID: 113380610}
   powerupPanel: {fileID: 940523461}

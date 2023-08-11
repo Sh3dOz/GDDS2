@@ -59,7 +59,7 @@ public class ShootingEnemy : MonoBehaviour
         isReloading = false;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, GameObject bullet)
     {
         manager = FindObjectOfType<LevelManager>();
         health -= damage;
@@ -67,11 +67,11 @@ public class ShootingEnemy : MonoBehaviour
         manager.audioS.PlayOneShot(shotSound);
         if(health <= 0)
         {
-            Die();
+            Die(bullet);
         }
     }
 
-    public void Die()
+    public void Die(GameObject deathObject)
     {
         manager = FindObjectOfType<LevelManager>();
         spawnManager = FindObjectOfType<EnemySpawn>();
@@ -84,6 +84,13 @@ public class ShootingEnemy : MonoBehaviour
                 Destroy(gameObject);
                 manager.audioS.PlayOneShot(deathSound);
                 break;
+            }
+        }
+        if (!deathObject.GetComponent<MetoriteController>())
+        {
+            if (this.GetComponent<SpaceEnemy>())
+            {
+                PlayerPrefs.SetInt("AllKilledMetor", 1);
             }
         }
     }

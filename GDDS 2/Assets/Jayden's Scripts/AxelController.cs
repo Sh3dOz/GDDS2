@@ -88,6 +88,7 @@ public class AxelController : PlayerController
             maxHealth = 6;
         }
         health = maxHealth;
+        PlayerPrefs.SetInt("AxelAbility", 0);
     }
 
     // Update is called once per frame
@@ -239,6 +240,7 @@ public class AxelController : PlayerController
         GameObject go = Instantiate(empEffect, transform.position, Quaternion.identity);
         Destroy(go, empDuration);
         currentEMPCooldown = 0f;
+        PlayerPrefs.SetInt("AxelAbility", 1);
     }
 
     public void DeflectBullets()
@@ -250,5 +252,6 @@ public class AxelController : PlayerController
         GameObject deflectShield = Instantiate(deflectEffect, transform.position, Quaternion.identity, this.transform);
         Destroy(deflectShield, deflectDuration);
         currentDeflectCooldown = 0f;
+        PlayerPrefs.SetInt("AxelAbility", 1);
     }
 }

@@ -50,7 +50,7 @@ public class Shrapnel : Bullet {
             }
             else
             {
-                collision.GetComponent<ShootingEnemy>().TakeDamage(damage);
+                collision.GetComponent<ShootingEnemy>().TakeDamage(damage, this.gameObject);
                 Destroy(gameObject);
             }
         }

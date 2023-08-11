@@ -44,6 +44,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject scorePanel;
     [SerializeField] GameObject progressPanel;
     [SerializeField] GameObject pausePanel;
+    public bool activateShop;
 
     [Header("Characters")]
     [SerializeField] GameObject korg;
@@ -309,6 +310,16 @@ public class LevelManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("X", 1);
                 }
+                if (PlayerPrefs.GetInt("FINISH HIM") != 1)
+                {
+                    if (PlayerPrefs.GetString("Character") == "X")
+                    {
+                        if (PlayerPrefs.GetInt("AllKilledMetor") == 1)
+                        {
+                            PlayerPrefs.SetInt("FINISH HIM", 1);
+                        }
+                    }
+                }
             }
         }
         if (PlayerPrefs.GetInt("Touch some grass") != 1)
@@ -327,6 +338,68 @@ public class LevelManager : MonoBehaviour
                 else if (PlayerPrefs.GetInt("XEasy1") == 1 && PlayerPrefs.GetInt("XEasy2") == 1 && PlayerPrefs.GetInt("XEasy3") == 1 && PlayerPrefs.GetInt("XNormal1") == 1 && PlayerPrefs.GetInt("XNormal2") == 1 && PlayerPrefs.GetInt("XNormal3") == 1 && PlayerPrefs.GetInt("XHard1") == 1 && PlayerPrefs.GetInt("XHard2") == 1 && PlayerPrefs.GetInt("XHard3") == 1)
                 {
                     PlayerPrefs.SetInt("XAll", 1);
+                }
+            }
+        }
+        if (PlayerPrefs.GetInt("Rock Hard!") != 1)
+        {
+            if (PlayerPrefs.GetString("Character") == "Korg")
+            {
+                if (level == 1)
+                {
+                    if (player.health == player.maxHealth)
+                    {
+                        PlayerPrefs.SetInt("KorgFlawless1", 1);
+                    }
+                }
+                else if (level == 2)
+                {
+                    if (player.health == player.maxHealth)
+                    {
+                        PlayerPrefs.SetInt("KorgFlawless2", 1);
+                    }
+                }
+                else if (level == 3)
+                {
+                    if (player.health == player.maxHealth)
+                    {
+                        PlayerPrefs.SetInt("KorgFlawless3", 1);
+                    }
+                }
+                if (PlayerPrefs.GetInt("KorgFlawless1") == 1 && PlayerPrefs.GetInt("KorgFlawless2") == 1 && PlayerPrefs.GetInt("KorgFlawless3") == 1)
+                {
+                    PlayerPrefs.SetInt("Rock Hard!", 1);
+                }
+            }
+            if (PlayerPrefs.GetInt("Flip Flop") != 1)
+            {
+                if (PlayerPrefs.GetString("Character") == "Axel")
+                {
+                    if (level == 1)
+                    {
+                        if (PlayerPrefs.GetInt("AxelAbility" ) == 0)
+                        {
+                            PlayerPrefs.SetInt("AxelNoAbility1", 1);
+                        }
+                    }
+                    else if (level == 2)
+                    {
+                        if (PlayerPrefs.GetInt("AxelAbility") == 0)
+                        {
+                            PlayerPrefs.SetInt("AxelNoAbility2", 1);
+                        }
+                    }
+                    else if (level == 3)
+                    {
+                        if (PlayerPrefs.GetInt("AxelAbility") == 0)
+                        {
+                            PlayerPrefs.SetInt("AxelNoAbility3", 1);
+                        }
+                    }
+                    if (PlayerPrefs.GetInt("AxelNoAbility1") == 1 && PlayerPrefs.GetInt("AxelNoAbility2") == 1 && PlayerPrefs.GetInt("AxelNoAbility3") == 1)
+                    {
+                        PlayerPrefs.SetInt("Flip Flop", 1);
+                    }
                 }
             }
         }
@@ -367,6 +440,8 @@ public class LevelManager : MonoBehaviour
         movementPanel.SetActive(false);
         Time.timeScale = 1f;
         player.canMove = true;
+        yield return new WaitUntil(() => isWin == true || player == null);
+        activateShop = true;
     }
 
     public void SwitchMode()

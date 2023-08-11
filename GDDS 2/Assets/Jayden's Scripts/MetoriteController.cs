@@ -71,7 +71,7 @@ public class MetoriteController : MonoBehaviour
             }
             else
             {
-                collision.GetComponent<SpaceEnemy>().TakeDamage(metorDamage);
+                collision.GetComponent<SpaceEnemy>().TakeDamage(metorDamage, this.gameObject);
             }
             Destroy(gameObject);
         }
