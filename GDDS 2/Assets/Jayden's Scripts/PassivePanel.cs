@@ -80,6 +80,8 @@ public class PassivePanel : MonoBehaviour
                 firstBar.sprite = firstEmpty;
                 secondBar.sprite = secondEmpty;
                 thirdBar.sprite = thirdEmpty;
+                upgradeButton.SetActive(true);
+                maxedPanel.SetActive(false);
                 break;
 
             case 1:
@@ -88,6 +90,8 @@ public class PassivePanel : MonoBehaviour
                 firstBar.sprite = firstFilled;
                 secondBar.sprite = secondEmpty;
                 thirdBar.sprite = thirdEmpty;
+                upgradeButton.SetActive(true);
+                maxedPanel.SetActive(false);
                 break;
             case 2:
                 coinCost.text = upgradeCost[abilityIndex].ToString();
@@ -95,6 +99,8 @@ public class PassivePanel : MonoBehaviour
                 firstBar.sprite = firstFilled;
                 secondBar.sprite = secondFilled;
                 thirdBar.sprite = thirdEmpty;
+                upgradeButton.SetActive(true);
+                maxedPanel.SetActive(false);
                 break;
             case 3:
                 coinCost.text = upgradeCost[abilityIndex].ToString();

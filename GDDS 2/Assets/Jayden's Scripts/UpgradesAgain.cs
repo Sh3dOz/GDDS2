@@ -17,6 +17,9 @@ public class UpgradesAgain : MonoBehaviour
     public List<Sprite> charSprites;
     public List<Sprite> bgSprites;
     public List<RuntimeAnimatorController> charAnim;
+    public KorgIdle korg;
+    public AxelIdle axel;
+    public XavierIdle x;
     public int index;
     public GameObject skillButton;
 
@@ -49,9 +52,19 @@ public class UpgradesAgain : MonoBehaviour
             PlayerPrefs.SetInt("Baller", 1);
         }
         if (PlayerPrefs.GetInt(selectedCharacter + "FullyMax") == 1) return;
-        if(PlayerPrefs.GetInt(selectedCharacter + "PassiveMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "SkillMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "PowerupMax") == 1)
+        if (selectedCharacter == "X")
         {
-            PlayerPrefs.SetInt(selectedCharacter + "FullyMax", 1);
+            if (PlayerPrefs.GetInt(selectedCharacter + "PassiveMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "PowerupMax") == 1)
+            {
+                PlayerPrefs.SetInt(selectedCharacter + "FullyMax", 1);
+            }
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt(selectedCharacter + "PassiveMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "SkillMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "PowerupMax") == 1)
+            {
+                PlayerPrefs.SetInt(selectedCharacter + "FullyMax", 1);
+            }
         }
     }
 
@@ -65,24 +78,37 @@ public class UpgradesAgain : MonoBehaviour
             Character.GetComponent<Animator>().runtimeAnimatorController = charAnim[index];
             selectedCharacter = allChar[index];
         }
-        if(index != 0)
+        if(index == 0)
         {
-            hoverSkill.SetActive(false);
+            hoverSkill.SetActive(true);
+            korg.enabled = true;
         }
         else
         {
-            hoverSkill.SetActive(true);
+            hoverSkill.SetActive(false);
+            korg.enabled = false;
+        }
+        if(index == 1)
+        {
+            axel.enabled = true;
+        }
+        else
+        {
+            axel.enabled = false;
         }
         if (index == 2)
         {
             landSkill.SetActive(false);
             skillButton.SetActive(false);
+            x.enabled = true;
         }
         else
         {
             landSkill.SetActive(true);
             skillButton.SetActive(true);
+            x.enabled = false;
         }
+        Debug.Log(selectedCharacter);
     }
 
     public void SwitchCharacterRight()
@@ -98,21 +124,34 @@ public class UpgradesAgain : MonoBehaviour
         if (index == 0)
         {
             hoverSkill.SetActive(true);
+            korg.enabled = true;
         }
         else
         {
             hoverSkill.SetActive(false);
+            korg.enabled = false;
+        }
+        if (index == 1)
+        {
+            axel.enabled = true;
+        }
+        else
+        {
+            axel.enabled = false;
         }
         if (index == 2)
         {
             landSkill.SetActive(false);
             skillButton.SetActive(false);
+            x.enabled = true;
         }
         else
         {
             landSkill.SetActive(true);
             skillButton.SetActive(true);
+            x.enabled = false;
         }
+        Debug.Log(selectedCharacter);
     }
     
     public void OpenPassive()

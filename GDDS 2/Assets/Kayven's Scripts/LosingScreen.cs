@@ -20,6 +20,7 @@ public class LosingScreen : MonoBehaviour {
     public float coinsCollectedForTotal;
     public float coinsCollected;
 
+    public GameObject shopPanel;
     // Start is called before the first frame update
     void Start() {
         player = FindObjectOfType<PlayerController>();
@@ -52,6 +53,11 @@ public class LosingScreen : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
         UI.PlayOneShot(crash);
         losingScreens.SetActive(true);
+        if (manager.activateShop)
+        {
+            shopPanel.SetActive(true);
+            PlayerPrefs.SetInt("Shop", 1);
+        }
     }
 
     public IEnumerator Crash() {

@@ -43,6 +43,7 @@ public class KorgController : PlayerController
     float tempGrav;
     bool tempFlip;
     bool checkFlip;
+    public GameObject hoverPrefab, hoverParticle;
 
     [Header("Space Missile")]
     [SerializeField] float missileCooldown = 30f;
@@ -232,6 +233,10 @@ public class KorgController : PlayerController
                     {
                         if(!isHovering)
                         {
+                            if (hoverParticle)
+                            {
+                                Destroy(hoverParticle);
+                            }
                             LandBehaviour();
                         }
                         else
@@ -402,6 +407,10 @@ public class KorgController : PlayerController
     void HoldBehaviour()
     {
         if (hoveringCooldown) return;
+        if (hoverParticle == null)
+        {
+            hoverParticle = Instantiate(hoverPrefab, groundCheck.position, Quaternion.identity);
+        }
         if (isHovering)
         {
             if (hoveringCounter < hoverDuration)
@@ -416,6 +425,7 @@ public class KorgController : PlayerController
                 hoveringCounter = 0f;
                 hoveringCooldown = true;
                 touchTimer = 0f;
+                Destroy(hoverParticle);
                 LandBehaviour();
 
             }

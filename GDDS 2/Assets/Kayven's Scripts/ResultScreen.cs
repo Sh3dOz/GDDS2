@@ -57,34 +57,19 @@ public class ResultScreen : MonoBehaviour {
         {
             if (PlayerPrefs.GetInt("KorgPassive") == 1)
             {
-                scoreMultipler = 1.05f;
+                scoreMultipler = 1.1f;
             }
             else if (PlayerPrefs.GetInt("KorgPassive") == 2)
             {
-                scoreMultipler = 1.1f;
+                scoreMultipler = 1.2f;
             }
             else if (PlayerPrefs.GetInt("KorgPassive") == 3)
             {
-                scoreMultipler = 1.15f;
-            }
-        }
-        else if(PlayerPrefs.GetString("Character") == "X")
-        {
-            if(PlayerPrefs.GetInt("XPassive") == 1)
-            {
-                coinsCollected *= 1.1f;
-            }
-            else if(PlayerPrefs.GetInt("XPassive") == 2)
-            {
-                coinsCollected *= 1.2f;
-            }
-            else if(PlayerPrefs.GetInt("XPassive") == 3)
-            {
-                coinsCollected *= 1.3f;
+                scoreMultipler = 1.3f;
             }
         }
 
-
+        Debug.Log(scoreMultipler);
         manager = FindObjectOfType<LevelManager>();
 
         player = FindObjectOfType<PlayerController>();
@@ -113,6 +98,22 @@ public class ResultScreen : MonoBehaviour {
                 player = FindObjectOfType<PlayerController>();
             }
             healthLeft = player.health;
+            coinsCollected = manager.coinCount;
+            if (PlayerPrefs.GetString("Character") == "X")
+            {
+                if (PlayerPrefs.GetInt("XPassive") == 1)
+                {
+                    coinsCollected *= 1.1f;
+                }
+                else if (PlayerPrefs.GetInt("XPassive") == 2)
+                {
+                    coinsCollected *= 1.2f;
+                }
+                else if (PlayerPrefs.GetInt("XPassive") == 3)
+                {
+                    coinsCollected *= 1.3f;
+                }
+            }
             coinsCollectedText.text = "Coins Collected: " + manager.coinCount;
             healthLeftText.text = "Health Left: " + player.health;
             incrementSpeed = targetScore / timeToCalculate;
@@ -120,9 +121,9 @@ public class ResultScreen : MonoBehaviour {
             incrementSpeedForCoins = scoreWithCoins / timeToCalculate;
             incrementSpeedForHealth = scoreWithHealth / timeToCalculate;
 
-            coinsCollected = manager.coinCount;
+            
 
-            targetScore = scoreCounter.currentScore;
+            targetScore = scoreCounter.currentScore * scoreMultipler;
             scoreWithCoins = targetScore + (coinsCollected * coinScore);
             scoreWithHealth = targetScore + (coinsCollected * coinScore) + (healthLeft * healthScore);
 
@@ -240,10 +241,12 @@ public class ResultScreen : MonoBehaviour {
 
     private IEnumerator CanExit() {
         yield return new WaitForSeconds(quitTime);
+        nextButton.SetActive(true);
         quitButton.SetActive(true);  
         if(manager.activateShop == true)
         {
             shopPanel.SetActive(true);
+            PlayerPrefs.SetInt("Shop", 1);
         }
     }
 }

@@ -14833,7 +14833,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054823900}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 657bd6fecdea83b4a998443d4cef08df, type: 3}
   m_Name: 
@@ -14845,7 +14845,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054823900}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5fbe96937513b144898b57be276e8ab, type: 3}
   m_Name: 
@@ -28011,6 +28011,9 @@ MonoBehaviour:
   - {fileID: 9100000, guid: 58b625fa672e2ab4a92fe5072edf5a78, type: 2}
   - {fileID: 9100000, guid: 4453b31da67ee144eadaf0a50faf6f6c, type: 2}
   - {fileID: 9100000, guid: 7e9cae28577f1804b8e47620f155e7da, type: 2}
+  korg: {fileID: 1054823902}
+  axel: {fileID: 1054823907}
+  x: {fileID: 1054823906}
   index: 0
   skillButton: {fileID: 1986731678}
   passivePanel: {fileID: 1300212226}

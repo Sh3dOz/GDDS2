@@ -12,9 +12,13 @@ public class MainMenu : MonoBehaviour {
     public AudioClip pressingSound;
     public GameObject resetPanel;
     public GameObject godPanel;
+    public GameObject shopPanel;
 
     void Start() {
-
+        if(PlayerPrefs.GetInt("Shop") == 1)
+        {
+            shopPanel.SetActive(true);
+        }
     }
     // Load game.
     public void NewGame() {
@@ -76,6 +80,10 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void Upgrades() {
+        if(PlayerPrefs.GetInt("Shop") == 1)
+        {
+            PlayerPrefs.SetInt("Shop" , 0);
+        }
         StartCoroutine("Upgrading");
     }
 

@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public Score score;
     public bool isAlive;
     public bool isWin;
+    bool gameOver;
     public bool isBossLevel;
     public bool gotSpace;
     public static bool playerSpawned;
@@ -248,40 +249,41 @@ public class LevelManager : MonoBehaviour
 
     void GameWin(bool isBoss, int level, string difficulty)
     {
-        if (!isWin) return;
+        if (gameOver) return;
         string character = PlayerPrefs.GetString("Character");
+        PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + difficulty + level, 1);
         if (isBoss == true)
         {
-            if (SceneManager.GetActiveScene().name == "Level 3")
+            Debug.Log("Run?");
+            if (level == 3)
             {
-                PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + difficulty + level, 1);
                 if (PlayerPrefs.GetInt("Not a Jetpack Joyride rip-off") != 1)
                 {
                     PlayerPrefs.SetInt("Not a Jetpack Joyride rip-off", 1);
                 }
-            }
-            if (PlayerPrefs.GetInt("Canon Event") != 1)
-            {
-                if (PlayerPrefs.GetInt("KorgBoss") == 1 && PlayerPrefs.GetInt("AxelBoss") == 1 && PlayerPrefs.GetInt("XBoss") == 1)
+                if (PlayerPrefs.GetInt("Canon Event") != 1)
                 {
-                    PlayerPrefs.SetInt("Canon Event", 1);
+                    if (PlayerPrefs.GetInt("KorgBoss") == 1 && PlayerPrefs.GetInt("AxelBoss") == 1 && PlayerPrefs.GetInt("XBoss") == 1)
+                    {
+                        PlayerPrefs.SetInt("Canon Event", 1);
+                    }
+                    else
+                    {
+                        if (PlayerPrefs.GetString("Character") == "Korg")
+                        {
+                            PlayerPrefs.SetInt("KorgBoss", 1);
+                        }
+                        else if (PlayerPrefs.GetString("Character") == "Axel")
+                        {
+                            PlayerPrefs.SetInt("AxelBoss", 1);
+                        }
+                        else if (PlayerPrefs.GetString("Character") == "X")
+                        {
+                            PlayerPrefs.SetInt("XBoss", 1);
+                        }
+                    }
                 }
-                else
-                {
-                    if (PlayerPrefs.GetString("Character") == "Korg")
-                    {
-                        PlayerPrefs.SetInt("KorgBoss", 1);
-                    }
-                    else if (PlayerPrefs.GetString("Character") == "Axel")
-                    {
-                        PlayerPrefs.SetInt("AxelBoxx", 1);
-                    }
-                    else if (PlayerPrefs.GetString("Character") == "X")
-                    {
-                        PlayerPrefs.SetInt("XBoss", 1);
-                    }
-                }
-            }
+            }            
         }
         else
         {
@@ -289,7 +291,6 @@ public class LevelManager : MonoBehaviour
             PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
             if (level == 1)
             {
-                PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + difficulty + level, 1);
                 if (PlayerPrefs.GetInt("Why are you running") != 1)
                 {
                     PlayerPrefs.SetInt("Why are you running", 1);
@@ -301,7 +302,6 @@ public class LevelManager : MonoBehaviour
             }
             else if (level == 2)
             {
-                PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + difficulty + level, 1);
                 if (PlayerPrefs.GetInt("Where's my money") != 1)
                 {
                     PlayerPrefs.SetInt("Where's my money", 1);
@@ -324,7 +324,6 @@ public class LevelManager : MonoBehaviour
         }
         if (PlayerPrefs.GetInt("Touch some grass") != 1)
         {
-            PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + "Boss" + PlayerPrefs.GetString("Difficulty"), 1);
             if (PlayerPrefs.GetInt("KorgAll") != 1 && PlayerPrefs.GetInt("AxelAll") != 1 && PlayerPrefs.GetInt("XAll") != 1)
             {
                 if (PlayerPrefs.GetInt("KorgEasy1") == 1 && PlayerPrefs.GetInt("KorgEasy2") == 1 && PlayerPrefs.GetInt("KorgEasy3") == 1 && PlayerPrefs.GetInt("KorgNormal1") == 1 && PlayerPrefs.GetInt("KorgNormal2") == 1 && PlayerPrefs.GetInt("KorgNormal3") == 1 && PlayerPrefs.GetInt("KorgHard1") == 1 && PlayerPrefs.GetInt("KorgHard2") == 1 && PlayerPrefs.GetInt("KorgHard3") == 1)
@@ -403,6 +402,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+        gameOver = true;
     }
 
     public void AddCoins(int coinsToAdd)
