@@ -87,6 +87,10 @@ public class MainMenu : MonoBehaviour {
         StartCoroutine("Upgrading");
     }
 
+    public void Achievement()
+    {
+        SceneManager.LoadScene("Achievement");
+    }
     public IEnumerator Upgrading() {
         audioSource.PlayOneShot(pressingSound);
         yield return new WaitForSeconds(0.5f);
