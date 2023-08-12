@@ -8,7 +8,8 @@ public class Achievement : MonoBehaviour
 {
     public string achievementName;
     public string descriptionLit;
-    [SerializeField] TMP_Text description;
+    public string nameLit;
+    [SerializeField] TMP_Text description, title;
     [SerializeField] Image icon;
     [SerializeField] Sprite litIcon;
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class Achievement : MonoBehaviour
         {
             icon.sprite = litIcon;
             description.text = descriptionLit;
+            title.text = nameLit;
         }    
     }
 

@@ -41,30 +41,39 @@ public class UpgradesAgain : MonoBehaviour
     }
     private void Update()
     {
-        MaxCheck();
+        
     }
 
     void MaxCheck()
     {
-        if (PlayerPrefs.GetInt("Baller") == 1) return;
-        if(PlayerPrefs.GetInt("KorgFullyMax") == 1 && PlayerPrefs.GetInt("AxelFullyMax") == 1 && PlayerPrefs.GetInt("XFullyMax") == 1)
+        if (PlayerPrefs.GetInt("Baller") != 1)
         {
-            PlayerPrefs.SetInt("Baller", 1);
-        }
-        if (PlayerPrefs.GetInt(selectedCharacter + "FullyMax") == 1) return;
-        if (selectedCharacter == "X")
-        {
-            if (PlayerPrefs.GetInt(selectedCharacter + "PassiveMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "PowerupMax") == 1)
+            if (PlayerPrefs.GetInt("KorgFullyMax") == 1 && PlayerPrefs.GetInt("AxelFullyMax") == 1 && PlayerPrefs.GetInt("XFullyMax") == 1)
             {
-                PlayerPrefs.SetInt(selectedCharacter + "FullyMax", 1);
+                PlayerPrefs.SetInt("Baller", 1);
+                PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+            }
+            if (PlayerPrefs.GetInt(selectedCharacter + "FullyMax") != 1)
+            {
+                if (selectedCharacter == "X")
+                {
+                    if (PlayerPrefs.GetInt(selectedCharacter + "PassiveMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "PowerupMax") == 1)
+                    {
+                        PlayerPrefs.SetInt(selectedCharacter + "FullyMax", 1);
+                    }
+                }
+                else
+                {
+                    if (PlayerPrefs.GetInt(selectedCharacter + "PassiveMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "SkillMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "PowerupMax") == 1)
+                    {
+                        PlayerPrefs.SetInt(selectedCharacter + "FullyMax", 1);
+                    }
+                }
             }
         }
-        else
+        if (PlayerPrefs.GetInt("Achievement") == 10)
         {
-            if (PlayerPrefs.GetInt(selectedCharacter + "PassiveMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "SkillMax") == 1 && PlayerPrefs.GetInt(selectedCharacter + "PowerupMax") == 1)
-            {
-                PlayerPrefs.SetInt(selectedCharacter + "FullyMax", 1);
-            }
+            PlayerPrefs.SetInt("GOD DID!", 1);
         }
     }
 
@@ -193,6 +202,7 @@ public class UpgradesAgain : MonoBehaviour
         {
             PlayerPrefs.SetInt(selectedCharacter + "PassiveMax", 1);
         }
+        MaxCheck();
     }
 
     public void UpgradeSkill(PassivePanel ability)
@@ -206,6 +216,7 @@ public class UpgradesAgain : MonoBehaviour
         {
             PlayerPrefs.SetInt(selectedCharacter + "SkillMax", 1);
         }
+        MaxCheck();
     }
 
     public void UpgradePoweup(PassivePanel ability)
@@ -219,5 +230,6 @@ public class UpgradesAgain : MonoBehaviour
         {
             PlayerPrefs.SetInt(selectedCharacter + "PowerupMax", 1);
         }
+        MaxCheck();
     }
 }

@@ -409,7 +409,12 @@ public class KorgController : PlayerController
         if (hoveringCooldown) return;
         if (hoverParticle == null)
         {
-            hoverParticle = Instantiate(hoverPrefab, groundCheck.position, Quaternion.identity);
+            hoverParticle = Instantiate(hoverPrefab, groundCheck.position, Quaternion.Euler(85f,0f,0f), this.gameObject.transform);
+            if (flipped)
+            {
+                var hoverSettings = hoverParticle.GetComponent<ParticleSystem>().velocityOverLifetime; 
+                hoverSettings.yMultiplier = 5;
+            }
         }
         if (isHovering)
         {

@@ -260,12 +260,14 @@ public class LevelManager : MonoBehaviour
                 if (PlayerPrefs.GetInt("Not a Jetpack Joyride rip-off") != 1)
                 {
                     PlayerPrefs.SetInt("Not a Jetpack Joyride rip-off", 1);
+                    PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
                 }
                 if (PlayerPrefs.GetInt("Canon Event") != 1)
                 {
                     if (PlayerPrefs.GetInt("KorgBoss") == 1 && PlayerPrefs.GetInt("AxelBoss") == 1 && PlayerPrefs.GetInt("XBoss") == 1)
                     {
                         PlayerPrefs.SetInt("Canon Event", 1);
+                        PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
                     }
                     else
                     {
@@ -288,12 +290,18 @@ public class LevelManager : MonoBehaviour
         else
         {
             PlayerPrefs.SetFloat("Distance", PlayerPrefs.GetFloat("Distance") + progressSlider.value);
+            if(PlayerPrefs.GetFloat("Distance") >= 1000f)
+            {
+                PlayerPrefs.SetFloat("Frantic Runner", 1);
+                PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+            }
             PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
             if (level == 1)
             {
                 if (PlayerPrefs.GetInt("Why are you running") != 1)
                 {
                     PlayerPrefs.SetInt("Why are you running", 1);
+                    PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
                 }
                 if (PlayerPrefs.GetInt("Axel") != 1)
                 {
@@ -305,6 +313,7 @@ public class LevelManager : MonoBehaviour
                 if (PlayerPrefs.GetInt("Where's my money") != 1)
                 {
                     PlayerPrefs.SetInt("Where's my money", 1);
+                    PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
                 }
                 if (PlayerPrefs.GetInt("X") != 1)
                 {
@@ -317,6 +326,7 @@ public class LevelManager : MonoBehaviour
                         if (PlayerPrefs.GetInt("AllKilledMetor") == 1)
                         {
                             PlayerPrefs.SetInt("FINISH HIM", 1);
+                            PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
                         }
                     }
                 }
@@ -338,6 +348,11 @@ public class LevelManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("XAll", 1);
                 }
+            }
+            else if (PlayerPrefs.GetInt("KorgAll") == 1 && PlayerPrefs.GetInt("AxelAll") == 1 && PlayerPrefs.GetInt("XAll") == 1)
+            {
+                PlayerPrefs.SetInt("Touch some grass", 1);
+                PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
             }
         }
         if (PlayerPrefs.GetInt("Rock Hard!") != 1)
@@ -368,6 +383,7 @@ public class LevelManager : MonoBehaviour
                 if (PlayerPrefs.GetInt("KorgFlawless1") == 1 && PlayerPrefs.GetInt("KorgFlawless2") == 1 && PlayerPrefs.GetInt("KorgFlawless3") == 1)
                 {
                     PlayerPrefs.SetInt("Rock Hard!", 1);
+                    PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
                 }
             }
             if (PlayerPrefs.GetInt("Flip Flop") != 1)
@@ -398,9 +414,14 @@ public class LevelManager : MonoBehaviour
                     if (PlayerPrefs.GetInt("AxelNoAbility1") == 1 && PlayerPrefs.GetInt("AxelNoAbility2") == 1 && PlayerPrefs.GetInt("AxelNoAbility3") == 1)
                     {
                         PlayerPrefs.SetInt("Flip Flop", 1);
+                        PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
                     }
                 }
             }
+        }
+        if(PlayerPrefs.GetInt("Achievement") == 10)
+        {
+            PlayerPrefs.SetInt("GOD DID!", 1);
         }
         gameOver = true;
     }
