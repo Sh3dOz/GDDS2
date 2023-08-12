@@ -1,0 +1,817 @@
+fileFormatVersion: 2
+guid: 326c042bcfcff0c44b35f8f824c906a3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1598761149996669517
+    second: Korg_Idle1 R_0
+  - first:
+      213: -970799747995764613
+    second: Korg_Idle1 R_1
+  - first:
+      213: 2667186746152184454
+    second: Korg_Idle1 R_2
+  - first:
+      213: 8520390236804189857
+    second: Korg_Idle1 R_3
+  - first:
+      213: 1915456119370412230
+    second: Korg_Idle1 R_4
+  - first:
+      213: -4513617981355446860
+    second: Korg_Idle1 R_5
+  - first:
+      213: -2503175793364883331
+    second: Korg_Idle1 R_6
+  - first:
+      213: -2017852233861129253
+    second: Korg_Idle1 R_7
+  - first:
+      213: -650317741851698247
+    second: Korg_Idle1 R_8
+  - first:
+      213: -3579184033456544930
+    second: Korg_Idle1 R_9
+  - first:
+      213: 524394206120463197
+    second: Korg_Idle1 R_10
+  - first:
+      213: 6739721718711886599
+    second: Korg_Idle1 R_11
+  - first:
+      213: 3738812583195801886
+    second: Korg_Idle1 R_12
+  - first:
+      213: 8323008630754580113
+    second: Korg_Idle1 R_13
+  - first:
+      213: -8362276999051739143
+    second: Korg_Idle1 R_14
+  - first:
+      213: -1305756352533926007
+    second: Korg_Idle1 R_15
+  - first:
+      213: -4048835875955596764
+    second: Korg_Idle1 R_16
+  - first:
+      213: 5859307224504347023
+    second: Korg_Idle1 R_17
+  - first:
+      213: 5108545591797683886
+    second: Korg_Idle1 R_18
+  - first:
+      213: 7004627578239337297
+    second: Korg_Idle1 R_19
+  - first:
+      213: -1570231617115986336
+    second: Korg_Idle1 R_20
+  - first:
+      213: -8695303029952264306
+    second: Korg_Idle1 R_21
+  - first:
+      213: -2125121500077307703
+    second: Korg_Idle1 R_22
+  - first:
+      213: -2376303344195338147
+    second: Korg_Idle1 R_23
+  - first:
+      213: 3039844227474238460
+    second: Korg_Idle1 R_24
+  - first:
+      213: -2757265430945163294
+    second: Korg_Idle1 R_25
+  - first:
+      213: 2760023835270708242
+    second: Korg_Idle1 R_26
+  - first:
+      213: 535518567455827842
+    second: Korg_Idle1 R_27
+  - first:
+      213: -1239892521332969759
+    second: Korg_Idle1 R_28
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 200
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Korg_Idle1 R_0
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 1776
+        width: 348
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4a1f3a9bc0ff2610800000000000000
+      internalID: 1598761149996669517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_1
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 1861
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b787ca0d5c60782f0800000000000000
+      internalID: -970799747995764613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_2
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 1776
+        width: 414
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ae70ad630c30520800000000000000
+      internalID: 2667186746152184454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_3
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 1776
+        width: 393
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ae8b6407c18e3670800000000000000
+      internalID: 8520390236804189857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_4
+      rect:
+        serializedVersion: 2
+        x: 1814
+        y: 1776
+        width: 378
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0fbe92131159a10800000000000000
+      internalID: 1915456119370412230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_5
+      rect:
+        serializedVersion: 2
+        x: 2367
+        y: 1776
+        width: 374
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd2e713c586c51c0800000000000000
+      internalID: -4513617981355446860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_6
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 1644
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d78212ad0eee24dd0800000000000000
+      internalID: -2503175793364883331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_7
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 1198
+        width: 347
+        height: 449
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb9a7795162ff3e0800000000000000
+      internalID: -2017852233861129253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_8
+      rect:
+        serializedVersion: 2
+        x: 889
+        y: 1646
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bb9bc5957b99f6f0800000000000000
+      internalID: -650317741851698247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_9
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 1198
+        width: 348
+        height: 449
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e53a21cb51f245ec0800000000000000
+      internalID: -3579184033456544930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_10
+      rect:
+        serializedVersion: 2
+        x: 1444
+        y: 1646
+        width: 31
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5b451a80c5074700800000000000000
+      internalID: 524394206120463197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_11
+      rect:
+        serializedVersion: 2
+        x: 1985
+        y: 1644
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703aec0d13d488d50800000000000000
+      internalID: 6739721718711886599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_12
+      rect:
+        serializedVersion: 2
+        x: 2367
+        y: 1198
+        width: 348
+        height: 449
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e19752f3c3ee2e330800000000000000
+      internalID: 3738812583195801886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_13
+      rect:
+        serializedVersion: 2
+        x: 2538
+        y: 1644
+        width: 31
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19613a2a044418370800000000000000
+      internalID: 8323008630754580113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_14
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 1197
+        width: 348
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fff916ef5933fb80800000000000000
+      internalID: -8362276999051739143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_15
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 1282
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98f610cf38501ede0800000000000000
+      internalID: -1305756352533926007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_16
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1283
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4222fc3f835afc7c0800000000000000
+      internalID: -4048835875955596764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_17
+      rect:
+        serializedVersion: 2
+        x: 1629
+        y: 1283
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f89267270e0705150800000000000000
+      internalID: 5859307224504347023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_18
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 1197
+        width: 347
+        height: 448
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea61df5462335e640800000000000000
+      internalID: 5108545591797683886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_19
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 1282
+        width: 12
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1534cd89baf653160800000000000000
+      internalID: 7004627578239337297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_20
+      rect:
+        serializedVersion: 2
+        x: 2723
+        y: 1283
+        width: 13
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 066e6b6e9aa653ae0800000000000000
+      internalID: -1570231617115986336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_21
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 620
+        width: 348
+        height: 449
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e874155c6f3145780800000000000000
+      internalID: -8695303029952264306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_22
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 1067
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c8c85b414d0282e0800000000000000
+      internalID: -2125121500077307703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_23
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 1068
+        width: 29
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d500aaad2bca50fd0800000000000000
+      internalID: -2376303344195338147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_24
+      rect:
+        serializedVersion: 2
+        x: 1444
+        y: 1068
+        width: 31
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfbaf171832bf2a20800000000000000
+      internalID: 3039844227474238460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_25
+      rect:
+        serializedVersion: 2
+        x: 1992
+        y: 1067
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e79c0df2b93cb9d0800000000000000
+      internalID: -2757265430945163294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_26
+      rect:
+        serializedVersion: 2
+        x: 2538
+        y: 1068
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21cfbe01e039d4620800000000000000
+      internalID: 2760023835270708242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_27
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 705
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 287a4dfbc4b8e6700800000000000000
+      internalID: 535518567455827842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Korg_Idle1 R_28
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 489
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eee84232540bcee0800000000000000
+      internalID: -1239892521332969759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
