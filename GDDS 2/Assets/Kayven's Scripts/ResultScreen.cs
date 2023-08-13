@@ -199,7 +199,7 @@ public class ResultScreen : MonoBehaviour {
 
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the score increment
 
-        while (currentScoreLoad < targetScore) {
+        while (currentScoreLoad <= targetScore) {
 
             currentScoreLoad += (int)incrementSpeed * Time.deltaTime;
             currentScoreLoad = Mathf.Min(currentScoreLoad, targetScore); // Clamp the score to the target value
@@ -215,7 +215,7 @@ public class ResultScreen : MonoBehaviour {
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the score increment
 
 
-        while (currentScoreLoad < scoreWithCoins){
+        while (currentScoreLoad <= scoreWithCoins){
             currentScoreLoad += (int)incrementSpeedForCoins * Time.deltaTime;
             currentScoreLoad = Mathf.Min(currentScoreLoad, scoreWithCoins);   // Clamp the score to the target value.
 
@@ -229,7 +229,7 @@ public class ResultScreen : MonoBehaviour {
     private IEnumerator AddScoreForHealth() {
         yield return new WaitForSeconds(1f); // Wait for 1 second before starting the score increment
 
-        while (currentScoreLoad < scoreWithHealth){
+        while (currentScoreLoad <= scoreWithHealth){
             currentScoreLoad += (int)incrementSpeedForHealth * Time.deltaTime;
             currentScoreLoad = Mathf.Min(currentScoreLoad, scoreWithHealth);// Clamp the score to the target value
 

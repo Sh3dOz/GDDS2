@@ -1773,6 +1773,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -23.04
       objectReference: {fileID: 0}
+    - target: {fileID: 1065775461629696605, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1108683304919294077, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1808,6 +1812,10 @@ PrefabInstance:
     - target: {fileID: 1570075794424857554, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769634431348735806, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: maxScore
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 1769634431348735806, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: timeText
@@ -2165,6 +2173,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4392567318139221785, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: levelMusic
+      value: 
+      objectReference: {fileID: 1918365329}
     - target: {fileID: 4451313737579886613, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
       value: 0
