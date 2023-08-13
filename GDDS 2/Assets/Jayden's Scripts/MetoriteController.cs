@@ -11,11 +11,16 @@ public class MetoriteController : MonoBehaviour
     public int metorDamage;
     public float angleChangingSpeed = 200f;
     public GameObject target;
+
+    public GameObject explosion;
+    public AudioClip explodeAound;
+    public LevelManager manager;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
+        manager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -72,6 +77,8 @@ public class MetoriteController : MonoBehaviour
             else
             {
                 collision.GetComponent<SpaceEnemy>().TakeDamage(metorDamage, this.gameObject);
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                manager.audioS.PlayOneShot(explodeAound);
             }
             Destroy(gameObject);
         }
