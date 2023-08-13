@@ -505,7 +505,7 @@ PrefabInstance:
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: UI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1353494434}
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: target
       value: 
@@ -515,6 +515,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1881239613}
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: isLaunched
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: dangerSpawn
       value: 
       objectReference: {fileID: 91502708}
@@ -522,6 +526,10 @@ PrefabInstance:
       propertyPath: missileSound
       value: 
       objectReference: {fileID: 8300000, guid: 28e33d21921b39c4b894731960fe8061, type: 3}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: tickingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 44896a0c264286542a31ab714715c830, type: 3}
     - target: {fileID: 6068960619224543121, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1159,6 +1167,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1296285052}
     m_Modifications:
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1353494434}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1881239600}
@@ -1167,9 +1179,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1881239613}
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: isLaunched
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: dangerSpawn
       value: 
       objectReference: {fileID: 91502708}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: missileSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28e33d21921b39c4b894731960fe8061, type: 3}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: tickingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 44896a0c264286542a31ab714715c830, type: 3}
     - target: {fileID: 6068960619224543121, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2118,6 +2142,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1296285052}
     m_Modifications:
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1353494434}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1881239600}
@@ -2126,9 +2154,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1881239613}
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: isLaunched
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: dangerSpawn
       value: 
       objectReference: {fileID: 91502708}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: missileSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28e33d21921b39c4b894731960fe8061, type: 3}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: tickingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 44896a0c264286542a31ab714715c830, type: 3}
     - target: {fileID: 6068960619224543121, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3179,6 +3219,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1296285052}
     m_Modifications:
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1353494434}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1881239600}
@@ -3187,9 +3231,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1881239613}
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: isLaunched
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: dangerSpawn
       value: 
       objectReference: {fileID: 91502708}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: missileSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28e33d21921b39c4b894731960fe8061, type: 3}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: tickingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 44896a0c264286542a31ab714715c830, type: 3}
     - target: {fileID: 6068960619224543121, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -14126,6 +14182,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1296285052}
     m_Modifications:
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1353494434}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1881239600}
@@ -14134,9 +14194,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1881239613}
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: isLaunched
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: dangerSpawn
       value: 
       objectReference: {fileID: 91502708}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: missileSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28e33d21921b39c4b894731960fe8061, type: 3}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: tickingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 44896a0c264286542a31ab714715c830, type: 3}
     - target: {fileID: 6068960619224543121, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -15966,6 +16038,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1296285052}
     m_Modifications:
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1353494434}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1881239600}
@@ -15974,9 +16050,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1881239613}
     - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: isLaunched
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: dangerSpawn
       value: 
       objectReference: {fileID: 91502708}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: missileSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28e33d21921b39c4b894731960fe8061, type: 3}
+    - target: {fileID: 1532678759670075807, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
+      propertyPath: tickingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 44896a0c264286542a31ab714715c830, type: 3}
     - target: {fileID: 6068960619224543121, guid: f6d405c21df1d664b9133e46c5865a2c, type: 3}
       propertyPath: m_RootOrder
       value: 1

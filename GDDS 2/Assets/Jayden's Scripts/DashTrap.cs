@@ -19,6 +19,10 @@ public class DashTrap : MonoBehaviour
     bool spawnedDanger;
     public GameObject dangerSign;
     public Transform dangerSpawn;
+    public AudioSource UI;
+    public AudioClip tickingSound;
+    public AudioClip missileSound;
+    public bool isLaunched = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +47,11 @@ public class DashTrap : MonoBehaviour
             }
                 if (!spawnedDanger)
             {
+                
                 GameObject danger = Instantiate(dangerSign, new Vector3(dangerSpawn.position.x, transform.position.y, 0f), Quaternion.identity, this.transform);
                 danger.transform.position = new Vector3(danger.transform.position.x, danger.transform.position.y, 0f);
                 spawnedDanger = true;
+                UI.PlayOneShot(tickingSound);
                 Destroy(danger, dashDuration);
             }
             if (isTracking)
@@ -65,6 +71,7 @@ public class DashTrap : MonoBehaviour
             }
             else if (isDashing == true)
             {
+                StartCoroutine("DrillLaunch");
                 transform.position = new Vector3(transform.position.x + (dashSpeed * Time.deltaTime), transform.position.y, transform.position.z);
             }
         }
@@ -86,6 +93,14 @@ public class DashTrap : MonoBehaviour
         dashWait = false;
         GetComponent<PolygonCollider2D>().isTrigger = true;
         isDashing = true;
+    }
+
+    public IEnumerator DrillLaunch() {
+        if(isLaunched) {
+            yield break;
+        }
+        UI.PlayOneShot(missileSound);
+        isLaunched = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
