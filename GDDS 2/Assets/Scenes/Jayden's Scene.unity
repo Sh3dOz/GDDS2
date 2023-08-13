@@ -1978,7 +1978,7 @@ PrefabInstance:
       objectReference: {fileID: 647141997}
     - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: onLand
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: pcInput
@@ -1986,7 +1986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: isInSpace
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: defectEffect
@@ -2218,7 +2218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4544099864220997470, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: gotSpace
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4544099864220997470, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Enabled

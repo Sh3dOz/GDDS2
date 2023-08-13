@@ -69,12 +69,12 @@ public class BossController : MonoBehaviour
             maxHealth = 500;
         }
         currentHealth = maxHealth;
+        PharseCheck();
     }
 
     // Update is called once per frame
     void Update()
     {
-        myAnim.SetFloat("Health", currentHealth);
         switch (currentPhase)
         {
             case PhaseMode.One:
@@ -93,20 +93,40 @@ public class BossController : MonoBehaviour
 
     void PharseCheck()
     {
-        if (currentHealth >= maxHealth * 0.75)
+        if (PlayerPrefs.GetString("Difficulty") == "Easy")
         {
             currentPhase = PhaseMode.One;
         }
-        else if(currentHealth >= maxHealth * 0.25)
+        else if (PlayerPrefs.GetString("Difficulty") == "Normal")
         {
-            sr.color = Color.white;
-            currentPhase = PhaseMode.Second;
+            if (currentHealth >= maxHealth * 0.50)
+            {
+                currentPhase = PhaseMode.One;
+            }
+            else
+            {
+                sr.color = Color.white;
+                currentPhase = PhaseMode.Second;
+            }
         }
-        else
+        else if (PlayerPrefs.GetString("Difficulty") == "Hard")
         {
-            sr.color = Color.white;
-            currentPhase = PhaseMode.Third;
+            if (currentHealth >= maxHealth * 0.75)
+            {
+                currentPhase = PhaseMode.One;
+            }
+            else if (currentHealth >= maxHealth * 0.25)
+            {
+                sr.color = Color.white;
+                currentPhase = PhaseMode.Second;
+            }
+            else
+            {
+                sr.color = Color.white;
+                currentPhase = PhaseMode.Third;
+            }
         }
+        myAnim.SetInteger("Phrase", ((int)currentPhase));
     }
 
     IEnumerator ShootEyes()

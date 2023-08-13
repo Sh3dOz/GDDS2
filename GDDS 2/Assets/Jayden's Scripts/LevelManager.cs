@@ -84,11 +84,6 @@ public class LevelManager : MonoBehaviour
                     spaceCooldown.overrideSprite = missileCooldown;
                     vcam.Follow = korg.transform;
                     player = FindObjectOfType<PlayerController>();
-                    if (PlayerPrefs.GetInt("PassiveForKorg") == 1)
-                    {
-                        score.scoreDeducted = 29;
-                        score.newScoreDeducted = 60;
-                    }
                     break;
                 case "Axel":
                     axel.SetActive(true);
@@ -98,10 +93,6 @@ public class LevelManager : MonoBehaviour
                     spaceCooldown.overrideSprite = deflectCooldown;
                     vcam.Follow = axel.transform;
                     player = FindObjectOfType<PlayerController>();
-                    if (PlayerPrefs.GetInt("PassiveForAxel") == 1)
-                    {
-                        player.health = 5;
-                    }
                     break;
                 case "X":
                     x.SetActive(true);
@@ -114,13 +105,6 @@ public class LevelManager : MonoBehaviour
                     spaceCharge.SetActive(true);
                     vcam.Follow = x.transform;
                     player = FindObjectOfType<PlayerController>();
-                    if (PlayerPrefs.GetInt("PassiveForXavier") == 1)
-                    {
-                        foreach (Coin coin in coins)
-                        {
-                            coin.coinValue = 2;
-                        }
-                    }
                     break;
                 default:
                     korg.SetActive(true);

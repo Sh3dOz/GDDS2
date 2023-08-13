@@ -124,6 +124,7 @@ public abstract class PlayerController : MonoBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
         }
         Movement();
+        ShootRaycast();
     }
 
     void TryUpdateShapeToAttachedSprite(PolygonCollider2D collider)
@@ -158,6 +159,21 @@ public abstract class PlayerController : MonoBehaviour
     public void UpdateSprite() 
     {
         TryUpdateShapeToAttachedSprite(gameObject.GetComponent<PolygonCollider2D>());
+    }
+
+    public void ShootRaycast()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
+        if(hit.collider.name == "Space Confider")
+        {
+            transform.position = new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Debug.DrawLine(transform.position, new Vector3(transform.position.x + 1, transform.position.y));
+        //Debug.DrawRay(transform.position, Vector3.right, Color.green);
     }
 }
 
