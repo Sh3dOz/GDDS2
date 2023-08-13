@@ -6540,6 +6540,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 5502153877363971329, guid: 203a9a551337f0740b9267c132908999, type: 3}
     - target: {fileID: 7940027539404658059, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
       propertyPath: m_Name
       value: Laser trap 1x5 (2)
@@ -11732,6 +11744,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -38.822
       objectReference: {fileID: 0}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 5502153877363971329, guid: 203a9a551337f0740b9267c132908999, type: 3}
     - target: {fileID: 7940027539404658059, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
       propertyPath: m_Name
       value: Laser trap 1x5
@@ -11750,6 +11774,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1275773469}
     m_Modifications:
+    - target: {fileID: 4325737721963884240, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1423568827}
     - target: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -12486,6 +12514,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318021898}
     m_Modifications:
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 5502153877363971329, guid: 203a9a551337f0740b9267c132908999, type: 3}
     - target: {fileID: 4200383672551314563, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
       propertyPath: m_Name
       value: SUPER laser Variant (3)
@@ -13113,6 +13153,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1275773469}
     m_Modifications:
+    - target: {fileID: 4325737721963884240, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1423568827}
     - target: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -13223,6 +13267,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 6468873405310874703, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 5502153877363971329, guid: 203a9a551337f0740b9267c132908999, type: 3}
     - target: {fileID: 7940027539404658059, guid: 47390b1cdba44d14693f155e8a7141c1, type: 3}
       propertyPath: m_Name
       value: Laser trap 1x5 (1)
@@ -13241,6 +13297,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1275773469}
     m_Modifications:
+    - target: {fileID: 4325737721963884240, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1423568827}
     - target: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -13726,6 +13786,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1275773469}
     m_Modifications:
+    - target: {fileID: 4325737721963884240, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1423568827}
     - target: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -14018,6 +14082,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318021898}
     m_Modifications:
+    - target: {fileID: 951418931747030484, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 951418931747030484, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 951418931747030484, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 4977567659146380440, guid: b41f300282da0ce4389a0a1ca1763ac5, type: 3}
     - target: {fileID: 1017314326696128231, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.65
@@ -14194,6 +14270,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318021898}
     m_Modifications:
+    - target: {fileID: 951418931747030484, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 951418931747030484, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 951418931747030484, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 4977567659146380440, guid: b41f300282da0ce4389a0a1ca1763ac5, type: 3}
     - target: {fileID: 1017314326696128231, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.65
@@ -15974,6 +16062,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318021898}
     m_Modifications:
+    - target: {fileID: 951418931747030484, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 951418931747030484, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 951418931747030484, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 4977567659146380440, guid: b41f300282da0ce4389a0a1ca1763ac5, type: 3}
     - target: {fileID: 3252144932952662873, guid: 60af196eab446ba46bcd14a6cd4b2535, type: 3}
       propertyPath: m_Name
       value: Spinning Laser
@@ -16434,6 +16534,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1275773469}
     m_Modifications:
+    - target: {fileID: 4325737721963884240, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1423568827}
     - target: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -16924,6 +17028,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318021898}
     m_Modifications:
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 5502153877363971329, guid: 203a9a551337f0740b9267c132908999, type: 3}
     - target: {fileID: 4200383672551314563, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
       propertyPath: m_Name
       value: SUPER laser Variant (2)
@@ -17746,6 +17862,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318021898}
     m_Modifications:
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 5502153877363971329, guid: 203a9a551337f0740b9267c132908999, type: 3}
     - target: {fileID: 4200383672551314563, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
       propertyPath: m_Name
       value: SUPER laser Variant (1)
@@ -17968,6 +18096,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318021898}
     m_Modifications:
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: audioS
+      value: 
+      objectReference: {fileID: 1342386188}
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: shockSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b0e5e4cb37efbd54189a8a90a9d7df86, type: 3}
+    - target: {fileID: 989780771575936327, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
+      propertyPath: shockEffect
+      value: 
+      objectReference: {fileID: 5502153877363971329, guid: 203a9a551337f0740b9267c132908999, type: 3}
     - target: {fileID: 4200383672551314563, guid: 4632d25b884576c4085b5ee7bf28cf53, type: 3}
       propertyPath: m_Name
       value: SUPER laser Variant
@@ -18030,6 +18170,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1275773469}
     m_Modifications:
+    - target: {fileID: 4325737721963884240, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1423568827}
     - target: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -18470,6 +18614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1275773469}
     m_Modifications:
+    - target: {fileID: 4325737721963884240, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1423568827}
     - target: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
       propertyPath: m_RootOrder
       value: 11
