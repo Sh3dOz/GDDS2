@@ -413,7 +413,7 @@ public class KorgController : PlayerController
             if (flipped)
             {
                 var hoverSettings = hoverParticle.GetComponent<ParticleSystem>().velocityOverLifetime; 
-                hoverSettings.yMultiplier = 5;
+                hoverSettings.xMultiplier = 40;
             }
         }
         if (isHovering)
