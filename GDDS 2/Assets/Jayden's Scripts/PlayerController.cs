@@ -57,7 +57,6 @@ public abstract class PlayerController : MonoBehaviour
     {
         rb.velocity = new Vector2(movement.x * moveSpeed, movement.y * moveSpeed);
     }
-
     public void TakeDamage(int damage)
     {
 
@@ -163,10 +162,16 @@ public abstract class PlayerController : MonoBehaviour
 
     public void ShootRaycast()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right, 1f);
-        if(hit.collider.name == "Space Confider")
+        Vector2 raycastPosition = new Vector2(transform.position.x + 1f, transform.position.y);
+
+        RaycastHit2D hit = Physics2D.Raycast(raycastPosition, Vector2.right, 1f);
+
+        //Debug.DrawRay(raycastPosition, Vector2.right, Color.green);
+
+        if (hit.collider.name == "Space Confider")
         {
-            transform.position = new Vector3(transform.position.x - 0.5f, transform.position.y, transform.position.z);
+            Debug.Log("SpaceNo");
+            transform.position = new Vector3(transform.position.x - 10f, transform.position.y, transform.position.z);
         }
     }
 
