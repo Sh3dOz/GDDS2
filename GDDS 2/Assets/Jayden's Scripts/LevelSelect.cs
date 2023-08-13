@@ -43,7 +43,14 @@ public class LevelSelect : MonoBehaviour
 
     public void StartLevel()
     {
-        SceneManager.LoadScene(levelSelected + " " + difficultySelected);
+        if (levelSelected != "Level 3")
+        {
+            SceneManager.LoadScene(levelSelected + " " + difficultySelected);
+        }
+        else
+        {
+            SceneManager.LoadScene("Level 3");
+        }
     }
 
     public void Back()

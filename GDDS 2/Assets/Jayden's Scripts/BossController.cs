@@ -53,10 +53,22 @@ public class BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
         shootTimer = Random.Range(2, 6);
         myAnim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        if(PlayerPrefs.GetString("Difficulty") == "Easy")
+        {
+            maxHealth = 100;
+        }
+        else if(PlayerPrefs.GetString("Difficulty") == "Normal")
+        {
+            maxHealth = 300;
+        }
+        else if(PlayerPrefs.GetString("Difficulty") == "Hard")
+        {
+            maxHealth = 500;
+        }
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame

@@ -52,6 +52,7 @@ public class UpgradesAgain : MonoBehaviour
             {
                 PlayerPrefs.SetInt("Baller", 1);
                 PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                AchievementManager.instance.GetAchievement(5);
             }
             if (PlayerPrefs.GetInt(selectedCharacter + "FullyMax") != 1)
             {

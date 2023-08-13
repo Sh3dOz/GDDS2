@@ -261,6 +261,7 @@ public class LevelManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("Not a Jetpack Joyride rip-off", 1);
                     PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                    AchievementManager.instance.GetAchievement(2);
                 }
                 if (PlayerPrefs.GetInt("Canon Event") != 1)
                 {
@@ -268,6 +269,7 @@ public class LevelManager : MonoBehaviour
                     {
                         PlayerPrefs.SetInt("Canon Event", 1);
                         PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                        AchievementManager.instance.GetAchievement(4);
                     }
                     else
                     {
@@ -294,6 +296,7 @@ public class LevelManager : MonoBehaviour
             {
                 PlayerPrefs.SetFloat("Frantic Runner", 1);
                 PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                AchievementManager.instance.GetAchievement(3);
             }
             PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
             if (level == 1)
@@ -302,6 +305,7 @@ public class LevelManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("Why are you running", 1);
                     PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                    AchievementManager.instance.GetAchievement(0);
                 }
                 if (PlayerPrefs.GetInt("Axel") != 1)
                 {
@@ -314,6 +318,7 @@ public class LevelManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("Where's my money", 1);
                     PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                    AchievementManager.instance.GetAchievement(1);
                 }
                 if (PlayerPrefs.GetInt("X") != 1)
                 {
@@ -327,6 +332,7 @@ public class LevelManager : MonoBehaviour
                         {
                             PlayerPrefs.SetInt("FINISH HIM", 1);
                             PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                            AchievementManager.instance.GetAchievement(9);
                         }
                     }
                 }
@@ -353,6 +359,7 @@ public class LevelManager : MonoBehaviour
             {
                 PlayerPrefs.SetInt("Touch some grass", 1);
                 PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                AchievementManager.instance.GetAchievement(6);
             }
         }
         if (PlayerPrefs.GetInt("Rock Hard!") != 1)
@@ -361,21 +368,21 @@ public class LevelManager : MonoBehaviour
             {
                 if (level == 1)
                 {
-                    if (player.health == player.maxHealth)
+                    if (player.health >= player.maxHealth)
                     {
                         PlayerPrefs.SetInt("KorgFlawless1", 1);
                     }
                 }
                 else if (level == 2)
                 {
-                    if (player.health == player.maxHealth)
+                    if (player.health >= player.maxHealth)
                     {
                         PlayerPrefs.SetInt("KorgFlawless2", 1);
                     }
                 }
                 else if (level == 3)
                 {
-                    if (player.health == player.maxHealth)
+                    if (player.health >= player.maxHealth)
                     {
                         PlayerPrefs.SetInt("KorgFlawless3", 1);
                     }
@@ -384,44 +391,47 @@ public class LevelManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt("Rock Hard!", 1);
                     PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                    AchievementManager.instance.GetAchievement(7);
                 }
             }
-            if (PlayerPrefs.GetInt("Flip Flop") != 1)
+        }
+        if (PlayerPrefs.GetInt("Flip Flop") != 1)
+        { 
+            if (PlayerPrefs.GetString("Character") == "Axel")
             {
-                if (PlayerPrefs.GetString("Character") == "Axel")
+                if (level == 1)
                 {
-                    if (level == 1)
+                    if (PlayerPrefs.GetInt("AxelAbility") == 0)
                     {
-                        if (PlayerPrefs.GetInt("AxelAbility" ) == 0)
-                        {
-                            PlayerPrefs.SetInt("AxelNoAbility1", 1);
-                        }
+                        PlayerPrefs.SetInt("AxelNoAbility1", 1);
                     }
-                    else if (level == 2)
+                }
+                else if (level == 2)
+                {
+                    if (PlayerPrefs.GetInt("AxelAbility") == 0)
                     {
-                        if (PlayerPrefs.GetInt("AxelAbility") == 0)
-                        {
-                            PlayerPrefs.SetInt("AxelNoAbility2", 1);
-                        }
+                        PlayerPrefs.SetInt("AxelNoAbility2", 1);
                     }
-                    else if (level == 3)
+                }
+                else if (level == 3)
+                {
+                    if (PlayerPrefs.GetInt("AxelAbility") == 0)
                     {
-                        if (PlayerPrefs.GetInt("AxelAbility") == 0)
-                        {
-                            PlayerPrefs.SetInt("AxelNoAbility3", 1);
-                        }
+                        PlayerPrefs.SetInt("AxelNoAbility3", 1);
                     }
-                    if (PlayerPrefs.GetInt("AxelNoAbility1") == 1 && PlayerPrefs.GetInt("AxelNoAbility2") == 1 && PlayerPrefs.GetInt("AxelNoAbility3") == 1)
-                    {
-                        PlayerPrefs.SetInt("Flip Flop", 1);
-                        PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
-                    }
+                }
+                if (PlayerPrefs.GetInt("AxelNoAbility1") == 1 && PlayerPrefs.GetInt("AxelNoAbility2") == 1 && PlayerPrefs.GetInt("AxelNoAbility3") == 1)
+                {
+                    PlayerPrefs.SetInt("Flip Flop", 1);
+                    PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                    AchievementManager.instance.GetAchievement(8);
                 }
             }
         }
         if(PlayerPrefs.GetInt("Achievement") == 10)
         {
             PlayerPrefs.SetInt("GOD DID!", 1);
+            AchievementManager.instance.GetAchievement(10);
         }
         gameOver = true;
     }
