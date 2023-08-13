@@ -14900,6 +14900,10 @@ PrefabInstance:
       propertyPath: UI
       value: 
       objectReference: {fileID: 1342386188}
+    - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: jumpParticles
+      value: 
+      objectReference: {fileID: 7939475485244240571, guid: 60d2c3280c167bb4a93e827cd85bda0e, type: 3}
     - target: {fileID: 3358317214781103738, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18
@@ -15352,6 +15356,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1342386188}
     - target: {fileID: 5806470567554562489, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: UI
       value: 

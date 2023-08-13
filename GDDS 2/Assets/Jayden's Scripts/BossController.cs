@@ -12,6 +12,10 @@ public class BossController : MonoBehaviour
     Animator myAnim;
     SpriteRenderer sr;
 
+    public AudioSource UI;
+    public AudioClip laserBeam;
+    public GameObject death;
+
     [Header("Phase1")]
     public GameObject phaseOneBullet;
     public Transform eyePos, topLimit, botLimit;
@@ -139,6 +143,7 @@ public class BossController : MonoBehaviour
                 laser.transform.localScale = new Vector3(-1f, 1f, 1f);
                 sr.color = Color.white;
                 shotPharse1 = true;
+                UI.PlayOneShot(laserBeam);
                 yield return new WaitForSeconds(2f);
                 shotPharse1 = false;
                 shootTimer = Random.Range(2, 6);
@@ -178,7 +183,6 @@ public class BossController : MonoBehaviour
                 if (canFire)
                 {
                     //Shoot laser
-                    
                     GameObject topLaser = Instantiate(phaseTwoLaser, topG.position, Quaternion.identity, topG.transform);
                     GameObject botLaser = Instantiate(phaseTwoLaser, botG.position, Quaternion.identity, botG.transform);
                     Destroy(topLaser, laserDuration);
@@ -455,6 +459,7 @@ public class BossController : MonoBehaviour
         PharseCheck();
         if (currentHealth < 0)
         {
+            Instantiate(death, transform.position, Quaternion.identity);
             Die();
         }
     }
