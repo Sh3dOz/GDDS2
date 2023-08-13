@@ -412,7 +412,7 @@ public class KorgController : PlayerController
             hoverParticle = Instantiate(hoverPrefab, groundCheck.position, Quaternion.Euler(85f,0f,0f), this.gameObject.transform);
             if (flipped)
             {
-                hoverParticle.transform.localScale = new Vector3(1f, -1, 1f);
+                //hoverParticle.transform.localScale = new Vector3(1f, -1, 1f);
                 var hoverSettings = hoverParticle.GetComponent<ParticleSystem>().velocityOverLifetime; 
                 hoverSettings.xMultiplier = 40;
             }
