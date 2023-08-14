@@ -1793,6 +1793,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1178388843674139810, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 647141997}
+    - target: {fileID: 1178388843674139810, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: shootingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
     - target: {fileID: 1289545263264657467, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2007,7 +2015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: pcInput
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3358317214781103736, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: isInSpace
@@ -2507,7 +2515,7 @@ PrefabInstance:
       objectReference: {fileID: 647141997}
     - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: pcInput
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5806470567554562489, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: UI
@@ -3047,7 +3055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: pcInput
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: isInSpace
