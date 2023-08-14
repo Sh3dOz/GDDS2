@@ -8,6 +8,7 @@ using Terresquall;
 
 public class KorgController : PlayerController
 {
+    bool onUI;
     [Header("Gravity")]
     public float gravScale;
     bool accelerate = false;
@@ -126,84 +127,100 @@ public class KorgController : PlayerController
                 for (int i = 0; i < Input.touchCount; i++)
                 {
                     Touch t = Input.GetTouch(i);
-                    if (onLand)
+                    if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                     {
-                        switch (t.phase)
-                        {
-                            case TouchPhase.Began:
-                                print("Began Touch " + i);
-                                break;
-                            case TouchPhase.Stationary:
-                                print("Stationary Touch " + i);
-                                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
-                                if (isGrounded) return;
-                                touchTimer += Time.deltaTime;
-                                if (touchTimer > 0.2f && !hoveringCooldown)
-                                {
-                                    isHovering = true;
-                                    if (hovering == false) hoverGrav = gravScale;
-                                    hovering = true;
-                                    HoldBehaviour();
-                                }
-                                else if(touchTimer > 0.1f && hoveringCooldown)
-                                {
-                                    LandBehaviour();
-                                    flips++;
-                                }
-                                else
-                                {
-                                    rb.velocity = new Vector2(runSpeed, rb.velocity.y);
-                                }
-                                break;
-                            case TouchPhase.Moved:
-                                print("Moving Touch " + i);
-                                break;
-                            case TouchPhase.Ended:
-                                print("Ended Touch " + i);
-                                if (!isHovering && flips < 1)
-                                {
-                                    LandBehaviour();
-                                }
-                                else if(isHovering)
-                                {
-                                    accelerate = false;
-                                    StartCoroutine("GravWait");
-                                }
-                                touchTimer = 0f;
-                                isHovering = false;
-                                flips = 0;
-                                hoveringCounter = 0f;
-                                Destroy(hoverParticle);
-                                break;
-                            case TouchPhase.Canceled:
-                                print("Cancelled Touch " + i);
-                                if (hovering)
-                                {
-                                    LandBehaviour();
-                                }
-                                break;
-                        }
+                        Debug.Log("touched UI");
+                        onUI = true;
+                        return;
                     }
-                    else if (isInSpace)
+                    else
                     {
-                        switch (t.phase)
+                        if (onLand)
                         {
-                            case TouchPhase.Began:
-                                print("Began Touch " + i);
-                                break;
-                            case TouchPhase.Stationary:
-                                print("Stationary Touch " + i);
-                                break;
-                            case TouchPhase.Moved:
-                                print("Moving Touch " + i);
-                                SpaceBehaviour();
-                                break;
-                            case TouchPhase.Ended:
-                                print("Ended Touch " + i);
-                                break;
-                            case TouchPhase.Canceled:
-                                print("Cancelled Touch " + i);
-                                break;
+                            switch (t.phase)
+                            {
+                                case TouchPhase.Began:
+                                    print("Began Touch " + i);
+                                    break;
+                                case TouchPhase.Stationary:
+                                    print("Stationary Touch " + i);
+                                    if (isGrounded) return;
+                                    touchTimer += Time.deltaTime;
+                                    if (touchTimer > 0.2f && !hoveringCooldown)
+                                    {
+                                        isHovering = true;
+                                        if (hovering == false) hoverGrav = gravScale;
+                                        hovering = true;
+                                        HoldBehaviour();
+                                    }
+                                    else if (touchTimer > 0.1f && hoveringCooldown && flips < 1)
+                                    {
+                                        LandBehaviour();
+                                        flips++;
+                                    }
+                                    else
+                                    {
+                                        rb.velocity = new Vector2(runSpeed, rb.velocity.y);
+                                    }
+                                    break;
+                                case TouchPhase.Moved:
+                                    print("Moving Touch " + i);
+                                    break;
+                                case TouchPhase.Ended:
+                                    print("Ended Touch " + i);
+                                    if (onUI)
+                                    {
+                                        onUI = false;
+                                    }
+                                    else
+                                    {
+                                        if (!isHovering && flips < 1)
+                                        {
+                                            LandBehaviour();
+                                        }
+                                        else if (isHovering)
+                                        {
+                                            accelerate = false;
+                                            StartCoroutine("GravWait");
+                                        }
+                                        touchTimer = 0f;
+                                        isHovering = false;
+                                        flips = 0;
+                                        hoveringCounter = 0f;
+                                        Destroy(hoverParticle);
+                                    }
+                                    break;
+                                case TouchPhase.Canceled:
+                                    print("Cancelled Touch " + i);
+                                    if (hovering)
+                                    {
+                                        LandBehaviour();
+                                    }
+                                    
+                                    break;
+                            }
+                        }
+                        else if (isInSpace)
+                        {
+                            switch (t.phase)
+                            {
+                                case TouchPhase.Began:
+                                    print("Began Touch " + i);
+                                    break;
+                                case TouchPhase.Stationary:
+                                    print("Stationary Touch " + i);
+                                    break;
+                                case TouchPhase.Moved:
+                                    print("Moving Touch " + i);
+                                    SpaceBehaviour();
+                                    break;
+                                case TouchPhase.Ended:
+                                    print("Ended Touch " + i);
+                                    break;
+                                case TouchPhase.Canceled:
+                                    print("Cancelled Touch " + i);
+                                    break;
+                            }
                         }
                     }
                 }
@@ -213,7 +230,7 @@ public class KorgController : PlayerController
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
                     manager.SwitchMode();
-                    if(isInSpace) transform.localScale = new Vector3(1f, 1f, 1f);
+                    if (isInSpace) transform.localScale = new Vector3(1f, 1f, 1f);
                 }
                 if (onLand)
                 {
@@ -235,10 +252,10 @@ public class KorgController : PlayerController
                             rb.velocity = new Vector2(runSpeed, rb.velocity.y);
                         }
                     }
-                    
+
                     if (Input.GetKeyUp(KeyCode.Space))
                     {
-                        if(!isHovering)
+                        if (!isHovering)
                         {
                             if (hoverParticle)
                             {

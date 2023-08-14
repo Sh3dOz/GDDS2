@@ -45,6 +45,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject scorePanel;
     [SerializeField] GameObject progressPanel;
     [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject hoverPanel;
     public bool activateShop;
 
     [Header("Characters")]
@@ -123,8 +124,6 @@ public class LevelManager : MonoBehaviour
             boss = FindObjectOfType<BossController>();
             progressSlider.gameObject.SetActive(false);
             bossHealthBar.gameObject.SetActive(true);
-            bossHealthBar.maxValue = boss.maxHealth;
-            bossHealthBar.value = bossHealthBar.maxValue;
             healthSlider.value = player.health;
             landButton.gameObject.SetActive(false);
             spaceButton.gameObject.SetActive(true);
@@ -184,7 +183,7 @@ public class LevelManager : MonoBehaviour
         if (isBossLevel)
         {
             bossHealthBar.value = boss.currentHealth;
-            if (bossHealthBar.value == bossHealthBar.minValue)
+            if (bossHealthBar.value <= bossHealthBar.minValue)
             {
                 Debug.Log("Boss Win");
                 isWin = true;
@@ -457,6 +456,14 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(.5f);
         yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
         movementPanel.SetActive(false);
+        shieldPanel.SetActive(true);
+        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
+        shieldPanel.SetActive(false);
+        hoverPanel.SetActive(true);
+        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitUntil(() => Input.touchCount > 0 || Input.GetMouseButtonDown(0));
+        hoverPanel.SetActive(false);
         Time.timeScale = 1f;
         player.canMove = true;
         yield return new WaitUntil(() => isWin == true || player == null);

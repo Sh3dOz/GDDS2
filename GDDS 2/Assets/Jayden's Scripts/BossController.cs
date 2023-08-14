@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class BossController : MonoBehaviour
     Animator myAnim;
     SpriteRenderer sr;
 
+    public Slider bossHealthBar;
     public AudioSource UI;
     public AudioClip laserBeam;
     public GameObject death;
@@ -73,6 +75,8 @@ public class BossController : MonoBehaviour
             maxHealth = 500;
         }
         currentHealth = maxHealth;
+        bossHealthBar.maxValue = maxHealth;
+        bossHealthBar.value = bossHealthBar.maxValue;
         PharseCheck();
     }
 

@@ -1158,6 +1158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 500
   currentHealth: 0
+  bossHealthBar: {fileID: 960067547}
   UI: {fileID: 647141997}
   laserBeam: {fileID: 8300000, guid: 6477756069e4d3f4dbabc44ceff123bf, type: 3}
   death: {fileID: 905367780436635809, guid: aceb7464d27f93741a2187e4c0b001b6, type: 3}
