@@ -16743,7 +16743,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1075070326488637181, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1108683304919294077, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer
@@ -17014,6 +17014,10 @@ PrefabInstance:
     - target: {fileID: 3551210198453121186, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Name
       value: Essential
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806145967401561481, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3864758085763751786, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_LocalScale.x
@@ -17435,6 +17439,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4775949600196443168, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4800344703891265191, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -17675,22 +17683,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 7024994996712626543, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 1353494434}
-    - target: {fileID: 7024994996712626543, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: enemies
-      value: 
-      objectReference: {fileID: 1296285051}
-    - target: {fileID: 7024994996712626543, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: levelMusic
-      value: 
-      objectReference: {fileID: 1881239603}
-    - target: {fileID: 7024994996712626543, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: coinsCollectedText
-      value: 
-      objectReference: {fileID: 1220766268}
     - target: {fileID: 7067966137175154242, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_margin.z
       value: -114.593834
@@ -17721,7 +17713,7 @@ PrefabInstance:
       objectReference: {fileID: 1844068050439729333, guid: 010e3b0713b7b7a43802d8e599bc4c34, type: 2}
     - target: {fileID: 7713743463274600552, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7729438609761450000, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_Layer

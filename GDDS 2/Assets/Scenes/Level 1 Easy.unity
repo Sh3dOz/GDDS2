@@ -755,121 +755,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1974923042620827977, guid: f59a53fadf9d8ae478dcf2ee49f09d0f, type: 3}
   m_PrefabInstance: {fileID: 182160773}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &186812665
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 186812666}
-  - component: {fileID: 186812670}
-  - component: {fileID: 186812669}
-  - component: {fileID: 186812668}
-  - component: {fileID: 186812667}
-  m_Layer: 5
-  m_Name: Coins Collected
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &186812666
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186812665}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.4630363, y: 3.4630363, z: 3.4630363}
-  m_Children: []
-  m_Father: {fileID: 1427150539}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 281, y: -473}
-  m_SizeDelta: {x: 374.4078, y: 66.9111}
-  m_Pivot: {x: 0, y: 1}
---- !u!95 &186812667
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186812665}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &186812668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186812665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
---- !u!114 &186812669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186812665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.99607843}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: f0a6c59aa7f832c4e93f605d24aecc51, type: 3}
-    m_FontSize: 30
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 300
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Coins Collected: '
---- !u!222 &186812670
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186812665}
-  m_CullTransparentMesh: 1
 --- !u!4 &191579998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1974923042620827977, guid: f59a53fadf9d8ae478dcf2ee49f09d0f, type: 3}
@@ -2784,9 +2669,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Essential
       objectReference: {fileID: 0}
+    - target: {fileID: 3626777909869888022, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3682339752501877189, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3806145967401561481, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3864758085763751786, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3336,6 +3229,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4775949600196443168, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4800344703891265191, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -3621,21 +3518,9 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7024994996712626543, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: UI
-      value: 
-      objectReference: {fileID: 739951169}
-    - target: {fileID: 7024994996712626543, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: enemies
       value: 
       objectReference: {fileID: 248864048}
-    - target: {fileID: 7024994996712626543, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: levelMusic
-      value: 
-      objectReference: {fileID: 1998210167}
-    - target: {fileID: 7024994996712626543, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-      propertyPath: coinsCollectedText
-      value: 
-      objectReference: {fileID: 186812669}
     - target: {fileID: 7067966137175154242, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_fontSize
       value: 18
@@ -3654,6 +3539,10 @@ PrefabInstance:
       objectReference: {fileID: 1844068050439729333, guid: 010e3b0713b7b7a43802d8e599bc4c34, type: 2}
     - target: {fileID: 7067966137175154242, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141767283607109729, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7147707437097520884, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
@@ -6508,11 +6397,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4325737721963884243, guid: 969ad527be4c14649a03b15abbea096b, type: 3}
   m_PrefabInstance: {fileID: 1608925296}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1427150539 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5005294629301650230, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
-  m_PrefabInstance: {fileID: 739951168}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1433493310 stripped
 Transform:

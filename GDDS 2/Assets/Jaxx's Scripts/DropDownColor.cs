@@ -20,7 +20,8 @@ public class DropDownColor : MonoBehaviour {
         }
 
         // Set the initial sprite
-        UpdateSprite(0);
+        UpdateSprite(LevelSelect.index);
+        dropdown.value = LevelSelect.index;
 
         // Register a callback for when the dropdown value changes
         dropdown.onValueChanged.AddListener(OnDropdownValueChanged);

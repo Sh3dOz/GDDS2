@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelSelect : MonoBehaviour
 {
     public string levelSelected;
+    public static int index;
     [SerializeField] string difficultySelected;
     [SerializeField] Animator UIAnim;
     [SerializeField] Dropdown difficultySelect;
@@ -29,6 +30,19 @@ public class LevelSelect : MonoBehaviour
             x.color = new Color(0, 0, 0);
         }
         difficultySelected = PlayerPrefs.GetString("Difficulty", "Easy");
+        if(difficultySelected == "Easy")
+        {
+            index = 0;
+        }
+        else if(difficultySelected == "Normal")
+        {
+            index = 1;
+        }
+        else if(difficultySelected == "Hard")
+        {
+            index = 2;
+        }
+        
     }
     public void StageSelect(string level)
     {

@@ -6585,6 +6585,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6498755470655296251, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 9204869557728258411}
+    - target: {fileID: 6498755470655296251, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
+      propertyPath: levelMusic
+      value: 
+      objectReference: {fileID: 6199236711437113121}
     - target: {fileID: 6952738732976764198, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
       propertyPath: m_Color.b
       value: 0.33770022
