@@ -174,7 +174,7 @@ MonoBehaviour:
   UI: {fileID: 0}
   shootingSound: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
   deathSound: {fileID: 8300000, guid: a390798c2206a4e48a0a2875d0ee668f, type: 3}
-  deathExplosion: {fileID: 905367780436635809, guid: aceb7464d27f93741a2187e4c0b001b6, type: 3}
+  deathExplosion: {fileID: 4253631778498339734, guid: 638196ef5da0db843af228e3a55f0e59, type: 3}
   manager: {fileID: 0}
   hurtEffect: {fileID: 5822479723477078846, guid: 5aefee60417c020489b75041fdabbf90, type: 3}
   shotSound: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}

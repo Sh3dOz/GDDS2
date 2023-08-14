@@ -64,7 +64,7 @@ public class ShootingEnemy : MonoBehaviour
         manager = FindObjectOfType<LevelManager>();
         health -= damage;
         Instantiate(hurtEffect, transform.position, Quaternion.identity);
-        manager.audioS.PlayOneShot(shotSound);
+        UI.PlayOneShot(shotSound);
         if(health <= 0)
         {
             Die(bullet);
