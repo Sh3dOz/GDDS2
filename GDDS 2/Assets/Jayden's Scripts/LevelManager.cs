@@ -276,11 +276,15 @@ public class LevelManager : MonoBehaviour
         else
         {
             PlayerPrefs.SetFloat("Distance", PlayerPrefs.GetFloat("Distance") + progressSlider.value);
-            if(PlayerPrefs.GetFloat("Distance") >= 1000f)
+            if (PlayerPrefs.GetInt("Frantic Runner") != 1)
             {
-                PlayerPrefs.SetInt("Frantic Runner", 1);
-                PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
-                AchievementManager.instance.GetAchievement(3);
+                if (PlayerPrefs.GetFloat("Distance") >= 1000f)
+                {
+                    Debug.Log("run?");
+                    PlayerPrefs.SetInt("Frantic Runner", 1);
+                    PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                    AchievementManager.instance.GetAchievement(3);
+                }
             }
             PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
             if (level == 1)

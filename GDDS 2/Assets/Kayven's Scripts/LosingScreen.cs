@@ -49,6 +49,16 @@ public class LosingScreen : MonoBehaviour {
         // Store the updated coins collected value
         PlayerPrefs.SetFloat("Coins", coinsCollectedForTotal);
         PlayerPrefs.SetFloat("Distance", PlayerPrefs.GetFloat("Distance") + progressSlider.value);
+        if (PlayerPrefs.GetInt("Frantic Runner") != 1)
+        {
+            if (PlayerPrefs.GetFloat("Distance") >= 1000f)
+            {
+                Debug.Log("run?");
+                PlayerPrefs.SetInt("Frantic Runner", 1);
+                PlayerPrefs.SetInt("Achievement", PlayerPrefs.GetInt("Achievement") + 1);
+                AchievementManager.instance.GetAchievement(3);
+            }
+        }
 
         coinsCollectedText.text = "Coins Collected: " + coinsCollected;
 
