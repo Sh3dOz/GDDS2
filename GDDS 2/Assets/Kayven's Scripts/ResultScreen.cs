@@ -10,6 +10,8 @@ public class ResultScreen : MonoBehaviour {
     public PlayerController player;
     public LevelManager manager;
 
+    public GameObject audioShoot;
+
     public Score scoreCounter;
 
     float scoreMultipler = 1f;
@@ -171,6 +173,7 @@ public class ResultScreen : MonoBehaviour {
         }
         deadedCoStarted = true;
         UI.PlayOneShot(winMusic);
+        Destroy(audioShoot);
     }
 
     public IEnumerator CoinCounting() {

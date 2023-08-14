@@ -2508,6 +2508,10 @@ PrefabInstance:
       value: Main Menu
       objectReference: {fileID: 0}
     - target: {fileID: 4392567318139221785, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: audioShoot
+      value: 
+      objectReference: {fileID: 1845974863}
+    - target: {fileID: 4392567318139221785, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: levelMusic
       value: 
       objectReference: {fileID: 1918365329}
@@ -2776,7 +2780,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 647141997}
     - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: onLand
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: pcInput
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5785016641973403089, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: isInSpace
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5806470567554562489, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}

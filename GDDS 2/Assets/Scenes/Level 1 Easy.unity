@@ -3102,6 +3102,10 @@ PrefabInstance:
       value: Level 2 easy
       objectReference: {fileID: 0}
     - target: {fileID: 4392567318139221785, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: audioShoot
+      value: 
+      objectReference: {fileID: 7388460583952918098}
+    - target: {fileID: 4392567318139221785, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: healthLeft
       value: 0
       objectReference: {fileID: 0}
@@ -10173,3 +10177,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43a67bdea03669d45a2ee726c5c99192, type: 3}
+--- !u!1 &7388460583952918098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7388460584226568724, guid: 43a67bdea03669d45a2ee726c5c99192, type: 3}
+  m_PrefabInstance: {fileID: 7388460583952918097}
+  m_PrefabAsset: {fileID: 0}

@@ -560,6 +560,11 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 7388460584226568727, guid: 43a67bdea03669d45a2ee726c5c99192, type: 3}
   m_PrefabInstance: {fileID: 168051256}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &168051258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7388460584226568724, guid: 43a67bdea03669d45a2ee726c5c99192, type: 3}
+  m_PrefabInstance: {fileID: 168051256}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &190310302
 GameObject:
   m_ObjectHideFlags: 0
@@ -17015,6 +17020,10 @@ PrefabInstance:
       propertyPath: nextLevel
       value: Level 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4392567318139221785, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: audioShoot
+      value: 
+      objectReference: {fileID: 168051258}
     - target: {fileID: 4392567318139221785, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: healthLeft
       value: 0
