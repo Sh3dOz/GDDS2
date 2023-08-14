@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7569783246883935818}
   - component: {fileID: 4165544120552052495}
   - component: {fileID: 4388447933937488510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shrapnel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,9 +139,6 @@ MonoBehaviour:
   rb: {fileID: 7110421169762493002}
   timeSpawned: 0
   damage: 2
-  audioS: {fileID: 0}
-  shotSound: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
-  shotEffect: {fileID: 4349132735671360474, guid: 311a2a83d164aa841b8738a446fd005d, type: 3}
   bullet: {fileID: 5284701927650613018, guid: 382d70d4f183d3849937cb9727b144d9, type: 3}
 --- !u!95 &4388447933937488510
 Animator:

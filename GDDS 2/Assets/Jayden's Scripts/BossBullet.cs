@@ -8,7 +8,6 @@ public class BossBullet : Bullet
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        audioS = FindObjectOfType<AudioSource>();
     }
 
     // Update is called once per frame
@@ -54,12 +53,14 @@ public class BossBullet : Bullet
         {
             if (collision.gameObject.GetComponent<SpaceEnemy>())
             {
+                Debug.Log("haro?");
                 if (collision.gameObject.GetComponent<BossController>())
                 {
                     collision.gameObject.GetComponent<BossController>().TakeDamage(damage);
                 }
                 else
                 {
+                    Debug.Log("Haro?");
                     collision.gameObject.GetComponent<SpaceEnemy>().TakeDamage(damage, this.gameObject);
                 }
             }

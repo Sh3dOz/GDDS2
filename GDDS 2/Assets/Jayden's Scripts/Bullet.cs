@@ -10,16 +10,10 @@ public abstract class Bullet : MonoBehaviour
     public float timeSpawned;
     public int damage;
 
-    public AudioSource audioS;
-    public AudioClip shotSound;
-    public GameObject shotEffect;
-
-
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        audioS = FindObjectOfType<AudioSource>();
     }
 
     // Update is called once per frame
@@ -32,14 +26,16 @@ public abstract class Bullet : MonoBehaviour
     {
         if (this.tag == "Player")
         {
+            Debug.Log("haro?");
+            Debug.Log(collision.gameObject);
             if (collision.GetComponent<BossController>())
             {
                 collision.GetComponent<BossController>().TakeDamage(damage);
                 Destroy(gameObject);
             }
-            else if (collision.GetComponent<ShootingEnemy>())
+            else if (collision.GetComponent<SpaceEnemy>())
             {
-                collision.GetComponent<ShootingEnemy>().TakeDamage(damage, this.gameObject);
+                collision.GetComponent<SpaceEnemy>().TakeDamage(damage, this.gameObject);
                 Destroy(gameObject);
             }
         }
@@ -50,7 +46,7 @@ public abstract class Bullet : MonoBehaviour
                 Debug.Log("haro?");
                 if (collision.GetComponent<PlayerController>().isDamaged || !collision.GetComponent<PlayerController>().canBeDamaged)
                 {
-
+                    Debug.Log("damaged");
                 }
                 else
                 {
