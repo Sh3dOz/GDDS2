@@ -38,8 +38,10 @@ public class LosingScreen : MonoBehaviour {
 
     public IEnumerator LosingScreene() {
         levelMusic.Stop();
-        enemies.SetActive(false);
-
+        if (enemies)
+        {
+            enemies.SetActive(false);
+        }
         coinsCollectedForTotal = PlayerPrefs.GetFloat("Coins", 0f); // Retrieve previously stored coins collected value
 
         coinsCollectedForTotal += manager.coinCount; // Add current coin count to previously stored value

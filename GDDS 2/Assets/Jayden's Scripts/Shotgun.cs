@@ -8,6 +8,7 @@ public class Shotgun : Bullet
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioS = FindObjectOfType<AudioSource>();
     }
 
     // Update is called once per frame

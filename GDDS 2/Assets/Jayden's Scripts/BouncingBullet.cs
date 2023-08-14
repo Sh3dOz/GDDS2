@@ -45,6 +45,15 @@ public class BouncingBullet : Bullet
                 rb.MovePosition(rb.position + lastReflection * Time.fixedDeltaTime);
             }
         }
+        if (collision.gameObject.GetComponent<DeflectShield>())
+        {
+            lastReflection = Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(lastReflection.y, lastReflection.x) * Mathf.Rad2Deg);
+            rb.velocity = Vector2.zero;
+            rb.MovePosition(rb.position + lastReflection * Time.fixedDeltaTime);
+            this.tag = "Player";
+            this.gameObject.GetComponent<SpriteRenderer>().color = Color.magenta;
+        }
         if (this.tag == "Enemy")
         {
             if (collision.gameObject.GetComponent<PlayerController>())
@@ -54,6 +63,20 @@ public class BouncingBullet : Bullet
                     collision.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
                 }
                 Destroy(gameObject);
+            }
+        }
+        else if(this.tag == "Player")
+        {
+            if (collision.gameObject.GetComponent<SpaceEnemy>())
+            {
+                if (collision.gameObject.GetComponent<BossController>())
+                {
+                    collision.gameObject.GetComponent<BossController>().TakeDamage(damage);
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<SpaceEnemy>().TakeDamage(damage, this.gameObject);
+                }
             }
         }
     }

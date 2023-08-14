@@ -44,6 +44,7 @@ public class KorgController : PlayerController
     bool tempFlip;
     bool checkFlip;
     public GameObject hoverPrefab, hoverParticle;
+    int flips;
 
     [Header("Space Missile")]
     [SerializeField] float missileCooldown = 30f;
@@ -137,13 +138,17 @@ public class KorgController : PlayerController
                                 if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)) return;
                                 if (isGrounded) return;
                                 touchTimer += Time.deltaTime;
-                                if (touchTimer > 0.1f)
+                                if (touchTimer > 0.2f && !hoveringCooldown)
                                 {
-                                    if (hoveringCooldown) return;
                                     isHovering = true;
                                     if (hovering == false) hoverGrav = gravScale;
                                     hovering = true;
                                     HoldBehaviour();
+                                }
+                                else if(touchTimer > 0.1f && hoveringCooldown)
+                                {
+                                    LandBehaviour();
+                                    flips++;
                                 }
                                 else
                                 {
@@ -155,18 +160,20 @@ public class KorgController : PlayerController
                                 break;
                             case TouchPhase.Ended:
                                 print("Ended Touch " + i);
-                                if (!isHovering)
+                                if (!isHovering && flips < 1)
                                 {
                                     LandBehaviour();
                                 }
-                                else
+                                else if(isHovering)
                                 {
                                     accelerate = false;
                                     StartCoroutine("GravWait");
                                 }
                                 touchTimer = 0f;
                                 isHovering = false;
+                                flips = 0;
                                 hoveringCounter = 0f;
+                                Destroy(hoverParticle);
                                 break;
                             case TouchPhase.Canceled:
                                 print("Cancelled Touch " + i);

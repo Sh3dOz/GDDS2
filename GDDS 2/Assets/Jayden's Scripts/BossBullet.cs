@@ -41,13 +41,27 @@ public class BossBullet : Bullet
                 Debug.Log("haro?");
                 if (collision.GetComponent<PlayerController>().isDamaged || !collision.GetComponent<PlayerController>().canBeDamaged)
                 {
-                    
+                    return;
                 }
                 else
                 {
                     collision.GetComponent<PlayerController>().TakeDamage(damage);
                 }
                 Destroy(gameObject);
+            }
+        }
+        else if (this.tag == "Player")
+        {
+            if (collision.gameObject.GetComponent<SpaceEnemy>())
+            {
+                if (collision.gameObject.GetComponent<BossController>())
+                {
+                    collision.gameObject.GetComponent<BossController>().TakeDamage(damage);
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<SpaceEnemy>().TakeDamage(damage, this.gameObject);
+                }
             }
         }
     }

@@ -34,5 +34,6 @@ public class DeflectShield : MonoBehaviour
         bullet.transform.localScale = new Vector3(1f, 1f, 1f);
         bullet.tag = "Player";
         bullet.timeSpawned = 0f;
+        bullet.GetComponent<SpriteRenderer>().color = Color.magenta;
     }
 }
