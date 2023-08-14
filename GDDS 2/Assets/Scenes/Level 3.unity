@@ -3363,6 +3363,10 @@ PrefabInstance:
       propertyPath: isInSpace
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9060644609654787504, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
+      propertyPath: weaponDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9084923487345101718, guid: 239354859aabf7f4ab07c8961801bbc2, type: 3}
       propertyPath: m_RootOrder
       value: 6
