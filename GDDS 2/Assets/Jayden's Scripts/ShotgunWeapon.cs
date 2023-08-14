@@ -15,6 +15,7 @@ public class ShotgunWeapon : Weapon
             bullet = Instantiate(bulletPrefab, shootPos.position, Quaternion.Euler(0f,0f,15f));
             bullet.GetComponent<Bullet>().damage = damage;
             bullet.tag = "Player";
+            UI.PlayOneShot(shootingSound);
         }
     }
 }
