@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -48,7 +48,13 @@ public class PauseMenu : MonoBehaviour {
         StartCoroutine("SelectingNextLevel");
     }
 
-    public IEnumerator SelectingNextLevel() {
+    public void BackupToMainMenu() {
+        Debug.Log("pressed");
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene("Main Menu");
+    }
+
+        public IEnumerator SelectingNextLevel() {
         audioSource.PlayOneShot(pressingSound);
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("Level Select");

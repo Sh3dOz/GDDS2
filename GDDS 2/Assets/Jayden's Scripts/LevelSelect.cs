@@ -15,6 +15,9 @@ public class LevelSelect : MonoBehaviour
     [SerializeField] GameObject startButton;
     [SerializeField] Image korg, axel, x;
 
+    public AudioSource UI;
+    public AudioClip pressingSound;
+
     public void Start()
     {
         if(PlayerPrefs.GetInt("Korg") != 1)
@@ -81,4 +84,14 @@ public class LevelSelect : MonoBehaviour
         //Cannot start without selecting a character
         startButton.SetActive(true);
     }
+
+    public void Settings() {
+        StartCoroutine("OpenSettings");
+    }
+    public IEnumerator OpenSettings() {
+        UI.PlayOneShot(pressingSound);
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene("Settings");
+    }
+
 }

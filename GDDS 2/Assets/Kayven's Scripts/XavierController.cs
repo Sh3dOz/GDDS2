@@ -93,7 +93,9 @@ public class XavierController : PlayerController {
                                 break;
                             case TouchPhase.Moved:
                                 //MouseDetect();
+                                //LandBehaviour();
                                 LandBehaviour();
+                                LandMove(Camera.main.ScreenToWorldPoint(t.position));
                                 print("Moving Touch " + i);
                                 break;
                             case TouchPhase.Ended:
@@ -159,20 +161,37 @@ public class XavierController : PlayerController {
     }
     public override void LandBehaviour() {
 
-        //Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //float newYPosition = touchPosition.y;
-
-
-        //if (touchPosition.y < top.position.y && touchPosition.y > bottom.position.y) {
-        //    Vector3 newPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
-        //    transform.position = newPosition;
-        //}
-
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = Camera.main.transform.position.z; // Set the mouse's z-coordinate to match the camera's z-coordinate
-        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        //Vector3 mousePosition = Input.mousePosition;
+        //mousePosition.z = Camera.main.transform.position.z; // Set the mouse's z-coordinate to match the camera's z-coordinate
+        //Vector3 touchPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
         // Control boundaries 
+        //float minY = bottom.position.y;
+        //float maxY = top.position.y;
+        //float clampedY = Mathf.Clamp(touchPosition.y, minY, maxY);
+
+        //Vector3 newPosition = transform.position;
+        //newPosition.y = clampedY;
+
+        // Lerp to the position of mouse
+        //float lerpSpeed = 2f;
+        //transform.position = Vector3.Lerp(transform.position, newPosition, lerpSpeed * Time.deltaTime);
+
+
+        // Control boundaries 
+        //float miny = bottom.position.y;
+        //float maxy = top.position.y;
+        //float clampedy = mathf.clamp(touchposition.y, miny, maxy);
+
+        //vector3 newposition = transform.position;
+        //newposition.y = clampedy;
+
+        //lerp to the position of touch
+        //float lerpspeed = 2f;
+        //transform.position = vector3.lerp(transform.position, newposition, lerpspeed * time.deltatime);
+    }
+
+    public void LandMove(Vector3 touchPosition) {
         float minY = bottom.position.y;
         float maxY = top.position.y;
         float clampedY = Mathf.Clamp(touchPosition.y, minY, maxY);
@@ -180,8 +199,8 @@ public class XavierController : PlayerController {
         Vector3 newPosition = transform.position;
         newPosition.y = clampedY;
 
-        // Lerp to the position of mouse
-        float lerpSpeed = 2f;
+        // Lerp to the position of touch
+        float lerpSpeed = 5f;
         transform.position = Vector3.Lerp(transform.position, newPosition, lerpSpeed * Time.deltaTime);
     }
         
