@@ -26,7 +26,7 @@ public class CollisionTrapController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController p = collision.GetComponent<PlayerController>();
-        if (p)
+        if (p && p.canBeDamaged == true)
         {
             collision.GetComponent<PlayerController>().TakeDamage(damage);
             audioS.PlayOneShot(shockSound);
