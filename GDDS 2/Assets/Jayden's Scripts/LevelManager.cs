@@ -20,7 +20,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField]PlayerController player;
     [SerializeField] BossController boss;
     public Slider progressSlider;
-    float landDistance;
+    public Image progressHandle;
+    public float landDistance;
     public Slider healthSlider;
     public Slider bossHealthBar;
     public Button landButton, spaceButton;
@@ -36,6 +37,7 @@ public class LevelManager : MonoBehaviour
     public Text coinText;
     public AudioSource coinSound;
     public CinemachineVirtualCamera vcam;
+    EnemySpawn enemySpawner;
 
     [Header("Instrcutions")]
     [SerializeField] GameObject instructionsCanvas;
@@ -55,6 +57,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Sprite empIcon, empCooldown, deflectIcon, deflectCooldown;
     [SerializeField] GameObject x;
     [SerializeField] Sprite metoriteIcon, metoriteCooldown;
+    [SerializeField] List<Sprite> characters;
     
 
     public bool deadedCoStarted = false;
@@ -66,6 +69,7 @@ public class LevelManager : MonoBehaviour
         coins = FindObjectsOfType<Coin>();
         score = FindObjectOfType<Score>();
         spaceship = FindObjectOfType<TransitionToSpaceship>();
+        enemySpawner = FindObjectOfType<EnemySpawn>(true);
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
             PlayerPrefs.SetInt("PlayGame", 1);
@@ -79,6 +83,7 @@ public class LevelManager : MonoBehaviour
             {
                 case "Korg":
                     korg.SetActive(true);
+                    progressHandle.sprite = characters[0];
                     landButton.image.overrideSprite = shieldIcon;
                     landCooldown.overrideSprite = shieldCooldown;
                     spaceButton.image.overrideSprite = missileIcon;
@@ -88,6 +93,7 @@ public class LevelManager : MonoBehaviour
                     break;
                 case "Axel":
                     axel.SetActive(true);
+                    progressHandle.sprite = characters[1];
                     landButton.image.overrideSprite = empIcon;
                     landCooldown.overrideSprite = empCooldown;
                     spaceButton.image.overrideSprite = deflectIcon;
@@ -97,6 +103,7 @@ public class LevelManager : MonoBehaviour
                     break;
                 case "X":
                     x.SetActive(true);
+                    progressHandle.sprite = characters[2];
                     landButton.image.sprite = null;
                     landButton.image.color = new Color(0f, 0f, 0f, 0f);
                     landCooldown.sprite = null;
@@ -109,6 +116,7 @@ public class LevelManager : MonoBehaviour
                     break;
                 default:
                     korg.SetActive(true);
+                    progressHandle.sprite = characters[0];
                     landButton.image.overrideSprite = shieldIcon;
                     landCooldown.overrideSprite = shieldCooldown;
                     spaceButton.image.overrideSprite = missileIcon;
@@ -180,6 +188,7 @@ public class LevelManager : MonoBehaviour
 
     void progressCheck()
     {
+        if (gameOver) return;
         if (isBossLevel)
         {
             bossHealthBar.value = boss.currentHealth;
@@ -211,28 +220,30 @@ public class LevelManager : MonoBehaviour
                         GameWin(false, 1, PlayerPrefs.GetString("Difficulty"));
                     }
                 }
-                else if (player.isInSpace)
+            }
+            else if (player.isInSpace && enemySpawner.enabled == true)
+            {
+                if (enemySpawner.currWave >= enemySpawner.maxWave)
                 {
-                    if (EnemySpawn.currWave > EnemySpawn.maxWave)
-                    {
-                        Debug.Log("Space Win");
-                        isWin = true;
-                        PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
-                        GameWin(false, 2, PlayerPrefs.GetString("Difficulty"));
-                    }
-                    else
-                    {
-                        float spaceSegment = (progressSlider.maxValue - landDistance) / EnemySpawn.maxWave;
-                        progressSlider.value = landDistance + (spaceSegment * EnemySpawn.currWave - 1);
-                    }
+                    Debug.Log("Space Win");
+                    isWin = true;
+                    PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
+                    GameWin(false, 2, PlayerPrefs.GetString("Difficulty"));
+                }
+                else
+                {
+                    float spaceSegment = (progressSlider.maxValue - landDistance) / enemySpawner.maxWave;
+                    progressSlider.value = landDistance + (spaceSegment * enemySpawner.currWave + 1);
                 }
             }
+            
         }
     }
 
     void GameWin(bool isBoss, int level, string difficulty)
     {
         if (gameOver) return;
+        player.gameObject.SetActive(false);
         string character = PlayerPrefs.GetString("Character");
         PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + difficulty + level, 1);
         if (isBoss == true)
@@ -274,7 +285,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetFloat("Distance", PlayerPrefs.GetFloat("Distance") + progressSlider.value);
+            PlayerPrefs.SetFloat("Distance", PlayerPrefs.GetFloat("Distance") + landDistance);
             if (PlayerPrefs.GetInt("Frantic Runner") != 1)
             {
                 if (PlayerPrefs.GetFloat("Distance") >= 1000f)

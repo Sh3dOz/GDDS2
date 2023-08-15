@@ -7,9 +7,9 @@ public class EnemySpawn : MonoBehaviour
     public List<GameObject> enemiesToSpawn;
     public List<GameObject> enemiesSpawned;
     public List<ShootingEnemy> waveToSpawn;
-    public static int currWave;
+    public int currWave;
     public int waveValue;
-    public static int maxWave;
+    public int maxWave;
 
     public Transform spawnLoaction;
     public int waveDuration;
@@ -117,7 +117,7 @@ public class EnemySpawn : MonoBehaviour
         if(enemiesSpawned.Count == 0)
         {
             currWave += 1;
-            if (currWave <= maxWave)
+            if (currWave < maxWave)
             {
                 GenerateWaves();
             }
