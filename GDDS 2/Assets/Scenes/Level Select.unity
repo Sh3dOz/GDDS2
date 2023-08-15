@@ -248,6 +248,15 @@ MonoBehaviour:
   korg: {fileID: 564396879}
   axel: {fileID: 941610053}
   x: {fileID: 475156639}
+  button1: {fileID: 1656998891}
+  button2: {fileID: 869081879}
+  button3: {fileID: 652230606}
+  level1: {fileID: 1569088133}
+  level2: {fileID: 258163391}
+  level3: {fileID: 615277463}
+  text1: {fileID: 252696489}
+  text2: {fileID: 1147659140}
+  text3: {fileID: 445416268}
   UI: {fileID: 2055839774}
   pressingSound: {fileID: 8300000, guid: f51f4e3e965cde143b1269a66b415c74, type: 3}
 --- !u!114 &40567601

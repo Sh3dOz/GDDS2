@@ -14,6 +14,9 @@ public class LevelSelect : MonoBehaviour
     [SerializeField] GameObject uiElement;
     [SerializeField] GameObject startButton;
     [SerializeField] Image korg, axel, x;
+    [SerializeField] Button button1, button2, button3;
+    [SerializeField] RawImage level1, level2, level3;
+    [SerializeField] Text text1, text2, text3;
 
     public AudioSource UI;
     public AudioClip pressingSound;
@@ -45,11 +48,36 @@ public class LevelSelect : MonoBehaviour
         {
             index = 2;
         }
-        
+        if(PlayerPrefs.GetInt("Level 1") != 1)
+        {
+            button1.enabled = false;
+            level1.color = Color.black;
+            text1.text = "Locked";
+        }
+        if (PlayerPrefs.GetInt("Level 2") != 1)
+        {
+            button2.enabled = false;
+            level2.color = Color.black;
+            text2.text = "Locked";
+        }
+        if (PlayerPrefs.GetInt("Level 3") != 1)
+        {
+            button3.enabled = false;
+            level3.color = Color.black;
+            text3.text = "Locked";
+        }
+
     }
     public void StageSelect(string level)
     {
-        levelSelected = level;
+        if (PlayerPrefs.GetInt(level) != 1)
+        {
+            return;
+        }
+        else
+        {
+            levelSelected = level;
+        }
     }
 
     public void DifficultySelect(Dropdown dropdown)
