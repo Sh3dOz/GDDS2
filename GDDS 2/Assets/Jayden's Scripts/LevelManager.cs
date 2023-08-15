@@ -70,8 +70,10 @@ public class LevelManager : MonoBehaviour
         score = FindObjectOfType<Score>();
         spaceship = FindObjectOfType<TransitionToSpaceship>();
         enemySpawner = FindObjectOfType<EnemySpawn>(true);
+        Debug.Log(PlayerPrefs.GetInt("PlayGame"));
         if (PlayerPrefs.GetInt("PlayGame") == 0)
         {
+            Debug.Log("first time");
             PlayerPrefs.SetInt("PlayGame", 1);
             korg.SetActive(true);
             player = FindObjectOfType<PlayerController>();
@@ -446,6 +448,7 @@ public class LevelManager : MonoBehaviour
     IEnumerator Instructions()
     {
         //First time launching
+        Debug.Log("instructions");
         player.canMove = false;
         Time.timeScale = 0f;
         healthPanel.SetActive(true);

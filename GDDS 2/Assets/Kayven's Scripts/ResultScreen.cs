@@ -71,7 +71,6 @@ public class ResultScreen : MonoBehaviour {
             }
         }
 
-        Debug.Log(scoreMultipler);
         manager = FindObjectOfType<LevelManager>();
 
         player = FindObjectOfType<PlayerController>();
