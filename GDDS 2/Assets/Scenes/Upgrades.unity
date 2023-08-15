@@ -28204,6 +28204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinText: {fileID: 1703527257}
+  UI: {fileID: 1661124660}
+  upgradeSound: {fileID: 8300000, guid: da41288133a745e41b43edeca905df49, type: 3}
   BG: {fileID: 1559058054}
   Character: {fileID: 1054823900}
   allChar:

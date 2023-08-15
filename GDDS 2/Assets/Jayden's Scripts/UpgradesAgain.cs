@@ -8,6 +8,8 @@ public class UpgradesAgain : MonoBehaviour
     public Text coinText;
     float coinCollected;
     public static bool canInput = true;
+    public AudioSource UI;
+    public AudioClip upgradeSound;
 
     [Header("SwitchCharacter")]
     public Image BG;
@@ -214,6 +216,7 @@ public class UpgradesAgain : MonoBehaviour
         if (coinCollected < ability.upgradeCost[ability.abilityIndex]) return;
         PlayerPrefs.SetInt(selectedCharacter + "Passive", PlayerPrefs.GetInt(selectedCharacter + "Passive") + 1);
         PlayerPrefs.SetFloat("Coins", coinCollected - ability.upgradeCost[ability.abilityIndex]);
+        UI.PlayOneShot(upgradeSound);
         coinCollected = PlayerPrefs.GetFloat("Coins");
         coinText.text = "=" + " " + coinCollected;
         if(PlayerPrefs.GetInt(selectedCharacter + "Passive") == 3) 
@@ -228,6 +231,7 @@ public class UpgradesAgain : MonoBehaviour
         if (coinCollected < ability.upgradeCost[ability.abilityIndex]) return;
         PlayerPrefs.SetInt(selectedCharacter + "Skill", PlayerPrefs.GetInt(selectedCharacter + "Skill") + 1);
         PlayerPrefs.SetFloat("Coins", coinCollected - ability.upgradeCost[ability.abilityIndex]);
+        UI.PlayOneShot(upgradeSound);
         coinCollected = PlayerPrefs.GetFloat("Coins");
         coinText.text = "=" + " " + coinCollected;
         if (PlayerPrefs.GetInt(selectedCharacter + "Skill") == 3)
@@ -242,6 +246,7 @@ public class UpgradesAgain : MonoBehaviour
         if (coinCollected < ability.upgradeCost[ability.abilityIndex]) return;
         PlayerPrefs.SetInt(selectedCharacter + "Powerup", PlayerPrefs.GetInt(selectedCharacter + "Powerup") + 1);
         PlayerPrefs.SetFloat("Coins", coinCollected - ability.upgradeCost[ability.abilityIndex]);
+        UI.PlayOneShot(upgradeSound);
         coinCollected = PlayerPrefs.GetFloat("Coins");
         coinText.text = "=" + " " + coinCollected;
         if (PlayerPrefs.GetInt(selectedCharacter + "Powerup") == 3)
