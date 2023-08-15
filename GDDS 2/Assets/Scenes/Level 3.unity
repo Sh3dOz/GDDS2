@@ -1288,6 +1288,8 @@ MonoBehaviour:
   bossHealthBar: {fileID: 960067547}
   UI: {fileID: 647141997}
   laserBeam: {fileID: 8300000, guid: 6477756069e4d3f4dbabc44ceff123bf, type: 3}
+  hurtSound: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
+  damagedEffect: {fileID: 4349132735671360474, guid: 311a2a83d164aa841b8738a446fd005d, type: 3}
   death: {fileID: 905367780436635809, guid: aceb7464d27f93741a2187e4c0b001b6, type: 3}
   phaseOneBullet: {fileID: 7945349743027483808, guid: ccd42f6d3cb43b446a7b22394ffa5e13, type: 3}
   eyePos: {fileID: 1542234195}

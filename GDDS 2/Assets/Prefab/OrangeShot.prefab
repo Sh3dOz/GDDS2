@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8893939107566105908}
   - component: {fileID: 9025350114862560653}
   - component: {fileID: -2749453161984779501}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OrangeShot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,9 +121,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   timeSpawned: 0
   damage: 1
-  audioS: {fileID: 0}
-  shotSound: {fileID: 0}
-  shotEffect: {fileID: 4349132735671360474, guid: 311a2a83d164aa841b8738a446fd005d, type: 3}
 --- !u!58 &9025350114862560653
 CircleCollider2D:
   m_ObjectHideFlags: 0

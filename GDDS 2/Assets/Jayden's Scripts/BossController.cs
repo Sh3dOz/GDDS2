@@ -16,6 +16,8 @@ public class BossController : MonoBehaviour
     public Slider bossHealthBar;
     public AudioSource UI;
     public AudioClip laserBeam;
+    public AudioClip hurtSound;
+    public GameObject damagedEffect;
     public GameObject death;
 
     [Header("Phase1")]
@@ -276,6 +278,7 @@ public class BossController : MonoBehaviour
                         //Shoot Laser
                         GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
                         StopGlow();
+                        UI.PlayOneShot(laserBeam);
                         Destroy(laser, 10f);
                         shotLas = true;
                      
@@ -316,6 +319,7 @@ public class BossController : MonoBehaviour
                         //Shoot Laser
                         GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
                         StopGlow();
+                        UI.PlayOneShot(laserBeam);
                         Destroy(laser, 10f);
                         shotLas = true;
                     }
@@ -342,6 +346,7 @@ public class BossController : MonoBehaviour
                         //Shoot Laser
                         GameObject laser = Instantiate(phaseTwoLaser, eyePos.position, Quaternion.identity, eyePos);
                         StopGlow();
+                        UI.PlayOneShot(laserBeam);
                         Destroy(laser, 10f);
                         shotLas = true;
                     }
@@ -460,6 +465,8 @@ public class BossController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        UI.PlayOneShot(hurtSound);
+        Instantiate(damagedEffect, transform.position, Quaternion.identity);
         PharseCheck();
         if (currentHealth < 0)
         {
