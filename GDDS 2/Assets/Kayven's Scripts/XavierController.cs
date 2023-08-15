@@ -200,7 +200,7 @@ public class XavierController : PlayerController {
         newPosition.y = clampedY;
 
         // Lerp to the position of touch
-        float lerpSpeed = 5f;
+        float lerpSpeed = 10f;
         transform.position = Vector3.Lerp(transform.position, newPosition, lerpSpeed * Time.deltaTime);
     }
         
