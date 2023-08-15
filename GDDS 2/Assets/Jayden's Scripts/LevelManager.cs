@@ -75,6 +75,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("first time");
             PlayerPrefs.SetInt("PlayGame", 1);
+            PlayerPrefs.SetInt("Level 1", 1);
             korg.SetActive(true);
             player = FindObjectOfType<PlayerController>();
             StartCoroutine(Instructions());
@@ -301,6 +302,7 @@ public class LevelManager : MonoBehaviour
             PlayerPrefs.SetInt(SceneManager.GetActiveScene().name, 1);
             if (level == 1)
             {
+                PlayerPrefs.SetInt("Level 2", 1);
                 if (PlayerPrefs.GetInt("Why are you running") != 1)
                 {
                     PlayerPrefs.SetInt("Why are you running", 1);
@@ -314,6 +316,7 @@ public class LevelManager : MonoBehaviour
             }
             else if (level == 2)
             {
+                PlayerPrefs.SetInt("Level 3", 1);
                 if (PlayerPrefs.GetInt("Where's my money") != 1)
                 {
                     PlayerPrefs.SetInt("Where's my money", 1);

@@ -35,7 +35,6 @@ public class MainMenu : MonoBehaviour {
         }
         else
         {
-            PlayerPrefs.SetInt("PlayGame", 1);
             PlayerPrefs.SetInt("Korg", 1);
             SceneManager.LoadScene(loadLevel);
         }

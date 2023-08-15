@@ -22,6 +22,7 @@ public class UpgradesAgain : MonoBehaviour
     public XavierIdle x;
     public int index;
     public GameObject skillButton;
+    public GameObject lockedPanel;
 
     [Header("Upgrades")]
     public GameObject passivePanel;
@@ -87,6 +88,14 @@ public class UpgradesAgain : MonoBehaviour
             Character.GetComponent<Image>().sprite = charSprites[index];
             Character.GetComponent<Animator>().runtimeAnimatorController = charAnim[index];
             selectedCharacter = allChar[index];
+            if(PlayerPrefs.GetInt(selectedCharacter) != 1)
+            {
+                lockedPanel.SetActive(true);
+            }
+            else
+            {
+                lockedPanel.SetActive(false);
+            }
         }
         if(index == 0)
         {
@@ -130,6 +139,14 @@ public class UpgradesAgain : MonoBehaviour
             Character.GetComponent<Image>().sprite = charSprites[index];
             Character.GetComponent<Animator>().runtimeAnimatorController = charAnim[index];
             selectedCharacter = allChar[index];
+            if (PlayerPrefs.GetInt(selectedCharacter) != 1)
+            {
+                lockedPanel.SetActive(true);
+            }
+            else
+            {
+                lockedPanel.SetActive(false);
+            }
         }
         if (index == 0)
         {
