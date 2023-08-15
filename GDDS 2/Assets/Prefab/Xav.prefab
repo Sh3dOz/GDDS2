@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 8271328036209520550}
   - component: {fileID: 8980743266189776018}
   - component: {fileID: 8372860820383777822}
-  - component: {fileID: 4071368681443369132}
   - component: {fileID: 7275681211231475142}
   - component: {fileID: 7275681211231475141}
   - component: {fileID: 2660099160897311926}
@@ -221,24 +220,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4071368681443369132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8278546678396004544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 726cdeead2825f14cae5d7a985445c09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1297164824057264851, guid: a98adbb59d2e81244a9eb1b85965efda, type: 3}
-  shootPos: {fileID: 8814942069269082029}
-  fireRate: 0.2
-  damage: 1
-  UI: {fileID: 0}
-  shootingSound: {fileID: 0}
 --- !u!60 &7275681211231475142
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -847,7 +828,7 @@ MonoBehaviour:
   isInSpace: 0
   onLand: 1
   pcInput: 0
-  moveSpeed: 5
+  moveSpeed: 10
   runSpeed: 5
   jumpHeight: 0
   movement: {x: 0, y: 0}
@@ -862,6 +843,7 @@ MonoBehaviour:
   canMove: 1
   touchTimer: 0
   health: 4
+  maxHealth: 3
   isDamaged: 0
   col: {fileID: 7275681211231475142}
   manager: {fileID: 0}
@@ -879,6 +861,7 @@ MonoBehaviour:
   damagedEffect: {fileID: 3467726240160300806, guid: 3531e1b66a1b14a41b2cda66566754f4, type: 3}
   UI: {fileID: 0}
   damageSound: {fileID: 8300000, guid: 141942e40d084474392f42aa67ff0043, type: 3}
+  numberOfFlashes: 3
   gravScale: 0
   metoriteCooldown: 30
   currentMetoriteCooldown: 0
@@ -913,7 +896,7 @@ MonoBehaviour:
   fireRate: 0.2
   damage: 3
   UI: {fileID: 0}
-  shootingSound: {fileID: 0}
+  shootingSound: {fileID: 8300000, guid: 366e981a78528a64a88495ddf8a084d8, type: 3}
 --- !u!1 &8437788029684458383
 GameObject:
   m_ObjectHideFlags: 0

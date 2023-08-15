@@ -3439,7 +3439,7 @@ MonoBehaviour:
   spaceCharge: {fileID: 4771440179663766617}
   startPos: {fileID: 7719881901993034873}
   endPos: {fileID: 5879452685738029377}
-  audioS: {fileID: 0}
+  audioS: {fileID: 9204869557728258411}
   coinCount: 0
   coinText: {fileID: 4392567316252239333}
   coinSound: {fileID: 9204869557728258411}
@@ -6565,6 +6565,14 @@ PrefabInstance:
     - target: {fileID: 1328840781306913630, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
       propertyPath: m_fontSize
       value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439583475445472992, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
+      propertyPath: radius
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439583475445472992, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
+      propertyPath: sensitivity
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1439583475445472995, guid: f8bfadf28e9a00b49abe86592798567d, type: 3}
       propertyPath: m_RootOrder

@@ -744,7 +744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &239191837
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
+  m_fontSize: 49.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1919,7 +1919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd5703a3a0b4374f940ac5a70235289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
   achievementPrefab: {fileID: 6047797311609487491, guid: fd917f37af82ad54bba107cb687395c4, type: 3}
   achievementIcon:
   - {fileID: 1764909697833890392, guid: f6cd4ec42c2a52949959fa09c887a2c9, type: 3}
@@ -1957,7 +1956,6 @@ MonoBehaviour:
   - Beat all levels without using abilities; on any difficulty (Axel)
   - Use meteorite skill to last hit all enemies on level 2; on any difficulty (Xavier)
   - Complete all achievements
-  spawnPos: {fileID: 0}
 --- !u!114 &1035791829
 MonoBehaviour:
   m_ObjectHideFlags: 0

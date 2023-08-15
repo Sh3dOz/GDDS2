@@ -243,7 +243,7 @@ public class LevelManager : MonoBehaviour
     void GameWin(bool isBoss, int level, string difficulty)
     {
         if (gameOver) return;
-        player.gameObject.SetActive(false);
+        //player.gameObject.SetActive(false);
         string character = PlayerPrefs.GetString("Character");
         PlayerPrefs.SetInt(PlayerPrefs.GetString("Character") + difficulty + level, 1);
         if (isBoss == true)

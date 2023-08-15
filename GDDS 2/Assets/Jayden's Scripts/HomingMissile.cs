@@ -61,12 +61,24 @@ public class HomingMissile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<SpaceEnemy>())
+        if (this.tag == "Player")
         {
-            collision.GetComponent<SpaceEnemy>().TakeDamage(damage,this.gameObject);
-            Instantiate(explosion, transform.position, Quaternion.identity);
-            manager.audioS.PlayOneShot(explodeAound);
-            Destroy(gameObject);
+            Debug.Log("haro?");
+            Debug.Log(collision.gameObject);
+            if (collision.GetComponent<BossController>())
+            {
+                collision.GetComponent<BossController>().TakeDamage(damage);
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                manager.audioS.PlayOneShot(explodeAound);
+                Destroy(gameObject);
+            }
+            else if (collision.GetComponent<SpaceEnemy>())
+            {
+                collision.GetComponent<SpaceEnemy>().TakeDamage(damage, this.gameObject);
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                manager.audioS.PlayOneShot(explodeAound);
+                Destroy(gameObject);
+            }
         }
     }
 }

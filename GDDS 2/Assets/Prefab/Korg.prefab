@@ -134,8 +134,8 @@ MonoBehaviour:
   isInSpace: 0
   onLand: 1
   pcInput: 0
-  moveSpeed: 10
-  runSpeed: 5
+  moveSpeed: 12
+  runSpeed: 6
   jumpHeight: 10
   movement: {x: 0, y: 0}
   rb: {fileID: 0}

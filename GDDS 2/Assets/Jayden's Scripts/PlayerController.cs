@@ -123,7 +123,6 @@ public abstract class PlayerController : MonoBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
         }
         Movement();
-        ShootRaycast();
     }
 
     void TryUpdateShapeToAttachedSprite(PolygonCollider2D collider)
